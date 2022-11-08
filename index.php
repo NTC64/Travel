@@ -47,7 +47,12 @@ include 'conn.php';
 
             <form class="login-container" method="POST">
                 <p><input type="text" placeholder="Username" required name="username" /></p>
-                <p><input type="password" placeholder="Password" required name="password" /></p>
+                <p><input type="password" placeholder="Password" required name="password" class="password" /></p>
+                <div class="row">
+
+                    <input type="checkbox" name="hide_password" class="hide col-2 ml-2" /><label for=""
+                        class="col-9 show__pass">Show password</label>
+                </div>
                 <p><input type="submit" value="Log in" name="btn" /></p>
             </form>
         </div>
@@ -98,6 +103,10 @@ include 'conn.php';
             <a class="m-auto text-right text-black-50 hvblack">View all >></a>
         </div>
         <div class="tour__items row">
+
+
+
+
             <div class="card col-4 p-0 m-2">
                 <img class="card-img-top" src="asset/img/tour1.jpg" alt="Card image cap" />
                 <div class="card-body">
@@ -107,51 +116,7 @@ include 'conn.php';
                     <a href="#" class="btn btn-green">Xem chi tiết</a>
                 </div>
             </div>
-            <div class="card col-4 p-0 m-2">
-                <img class="card-img-top" src="asset/img/tour1.jpg" alt="Card image cap" />
-                <div class="card-body">
-                    <h5 class="card-title">Tên địa điểm du lịch</h5>
-                    <p class="card-text text-black-50">Mô tả</p>
-                    <p class="card-price text-danger">Giá</p>
-                    <a href="#" class="btn btn-green">Xem chi tiết</a>
-                </div>
-            </div>
-            <div class="card col-4 p-0 m-2">
-                <img class="card-img-top" src="asset/img/tour1.jpg" alt="Card image cap" />
-                <div class="card-body">
-                    <h5 class="card-title">Tên địa điểm du lịch</h5>
-                    <p class="card-text text-black-50">Mô tả</p>
-                    <p class="card-price text-danger">Giá</p>
-                    <a href="#" class="btn btn-green">Xem chi tiết</a>
-                </div>
-            </div>
-            <div class="card col-4 p-0 m-2">
-                <img class="card-img-top" src="asset/img/tour1.jpg" alt="Card image cap" />
-                <div class="card-body">
-                    <h5 class="card-title">Tên địa điểm du lịch</h5>
-                    <p class="card-text text-black-50">Mô tả</p>
-                    <p class="card-price text-danger">Giá</p>
-                    <a href="#" class="btn btn-green">Xem chi tiết</a>
-                </div>
-            </div>
-            <div class="card col-4 p-0 m-2">
-                <img class="card-img-top" src="asset/img/tour1.jpg" alt="Card image cap" />
-                <div class="card-body">
-                    <h5 class="card-title">Tên địa điểm du lịch</h5>
-                    <p class="card-text text-black-50">Mô tả</p>
-                    <p class="card-price text-danger">Giá</p>
-                    <a href="#" class="btn btn-green">Xem chi tiết</a>
-                </div>
-            </div>
-            <div class="card col-4 p-0 m-2">
-                <img class="card-img-top" src="asset/img/tour1.jpg" alt="Card image cap" />
-                <div class="card-body">
-                    <h5 class="card-title">Tên địa điểm du lịch</h5>
-                    <p class="card-text text-black-50">Mô tả</p>
-                    <p class="card-price text-danger">Giá</p>
-                    <a href="#" class="btn btn-green">Xem chi tiết</a>
-                </div>
-            </div>
+
         </div>
     </div>
     <div class="bg__category bg-dark">
@@ -185,46 +150,6 @@ include 'conn.php';
             <a class="m-auto text-right text-black-50 hvblack">View all >></a>
         </div>
         <div class="tour__items row">
-            <div class="card col-4 p-0 m-2">
-                <img class="card-img-top" src="asset/img/tour1.jpg" alt="Card image cap" />
-                <div class="card-body">
-                    <p class="card-date text-black-50">Thời gian đăng</p>
-                    <h5 class="card-title">Tên bài viết</h5>
-                    <p class="card-text text-black-50">Mô tả</p>
-                </div>
-            </div>
-            <div class="card col-4 p-0 m-2">
-                <img class="card-img-top" src="asset/img/tour1.jpg" alt="Card image cap" />
-                <div class="card-body">
-                    <p class="card-date text-black-50">Thời gian đăng</p>
-                    <h5 class="card-title">Tên bài viết</h5>
-                    <p class="card-text text-black-50">Mô tả</p>
-                </div>
-            </div>
-            <div class="card col-4 p-0 m-2">
-                <img class="card-img-top" src="asset/img/tour1.jpg" alt="Card image cap" />
-                <div class="card-body">
-                    <p class="card-date text-black-50">Thời gian đăng</p>
-                    <h5 class="card-title">Tên bài viết</h5>
-                    <p class="card-text text-black-50">Mô tả</p>
-                </div>
-            </div>
-            <div class="card col-4 p-0 m-2">
-                <img class="card-img-top" src="asset/img/tour1.jpg" alt="Card image cap" />
-                <div class="card-body">
-                    <p class="card-date text-black-50">Thời gian đăng</p>
-                    <h5 class="card-title">Tên bài viết</h5>
-                    <p class="card-text text-black-50">Mô tả</p>
-                </div>
-            </div>
-            <div class="card col-4 p-0 m-2">
-                <img class="card-img-top" src="asset/img/tour1.jpg" alt="Card image cap" />
-                <div class="card-body">
-                    <p class="card-date text-black-50">Thời gian đăng</p>
-                    <h5 class="card-title">Tên bài viết</h5>
-                    <p class="card-text text-black-50">Mô tả</p>
-                </div>
-            </div>
             <div class="card col-4 p-0 m-2">
                 <img class="card-img-top" src="asset/img/tour1.jpg" alt="Card image cap" />
                 <div class="card-body">

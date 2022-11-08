@@ -118,6 +118,7 @@ Chart.defaults.global.responsive = true
 Chart.defaults.global.maintainAspectRatio = false
 
 // The bar chart
+
 var myChart = new Chart(document.getElementById('myChart'), {
   type: 'bar',
   data: {

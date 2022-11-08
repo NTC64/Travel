@@ -14,5 +14,15 @@ $(".bg__login").on("click", function() {
               $(".signup").removeClass("login--active");
               $(".bg__login").removeClass("bg__login--active");
           });
+$(document).on("click", ".hide", function() {
+
+    if($(".password").attr("type") == "password"){
+        $(".password").attr("type", "text");
+    }
+    else{
+        $(".password").attr("type", "password");
+    }
+
+});
 //   admin
 
