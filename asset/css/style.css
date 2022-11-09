@@ -246,15 +246,18 @@ a:hover {
   min-height: 600px !important;
 }
 .category__left:hover {
-  animation: category__left ease-in 0.5s forwards;
+  animation: category__left ease-in 1s forwards;
   cursor: pointer;
 }
 @keyframes category__left {
   0% {
     transform: skewY(0deg);
   }
-  100% {
+  50% {
     transform: skewY(10deg);
+  }
+  100% {
+    transform: skewY(0deg);
   }
 }
 .category__right:hover {
