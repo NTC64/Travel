@@ -11,12 +11,14 @@
     <link rel="stylesheet" href="./asset/img/" />
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <?php session_start() ?>
 </head>
 <?php
 include 'conn.php';
 ?>
 
 <body>
+    <!-- Login Form -->
     <div class="container-fluid p-0 main">
         <div class="header row m-0 p-0 text-white bg-dark">
             <div class="col-1"></div>
@@ -49,7 +51,6 @@ include 'conn.php';
                 <p><input type="text" placeholder="Username" required name="username" /></p>
                 <p><input type="password" placeholder="Password" required name="password" class="password" /></p>
                 <div class="row">
-
                     <input type="checkbox" name="hide_password" class="hide col-2 ml-2" /><label for=""
                         class="col-9 show__pass">Show password</label>
                 </div>
@@ -57,30 +58,64 @@ include 'conn.php';
             </form>
         </div>
         <?php
-    if (isset($_POST["btn"])) {
-      if ($_POST['btn'] == "Log in") {
-        $username = $_POST['username'];
-        $password = $_POST['password'];
-        $sql = "SELECT * FROM access WHERE username = '$username' AND password = '$password'";
-        $result = mysqli_query($conn, $sql);
-        if (mysqli_num_rows($result) > 0) {
-          header("Location: admin.html");
-        } else {
-          echo "<script>alert('Sai tài khoản hoặc mật khẩu')</script>";
+        if (isset($_POST["btn"])) {
+            if ($_POST['btn'] == "Log in") {
+                $username = $_POST['username'];
+                $password = $_POST['password'];
+                $sql = "SELECT * FROM access WHERE username = '$username' AND password = '$password'";
+                $result = mysqli_query($conn, $sql);
+                if (mysqli_num_rows($result) > 0) {
+                    $name = mysqli_fetch_assoc($result);
+                    $_SESSION['username'] = $name['username'];
+                    $_SESSION['name'] = $name['name'];
+                    header("Location: admin.php?username=$username, name=$name");
+                } else {
+                    echo "<script>alert('Sai tài khoản hoặc mật khẩu')</script>";
+                }
+            }
         }
-      }
-    }
-    ?>
+        ?>
+        <!-- Sign Up Form -->
         <div class="login signup">
             <h2 class="login-header">Sign Up</h2>
 
-            <form class="login-container">
-                <p><input type="text" placeholder="Username" required /></p>
-                <p><input type="password" placeholder="Password" required /></p>
-                <p><input type="password" placeholder="RePassword" required /></p>
-                <p><input type="submit" value="Sign Up" /></p>
+            <form class="login-container" method="POST">
+                <p><input type="text" placeholder="Name" name="name" required /></p>
+                <p><input type="text" placeholder="Username" name="username" required /></p>
+                <p><input type="password" placeholder="Password" name="password" required class="password" /></p>
+                <p><input type="password" placeholder="Re-enter password" name="password" required class="password" />
+                </p>
+                <div class="row">
+
+                    <input type="checkbox" name="hide_password" class="hide col-2 ml-2" /><label for=""
+                        class="col-9 show__pass">Show password</label>
+                </div>
+                <p><input type="submit" value="Sign Up" name="btn" /></p>
             </form>
         </div>
+        <?php
+        if (isset($_POST["btn"])) {
+            if ($_POST['btn'] == "Sign Up") {
+                $name = $_POST['name'];
+                $password = $_POST['password'];
+                $username = $_POST['username'];
+                $sql = "select * from access where username = '$username'";
+                $result = mysqli_query($conn, $sql);
+                if (mysqli_num_rows($result) > 0) {
+                    echo "<script>alert('Tài khoản đã tồn tại')</script>";
+                } else {
+                    $sql = "INSERT INTO access(username, password,name) VALUES ('$username', '$password','$name')";
+                    $result = mysqli_query($conn, $sql);
+                    if ($result) {
+                        echo "<script>alert('Đăng ký thành công')</script>";
+                    } else {
+                        echo "<script>alert('Đăng ký thất bại')</script>";
+                    }
+                }
+            }
+        }
+        ?>
+        <!-- End Sign Up Form -->
         <div class="banner">
             <img src="./asset/img/banner1.jpg" alt="" />
             <div class="overlay"></div>
