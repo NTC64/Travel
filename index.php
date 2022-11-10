@@ -197,7 +197,7 @@ include 'conn.php';
                     <input type="submit" value="Search" class="search__btn" />
                 </form>
             </div>
-        
+
             <div class="container hotTour my-4">
                 <div class="tour__title row mt-5">
                     <h2 class="col-10 text-uppercase p-0">Hot Tour</h2>
@@ -268,11 +268,11 @@ include 'conn.php';
 
                     <!-- Right -->
                     <div class="footer__connect">
-                        <a href=""><i class="fa-brands fa-facebook"></i></a>
-                        <a href=""><i class="fa-brands fa-instagram"></i></a>
-                        <a href=""><i class="fa-brands fa-github"></i></a>
-                        <a href=""><i class="fa-brands fa-telegram"></i></a>
-                        <a href=""><i class="fa-brands fa-twitter"></i></a>
+                        <a href="fb.com/ulsait"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="fb.com/ulsait"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="fb.com/ulsait"><i class="fa-brands fa-github"></i></a>
+                        <a href="fb.com/ulsait"><i class="fa-brands fa-telegram"></i></a>
+                        <a href="fb.com/ulsait"><i class="fa-brands fa-twitter"></i></a>
                     </div>
                     <!-- Right -->
                 </section>
@@ -348,14 +348,14 @@ include 'conn.php';
                 </div>
                 <!-- Copyright -->
             </footer>
-            </div>
-            <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-            <script src="asset/js/js.js"></script>
-            <!-- Footer -->
-            <!-- Optional JavaScript -->
-            <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        </div>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <script src="asset/js/js.js"></script>
+        <!-- Footer -->
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 </body>
 
 </html>

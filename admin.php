@@ -114,7 +114,7 @@
             </div>
         </nav>
 
-        <div class="admin__user">
+        <!-- <div class="admin__user">
             <div class="container">
                 <form action="" method="get">
                     <table>
@@ -134,7 +134,7 @@
                     </table>
                 </form>
             </div>
-        </div>
+        </div> -->
     </section>
 
     <!-- partial -->
