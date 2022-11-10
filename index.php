@@ -71,25 +71,32 @@ include 'conn.php';
                 $password = $_POST['password'];
                 $sql = "SELECT * FROM access WHERE username = '$username' AND password = '$password'";
                 $result = mysqli_query($conn, $sql);
-                if (
-                    mysqli_num_rows($result) >
-                    0
-                ) {
+                if (mysqli_num_rows($result) > 0) {
+                    $sql = "SELECT role FROM access WHERE username = '$username' AND password = '$password'";
+                    $result = mysqli_query($conn, $sql);
+                    $row = mysqli_fetch_assoc($result);
+                    if ($row['role'] == 'seller') {
+                        $_SESSION['username'] = $username;
+                        $_SESSION['role'] = $row['role'];
+                        header("Location: admin.php");
+                    } else {
+                        $_SESSION['username'] = $username;
+                        $_SESSION['role'] = $row['role'];
+                        header("Location: user.php");
+                    }
                     $name = mysqli_fetch_assoc($result);
-                    $_SESSION['username'] =
-                        $name['username'];
+                    $_SESSION['username'] = $name['username'];
                     $_SESSION['name'] = $name['name'];
                     header("Location: admin.php?username=$username, name=$name");
                 } else {
-                    echo "
-      <script>
-        Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: 'Something went wrong!',
-        });
-      </script>
-      ";
+                    echo
+                    " <script>
+                        Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Check your username or password again!',
+                        });
+                    </script> ";
                 }
             }
         } ?>
@@ -130,29 +137,49 @@ include 'conn.php';
             </form>
         </div>
         <?php
+        $hotel_name = "";
         if (isset($_POST["btn"])) {
             if ($_POST['btn'] == "Sign Up") {
                 $name = $_POST['name'];
                 $password = $_POST['password'];
                 $username = $_POST['username'];
                 $re_password = $_POST['re_password'];
+                $hotel_name = $_POST['hotel_name'];
+                $phone = $_POST['phone'];
                 $sql = "select * from access where username = '$username'";
                 $result = mysqli_query($conn, $sql);
                 if (mysqli_num_rows($result) > 0) {
                     echo "  <script> Swal.fire('Error!', 'Username already exists!', 'error'); </script> ";
                 } else {
-                    $sql = "INSERT INTO access(username, password,name) VALUES ('$username', '$password','$name')";
-                    $result = mysqli_query($conn, $sql);
                     if ($password != $re_password) {
                         echo "  <script> Swal.fire('Error!', 'Password does not match!', 'error'); </script> ";
-                    } else if ($result) {
-                        echo "  <script> Swal.fire('Success!', 'Sign up successfully!', 'success'); </script> ";
+                    }
+                    //validate phone
+                    else if (!is_numeric($phone) && strlen($phone) == 10) {
+                        echo "  <script> Swal.fire('Error!', 'Phone number is not valid!', 'error'); </script> ";
                     } else {
-                        echo "  <script> Swal.fire('Error!', 'Sign up failed!', 'error'); </script> ";
+                        if ($hotel_name != "") {
+                            $sql = "INSERT INTO access (name, username, password, role, hotel_name, phone) VALUES ('$name', '$username', '$password', 'seller', '$hotel_name', '$phone')";
+                            $result = mysqli_query($conn, $sql);
+                            if ($result) {
+                                echo "  <script> Swal.fire('Success!', 'Sign up successfully!', 'success'); </script> ";
+                            } else {
+                                echo "  <script> Swal.fire('Error!', 'Sign up failed!', 'error'); </script> ";
+                            }
+                        } else {
+                            $sql = "INSERT INTO access (name, username, password, role) VALUES ('$name', '$username', '$password', 'user')";
+                            $result = mysqli_query($conn, $sql);
+                            if ($result) {
+                                echo "  <script> Swal.fire('Success!', 'Sign up successfully!', 'success'); </script> ";
+                            } else {
+                                echo "  <script> Swal.fire('Error!', 'Sign up failed!', 'error'); </script> ";
+                            }
+                        }
                     }
                 }
             }
-        } ?>
+        }
+        ?>
         <!-- End Sign Up Form -->
         <div class="banner">
             <img src="./asset/img/banner1.jpg" alt="" />
