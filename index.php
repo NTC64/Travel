@@ -19,6 +19,11 @@
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     />
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="asset/js/js.js"></script>
     <?php session_start() ?>
   </head>
   <?php
@@ -95,7 +100,11 @@ include 'conn.php';
       $name['username']; $_SESSION['name'] = $name['name']; header("Location:
       admin.php?username=$username, name=$name"); } else { echo "
       <script>
-        alert("Sai tài khoản hoặc mật khẩu");
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Something went wrong!",
+        });
       </script>
       "; } } } ?>
       <!-- Sign Up Form -->
@@ -170,17 +179,25 @@ include 'conn.php';
                 if (mysqli_num_rows($result) >
       0) { echo "
       <script>
-        alert("Tài khoản đã tồn tại");
+        Swal.fire("Error!", "Username already exists!", "error");
       </script>
       "; } else { $sql = "INSERT INTO access(username, password,name) VALUES
       ('$username', '$password','$name')"; $result = mysqli_query($conn, $sql);
       if ($result) { echo "
       <script>
-        alert("Đăng ký thành công");
+        Swal.fire({
+          icon: "success",
+          title: "Đăng ký thành công",
+          confirmButtonText: "OK",
+        });
       </script>
       "; } else { echo "
       <script>
-        alert("Đăng ký thất bại");
+        Swal.fire({
+          icon: "error",
+          title: "Đăng ký thất bại",
+          confirmButtonText: "OK",
+        });
       </script>
       "; } } } } ?>
       <!-- End Sign Up Form -->
@@ -374,10 +391,6 @@ include 'conn.php';
     <!-- Footer -->
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script src="asset/js/js.js"></script>
   </body>
 </html>
 doanxem
