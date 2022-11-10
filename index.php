@@ -39,12 +39,19 @@ include 'conn.php';
                     <li class="nav__item"><a href="" class="text-white">Contact</a></li>
                 </ul>
             </div>
+            <?php
+            if (isset($_SESSION['check']) && $_SESSION['check'] == true) {
+                echo $_SESSION['username']; ?>
+            <a href="logout.php" class="btn btn-danger">Logout</a>
+            <?php } else { ?>
             <div class="col-2"></div>
             <div class="col-2 m-0 p-0">
                 <a href="#" class="header__login">Login</a>
-
                 <a href="#" class="header__signup">Sign Up</a>
             </div>
+            <?php
+            }
+            ?>
         </div>
         <div class="bg__login"></div>
         <div class="login signin">
@@ -72,22 +79,17 @@ include 'conn.php';
                 $sql = "SELECT * FROM access WHERE username = '$username' AND password = '$password'";
                 $result = mysqli_query($conn, $sql);
                 if (mysqli_num_rows($result) > 0) {
-                    $sql = "SELECT role FROM access WHERE username = '$username' AND password = '$password'";
-                    $result = mysqli_query($conn, $sql);
                     $row = mysqli_fetch_assoc($result);
                     if ($row['role'] == 'seller') {
                         $_SESSION['username'] = $username;
                         $_SESSION['role'] = $row['role'];
                         header("Location: admin.php");
                     } else {
+                        $_SESSION['check'] = true;
                         $_SESSION['username'] = $username;
                         $_SESSION['role'] = $row['role'];
-                        header("Location: user.php");
+                        header("Location: index.php");
                     }
-                    $name = mysqli_fetch_assoc($result);
-                    $_SESSION['username'] = $name['username'];
-                    $_SESSION['name'] = $name['name'];
-                    header("Location: admin.php?username=$username, name=$name");
                 } else {
                     echo
                     " <script>

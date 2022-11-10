@@ -26,7 +26,7 @@
                         <?php echo $_SESSION['username']; ?>
                     </a>
                 </h5>
-                <p class="mt-1 mb-0"><?php echo $_SESSION['name']; ?></p>
+                <p class="mt-1 mb-0"><?php echo $_SESSION['role']; ?></p>
             </div>
         </div>
 
@@ -39,7 +39,7 @@
         <ul class="categories list-unstyled">
             <li class="">
                 <i class="uil-estate fa-fw"></i><a href="#"> Dashboard</a>
-                
+
             </li>
 
             <li class="has-dropdown">
@@ -51,16 +51,16 @@
             </li>
             <li class="">
                 <i class="fa-solid fa-location-dot"></i><a href="#">Tour</a>
-               
+
             </li>
             <li class="">
                 <i class="fa-regular fa-newspaper"></i><a href="#"> News</a>
-                
+
             </li>
             <li class=""><i class="fa-solid fa-user"></i><a href="#">User</a></li>
             <li class="">
                 <i class="uil-setting"></i><a href="#"> Settings</a>
-                
+
             </li>
         </ul>
         <div class="logout">
