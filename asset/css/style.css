@@ -256,25 +256,25 @@ a:hover {
 .bg__category {
   min-height: 600px !important;
 }
-.category__left:hover {
+.category__left {
   animation: category__left ease-in 1s forwards;
   cursor: pointer;
 }
 @keyframes category__left {
   0% {
-    transform: skewY(0deg);
-  }
-  50% {
-    transform: skewY(10deg);
+    left: 0%;
   }
   100% {
-    transform: skewY(0deg);
+    left: -25%;
   }
+}
+.category__content {
 }
 .category__right:hover {
   animation: category__right ease-in 0.5s forwards;
   cursor: pointer;
 }
+
 @keyframes category__right {
   0% {
     transform: skewY(0deg);

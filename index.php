@@ -197,6 +197,7 @@ include 'conn.php';
                     <input type="submit" value="Search" class="search__btn" />
                 </form>
             </div>
+        
             <div class="container hotTour my-4">
                 <div class="tour__title row mt-5">
                     <h2 class="col-10 text-uppercase p-0">Hot Tour</h2>
@@ -347,6 +348,7 @@ include 'conn.php';
                 </div>
                 <!-- Copyright -->
             </footer>
+            </div>
             <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
             <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
@@ -357,4 +359,3 @@ include 'conn.php';
 </body>
 
 </html>
-doanxem
