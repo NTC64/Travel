@@ -164,6 +164,7 @@ include 'conn.php';
                 $name = $_POST['name'];
                 $password = $_POST['password'];
                 $username = $_POST['username'];
+                $re_password = $_POST['re_password'];
                 $sql = "select * from access where username = '$username'";
                 $result = mysqli_query($conn, $sql);
                 if (mysqli_num_rows($result) >
