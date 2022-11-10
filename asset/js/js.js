@@ -24,5 +24,14 @@ $(document).on("click", ".hide", function() {
     }
 
 });
+$(document).on("click", ".seller", function() {
+    $(".ip_hide").removeClass("ip_hide");
+    $(".seller").addClass("ip_hide");
+});
+$(document).on("click", ".user", function() {
+    $(".ip_seller").addClass("ip_hide");
+    $(".user").addClass("ip_hide");
+    $(".seller").removeClass("ip_hide");
+});
 //   admin
 

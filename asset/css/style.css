@@ -78,7 +78,18 @@ a:hover {
 .login--active {
   display: block;
 }
-
+.add_input {
+  color: #8dc700;
+}
+.ip_hide {
+  display: none !important;
+}
+.ip_show {
+  display: flex !important;
+}
+.add_input:hover {
+  color: #05a;
+}
 /* Reset top and bottom margins from certain elements */
 .login-header,
 .login p {

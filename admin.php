@@ -37,15 +37,9 @@
         </div>
 
         <ul class="categories list-unstyled">
-            <li class="has-dropdown">
+            <li class="">
                 <i class="uil-estate fa-fw"></i><a href="#"> Dashboard</a>
-                <ul class="sidebar-dropdown list-unstyled">
-                    <li><a href="#">Banner</a></li>
-                    <li><a href="#"></a></li>
-                    <li><a href="#">dolor ipsum</a></li>
-                    <li><a href="#">amet consectetur</a></li>
-                    <li><a href="#">ipsum dolor sit</a></li>
-                </ul>
+                
             </li>
 
             <li class="has-dropdown">
@@ -57,34 +51,16 @@
             </li>
             <li class="">
                 <i class="fa-solid fa-location-dot"></i><a href="#">Tour</a>
-                <ul class="sidebar-dropdown list-unstyled">
-                    <li><a href="#">Lorem ipsum</a></li>
-                    <li><a href="#">ipsum dolor</a></li>
-                    <li><a href="#">dolor ipsum</a></li>
-                    <li><a href="#">amet consectetur</a></li>
-                    <li><a href="#">ipsum dolor sit</a></li>
-                </ul>
+               
             </li>
             <li class="">
                 <i class="fa-regular fa-newspaper"></i><a href="#"> News</a>
-                <ul class="sidebar-dropdown list-unstyled">
-                    <li><a href="#">Lorem ipsum</a></li>
-                    <li><a href="#">ipsum dolor</a></li>
-                    <li><a href="#">dolor ipsum</a></li>
-                    <li><a href="#">amet consectetur</a></li>
-                    <li><a href="#">ipsum dolor sit</a></li>
-                </ul>
+                
             </li>
             <li class=""><i class="fa-solid fa-user"></i><a href="#">User</a></li>
             <li class="">
                 <i class="uil-setting"></i><a href="#"> Settings</a>
-                <ul class="sidebar-dropdown list-unstyled">
-                    <li><a href="#">Lorem ipsum</a></li>
-                    <li><a href="#">ipsum dolor</a></li>
-                    <li><a href="#">dolor ipsum</a></li>
-                    <li><a href="#">amet consectetur</a></li>
-                    <li><a href="#">ipsum dolor sit</a></li>
-                </ul>
+                
             </li>
         </ul>
         <div class="logout">
