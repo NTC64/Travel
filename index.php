@@ -22,7 +22,7 @@ include 'conn.php';
     <div class="container-fluid p-0 main">
         <div class="header row m-0 p-0 text-white bg-dark">
             <div class="col-1"></div>
-            <div class="header__logo col-2">NTC</div>
+            <div class="header__logo col-2">ULSA IT</div>
             <div class="header__nav col-5">
                 <ul class="nav__items navbar p-0 m-0">
                     <li class="nav__item">
@@ -83,7 +83,8 @@ include 'conn.php';
                 <p><input type="text" placeholder="Name" name="name" required /></p>
                 <p><input type="text" placeholder="Username" name="username" required /></p>
                 <p><input type="password" placeholder="Password" name="password" required class="password" /></p>
-                <p><input type="password" placeholder="Re-enter password" name="password" required class="password" />
+                <p><input type="password" placeholder="Re-enter password" name="re_password" required
+                        class="password" />
                 </p>
                 <div class="row">
 
@@ -99,14 +100,16 @@ include 'conn.php';
                 $name = $_POST['name'];
                 $password = $_POST['password'];
                 $username = $_POST['username'];
+                $re_password = $_POST['re_password'];
                 $sql = "select * from access where username = '$username'";
                 $result = mysqli_query($conn, $sql);
                 if (mysqli_num_rows($result) > 0) {
                     echo "<script>alert('Tài khoản đã tồn tại')</script>";
+                } else if ($password != $re_password) {
+                    echo "<script>alert('Mật khẩu không khớp')</script>";
                 } else {
-                    $sql = "INSERT INTO access(username, password,name) VALUES ('$username', '$password','$name')";
-                    $result = mysqli_query($conn, $sql);
-                    if ($result) {
+                    $sql = "INSERT INTO access (name, username, password) VALUES ('$name', '$username', '$password')";
+                    if (mysqli_query($conn, $sql)) {
                         echo "<script>alert('Đăng ký thành công')</script>";
                     } else {
                         echo "<script>alert('Đăng ký thất bại')</script>";
