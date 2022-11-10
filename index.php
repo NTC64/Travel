@@ -81,8 +81,7 @@ include 'conn.php';
                     $_SESSION['username'] =
                         $name['username'];
                     $_SESSION['name'] = $name['name'];
-                    header("Location:
-      admin.php?username=$username, name=$name");
+                    header("Location: admin.php?username=$username, name=$name");
                 } else {
                     echo "
       <script>
@@ -146,26 +145,12 @@ include 'conn.php';
                 } else {
                     $sql = "INSERT INTO access(username, password,name) VALUES ('$username', '$password','$name')";
                     $result = mysqli_query($conn, $sql);
-                    if ($result) {
-                        echo "
-      <script>
-        Swal.fire({
-          icon: 'success',
-          title: 'Đăng ký thành công',
-          confirmButtonText: 'OK',
-        });
-      </script>
-      ";
+                    if ($password != $re_password) {
+                        echo "  <script> Swal.fire('Error!', 'Password does not match!', 'error'); </script> ";
+                    } else if ($result) {
+                        echo "  <script> Swal.fire('Success!', 'Sign up successfully!', 'success'); </script> ";
                     } else {
-                        echo "
-      <script>
-        Swal.fire({
-          icon: 'error',
-          title: 'Đăng ký thất bại',
-          confirmButtonText: 'OK',
-        });
-      </script>
-      ";
+                        echo "  <script> Swal.fire('Error!', 'Sign up failed!', 'error'); </script> ";
                     }
                 }
             }
