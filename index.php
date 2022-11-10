@@ -82,9 +82,9 @@ include 'conn.php';
       admin.php?username=$username, name=$name"); } else { echo "
       <script>
         Swal.fire({
-          icon: "error",
-          title: "Oops...",
-          text: "Something went wrong!",
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Something went wrong!',
         });
       </script>
       "; } } } ?>
@@ -136,24 +136,24 @@ include 'conn.php';
                 if (mysqli_num_rows($result) >
       0) { echo "
       <script>
-        Swal.fire("Error!", "Username already exists!", "error");
+        Swal.fire('Error!', 'Username already exists!', 'error');
       </script>
       "; } else { $sql = "INSERT INTO access(username, password,name) VALUES
       ('$username', '$password','$name')"; $result = mysqli_query($conn, $sql);
       if ($result) { echo "
       <script>
         Swal.fire({
-          icon: "success",
-          title: "Đăng ký thành công",
-          confirmButtonText: "OK",
+          icon: 'success',
+          title: 'Đăng ký thành công',
+          confirmButtonText: 'OK',
         });
       </script>
       "; } else { echo "
       <script>
         Swal.fire({
-          icon: "error",
-          title: "Đăng ký thất bại",
-          confirmButtonText: "OK",
+          icon: 'error',
+          title: 'Đăng ký thất bại',
+          confirmButtonText: 'OK',
         });
       </script>
       "; } } } } ?>
