@@ -57,7 +57,11 @@
                 <i class="fa-regular fa-newspaper"></i><a href="#"> News</a>
 
             </li>
-            <li class=""><i class="fa-solid fa-user"></i><a href="#">User</a></li>
+            <li class="has-dropdown"><i class="fa-solid fa-user"></i><a href="#">Account</a>
+            <ul class="sidebar-dropdown list-unstyled">
+                    <li><a href="admin__user">User</a></li>
+                    <li><a href="#">Seller</a></li>
+                </ul></li>
             <li class="">
                 <i class="uil-setting"></i><a href="#"> Settings</a>
 
@@ -114,27 +118,38 @@
             </div>
         </nav>
 
-        <!-- <div class="admin__user">
-            <div class="container">
+        <div class="container admin__user">
+            
                 <form action="" method="get">
-                    <table>
-                        <tr>
-                            <td>Username</td>
-                            <td><input type="text" name="username" id=""></td>
-                        </tr>
-                        <tr>
-                            <td>Password</td>
-                            <td><input type="password" name="password" id=""></td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td><input type="submit" value="Login" name="login"></td>
-                        </tr>
-                        
+                    <table border="1" >
+                      <tr>
+                        <td>ID User</td>
+                        <td>User Name</td>
+                        <td>Full Name</td>
+                        <td>Password</td>
+                        <td>Action</td>
+                      </tr>
+                        <?php
+                            $sql = "SELECT * FROM access";
+                            $result = mysqli_query($conn, $sql);
+                            if (mysqli_num_rows($result) > 0) {
+                            while ($row = mysqli_fetch_assoc($result)) {
+                                echo "<tr>";
+                                echo "<td>" . $row['ID'] . "</td>";
+                                echo "<td>" . $row['username'] . "</td>";
+                                echo "<td>" . $row['name'] . "</td>";
+                                echo "<td>" . $row['password'] . "</td>";
+                                echo "<td><a href='edit.php?id_user=" . $row['ID'] . "'>Edit</a> | <a href='delete.php?id_user=" . $row['ID'] . "'>Delete</a></td>";
+                                echo "</tr>";
+                            }
+                            } else {
+                            echo "0 results";
+                            }
+                            ?> 
                     </table>
                 </form>
-            </div>
-        </div> -->
+            
+        </div>
     </section>
 
     <!-- partial -->

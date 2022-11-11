@@ -41,8 +41,8 @@ include 'conn.php';
             </div>
             <?php
             if (isset($_SESSION['check']) && $_SESSION['check'] == true) {
-                echo $_SESSION['username']; ?>
-            <a href="logout.php" class="btn btn-danger">Logout</a>
+                echo "<div class='col-2'></div><div class='m-0 p-0'>".$_SESSION['username']."</div>"; ?>
+            <a href="logout.php" class="logout">Logout</a>
             <?php } else { ?>
             <div class="col-2"></div>
             <div class="col-2 m-0 p-0">
@@ -80,7 +80,7 @@ include 'conn.php';
                 $result = mysqli_query($conn, $sql);
                 if (mysqli_num_rows($result) > 0) {
                     $row = mysqli_fetch_assoc($result);
-                    if ($row['role'] == 'seller') {
+                    if ($row['role'] == 'seller' || $row['role'] == 'admin') {
                         $_SESSION['username'] = $username;
                         $_SESSION['role'] = $row['role'];
                         header("Location: admin.php");

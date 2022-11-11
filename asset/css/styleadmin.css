@@ -386,3 +386,21 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background-color: rgba(0, 0, 0, 0.3);
 }
+.admin__user {
+  color: #fff !important;
+}
+table,
+tr,
+td {
+  border: 1px solid #fff !important;
+}
+.admin__user {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 600px;
+}
+.admin__user td {
+  padding: 10px;
+  width: 200px;
+}
