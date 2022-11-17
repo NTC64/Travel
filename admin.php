@@ -75,6 +75,7 @@
   <div class="admin__main">
 
     <div class="container admin__user hide tb">
+      <div class="btn btn-success create"><i class="fa-solid fa-plus"></i>Create</div>
       <form action=" " method="get">
         <table border="1">
           <tr>
@@ -82,30 +83,50 @@
             <td>User Name</td>
             <td>Full Name</td>
             <td>Password</td>
-            <td>Action</td>
+            <td>Delete</td>
+            <td>Edit</td>
           </tr>
-          <?php
-          $sql = "SELECT * FROM access";
-          $result = mysqli_query($conn, $sql);
-          if (mysqli_num_rows($result) > 0) {
-            while ($row = mysqli_fetch_assoc($result)) {
-              echo "<tr>";
-              echo "<td>" . $row['ID'] . "</td>";
-              echo "<td>" . $row['username'] . "</td>";
-              echo "<td>" . $row['name'] . "</td>";
-              echo "<td>" . $row['password'] . "</td>";
-              echo "<td><a href='edit.php?id_user=" . $row['ID'] . "'>Edit</a> | <a href='delete.php?id_user=" . $row['ID'] . "'>Delete</a></td>";
-              echo "</tr>";
-            }
-          } else {
-            echo "0 results";
-          }
-          ?>
-        </table>
-      </form>
+          <tr>
+            <td>ID User</td>
+            <td>User Name</td>
+            <td>Full Name</td>
+            <td>Password</td>
+            <td><a href="#!" class="btn__delete"><i class="fa-solid fa-trash"></i></a></td>
+            <td><a href="#!" class="btn__edit"><i class="fa-solid fa-pen-to-square"></i></a></td>
+          </tr>
 
+        </table>
+        <!-- pag -->
+        <div class="pag">
+          <ul class="pag__items">
+
+            <li><a href="">1</a> </li>
+            <li><a href="">2</a> </li>
+            <li><a href="">3</a> </li>
+            <li><a href=""> <i class="fa-solid fa-chevron-right"></i></a> </li>
+          </ul>
+        </div>
+      </form>
+      <!-- aler2 -->
+
+      <!-- edit -->
+      <div class="bg hide"></div>
+      <div class="edit hide">
+        <form action="" method="get" class="edit__form">
+          <div class="up__title">
+            <h3>Update Account</h3>
+          </div>
+          <input type="text" readonly class="id" />
+          <input type="text" class="username" />
+          <input type="text" class="name" />
+          <input type="text" class="password" />
+          <input type="submit" value="Update" class="btn btn-success" />
+        </form>
+      </div>
+      <!--  -->
     </div>
     <div class="container admin__seller hide tb">
+      <div class="btn btn-success create"><i class="fa-solid fa-plus"></i>Create</div>
       <form action=" " method="get">
         <table border="1">
           <tr>
@@ -115,28 +136,30 @@
             <td>Password</td>
             <td>Phone</td>
             <td>Hotel Name</td>
-            <td>Action</td>
+            <td>Delete</td>
+            <td>Edit</td>
           </tr>
-          <?php
-          $sql = "SELECT * FROM access";
-          $result = mysqli_query($conn, $sql);
-          if (mysqli_num_rows($result) > 0) {
-            while ($row = mysqli_fetch_assoc($result)) {
-              echo "<tr>";
-              echo "<td>" . $row['ID'] . "</td>";
-              echo "<td>" . $row['username'] . "</td>";
-              echo "<td>" . $row['name'] . "</td>";
-              echo "<td>" . $row['password'] . "</td>";
-              echo "<td>" . $row['phone'] . "</td>";
-              echo "<td>" . $row['hotelName'] . "</td>";
-              echo "<td><a href='edit.php?id_user=" . $row['ID'] . "'>Edit</a> | <a href='delete.php?id_user=" . $row['ID'] . "'>Delete</a></td>";
-              echo "</tr>";
-            }
-          } else {
-            echo "0 results";
-          }
-          ?>
+          <tr>
+            <td>ID User</td>
+            <td>User Name</td>
+            <td>Full Name</td>
+            <td>Password</td>
+            <td>Phone</td>
+            <td>Hotel Name</td>
+            <td><a href="#!"><i class="fa-solid fa-trash"></i></a></td>
+            <td><a href="#!" class=""><i class="fa-solid fa-pen-to-square"></i></a></td>
+          </tr>
+
         </table>
+        <div class="pag">
+          <ul class="pag__items">
+
+            <li><a href="">1</a> </li>
+            <li><a href="">2</a> </li>
+            <li><a href="">3</a> </li>
+            <li><a href=""> <i class="fa-solid fa-chevron-right"></i></a> </li>
+          </ul>
+        </div>
       </form>
     </div>
 
