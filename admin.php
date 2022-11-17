@@ -80,7 +80,7 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
 
   <div class="admin__main">
 
-    <div class="container admin__user hide">
+    <div class="container admin__user hide tb">
       <form action=" " method="get">
         <table border="1">
           <tr>
@@ -111,7 +111,7 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
       </form>
 
     </div>
-    <div class="container admin__seller hide">
+    <div class="container admin__seller hide tb">
       <form action=" " method="get">
         <table border="1">
           <tr>
@@ -119,6 +119,8 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
             <td>User Name</td>
             <td>Full Name</td>
             <td>Password</td>
+            <td>Phone</td>
+            <td>Hotel Name</td>
             <td>Action</td>
           </tr>
           <?php
@@ -131,6 +133,8 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
               echo "<td>" . $row['username'] . "</td>";
               echo "<td>" . $row['name'] . "</td>";
               echo "<td>" . $row['password'] . "</td>";
+              echo "<td>" . $row['phone'] . "</td>";
+              echo "<td>" . $row['hotelName'] . "</td>";
               echo "<td><a href='edit.php?id_user=" . $row['ID'] . "'>Edit</a> | <a href='delete.php?id_user=" . $row['ID'] . "'>Delete</a></td>";
               echo "</tr>";
             }
@@ -147,12 +151,9 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
   <!-- partial -->
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
-  </script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
-  </script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-  </script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   <script src="./asset/js/script.js"></script>
 </body>
 

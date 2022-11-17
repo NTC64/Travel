@@ -196,7 +196,8 @@ include 'conn.php';
             </div>
             <!-- main -->
             <div class="container">
-                <h3>News</h3>
+                <h3 class="my-4">News</h3>
+                <hr>
             </div>
             <div class="container newsmain my-5">
                 <h3>tiêu đề bài viết</h3>
