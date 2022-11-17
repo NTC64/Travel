@@ -8,7 +8,7 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
 <html lang="en">
 
 <head>
-  <title>Title</title>
+  <title>Admin Dashboard</title>
   <!-- Required meta tags -->
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -21,7 +21,9 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
   <?php session_start() ?>
-  <?php include 'conn.php'; ?>
+  <?php
+  include 'conn.php';
+  ?>
 </head>
 
 <body>
@@ -73,7 +75,7 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
 
     </ul>
     <div class="logout">
-      <i class="fa-solid fa-right-from-bracket"></i><a href="index.php">Log Out</a>
+      <i class="fa-solid fa-right-from-bracket"></i><a href="logout.php">Log Out</a>
     </div>
   </aside>
 
@@ -89,27 +91,53 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
             <td>User Name</td>
             <td>Full Name</td>
             <td>Password</td>
-            <td>Delete</td>
-            <td>Edit</td>
+            <td>Role</td>
+            <td>Delete</i></td>
+            <td>Update</i></td>
           </tr>
-          <tr>
-            <td>ID User</td>
-            <td>User Name</td>
-            <td>Full Name</td>
-            <td>Password</td>
-            <td><a href="#!" class="btn__delete"><i class="fa-solid fa-trash"></i></a></td>
-            <td><a href="#!" class="btn__edit"><i class="fa-solid fa-pen-to-square"></i></a></td>
-          </tr>
-
+          <?php
+          //list all user
+          function get_user_list()
+          {
+            global $conn;
+            $sql = "SELECT * FROM access where role = 'user'";
+            $result = mysqli_query($conn, $sql);
+            $user_list = array();
+            while ($row = mysqli_fetch_array($result)) {
+              $user_list[] = $row;
+            }
+            return $user_list;
+          }
+          ?>
+          <?php
+          $user_list = get_user_list();
+          foreach ($user_list as $user) {
+            $ID = $user['ID'];
+            $username = $user['username'];
+            $name = $user['name'];
+            $password = $user['password'];
+            $role = 'user';
+          ?>
+            <tr>
+              <td><?php echo $user['ID'] ?></td>
+              <td><?php echo $user['username'] ?></td>
+              <td><?php echo $user['name'] ?></td>
+              <td><?php echo $user['password'] ?></td>
+              <td><?php echo $user['role'] ?></td>
+              <td><a href="delete.php?ID=<?php echo $ID; ?>" class="btn__delete"><i class="fa-solid fa-trash"></i></a></td>
+              <td><a href="#!" class="btn__edit"><i class="fa-solid fa-pen-to-square"></i></a></td>
+            </tr>
+          <?php
+          }
+          ?>
         </table>
         <!-- pag -->
-        <div class="pag">
+        <div class="page">
           <ul class="pag__items">
-
             <li><a href="">1</a> </li>
             <li><a href="">2</a> </li>
             <li><a href="">3</a> </li>
-            <li><a href=""> <i class="fa-solid fa-chevron-right"></i></a> </li>
+            <li><a href=""><i class="fa-solid fa-chevron-right"></i></a> </li>
           </ul>
         </div>
       </form>
@@ -122,14 +150,14 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
           <div class="up__title">
             <h3>Update Account</h3>
           </div>
-          <input type="text" readonly class="id" />
-          <input type="text" class="username" />
-          <input type="text" class="name" />
+          <input type="text" readonly class="id" value="<?php echo $ID ?>" />
+          <input type="text" class="username" placeholder="Username" value="<?php echo $username; ?>" />
+          <input type="text" class="name" value="<?php echo $name ?>" />
           <input type="text" class="password" />
           <input type="submit" value="Update" class="btn btn-success" />
         </form>
       </div>
-      <!--  -->
+      <!-- Seller list -->
     </div>
     <div class="container admin__seller hide tb">
       <div class="btn btn-success create"><i class="fa-solid fa-plus"></i>Create</div>
@@ -137,25 +165,51 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
         <table border="1">
           <tr>
             <td>ID User</td>
-            <td>User Name</td>
             <td>Full Name</td>
+            <td>User Name</td>
             <td>Password</td>
-            <td>Phone</td>
             <td>Hotel Name</td>
+            <td>Phone</td>
             <td>Delete</td>
             <td>Edit</td>
           </tr>
+          <?php 
+          //get seller list
+          function get_seller_list()
+          {
+            global $conn;
+            $sql = "SELECT * FROM access where role = 'seller'";
+            $result = mysqli_query($conn, $sql);
+            $seller_list = array();
+            while ($row = mysqli_fetch_array($result)) {
+              $seller_list[] = $row;
+            }
+            return $seller_list;
+          }
+          ?>
+          <?php 
+          $seller_list = get_seller_list();
+          foreach ($seller_list as $seller) {
+            $ID = $seller['ID'];
+            $name = $seller['name'];
+            $username = $seller['username'];
+            $password = $seller['password'];
+            $hotel = $seller['hotelName'];
+            $phone = $seller['phone'];
+          ?>
           <tr>
-            <td>ID User</td>
-            <td>User Name</td>
-            <td>Full Name</td>
-            <td>Password</td>
-            <td>Phone</td>
-            <td>Hotel Name</td>
-            <td><a href="#!"><i class="fa-solid fa-trash"></i></a></td>
+            <td><?php echo $seller['ID'] ?></td>
+            <td><?php echo $seller['name'] ?></td>
+            <td><?php echo $seller['username'] ?></td>
+            <td><?php echo $seller['password'] ?></td>
+            <td><?php echo $seller['hotelName'] ?></td>
+            <td><?php echo $seller['phone'] ?></td>
+            <td><a href="delete.php?ID=<?php echo $ID; ?>" class="btn__delete"><i class="fa-solid fa-trash"></i></a></td>
             <td><a href="#!" class=""><i class="fa-solid fa-pen-to-square"></i></a></td>
           </tr>
-
+          <?php 
+          }
+          ?>
         </table>
         <div class="pag">
           <ul class="pag__items">

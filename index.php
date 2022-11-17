@@ -108,7 +108,7 @@
             <h2 class="login-header">Sign Up</h2>
 
             <form class="login-container" method="POST">
-                <p><input type="text" placeholder="Name" name="name" required /></p>
+                <p><input type="text" placeholder="Full name" name="name" required /></p>
                 <p>
                     <input type="text" placeholder="Username" name="username" required />
                 </p>
