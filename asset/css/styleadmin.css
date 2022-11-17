@@ -133,6 +133,8 @@ body {
 .sidebar ul .sidebar-dropdown {
   padding-top: 10px;
   padding-left: 30px;
+}
+.hidee {
   display: none;
 }
 .sidebar ul .sidebar-dropdown.active {
@@ -324,7 +326,9 @@ body {
     border: none !important;
   }
 }
-
+.hide {
+  display: none !important;
+}
 .navbar .navbar-nav > li > a {
   float: left !important;
 }
@@ -403,4 +407,12 @@ td {
 .admin__user td {
   padding: 10px;
   width: 200px;
+}
+.admin__main {
+  width: 100%;
+  height: 100vh;
+  background-color: #3c3f58;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

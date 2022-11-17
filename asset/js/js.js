@@ -1,18 +1,27 @@
 $(".header__login").on("click", function() {
   $(".signin").toggleClass("login--active");
-  $(".bg__login").toggleClass("bg__login--active");
+  $(".bg").toggleClass("bg--active");
 });
-$(".bg__login").on("click", function() {
+$(".btn__tourdetail").on("click", function() {
+    $(".tourdetail").toggleClass("tourdetail--active");
+    $(".bg").toggleClass("bg--active");
+  });
+  $(".bg").on("click", function() {
+    $(".tourdetail").removeClass("tourdetail--active");
+    $(".bg").removeClass("bg--active");
+});
+$(".bg").on("click", function() {
         $(".signin").removeClass("login--active");
-        $(".bg__login").removeClass("bg__login--active");
+        
+        $(".bg").removeClass("bg--active");
     });
     $(".header__signup").on("click", function() {
         $(".signup").toggleClass("login--active");
-        $(".bg__login").toggleClass("bg__login--active");
+        $(".bg").toggleClass("bg--active");
       });
-      $(".bg__login").on("click", function() {
+      $(".bg").on("click", function() {
               $(".signup").removeClass("login--active");
-              $(".bg__login").removeClass("bg__login--active");
+              $(".bg").removeClass("bg--active");
           });
 $(document).on("click", ".hide", function() {
 
