@@ -41,19 +41,19 @@ include 'conn.php';
             </div>
             <?php
             if (isset($_SESSION['check']) && $_SESSION['check'] == true) {
-                echo "<div class='col-2'></div><div class='m-0 p-0'>".$_SESSION['username']."</div>"; ?>
-            <a href="logout.php" class="logout">Logout</a>
+                echo "<div class='col-2'></div><div class='m-0 p-0'>" . $_SESSION['username'] . "</div>"; ?>
+                <a href="logout.php" class="logout">Logout</a>
             <?php } else { ?>
-            <div class="col-2"></div>
-            <div class="col-2 m-0 p-0">
-                <a href="#" class="header__login">Login</a>
-                <a href="#" class="header__signup">Sign Up</a>
-            </div>
+                <div class="col-2"></div>
+                <div class="col-2 m-0 p-0">
+                    <a href="#" class="header__login">Login</a>
+                    <a href="#" class="header__signup">Sign Up</a>
+                </div>
             <?php
             }
             ?>
         </div>
-        <div class="bg__login"></div>
+        <div class="bg"></div>
         <div class="login signin">
             <h2 class="login-header">Log in</h2>
 
@@ -65,8 +65,7 @@ include 'conn.php';
                     <input type="password" placeholder="Password" required name="password" class="password" />
                 </p>
                 <div class="row">
-                    <input type="checkbox" name="hide_password" class="hide col-2 ml-2" /><label for=""
-                        class="col-9 show__pass">Show password</label>
+                    <input type="checkbox" name="hide_password" class="hide col-2 ml-2" /><label for="" class="col-9 show__pass">Show password</label>
                 </div>
                 <p><input type="submit" value="Log in" name="btn" /></p>
             </form>
@@ -115,8 +114,7 @@ include 'conn.php';
                     <input type="password" placeholder="Password" name="password" required class="password" />
                 </p>
                 <p>
-                    <input type="password" placeholder="Re-enter password" name="re_password" required
-                        class="password" />
+                    <input type="password" placeholder="Re-enter password" name="re_password" required class="password" />
                 </p>
                 <p class="ip_hide ip_seller">
                     <input type="text" placeholder="Hotel name" name="hotel_name" class="hotel_name" />
@@ -126,8 +124,7 @@ include 'conn.php';
                 </p>
 
                 <div class="row">
-                    <input type="checkbox" name="hide_password" class="hide col-2 ml-2" /><label for=""
-                        class="col-9 show__pass">Show password</label>
+                    <input type="checkbox" name="hide_password" class="hide col-2 ml-2" /><label for="" class="col-9 show__pass">Show password</label>
                 </div>
                 <div class="row seller">
                     <p class="m-auto add_input">Seller registration</p>
@@ -197,22 +194,35 @@ include 'conn.php';
                     <input type="submit" value="Search" class="search__btn" />
                 </form>
             </div>
-
+            <!-- main -->
             <div class="container hotTour my-4">
                 <div class="tour__title row mt-5">
                     <h2 class="col-10 text-uppercase p-0">Hot Tour</h2>
                     <a class="m-auto text-right text-black-50 hvblack">View all >></a>
                 </div>
                 <div class="tour__items row">
+                    <!-- tour card -->
                     <div class="card col-4 p-0 m-2">
                         <img class="card-img-top" src="asset/img/tour1.jpg" alt="Card image cap" />
                         <div class="card-body">
                             <h5 class="card-title">Tên địa điểm du lịch</h5>
                             <p class="card-text text-black-50">Mô tả</p>
                             <p class="card-price text-danger">Giá</p>
-                            <a href="#" class="btn btn-green">Xem chi tiết</a>
+                            <a href="#!" class="btn btn-green" data-id="id">Xem chi tiết</a>
                         </div>
                     </div>
+                    <!-- end tour card -->
+                    <!-- tour card -->
+                    <!-- ..... -->
+                    <!-- end tour card -->
+                    <!-- chi tiết tour -->
+                    <div class="bg"></div>
+                    <div class="tourdetail">
+
+                    </div>
+
+                    <!---->
+
                 </div>
             </div>
             <div class="bg__category bg-dark">
@@ -268,11 +278,11 @@ include 'conn.php';
 
                     <!-- Right -->
                     <div class="footer__connect">
-                        <a href="fb.com/ulsait"><i class="fa-brands fa-facebook"></i></a>
-                        <a href="fb.com/ulsait"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="fb.com/ulsait"><i class="fa-brands fa-github"></i></a>
-                        <a href="fb.com/ulsait"><i class="fa-brands fa-telegram"></i></a>
-                        <a href="fb.com/ulsait"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="https://fb.com/ulsait"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="https://fb.com/ulsait"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://fb.com/ulsait"><i class="fa-brands fa-github"></i></a>
+                        <a href="https://fb.com/ulsait"><i class="fa-brands fa-telegram"></i></a>
+                        <a href="https://fb.com/ulsait"><i class="fa-brands fa-twitter"></i></a>
                     </div>
                     <!-- Right -->
                 </section>
@@ -280,11 +290,11 @@ include 'conn.php';
 
                 <!-- Section: Links  -->
                 <section class="">
-                    <div class="container text-center text-md-start mt-5">
+                    <div class="text-center text-md-start mt-5">
                         <!-- Grid row -->
-                        <div class="row mt-3">
+                        <div class="row mt-3 mx-0 p-0">
                             <!-- Grid column -->
-                            <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                            <div class="col-2 mx-auto mb-4">
                                 <!-- Content -->
                                 <h6 class="text-uppercase fw-bold mb-4">
                                     <i class="fas fa-gem me-3 text-secondary"></i>gotravel
@@ -294,7 +304,7 @@ include 'conn.php';
                             <!-- Grid column -->
 
                             <!-- Grid column -->
-                            <div class="col-3 mx-auto mb-4">
+                            <div class="col-2 mx-auto mb-4">
                                 <!-- Links -->
                                 <h6 class="text-uppercase fw-bold mb-4">Menu</h6>
                                 <p>
@@ -316,7 +326,7 @@ include 'conn.php';
                             <!-- Grid column -->
 
                             <!-- Grid column -->
-                            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                            <div class="col-2 mx-auto mb-md-0 mb-4">
                                 <!-- Links -->
                                 <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
                                 <p>
@@ -334,6 +344,7 @@ include 'conn.php';
                                     <i class="fas fa-print me-3 text-secondary"></i> +84 123456789
                                 </p>
                             </div>
+                            <div class="col-3 map m-0 p-0"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.5103316823797!2d105.80005365096947!3d21.012256893647578!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab5f7e8677a7%3A0xe8e81820d9c9ed9b!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBMYW8gxJHhu5luZyAtIFjDoyBo4buZaQ!5e0!3m2!1svi!2s!4v1668503845781!5m2!1svi!2s" width="300" height="250" style="border:0; border-radius:10px;opacity:0.8;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
                             <!-- Grid column -->
                         </div>
                         <!-- Grid row -->
