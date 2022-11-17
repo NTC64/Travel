@@ -15,10 +15,11 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
     <?php session_start() ?>
+    <?php
+    include 'conn.php';
+    ?>
 </head>
-<?php
-include 'conn.php';
-?>
+
 
 <body>
     <!-- Login Form -->
@@ -73,6 +74,7 @@ include 'conn.php';
         <?php
         if (isset($_POST["btn"])) {
             if ($_POST['btn'] == "Log in") {
+                define('MyConst', TRUE);
                 $username = $_POST['username'];
                 $password = $_POST['password'];
                 $sql = "SELECT * FROM access WHERE username = '$username' AND password = '$password'";
