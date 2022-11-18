@@ -32,17 +32,28 @@ else {
 });
 $(document).on('click', '.btn__edit', function() {
   if($(".edit").hasClass("hide")) {
+    $(".bg").removeClass("hide");
     $(".edit").removeClass("hide");
+    $(".id").val($(this).attr("data-id"));
+    $(".username").val($(this).attr("data-username"));
+    $(".name").val($(this).attr("data-name"));
+    
  }
 else {
     $(".edit").addClass("hide");
 }
 });
+$(document).on('click', '.bg', function() {
+  
+    $(".bg").addClass("hide");
+    $(".edit").addClass("hide");
+
+});
 $(document).on('click', '.btn__delete', function() {
   
   const swalWithBootstrapButtons = Swal.mixin({
     customClass: {
-      confirmButton: 'btn btn-success',
+      confirmButton: 'btn btn-success mx-3',
       cancelButton: 'btn btn-danger'
     },
     buttonsStyling: false

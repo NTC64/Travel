@@ -92,7 +92,7 @@
             <td>Full Name</td>
             <td>Password</td>
             <td><a href="#!" class="btn__delete"><i class="fa-solid fa-trash"></i></a></td>
-            <td><a href="#!" class="btn__edit"><i class="fa-solid fa-pen-to-square"></i></a></td>
+            <td><a href="#!" class="btn__edit" data-id="ID User" data-username="User Name" data-name="Full Name"><i class="fa-solid fa-pen-to-square"></i></a></td>
           </tr>
 
         </table>
@@ -119,7 +119,7 @@
           <input type="text" readonly class="id" />
           <input type="text" class="username" />
           <input type="text" class="name" />
-          <input type="text" class="password" />
+          <input type="text" class="password" placeholder="Password" />
           <input type="submit" value="Update" class="btn btn-success" />
         </form>
       </div>
@@ -147,7 +147,7 @@
             <td>Phone</td>
             <td>Hotel Name</td>
             <td><a href="#!"><i class="fa-solid fa-trash"></i></a></td>
-            <td><a href="#!" class=""><i class="fa-solid fa-pen-to-square"></i></a></td>
+            <td><a href="#!" class="btn__edit"><i class="fa-solid fa-pen-to-square"></i></a></td>
           </tr>
 
         </table>
