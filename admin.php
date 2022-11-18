@@ -132,7 +132,7 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
           ?>
         </table>
         <!-- pag -->
-        <div class="page">
+        <div class="pag">
           <ul class="pag__items">
             <li><a href="">1</a> </li>
             <li><a href="">2</a> </li>
