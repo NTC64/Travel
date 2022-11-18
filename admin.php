@@ -183,9 +183,6 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
             <td><a href="delete.php?ID=<?php echo $ID; ?>" class="btn__delete"><i class="fa-solid fa-trash"></i></a></td>
             <td><a href="#!" class=""><i class="fa-solid fa-pen-to-square"></i></a></td>
           </tr>
-          <?php 
-          }
-          ?>
         </table>
         <div class="pag">
           <ul class="pag__items">
