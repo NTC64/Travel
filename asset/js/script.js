@@ -80,7 +80,7 @@ $(document).on('click', '.btn__delete', function() {
     ) {
       swalWithBootstrapButtons.fire(
         'Cancelled',
-        'Your imaginary file is safe :)',
+        'Your data is safe :)',
         'error'
       )
     }
