@@ -125,14 +125,14 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
               <td><?php echo $user['password'] ?></td>
               <td><?php echo $user['role'] ?></td>
               <td><a href="delete.php?ID=<?php echo $ID; ?>" class="btn__delete"><i class="fa-solid fa-trash"></i></a></td>
-              <td><a href="#!" class="btn__edit"><i class="fa-solid fa-pen-to-square"></i></a></td>
+              <td><a href="#!" class="btn__edit" data-id="<?php echo $user['ID']; ?>" data-username="<?php echo $user['username']; ?>" data-name="<?php echo $user['name']; ?>"><i class="fa-solid fa-pen-to-square"></i></a></td>
             </tr>
           <?php
           }
           ?>
         </table>
         <!-- pag -->
-        <div class="page">
+        <div class="pag">
           <ul class="pag__items">
             <li><a href="">1</a> </li>
             <li><a href="">2</a> </li>
@@ -146,17 +146,35 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
       <!-- edit -->
       <div class="bg hide"></div>
       <div class="edit hide">
-        <form action="" method="get" class="edit__form">
+        <form action="" method="POST" class="edit__form">
           <div class="up__title">
             <h3>Update Account</h3>
           </div>
-          <input type="text" readonly class="id" value="<?php echo $ID ?>" />
-          <input type="text" class="username" placeholder="Username" value="<?php echo $username; ?>" />
-          <input type="text" class="name" value="<?php echo $name ?>" />
-          <input type="text" class="password" />
-          <input type="submit" value="Update" class="btn btn-success" />
+          <input type="text" readonly class="id" name="ID"/>
+          <input type="text" class="username" name="username" required/>
+          <input type="text" class="name" name="name" required />
+          <input type="text" class="password" name="password" placeholder="New password" required  />
+          <input type="submit" value="Update" name="submit" class="btn btn-success" />
         </form>
       </div>
+      <?php
+      if(isset($_POST['submit'])){
+        if($_POST['submit'] == 'Update'){
+          $id = $_POST['ID'];
+          $username = $_POST['username'];
+          $name = $_POST['name'];
+          $password = $_POST['password'];
+          $sql = "UPDATE access SET username = '$username', name = '$name', password = '$password' WHERE ID = '$id'";
+          $result = mysqli_query($conn, $sql);
+          if($result){
+            echo '<script>alert("Update success")</script>';
+            //header('location: admin.php');
+          }else{
+            echo '<script>alert("Update fail")</script>';
+          }
+        }
+      }
+      ?>
       <!-- Seller list -->
     </div>
     <div class="container admin__seller hide tb">
@@ -173,6 +191,30 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
             <td>Delete</td>
             <td>Edit</td>
           </tr>
+          <?php 
+          //get seller list
+          function get_seller_list()
+          {
+            global $conn;
+            $sql = "SELECT * FROM access where role = 'seller'";
+            $result = mysqli_query($conn, $sql);
+            $seller_list = array();
+            while ($row = mysqli_fetch_array($result)) {
+              $seller_list[] = $row;
+            }
+            return $seller_list;
+          }
+          ?>
+          <?php 
+          $seller_list = get_seller_list();
+          foreach ($seller_list as $seller) {
+            $ID = $seller['ID'];
+            $name = $seller['name'];
+            $username = $seller['username'];
+            $password = $seller['password'];
+            $hotel = $seller['hotelName'];
+            $phone = $seller['phone'];
+          ?>
           <tr>
             <td><?php echo $seller['ID'] ?></td>
             <td><?php echo $seller['name'] ?></td>
@@ -183,6 +225,9 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
             <td><a href="delete.php?ID=<?php echo $ID; ?>" class="btn__delete"><i class="fa-solid fa-trash"></i></a></td>
             <td><a href="#!" class=""><i class="fa-solid fa-pen-to-square"></i></a></td>
           </tr>
+          <?php 
+          }
+          ?>
         </table>
         <div class="pag">
           <ul class="pag__items">
