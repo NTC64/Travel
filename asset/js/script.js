@@ -73,7 +73,11 @@ $(document).on('click', '.btn__delete', function() {
         'Deleted!',
         'Your file has been deleted.',
         'success'
-      )
+      ).then((result) => {
+        if (result.isConfirmed) {
+          window.location.href = "delete.php?ID="+$(this).attr("data-id");
+        }
+      })
     } else if (
       /* Read more about handling dismissals below */
       result.dismiss === Swal.DismissReason.cancel

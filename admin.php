@@ -124,7 +124,7 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
               <td><?php echo $user['name'] ?></td>
               <td><?php echo $user['password'] ?></td>
               <td><?php echo $user['role'] ?></td>
-              <td><a href="delete.php?ID=<?php echo $ID; ?>" class="btn__delete"><i class="fa-solid fa-trash"></i></a></td>
+              <td><a href="#!" data-id="<?php echo $ID; ?>" class="btn__delete"><i class="fa-solid fa-trash"></i></a></td>
               <td><a href="#!" class="btn__edit" data-id="<?php echo $user['ID']; ?>" data-username="<?php echo $user['username']; ?>" data-name="<?php echo $user['name']; ?>"><i class="fa-solid fa-pen-to-square"></i></a></td>
             </tr>
           <?php
@@ -150,26 +150,26 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
           <div class="up__title">
             <h3>Update Account</h3>
           </div>
-          <input type="text" readonly class="id" name="ID"/>
-          <input type="text" class="username" name="username" required/>
+          <input type="text" readonly class="id" name="ID" />
+          <input type="text" class="username" name="username" required />
           <input type="text" class="name" name="name" required />
-          <input type="text" class="password" name="password" placeholder="New password" required  />
+          <input type="text" class="password" name="password" placeholder="New password" required />
           <input type="submit" value="Update" name="submit" class="btn btn-success" />
         </form>
       </div>
       <?php
-      if(isset($_POST['submit'])){
-        if($_POST['submit'] == 'Update'){
+      if (isset($_POST['submit'])) {
+        if ($_POST['submit'] == 'Update') {
           $id = $_POST['ID'];
           $username = $_POST['username'];
           $name = $_POST['name'];
           $password = $_POST['password'];
           $sql = "UPDATE access SET username = '$username', name = '$name', password = '$password' WHERE ID = '$id'";
           $result = mysqli_query($conn, $sql);
-          if($result){
+          if ($result) {
             echo '<script>alert("Update success")</script>';
             //header('location: admin.php');
-          }else{
+          } else {
             echo '<script>alert("Update fail")</script>';
           }
         }
@@ -191,7 +191,7 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
             <td>Delete</td>
             <td>Edit</td>
           </tr>
-          <?php 
+          <?php
           //get seller list
           function get_seller_list()
           {
@@ -205,7 +205,7 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
             return $seller_list;
           }
           ?>
-          <?php 
+          <?php
           $seller_list = get_seller_list();
           foreach ($seller_list as $seller) {
             $ID = $seller['ID'];
@@ -215,17 +215,17 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
             $hotel = $seller['hotelName'];
             $phone = $seller['phone'];
           ?>
-          <tr>
-            <td><?php echo $seller['ID'] ?></td>
-            <td><?php echo $seller['name'] ?></td>
-            <td><?php echo $seller['username'] ?></td>
-            <td><?php echo $seller['password'] ?></td>
-            <td><?php echo $seller['hotelName'] ?></td>
-            <td><?php echo $seller['phone'] ?></td>
-            <td><a href="delete.php?ID=<?php echo $ID; ?>" class="btn__delete"><i class="fa-solid fa-trash"></i></a></td>
-            <td><a href="#!" class=""><i class="fa-solid fa-pen-to-square"></i></a></td>
-          </tr>
-          <?php 
+            <tr>
+              <td><?php echo $seller['ID'] ?></td>
+              <td><?php echo $seller['name'] ?></td>
+              <td><?php echo $seller['username'] ?></td>
+              <td><?php echo $seller['password'] ?></td>
+              <td><?php echo $seller['hotelName'] ?></td>
+              <td><?php echo $seller['phone'] ?></td>
+              <td><a href="#!" data-id="<?php echo $ID; ?>" class="btn__delete"><i class="fa-solid fa-trash"></i></a></td>
+              <td><a href="#!" class=""><i class="fa-solid fa-pen-to-square"></i></a></td>
+            </tr>
+          <?php
           }
           ?>
         </table>
