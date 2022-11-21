@@ -182,71 +182,72 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
           <div class="up__title">
             <h3>Create Account</h3>
           </div>
-          <input type="text" class="username" name="username" placeholder="User Name" required />
-          <input type="text" class="name" name="name" placeholder="Full Name" required />
-          <input type="text" class="password" name="password" placeholder="New password" required />
+          <input type="text" class="crusername" name="username" placeholder="User Name" required />
+          <input type="text" class="crname" name="name" placeholder="Full Name" required />
+
+          <input type="text" class="crpassword" name="password" placeholder="New password" required />
           <input type="submit" value="Create" name="submit" class="btn btn-success" />
         </form>
       </div>
     </div>
-  </div>
-  <!-- Seller list -->
-  <div class="container admin__seller hide tb">
-    <!-- create -->
-    <div class="bg hide"></div>
-    <div class="create createseller hide">
-      <form action="" method="POST" class="create__form">
-        <div class="up__title">
-          <h3>Create Account</h3>
-        </div>
-        <input type="text" class="username" name="username" placeholder="User Name" required />
-        <input type="text" class="name" name="name" placeholder="Full Name" required />
-        <input type="text" class="hotelname" name="hotelName" placeholder="Hotel Name" required />
-        <input type="text" class="phone" name="phone" placeholder="Phone" required />
-        <input type="text" class="password" name="password" placeholder="New password" required />
-        <input type="submit" value="Create" name="submit" class="btn btn-success" />
-      </form>
-    </div>
-    
-    <!-- edit -->
-    <div class="bg hide"></div>
-    <div class="edit editseller hide">
-      <form action="" method="POST" class="edit__form">
-        <div class="up__title">
-          <h3>Update Account</h3>
-        </div>
-        <input type="text" readonly class="id" name="ID" />
-        <input type="text" class="username" name="username" required />
-        <input type="text" class="name" name="name" required />
-        <input type="text" class="hotel_name" name="hotelName" required />
-        <input type="text" class="phone" name="phone" required />
-        <input type="text" class="password" name="password" placeholder="New password" required />
-        <input type="submit" value="Update" name="submit" class="btn btn-success" />
-      </form>
-    </div>
-    <div class="btn btn-success btncreateseller btncreate"><i class="fa-solid fa-plus"></i>Create</div>
-    <form action=" " method="get">
-      <table border="1">
-        <tr>
-          <td>ID User</td>
-          <td>Full Name</td>
-          <td>User Name</td>
-          <td>Password</td>
-          <td>Hotel Name</td>
-          <td>Phone</td>
-          <td>Delete</td>
-          <td>Edit</td>
-        </tr>
-        <?php
-        //get seller list
-        function get_seller_list()
-        {
-          global $conn;
-          $sql = "SELECT * FROM access where role = 'seller'";
-          $result = mysqli_query($conn, $sql);
-          $seller_list = array();
-          while ($row = mysqli_fetch_array($result)) {
-            $seller_list[] = $row;
+
+    <div class="container admin__seller hide tb">
+      <!-- create -->
+      <div class="bg hide"></div>
+      <div class="create createseller hide">
+        <form action="" method="POST" class="create__form">
+          <div class="up__title">
+            <h3>Create Account</h3>
+          </div>
+          <input type="text" class="crusername" name="username" placeholder="User Name" required />
+          <input type="text" class="crname" name="name" placeholder="Full Name" required />
+          <input type="text" class="crhotelname" name="hotelName" placeholder="Hotel Name" required />
+          <input type="text" class="crphone" name="phone" placeholder="Phone" required />
+          <input type="text" class="crpassword" name="password" placeholder="New password" required />
+          <input type="submit" value="Create" name="submit" class="btn btn-success" />
+        </form>
+      </div>
+      <!-- edit -->
+      <div class="bg hide"></div>
+      <div class="edit editseller hide">
+        <form action="" method="POST" class="edit__form">
+          <div class="up__title">
+            <h3>Update Account</h3>
+          </div>
+          <input type="text" readonly class="id" name="ID" />
+          <input type="text" class="username" name="username" required />
+          <input type="text" class="name" name="name" required />
+          <input type="text" class="hotel_name" name="hotelName" required />
+          <input type="text" class="phone" name="phone" required />
+          <input type="text" class="password" name="password" placeholder="New password" required />
+          <input type="submit" value="Update" name="submit" class="btn btn-success" />
+        </form>
+      </div>
+      <div class="btn btn-success btncreateseller btncreate"><i class="fa-solid fa-plus"></i>Create</div>
+      <form action=" " method="get">
+        <table border="1">
+          <tr>
+            <td>ID User</td>
+            <td>Full Name</td>
+            <td>User Name</td>
+            <td>Password</td>
+            <td>Hotel Name</td>
+            <td>Phone</td>
+            <td>Delete</td>
+            <td>Edit</td>
+          </tr>
+          <?php
+          //get seller list
+          function get_seller_list()
+          {
+            global $conn;
+            $sql = "SELECT * FROM access where role = 'seller'";
+            $result = mysqli_query($conn, $sql);
+            $seller_list = array();
+            while ($row = mysqli_fetch_array($result)) {
+              $seller_list[] = $row;
+            }
+            return $seller_list;
           }
           return $seller_list;
         }
