@@ -250,7 +250,6 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
             return $seller_list;
           }
           return $seller_list;
-        }
         ?>
         <?php
         $seller_list = get_seller_list();
