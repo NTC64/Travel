@@ -183,10 +183,10 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
           <div class="up__title">
             <h3>Create Account</h3>
           </div>
-          <input type="text" class="username" name="username" placeholder="User Name" required />
-          <input type="text" class="name" name="name" placeholder="Full Name" required />
+          <input type="text" class="crusername" name="username" placeholder="User Name" required />
+          <input type="text" class="crname" name="name" placeholder="Full Name" required />
 
-          <input type="text" class="password" name="password" placeholder="New password" required />
+          <input type="text" class="crpassword" name="password" placeholder="New password" required />
           <input type="submit" value="Create" name="submit" class="btn btn-success" />
         </form>
       </div>
@@ -201,11 +201,11 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
           <div class="up__title">
             <h3>Create Account</h3>
           </div>
-          <input type="text" class="username" name="username" placeholder="User Name" required />
-          <input type="text" class="name" name="name" placeholder="Full Name" required />
-          <input type="text" class="hotelname" name="hotelName" placeholder="Hotel Name" required />
-          <input type="text" class="phone" name="phone" placeholder="Phone" required />
-          <input type="text" class="password" name="password" placeholder="New password" required />
+          <input type="text" class="crusername" name="username" placeholder="User Name" required />
+          <input type="text" class="crname" name="name" placeholder="Full Name" required />
+          <input type="text" class="crhotelname" name="hotelName" placeholder="Hotel Name" required />
+          <input type="text" class="crphone" name="phone" placeholder="Phone" required />
+          <input type="text" class="crpassword" name="password" placeholder="New password" required />
           <input type="submit" value="Create" name="submit" class="btn btn-success" />
         </form>
       </div>
