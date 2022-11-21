@@ -83,7 +83,7 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
   <div class="admin__main">
 
     <div class="container admin__user hide tb">
-      <div class="btn btn-success create"><i class="fa-solid fa-plus"></i>Create</div>
+      <div class="btn btn-success btncreateuser btncreate"><i class="fa-solid fa-plus"></i>Create</div>
       <form action=" " method="get">
         <table border="1">
           <tr>
@@ -125,7 +125,7 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
               <td><?php echo $user['password'] ?></td>
               <td><?php echo $user['role'] ?></td>
               <td><a href="#!" data-id="<?php echo $ID; ?>" class="btn__delete"><i class="fa-solid fa-trash"></i></a></td>
-              <td><a href="#!" class="btn__edit" data-id="<?php echo $user['ID']; ?>" data-username="<?php echo $user['username']; ?>" data-name="<?php echo $user['name']; ?>"><i class="fa-solid fa-pen-to-square"></i></a></td>
+              <td><a href="#!" class="btn__edituser" data-id="<?php echo $user['ID']; ?>" data-username="<?php echo $user['username']; ?>" data-name="<?php echo $user['name']; ?>"><i class="fa-solid fa-pen-to-square"></i></a></td>
             </tr>
           <?php
           }
@@ -145,7 +145,7 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
 
       <!-- edit -->
       <div class="bg hide"></div>
-      <div class="edit hide">
+      <div class="edit edituser hide">
         <form action="" method="POST" class="edit__form">
           <div class="up__title">
             <h3>Update Account</h3>
@@ -153,6 +153,7 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
           <input type="text" readonly class="id" name="ID" />
           <input type="text" class="username" name="username" required />
           <input type="text" class="name" name="name" required />
+
           <input type="text" class="password" name="password" placeholder="New password" required />
           <input type="submit" value="Update" name="submit" class="btn btn-success" />
         </form>
@@ -175,10 +176,56 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
         }
       }
       ?>
+      <!-- create -->
+      <div class="bg hide"></div>
+      <div class="create createuser hide">
+        <form action="" method="POST" class="create__form">
+          <div class="up__title">
+            <h3>Create Account</h3>
+          </div>
+          <input type="text" class="username" name="username" placeholder="User Name" required />
+          <input type="text" class="name" name="name" placeholder="Full Name" required />
+
+          <input type="text" class="password" name="password" placeholder="New password" required />
+          <input type="submit" value="Create" name="submit" class="btn btn-success" />
+        </form>
+      </div>
       <!-- Seller list -->
     </div>
+
     <div class="container admin__seller hide tb">
-      <div class="btn btn-success create"><i class="fa-solid fa-plus"></i>Create</div>
+      <!-- create -->
+      <div class="bg hide"></div>
+      <div class="create createseller hide">
+        <form action="" method="POST" class="create__form">
+          <div class="up__title">
+            <h3>Create Account</h3>
+          </div>
+          <input type="text" class="username" name="username" placeholder="User Name" required />
+          <input type="text" class="name" name="name" placeholder="Full Name" required />
+          <input type="text" class="hotelname" name="hotelName" placeholder="Hotel Name" required />
+          <input type="text" class="phone" name="phone" placeholder="Phone" required />
+          <input type="text" class="password" name="password" placeholder="New password" required />
+          <input type="submit" value="Create" name="submit" class="btn btn-success" />
+        </form>
+      </div>
+      <!-- edit -->
+      <div class="bg hide"></div>
+      <div class="edit editseller hide">
+        <form action="" method="POST" class="edit__form">
+          <div class="up__title">
+            <h3>Update Account</h3>
+          </div>
+          <input type="text" readonly class="id" name="ID" />
+          <input type="text" class="username" name="username" required />
+          <input type="text" class="name" name="name" required />
+          <input type="text" class="hotel_name" name="hotelName" required />
+          <input type="text" class="phone" name="phone" required />
+          <input type="text" class="password" name="password" placeholder="New password" required />
+          <input type="submit" value="Update" name="submit" class="btn btn-success" />
+        </form>
+      </div>
+      <div class="btn btn-success btncreateseller btncreate"><i class="fa-solid fa-plus"></i>Create</div>
       <form action=" " method="get">
         <table border="1">
           <tr>
@@ -223,7 +270,7 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
               <td><?php echo $seller['hotelName'] ?></td>
               <td><?php echo $seller['phone'] ?></td>
               <td><a href="#!" data-id="<?php echo $ID; ?>" class="btn__delete"><i class="fa-solid fa-trash"></i></a></td>
-              <td><a href="#!" class=""><i class="fa-solid fa-pen-to-square"></i></a></td>
+              <td><a href="#!" class="btn__editseller" data-id="<?php echo $seller['ID']; ?>" data-username="<?php echo $seller['username']; ?>" data-name="<?php echo $seller['name']; ?>" data-hotelname="<?php echo $seller['hotelName']; ?>" data-phone="<?php echo $seller['phone']; ?>"><i class="fa-solid fa-pen-to-square"></i></a></td>
             </tr>
           <?php
           }

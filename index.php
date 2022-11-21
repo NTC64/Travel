@@ -160,7 +160,7 @@
                         echo "  <script> Swal.fire('Error!', 'Phone number is not valid!', 'error'); </script> ";
                     } else {
                         if ($hotel_name != "") {
-                            $sql = "INSERT INTO access (name, username, password, role, hotel_name, phone) VALUES ('$name', '$username', '$password', 'seller', '$hotel_name', '$phone')";
+                            $sql = "INSERT INTO access (name, username, password, role, hotelName, phone) VALUES ('$name', '$username', '$password', 'seller', '$hotel_name', '$phone')";
                             $result = mysqli_query($conn, $sql);
                             if ($result) {
                                 echo "  <script> Swal.fire('Success!', 'Sign up successfully!', 'success'); </script> ";
