@@ -30,23 +30,38 @@ else {
     $(".admin__seller").addClass("hide");
 }
 });
-$(document).on('click', '.btn__edit', function() {
-  if($(".edit").hasClass("hide")) {
+$(document).on('click', '.btn__edituser', function() {
+  if($(".edituser").hasClass("hide")) {
     $(".bg").removeClass("hide");
-    $(".edit").removeClass("hide");
+    $(".edituser").removeClass("hide");
     $(".id").val($(this).attr("data-id"));
     $(".username").val($(this).attr("data-username"));
     $(".name").val($(this).attr("data-name"));
     
  }
 else {
-    $(".edit").addClass("hide");
+    $(".edituser").addClass("hide");
+}
+});
+$(document).on('click', '.btn__editseller', function(){
+  if($(".editseller").hasClass("hide")) {
+    $(".bg").removeClass("hide");
+    $(".editseller").removeClass("hide");
+    $(".id").val($(this).attr("data-id"));
+    $(".username").val($(this).attr("data-username"));
+    $(".name").val($(this).attr("data-name"));
+    $(".hotel_name").val($(this).attr("data-hotelname"));
+    $(".phone").val($(this).attr("data-phone"));
+ }
+else {
+    $(".editseller").addClass("hide");
 }
 });
 $(document).on('click', '.bg', function() {
   
     $(".bg").addClass("hide");
     $(".edit").addClass("hide");
+    $(".create").addClass("hide");
 
 });
 $(document).on('click', '.btn__delete', function() {
@@ -89,4 +104,22 @@ $(document).on('click', '.btn__delete', function() {
       )
     }
   })
+});
+$(document).on('click', '.btncreateuser', function() {
+  if($(".createuser").hasClass("hide")) {
+    $(".bg").removeClass("hide");
+    $(".createuser").removeClass("hide");
+ }
+else {
+    $(".createuser").addClass("hide");
+}
+});
+$(document).on('click', '.btncreateseller', function() {
+  if($(".createseller").hasClass("hide")) {
+    $(".bg").removeClass("hide");
+    $(".createseller").removeClass("hide");
+ }
+else {
+    $(".createseller").addClass("hide");
+}
 });
