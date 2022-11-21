@@ -68,7 +68,6 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
       <li class="has-dropdown"><i class="fa-solid fa-user"></i><a href="#">Account</a>
         <ul class="sidebar-dropdown hide list-unstyled">
           <li class="user"><a href="#">User</a></li>
-
           <li><a href="#" class="seller">Seller</a></li>
         </ul>
       </li>
@@ -185,108 +184,108 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
           </div>
           <input type="text" class="username" name="username" placeholder="User Name" required />
           <input type="text" class="name" name="name" placeholder="Full Name" required />
-
           <input type="text" class="password" name="password" placeholder="New password" required />
           <input type="submit" value="Create" name="submit" class="btn btn-success" />
         </form>
       </div>
-      <!-- Seller list -->
     </div>
-
-    <div class="container admin__seller hide tb">
-      <!-- create -->
-      <div class="bg hide"></div>
-      <div class="create createseller hide">
-        <form action="" method="POST" class="create__form">
-          <div class="up__title">
-            <h3>Create Account</h3>
-          </div>
-          <input type="text" class="username" name="username" placeholder="User Name" required />
-          <input type="text" class="name" name="name" placeholder="Full Name" required />
-          <input type="text" class="hotelname" name="hotelName" placeholder="Hotel Name" required />
-          <input type="text" class="phone" name="phone" placeholder="Phone" required />
-          <input type="text" class="password" name="password" placeholder="New password" required />
-          <input type="submit" value="Create" name="submit" class="btn btn-success" />
-        </form>
-      </div>
-      <!-- edit -->
-      <div class="bg hide"></div>
-      <div class="edit editseller hide">
-        <form action="" method="POST" class="edit__form">
-          <div class="up__title">
-            <h3>Update Account</h3>
-          </div>
-          <input type="text" readonly class="id" name="ID" />
-          <input type="text" class="username" name="username" required />
-          <input type="text" class="name" name="name" required />
-          <input type="text" class="hotel_name" name="hotelName" required />
-          <input type="text" class="phone" name="phone" required />
-          <input type="text" class="password" name="password" placeholder="New password" required />
-          <input type="submit" value="Update" name="submit" class="btn btn-success" />
-        </form>
-      </div>
-      <div class="btn btn-success btncreateseller btncreate"><i class="fa-solid fa-plus"></i>Create</div>
-      <form action=" " method="get">
-        <table border="1">
-          <tr>
-            <td>ID User</td>
-            <td>Full Name</td>
-            <td>User Name</td>
-            <td>Password</td>
-            <td>Hotel Name</td>
-            <td>Phone</td>
-            <td>Delete</td>
-            <td>Edit</td>
-          </tr>
-          <?php
-          //get seller list
-          function get_seller_list()
-          {
-            global $conn;
-            $sql = "SELECT * FROM access where role = 'seller'";
-            $result = mysqli_query($conn, $sql);
-            $seller_list = array();
-            while ($row = mysqli_fetch_array($result)) {
-              $seller_list[] = $row;
-            }
-            return $seller_list;
-          }
-          ?>
-          <?php
-          $seller_list = get_seller_list();
-          foreach ($seller_list as $seller) {
-            $ID = $seller['ID'];
-            $name = $seller['name'];
-            $username = $seller['username'];
-            $password = $seller['password'];
-            $hotel = $seller['hotelName'];
-            $phone = $seller['phone'];
-          ?>
-            <tr>
-              <td><?php echo $seller['ID'] ?></td>
-              <td><?php echo $seller['name'] ?></td>
-              <td><?php echo $seller['username'] ?></td>
-              <td><?php echo $seller['password'] ?></td>
-              <td><?php echo $seller['hotelName'] ?></td>
-              <td><?php echo $seller['phone'] ?></td>
-              <td><a href="#!" data-id="<?php echo $ID; ?>" class="btn__delete"><i class="fa-solid fa-trash"></i></a></td>
-              <td><a href="#!" class="btn__editseller" data-id="<?php echo $seller['ID']; ?>" data-username="<?php echo $seller['username']; ?>" data-name="<?php echo $seller['name']; ?>" data-hotelname="<?php echo $seller['hotelName']; ?>" data-phone="<?php echo $seller['phone']; ?>"><i class="fa-solid fa-pen-to-square"></i></a></td>
-            </tr>
-          <?php
-          }
-          ?>
-        </table>
-        <div class="pag">
-          <ul class="pag__items">
-
-            <li><a href="">1</a> </li>
-            <li><a href="">2</a> </li>
-            <li><a href="">3</a> </li>
-            <li><a href=""> <i class="fa-solid fa-chevron-right"></i></a> </li>
-          </ul>
+  </div>
+  <!-- Seller list -->
+  <div class="container admin__seller hide tb">
+    <!-- create -->
+    <div class="bg hide"></div>
+    <div class="create createseller hide">
+      <form action="" method="POST" class="create__form">
+        <div class="up__title">
+          <h3>Create Account</h3>
         </div>
+        <input type="text" class="username" name="username" placeholder="User Name" required />
+        <input type="text" class="name" name="name" placeholder="Full Name" required />
+        <input type="text" class="hotelname" name="hotelName" placeholder="Hotel Name" required />
+        <input type="text" class="phone" name="phone" placeholder="Phone" required />
+        <input type="text" class="password" name="password" placeholder="New password" required />
+        <input type="submit" value="Create" name="submit" class="btn btn-success" />
       </form>
     </div>
+    
+    <!-- edit -->
+    <div class="bg hide"></div>
+    <div class="edit editseller hide">
+      <form action="" method="POST" class="edit__form">
+        <div class="up__title">
+          <h3>Update Account</h3>
+        </div>
+        <input type="text" readonly class="id" name="ID" />
+        <input type="text" class="username" name="username" required />
+        <input type="text" class="name" name="name" required />
+        <input type="text" class="hotel_name" name="hotelName" required />
+        <input type="text" class="phone" name="phone" required />
+        <input type="text" class="password" name="password" placeholder="New password" required />
+        <input type="submit" value="Update" name="submit" class="btn btn-success" />
+      </form>
+    </div>
+    <div class="btn btn-success btncreateseller btncreate"><i class="fa-solid fa-plus"></i>Create</div>
+    <form action=" " method="get">
+      <table border="1">
+        <tr>
+          <td>ID User</td>
+          <td>Full Name</td>
+          <td>User Name</td>
+          <td>Password</td>
+          <td>Hotel Name</td>
+          <td>Phone</td>
+          <td>Delete</td>
+          <td>Edit</td>
+        </tr>
+        <?php
+        //get seller list
+        function get_seller_list()
+        {
+          global $conn;
+          $sql = "SELECT * FROM access where role = 'seller'";
+          $result = mysqli_query($conn, $sql);
+          $seller_list = array();
+          while ($row = mysqli_fetch_array($result)) {
+            $seller_list[] = $row;
+          }
+          return $seller_list;
+        }
+        ?>
+        <?php
+        $seller_list = get_seller_list();
+        foreach ($seller_list as $seller) {
+          $ID = $seller['ID'];
+          $name = $seller['name'];
+          $username = $seller['username'];
+          $password = $seller['password'];
+          $hotel = $seller['hotelName'];
+          $phone = $seller['phone'];
+        ?>
+          <tr>
+            <td><?php echo $seller['ID'] ?></td>
+            <td><?php echo $seller['name'] ?></td>
+            <td><?php echo $seller['username'] ?></td>
+            <td><?php echo $seller['password'] ?></td>
+            <td><?php echo $seller['hotelName'] ?></td>
+            <td><?php echo $seller['phone'] ?></td>
+            <td><a href="#!" data-id="<?php echo $ID; ?>" class="btn__delete"><i class="fa-solid fa-trash"></i></a></td>
+            <td><a href="#!" class="btn__editseller" data-id="<?php echo $seller['ID']; ?>" data-username="<?php echo $seller['username']; ?>" data-name="<?php echo $seller['name']; ?>" data-hotelname="<?php echo $seller['hotelName']; ?>" data-phone="<?php echo $seller['phone']; ?>"><i class="fa-solid fa-pen-to-square"></i></a></td>
+          </tr>
+        <?php
+        }
+        ?>
+      </table>
+      <div class="pag">
+        <ul class="pag__items">
+
+          <li><a href="">1</a> </li>
+          <li><a href="">2</a> </li>
+          <li><a href="">3</a> </li>
+          <li><a href=""> <i class="fa-solid fa-chevron-right"></i></a> </li>
+        </ul>
+      </div>
+    </form>
+  </div>
 
   </div>
 
