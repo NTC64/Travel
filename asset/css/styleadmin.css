@@ -471,7 +471,7 @@ td:nth-child(4) {
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(0%, -50%);
+  transform: translate(-10%, -50%);
   width: 400px;
   height: 600px;
   background-color: #fff;
@@ -485,11 +485,11 @@ td:nth-child(4) {
 @keyframes edit {
   0% {
     opacity: 0;
-    transform: translate(0%, -100%);
+    transform: translate(-10%, -100%);
   }
   100% {
     opacity: 1;
-    transform: translate(0%, -50%);
+    transform: translate(-10%, -50%);
   }
 }
 .edit__form,

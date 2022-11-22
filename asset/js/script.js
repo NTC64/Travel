@@ -1,3 +1,17 @@
+$(document).ready(function() {
+  if($(".adrole").data("role") === "admin") {
+   $(".account").addClass("hide");
+  
+  }
+  else if($(".adrole").data("role") === "supperadmin") {
+   $(".account").removeClass("hide");
+  }
+  else{
+    $(".account").addClass("hide");
+    $(".adcategory").addClass("hide");
+    $(".news").addClass("hide");
+  }
+ });
 $(document).on('click', '.has-dropdown,.i', function() {
   if($(".sidebar-dropdown").hasClass("hide")) {
     $(".sidebar-dropdown").addClass("hide");

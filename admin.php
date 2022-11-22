@@ -38,7 +38,7 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
             <?php echo $_SESSION['username']; ?>
           </a>
         </h5>
-        <p class="mt-1 mb-0"><?php echo $_SESSION['role']; ?></p>
+        <p class="mt-1 mb-0 adrole" data-role="<?php echo $_SESSION['role']; ?>"><?php echo $_SESSION['role']; ?></p>
       </div>
     </div>
 
@@ -50,7 +50,7 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
     <ul class="categories list-unstyled">
 
 
-      <li class="has-dropdown">
+      <li class="has-dropdown adcategory">
         <i class="fa-solid fa-bars"></i><a href="#">Category</a>
         <ul class="sidebar-dropdown hide list-unstyled">
           <li><a href="#">Category news</a></li>
@@ -65,7 +65,7 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
         <i class="fa-regular fa-newspaper"></i><a href="#"> News</a>
 
       </li>
-      <li class="has-dropdown"><i class="fa-solid fa-user"></i><a href="#">Account</a>
+      <li class="has-dropdown account"><i class="fa-solid fa-user"></i><a href="#">Account</a>
         <ul class="sidebar-dropdown hide list-unstyled">
           <li class="user"><a href="#">User</a></li>
           <li><a href="#" class="seller">Seller</a></li>
