@@ -3,7 +3,7 @@ $(document).ready(function() {
    $(".account").addClass("hide");
   
   }
-  else if($(".adrole").data("role") === "supperadmin") {
+  else if($(".adrole").data("role") === "superadmin") {
    $(".account").removeClass("hide");
   }
   else{
