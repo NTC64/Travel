@@ -153,10 +153,11 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
       <div class="up__title">
         <h3>Create Account</h3>
       </div>
-      <select class="crrole" id="">
-        <option value="user" label="user">user</option>
-        <option value="seller" label="seller">seller</option>
-        <option value="admin" label="admin">admin</option>
+      <select class="crrole" id="" name="role">
+        <option value="user" label="user">User</option>
+        <option value="seller" label="seller">Seller</option>
+        <option value="admin" label="admin">Admin</option>
+        <option value="superadmin" label="admin">Super Admin</option>
       </select>
       <input type="text" class="crusername" name="username" placeholder="User Name" required />
       <input type="text" class="crname" name="name" placeholder="Full Name" required />
@@ -166,6 +167,36 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
       <input type="submit" value="Create" name="submit" class="btn btn-success" />
     </form>
   </div>
+  <?php
+  $hotelName = "";
+  $phone = "";
+  if (isset($_POST['submit'])) {
+    if ($_POST['submit'] == 'Create') {
+      $role = $_POST['role'];
+      $username = $_POST['username'];
+      $name = $_POST['name'];
+      $hotelName = $_POST['hotelName'];
+      $phone = $_POST['phone'];
+      $password = $_POST['password'];
+      $sql = "select * from access where username = '$username'";
+      $result = mysqli_query($conn, $sql);
+      if (mysqli_num_rows($result) > 0) {
+        echo " <script> Swal.fire('Error!', 'Username already exists!', 'error');setTimeout(function(){window.location.href='admin.php'}, 2000);</script>";
+      } else {
+        $sql = "INSERT INTO access (role, username, name, hotelName, phone, password) VALUES ('$role', '$username', '$name', '$hotelName', '$phone', '$password')";
+        $result = mysqli_query($conn, $sql);
+        if ($result) {
+          echo "<script> Swal.fire('Success!', 'Sign up successfully!', 'success');
+                setTimeout(function(){location.href='admin.php'}, 2000); </script>";
+          //header('location: admin.php');
+        } else {
+          echo "  <script> Swal.fire('Error!', 'Sign up failed!', 'error');
+          setTimeout(function(){location.href='admin.php'}, 2000); </script> ";
+          }
+        }
+      }
+    }
+  ?>
   <!-- edit -->
 
   <div class="edit editseller hide">
@@ -392,19 +423,41 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
             <td>Delete</i></td>
             <td>Update</i></td>
           </tr>
-
-
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td><a href="#!" data-id="" class="btn__delete"><i class="fa-solid fa-trash"></i></a></td>
-            <td><a href="#!" class="btn__editad" data-id="" data-username="" data-name="">
-                <i class="fa-solid fa-pen-to-square"></i></a></td>
-          </tr>
-
+          <?php
+          //get admin list
+          function get_admin_list()
+          {
+            global $conn;
+            $sql = "SELECT * FROM access where role = 'admin' or role = 'superadmin'";
+            $result = mysqli_query($conn, $sql);
+            $admin_list = array();
+            while ($row = mysqli_fetch_array($result)) {
+              $admin_list[] = $row;
+            }
+            return $admin_list;
+          }
+          ?>
+          <?php
+          $admin_list = get_admin_list();
+          foreach ($admin_list as $admin) {
+            $ID = $admin['ID'];
+            $username = $admin['username'];
+            $name = $admin['name'];
+            $password = $admin['password'];
+            $role = $admin['role'];
+          ?>
+            <tr>
+              <td><?php echo $admin['ID'] ?></td>
+              <td><?php echo $admin['username'] ?></td>
+              <td><?php echo $admin['name'] ?></td>
+              <td><?php echo $admin['password'] ?></td>
+              <td><?php echo $admin['role'] ?></td>
+              <td><a href="#!" data-id="<?php echo $ID; ?>" class="btn__delete"><i class="fa-solid fa-trash"></i></a></td>
+              <td><a href="#!" class="btn__editadmin" data-id="<?php echo $admin['ID']; ?>" data-username="<?php echo $admin['username']; ?>" data-name="<?php echo $admin['name']; ?>"><i class="fa-solid fa-pen-to-square"></i></a></td>
+            </tr>
+          <?php
+          }
+          ?>
         </table>
         <!-- pag -->
         <div class="pag">
