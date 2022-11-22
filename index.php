@@ -81,7 +81,7 @@
                 $result = mysqli_query($conn, $sql);
                 if (mysqli_num_rows($result) > 0) {
                     $row = mysqli_fetch_assoc($result);
-                    if ($row['role'] == 'seller' || $row['role'] == 'admin') {
+                    if ($row['role'] == 'seller' || $row['role'] == 'admin' || $row['role'] == 'superadmin') {
                         $_SESSION['username'] = $username;
                         $_SESSION['role'] = $row['role'];
                         header("Location: admin.php");

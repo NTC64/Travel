@@ -186,7 +186,7 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
           <input type="text" class="crname" name="name" placeholder="Full Name" required />
 
           <input type="text" class="crpassword" name="password" placeholder="New password" required />
-          <input type="submit" value="Create" name="submit" class="btn btn-success" />
+          <input type="submit" value="Create" name="submit" class="btn btn-success crt" />
         </form>
       </div>
     </div>
@@ -207,6 +207,47 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
           <input type="submit" value="Create" name="submit" class="btn btn-success" />
         </form>
       </div>
+      <?php
+      if (isset($_POST['submit'])) {
+        if ($_POST["submit"] == "Create") {
+          $name = $_POST['name'];
+          $password = $_POST['password'];
+          $username = $_POST['username'];
+          $hotel_name = $_POST['hotelName'];
+          $phone = $_POST['phone'];
+          $sql = "select * from access where username = '$username'";
+          $result = mysqli_query($conn, $sql);
+          if (mysqli_num_rows($result) > 0) {
+            echo "  <script> Swal.fire('Error!', 'Username already exists!', 'error'); </script> ";
+            echo '<script>location.href="admin.php"</script>';
+            //return to admin page
+          } else {
+            if ($hotel_name != "") {
+              $sql = "INSERT INTO access (name, username, password, role, hotelName, phone) VALUES ('$name', '$username', '$password', 'seller', '$hotel_name', '$phone')";
+              $result = mysqli_query($conn, $sql);
+              if ($result) {
+                echo "<script> Swal.fire('Success!', 'Sign up successfully!', 'success');
+                setTimeout(function(){location.href='admin.php'}, 1000); </script>";
+              } else {
+                echo "  <script> Swal.fire('Error!', 'Sign up failed!', 'error');
+                setTimeout(function(){location.href='admin.php'}, 1000); </script> ";
+              }
+            } else {
+              $sql = "INSERT INTO access (name, username, password, role) VALUES ('$name', '$username', '$password', 'user')";
+              $result = mysqli_query($conn, $sql);
+              if ($result) {
+                echo "  <script> Swal.fire('Success!', 'Sign up successfully!', 'success');
+                setTimeout(function(){location.href='admin.php'}, 1000); </script> ";
+              } else {
+                echo "  <script> Swal.fire('Error!', 'Sign up failed!', 'error');
+                setTimeout(function(){location.href='admin.php'}, 1000); </script> ";
+              }
+            }
+          }
+        }
+      }
+      // require_once('create.php'); 
+      ?>
       <!-- edit -->
       <div class="bg hide"></div>
       <div class="edit editseller hide">
@@ -249,42 +290,42 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
             }
             return $seller_list;
           }
-        ?>
-        <?php
-        $seller_list = get_seller_list();
-        foreach ($seller_list as $seller) {
-          $ID = $seller['ID'];
-          $name = $seller['name'];
-          $username = $seller['username'];
-          $password = $seller['password'];
-          $hotel = $seller['hotelName'];
-          $phone = $seller['phone'];
-        ?>
-          <tr>
-            <td><?php echo $seller['ID'] ?></td>
-            <td><?php echo $seller['name'] ?></td>
-            <td><?php echo $seller['username'] ?></td>
-            <td><?php echo $seller['password'] ?></td>
-            <td><?php echo $seller['hotelName'] ?></td>
-            <td><?php echo $seller['phone'] ?></td>
-            <td><a href="#!" data-id="<?php echo $ID; ?>" class="btn__delete"><i class="fa-solid fa-trash"></i></a></td>
-            <td><a href="#!" class="btn__editseller" data-id="<?php echo $seller['ID']; ?>" data-username="<?php echo $seller['username']; ?>" data-name="<?php echo $seller['name']; ?>" data-hotelname="<?php echo $seller['hotelName']; ?>" data-phone="<?php echo $seller['phone']; ?>"><i class="fa-solid fa-pen-to-square"></i></a></td>
-          </tr>
-        <?php
-        }
-        ?>
-      </table>
-      <div class="pag">
-        <ul class="pag__items">
+          ?>
+          <?php
+          $seller_list = get_seller_list();
+          foreach ($seller_list as $seller) {
+            $ID = $seller['ID'];
+            $name = $seller['name'];
+            $username = $seller['username'];
+            $password = $seller['password'];
+            $hotel = $seller['hotelName'];
+            $phone = $seller['phone'];
+          ?>
+            <tr>
+              <td><?php echo $seller['ID'] ?></td>
+              <td><?php echo $seller['name'] ?></td>
+              <td><?php echo $seller['username'] ?></td>
+              <td><?php echo $seller['password'] ?></td>
+              <td><?php echo $seller['hotelName'] ?></td>
+              <td><?php echo $seller['phone'] ?></td>
+              <td><a href="#!" data-id="<?php echo $ID; ?>" class="btn__delete"><i class="fa-solid fa-trash"></i></a></td>
+              <td><a href="#!" class="btn__editseller" data-id="<?php echo $seller['ID']; ?>" data-username="<?php echo $seller['username']; ?>" data-name="<?php echo $seller['name']; ?>" data-hotelname="<?php echo $seller['hotelName']; ?>" data-phone="<?php echo $seller['phone']; ?>"><i class="fa-solid fa-pen-to-square"></i></a></td>
+            </tr>
+          <?php
+          }
+          ?>
+        </table>
+        <div class="pag">
+          <ul class="pag__items">
 
-          <li><a href="">1</a> </li>
-          <li><a href="">2</a> </li>
-          <li><a href="">3</a> </li>
-          <li><a href=""> <i class="fa-solid fa-chevron-right"></i></a> </li>
-        </ul>
-      </div>
-    </form>
-  </div>
+            <li><a href="">1</a> </li>
+            <li><a href="">2</a> </li>
+            <li><a href="">3</a> </li>
+            <li><a href=""> <i class="fa-solid fa-chevron-right"></i></a> </li>
+          </ul>
+        </div>
+      </form>
+    </div>
 
   </div>
 
