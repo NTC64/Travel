@@ -61,7 +61,7 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
         <i class="fa-solid fa-location-dot"></i><a href="#">Tour</a>
 
       </li>
-      <li class="i">
+      <li class="news">
         <i class="fa-regular fa-newspaper"></i><a href="#"> News</a>
 
       </li>
@@ -80,7 +80,99 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
 
 
   <div class="admin__main">
+    <!-- news -->
+    <div class="container adminnews hide tb">
+      <div class="btn btn-success btncreatenews btncreate"><i class="fa-solid fa-plus"></i>Create</div>
+      <form action=" " method="get">
+        <table border="1">
+          <tr>
+            <td>ID News</td>
+            <td>News Name</td>
+            <td>Describe</td>
+            <td>Image</td>
+            <td>Status</td>
+            <td>Delete</i></td>
+            <td>Update</i></td>
+          </tr>
 
+
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+              <!-- Default checked -->
+              bật
+            </td>
+            <td><a href="#!" data-id="" class="btn__delete"><i class="fa-solid fa-trash"></i></a></td>
+            <td><a href="#!" class="btn__editnews" data-id="" data-username="" data-name=""><i class="fa-solid fa-pen-to-square"></i></a></td>
+          </tr>
+
+        </table>
+        <!-- pag -->
+        <div class="pag">
+          <ul class="pag__items">
+            <li><a href="">1</a> </li>
+            <li><a href="">2</a> </li>
+            <li><a href="">3</a> </li>
+            <li><a href=""><i class="fa-solid fa-chevron-right"></i></a> </li>
+          </ul>
+        </div>
+      </form>
+      <!-- aler2 -->
+
+      <!-- edit -->
+      <div class="bg hide"></div>
+      <div class="edit editnews hide">
+        <form action="" method="POST" class="edit__form">
+          <div class="up__title">
+            <h3>Update news</h3>
+          </div>
+          <input type="text" readonly class="id" name="ID" />
+          <input type="text" class="newsname" name="newsname" required />
+          <textarea name="describe" class="describe" cols="30" rows="10" required></textarea>
+
+          <input type="file" class="img" name="img" required />
+          <input type="text" class="status" name="status" required />
+          <input type="submit" value="Update" name="submit" class="btn btn-success" />
+        </form>
+      </div>
+      <?php
+      if (isset($_POST['submit'])) {
+        if ($_POST['submit'] == 'Update') {
+          $id = $_POST['ID'];
+          $username = $_POST['username'];
+          $name = $_POST['name'];
+          $password = $_POST['password'];
+          $sql = "UPDATE access SET username = '$username', name = '$name', password = '$password' WHERE ID = '$id'";
+          $result = mysqli_query($conn, $sql);
+          if ($result) {
+            echo '<script>alert("Update success")</script>';
+            //header('location: admin.php');
+          } else {
+            echo '<script>alert("Update fail")</script>';
+          }
+        }
+      }
+      ?>
+      <!-- create -->
+      <div class="bg hide"></div>
+      <div class="create createnews hide">
+        <form action="" method="POST" class="create__form">
+          <div class="up__title">
+            <h3>Create News</h3>
+          </div>
+          <input type="text" class="crnewsname" name="newsname" placeholder="News Name" required />
+          <textarea name="describe" class="crdescribe" cols="30" rows="10" required placeholder="Describe"></textarea>
+
+          <input type="file" class="crimg" name="img" required />
+          <input type="text" class="crstatus" name="status" placeholder="status" required />
+          <input type="submit" value="Create" name="submit" class="btn btn-success smcreate" />
+        </form>
+      </div>
+    </div>
+    <!-- user -->
     <div class="container admin__user hide tb">
       <div class="btn btn-success btncreateuser btncreate"><i class="fa-solid fa-plus"></i>Create</div>
       <form action=" " method="get">
@@ -186,7 +278,7 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
           <input type="text" class="crname" name="name" placeholder="Full Name" required />
 
           <input type="text" class="crpassword" name="password" placeholder="New password" required />
-          <input type="submit" value="Create" name="submit" class="btn btn-success" />
+          <input type="submit" value="Create" name="submit" class="btn btn-success smcreate" />
         </form>
       </div>
     </div>
@@ -249,52 +341,50 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
             }
             return $seller_list;
           }
-        ?>
-        <?php
-        $seller_list = get_seller_list();
-        foreach ($seller_list as $seller) {
-          $ID = $seller['ID'];
-          $name = $seller['name'];
-          $username = $seller['username'];
-          $password = $seller['password'];
-          $hotel = $seller['hotelName'];
-          $phone = $seller['phone'];
-        ?>
-          <tr>
-            <td><?php echo $seller['ID'] ?></td>
-            <td><?php echo $seller['name'] ?></td>
-            <td><?php echo $seller['username'] ?></td>
-            <td><?php echo $seller['password'] ?></td>
-            <td><?php echo $seller['hotelName'] ?></td>
-            <td><?php echo $seller['phone'] ?></td>
-            <td><a href="#!" data-id="<?php echo $ID; ?>" class="btn__delete"><i class="fa-solid fa-trash"></i></a></td>
-            <td><a href="#!" class="btn__editseller" data-id="<?php echo $seller['ID']; ?>" data-username="<?php echo $seller['username']; ?>" data-name="<?php echo $seller['name']; ?>" data-hotelname="<?php echo $seller['hotelName']; ?>" data-phone="<?php echo $seller['phone']; ?>"><i class="fa-solid fa-pen-to-square"></i></a></td>
-          </tr>
-        <?php
-        }
-        ?>
-      </table>
-      <div class="pag">
-        <ul class="pag__items">
+          ?>
+          <?php
+          $seller_list = get_seller_list();
+          foreach ($seller_list as $seller) {
+            $ID = $seller['ID'];
+            $name = $seller['name'];
+            $username = $seller['username'];
+            $password = $seller['password'];
+            $hotel = $seller['hotelName'];
+            $phone = $seller['phone'];
+          ?>
+            <tr>
+              <td><?php echo $seller['ID'] ?></td>
+              <td><?php echo $seller['name'] ?></td>
+              <td><?php echo $seller['username'] ?></td>
+              <td><?php echo $seller['password'] ?></td>
+              <td><?php echo $seller['hotelName'] ?></td>
+              <td><?php echo $seller['phone'] ?></td>
+              <td><a href="#!" data-id="<?php echo $ID; ?>" class="btn__delete"><i class="fa-solid fa-trash"></i></a></td>
+              <td><a href="#!" class="btn__editseller" data-id="<?php echo $seller['ID']; ?>" data-username="<?php echo $seller['username']; ?>" data-name="<?php echo $seller['name']; ?>" data-hotelname="<?php echo $seller['hotelName']; ?>" data-phone="<?php echo $seller['phone']; ?>"><i class="fa-solid fa-pen-to-square"></i></a></td>
+            </tr>
+          <?php
+          }
+          ?>
+        </table>
+        <div class="pag">
+          <ul class="pag__items">
 
-          <li><a href="">1</a> </li>
-          <li><a href="">2</a> </li>
-          <li><a href="">3</a> </li>
-          <li><a href=""> <i class="fa-solid fa-chevron-right"></i></a> </li>
-        </ul>
-      </div>
-    </form>
-  </div>
+            <li><a href="">1</a> </li>
+            <li><a href="">2</a> </li>
+            <li><a href="">3</a> </li>
+            <li><a href=""> <i class="fa-solid fa-chevron-right"></i></a> </li>
+          </ul>
+        </div>
+      </form>
+    </div>
 
-  </div>
-
-  <!-- partial -->
-  <!-- Optional JavaScript -->
-  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  <script src="./asset/js/script.js"></script>
+    <!-- partial -->
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="./asset/js/script.js"></script>
 </body>
 
 </html>

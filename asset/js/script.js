@@ -8,11 +8,23 @@ $(document).on('click', '.has-dropdown,.i', function() {
  }
 
 });
+$(document).on('click', '.news', function() {
+  if($(".adminnews").hasClass("hide")) {
+    $(".admin__user").addClass("hide");
+    $(".admin__seller").addClass("hide");
+    $(".adminnews").removeClass("hide");
+    
+  }
+  else {
+  $(".adminnews").addClass("hide");
+  }
+});
 $(document).on('click', '.user', function() {
   
   if($(".admin__user").hasClass("hide")) {
    
     $(".admin__seller").addClass("hide");
+    $(".adminnews").addClass("hide");
      $(".admin__user").removeClass("hide");
   }
  else {
@@ -24,10 +36,24 @@ $(document).on('click', '.user', function() {
 $(document).on('click', '.seller', function() {
   if($(".admin__seller").hasClass("hide")) {
     $(".admin__user").addClass("hide");
+    $(".adminnews").addClass("hide");
     $(".admin__seller").removeClass("hide");
  }
 else {
     $(".admin__seller").addClass("hide");
+}
+});
+$(document).on('click','.btn__editnews',function(){
+  if($(".editnews").hasClass("hide")) {
+    $(".bg").removeClass("hide");
+    $(".editnews").removeClass("hide");
+    $(".id").val($(this).attr("data-id"));
+    $(".newsname").val($(this).attr("data-newsname"));
+    $(".describe").val($(this).attr("data-describe"));
+    
+ }
+else {
+    $(".editnews").addClass("hide");
 }
 });
 $(document).on('click', '.btn__edituser', function() {
@@ -112,6 +138,15 @@ $(document).on('click', '.btncreateuser', function() {
  }
 else {
     $(".createuser").addClass("hide");
+}
+});
+$(document).on('click', '.btncreatenews', function(){
+  if($(".createnews").hasClass("hide")) {
+    $(".bg").removeClass("hide");
+    $(".createnews").removeClass("hide");
+ }
+else {
+    $(".createnews").addClass("hide");
 }
 });
 $(document).on('click', '.btncreateseller', function() {

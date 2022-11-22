@@ -497,7 +497,8 @@ td:nth-child(4) {
 }
 
 .edit__form input,
-.create__form input {
+.create__form input,
+textarea {
   width: 80%;
   height: 50px;
   border: 1px solid rgba(0, 0, 0, 0.2);
@@ -516,4 +517,9 @@ td:nth-child(4) {
   width: 100%;
   height: 100%;
   z-index: 9999;
+}
+.editnews .img,
+.create .crimg {
+  border: none !important;
+  text-align: center;
 }
