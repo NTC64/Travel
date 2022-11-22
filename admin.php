@@ -78,7 +78,116 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
     </div>
   </aside>
 
+  <div class="bg hide"></div>
+  <!-- edit -->
 
+  <div class="edit editnews hide">
+    <form action="" method="POST" class="edit__form">
+      <div class="up__title">
+        <h3>Update news</h3>
+      </div>
+      <input type="text" readonly class="id" name="ID" />
+      <input type="text" class="newsname" name="newsname" required />
+      <textarea name="describe" class="describe" cols="30" rows="10" required></textarea>
+
+      <input type="file" class="img" name="img" required />
+      <input type="text" class="status" name="status" required />
+      <input type="submit" value="Update" name="submit" class="btn btn-success" />
+    </form>
+  </div>
+
+  <!-- create -->
+  <div class="create createnews hide">
+    <form action="" method="POST" class="create__form">
+      <div class="up__title">
+        <h3>Create News</h3>
+      </div>
+      <input type="text" class="crnewsname" name="newsname" placeholder="News Name" required />
+      <textarea name="describe" class="crdescribe" cols="30" rows="10" required placeholder="Describe"></textarea>
+
+      <input type="file" class="crimg" name="img" required />
+      <input type="text" class="crstatus" name="status" placeholder="status" required />
+      <input type="submit" value="Create" name="submit" class="btn btn-success smcreate" />
+    </form>
+  </div>
+  <!-- edit -->
+
+  <div class="edit edituser hide">
+    <form action="" method="POST" class="edit__form">
+      <div class="up__title">
+        <h3>Update Account</h3>
+      </div>
+      <input type="text" readonly class="id" name="ID" />
+      <input type="text" class="username" name="username" required />
+      <input type="text" class="name" name="name" required />
+
+      <input type="text" class="password" name="password" placeholder="New password" required />
+      <input type="submit" value="Update" name="submit" class="btn btn-success" />
+    </form>
+  </div>
+  <?php
+  if (isset($_POST['submit'])) {
+    if ($_POST['submit'] == 'Update') {
+      $id = $_POST['ID'];
+      $username = $_POST['username'];
+      $name = $_POST['name'];
+      $password = $_POST['password'];
+      $sql = "UPDATE access SET username = '$username', name = '$name', password = '$password' WHERE ID = '$id'";
+      $result = mysqli_query($conn, $sql);
+      if ($result) {
+        echo '<script>alert("Update success")</script>';
+        //header('location: admin.php');
+      } else {
+        echo '<script>alert("Update fail")</script>';
+      }
+    }
+  }
+  ?>
+  <!-- create -->
+
+  <div class="create createuser hide">
+    <form action="" method="POST" class="create__form">
+      <div class="up__title">
+        <h3>Create Account</h3>
+      </div>
+      <input type="text" class="crusername" name="username" placeholder="User Name" required />
+      <input type="text" class="crname" name="name" placeholder="Full Name" required />
+
+      <input type="text" class="crpassword" name="password" placeholder="New password" required />
+      <input type="submit" value="Create" name="submit" class="btn btn-success smcreate" />
+    </form>
+  </div>
+  <!-- create -->
+
+  <div class="create createseller hide">
+    <form action="" method="POST" class="create__form">
+      <div class="up__title">
+        <h3>Create Account</h3>
+      </div>
+      <input type="text" class="crusername" name="username" placeholder="User Name" required />
+      <input type="text" class="crname" name="name" placeholder="Full Name" required />
+      <input type="text" class="crhotelname" name="hotelName" placeholder="Hotel Name" required />
+      <input type="text" class="crphone" name="phone" placeholder="Phone" required />
+      <input type="text" class="crpassword" name="password" placeholder="New password" required />
+      <input type="submit" value="Create" name="submit" class="btn btn-success" />
+    </form>
+  </div>
+  <!-- edit -->
+
+  <div class="edit editseller hide">
+    <form action="" method="POST" class="edit__form">
+      <div class="up__title">
+        <h3>Update Account</h3>
+      </div>
+      <input type="text" readonly class="id" name="ID" />
+      <input type="text" class="username" name="username" required />
+      <input type="text" class="name" name="name" required />
+      <input type="text" class="hotel_name" name="hotelName" required />
+      <input type="text" class="phone" name="phone" required />
+      <input type="text" class="password" name="password" placeholder="New password" required />
+      <input type="submit" value="Update" name="submit" class="btn btn-success" />
+    </form>
+  </div>
   <div class="admin__main">
     <!-- news -->
     <div class="container adminnews hide tb">
@@ -87,9 +196,12 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
         <table border="1">
           <tr>
             <td>ID News</td>
-            <td>News Name</td>
-            <td>Describe</td>
+            <td>ID Category</td>
+            <td>Title</td>
+            <td>Description</td>
+            <td>Body</td>
             <td>Image</td>
+            <td>Date</td>
             <td>Status</td>
             <td>Delete</i></td>
             <td>Update</i></td>
@@ -101,6 +213,9 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
             <td></td>
             <td></td>
             <td></td>
+            <td>Bodsdsdgsdgsdgsdgdsgdsgsdgsdgsdg</td>
+            <td>Image</td>
+            <td>Date</td>
             <td>
               <!-- Default checked -->
               bật
@@ -122,55 +237,7 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
       </form>
       <!-- aler2 -->
 
-      <!-- edit -->
-      <div class="bg hide"></div>
-      <div class="edit editnews hide">
-        <form action="" method="POST" class="edit__form">
-          <div class="up__title">
-            <h3>Update news</h3>
-          </div>
-          <input type="text" readonly class="id" name="ID" />
-          <input type="text" class="newsname" name="newsname" required />
-          <textarea name="describe" class="describe" cols="30" rows="10" required></textarea>
 
-          <input type="file" class="img" name="img" required />
-          <input type="text" class="status" name="status" required />
-          <input type="submit" value="Update" name="submit" class="btn btn-success" />
-        </form>
-      </div>
-      <?php
-      if (isset($_POST['submit'])) {
-        if ($_POST['submit'] == 'Update') {
-          $id = $_POST['ID'];
-          $username = $_POST['username'];
-          $name = $_POST['name'];
-          $password = $_POST['password'];
-          $sql = "UPDATE access SET username = '$username', name = '$name', password = '$password' WHERE ID = '$id'";
-          $result = mysqli_query($conn, $sql);
-          if ($result) {
-            echo '<script>alert("Update success")</script>';
-            //header('location: admin.php');
-          } else {
-            echo '<script>alert("Update fail")</script>';
-          }
-        }
-      }
-      ?>
-      <!-- create -->
-      <div class="bg hide"></div>
-      <div class="create createnews hide">
-        <form action="" method="POST" class="create__form">
-          <div class="up__title">
-            <h3>Create News</h3>
-          </div>
-          <input type="text" class="crnewsname" name="newsname" placeholder="News Name" required />
-          <textarea name="describe" class="crdescribe" cols="30" rows="10" required placeholder="Describe"></textarea>
-
-          <input type="file" class="crimg" name="img" required />
-          <input type="text" class="crstatus" name="status" placeholder="status" required />
-          <input type="submit" value="Create" name="submit" class="btn btn-success smcreate" />
-        </form>
-      </div>
     </div>
     <!-- user -->
     <div class="container admin__user hide tb">
@@ -234,87 +301,11 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
       </form>
       <!-- aler2 -->
 
-      <!-- edit -->
-      <div class="bg hide"></div>
-      <div class="edit edituser hide">
-        <form action="" method="POST" class="edit__form">
-          <div class="up__title">
-            <h3>Update Account</h3>
-          </div>
-          <input type="text" readonly class="id" name="ID" />
-          <input type="text" class="username" name="username" required />
-          <input type="text" class="name" name="name" required />
 
-          <input type="text" class="password" name="password" placeholder="New password" required />
-          <input type="submit" value="Update" name="submit" class="btn btn-success" />
-        </form>
-      </div>
-      <?php
-      if (isset($_POST['submit'])) {
-        if ($_POST['submit'] == 'Update') {
-          $id = $_POST['ID'];
-          $username = $_POST['username'];
-          $name = $_POST['name'];
-          $password = $_POST['password'];
-          $sql = "UPDATE access SET username = '$username', name = '$name', password = '$password' WHERE ID = '$id'";
-          $result = mysqli_query($conn, $sql);
-          if ($result) {
-            echo '<script>alert("Update success")</script>';
-            //header('location: admin.php');
-          } else {
-            echo '<script>alert("Update fail")</script>';
-          }
-        }
-      }
-      ?>
-      <!-- create -->
-      <div class="bg hide"></div>
-      <div class="create createuser hide">
-        <form action="" method="POST" class="create__form">
-          <div class="up__title">
-            <h3>Create Account</h3>
-          </div>
-          <input type="text" class="crusername" name="username" placeholder="User Name" required />
-          <input type="text" class="crname" name="name" placeholder="Full Name" required />
-
-          <input type="text" class="crpassword" name="password" placeholder="New password" required />
-          <input type="submit" value="Create" name="submit" class="btn btn-success smcreate" />
-        </form>
-      </div>
     </div>
 
     <div class="container admin__seller hide tb">
-      <!-- create -->
-      <div class="bg hide"></div>
-      <div class="create createseller hide">
-        <form action="" method="POST" class="create__form">
-          <div class="up__title">
-            <h3>Create Account</h3>
-          </div>
-          <input type="text" class="crusername" name="username" placeholder="User Name" required />
-          <input type="text" class="crname" name="name" placeholder="Full Name" required />
-          <input type="text" class="crhotelname" name="hotelName" placeholder="Hotel Name" required />
-          <input type="text" class="crphone" name="phone" placeholder="Phone" required />
-          <input type="text" class="crpassword" name="password" placeholder="New password" required />
-          <input type="submit" value="Create" name="submit" class="btn btn-success" />
-        </form>
-      </div>
-      <!-- edit -->
-      <div class="bg hide"></div>
-      <div class="edit editseller hide">
-        <form action="" method="POST" class="edit__form">
-          <div class="up__title">
-            <h3>Update Account</h3>
-          </div>
-          <input type="text" readonly class="id" name="ID" />
-          <input type="text" class="username" name="username" required />
-          <input type="text" class="name" name="name" required />
-          <input type="text" class="hotel_name" name="hotelName" required />
-          <input type="text" class="phone" name="phone" required />
-          <input type="text" class="password" name="password" placeholder="New password" required />
-          <input type="submit" value="Update" name="submit" class="btn btn-success" />
-        </form>
-      </div>
+
       <div class="btn btn-success btncreateseller btncreate"><i class="fa-solid fa-plus"></i>Create</div>
       <form action=" " method="get">
         <table border="1">
