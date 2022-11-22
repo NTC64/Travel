@@ -69,6 +69,8 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
         <ul class="sidebar-dropdown hide list-unstyled">
           <li class="user"><a href="#">User</a></li>
           <li><a href="#" class="seller">Seller</a></li>
+          <li class="admin"><a href="#">Admin</a></li>
+          <li class="adcreate"><a href="#">Create</a></li>
         </ul>
       </li>
 
@@ -143,31 +145,23 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
     }
   }
   ?>
+
   <!-- create -->
 
-  <div class="create createuser hide">
+  <div class="create createad hide">
     <form action="" method="POST" class="create__form">
       <div class="up__title">
         <h3>Create Account</h3>
       </div>
+      <select class="crrole" id="">
+        <option value="user" label="user">user</option>
+        <option value="seller" label="seller">seller</option>
+        <option value="admin" label="admin">admin</option>
+      </select>
       <input type="text" class="crusername" name="username" placeholder="User Name" required />
       <input type="text" class="crname" name="name" placeholder="Full Name" required />
-
-      <input type="text" class="crpassword" name="password" placeholder="New password" required />
-      <input type="submit" value="Create" name="submit" class="btn btn-success smcreate" />
-    </form>
-  </div>
-  <!-- create -->
-
-  <div class="create createseller hide">
-    <form action="" method="POST" class="create__form">
-      <div class="up__title">
-        <h3>Create Account</h3>
-      </div>
-      <input type="text" class="crusername" name="username" placeholder="User Name" required />
-      <input type="text" class="crname" name="name" placeholder="Full Name" required />
-      <input type="text" class="crhotelname" name="hotelName" placeholder="Hotel Name" required />
-      <input type="text" class="crphone" name="phone" placeholder="Phone" required />
+      <input type="text" class="crhotelname hide" name="hotelName" placeholder="Hotel Name" />
+      <input type="text" class="crphone hide" name="phone" placeholder="Phone" />
       <input type="text" class="crpassword" name="password" placeholder="New password" required />
       <input type="submit" value="Create" name="submit" class="btn btn-success" />
     </form>
@@ -175,6 +169,22 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
   <!-- edit -->
 
   <div class="edit editseller hide">
+    <form action="" method="POST" class="edit__form">
+      <div class="up__title">
+        <h3>Update Account</h3>
+      </div>
+      <input type="text" readonly class="id" name="ID" />
+      <input type="text" class="username" name="username" required />
+      <input type="text" class="name" name="name" required />
+      <input type="text" class="hotel_name" name="hotelName" required />
+      <input type="text" class="phone" name="phone" required />
+      <input type="text" class="password" name="password" placeholder="New password" required />
+      <input type="submit" value="Update" name="submit" class="btn btn-success" />
+    </form>
+  </div>
+  <!-- edit -->
+
+  <div class="edit editad hide">
     <form action="" method="POST" class="edit__form">
       <div class="up__title">
         <h3>Update Account</h3>
@@ -241,7 +251,7 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
     </div>
     <!-- user -->
     <div class="container admin__user hide tb">
-      <div class="btn btn-success btncreateuser btncreate"><i class="fa-solid fa-plus"></i>Create</div>
+
       <form action=" " method="get">
         <table border="1">
           <tr>
@@ -306,7 +316,7 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
 
     <div class="container admin__seller hide tb">
 
-      <div class="btn btn-success btncreateseller btncreate"><i class="fa-solid fa-plus"></i>Create</div>
+
       <form action=" " method="get">
         <table border="1">
           <tr>
@@ -367,6 +377,48 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
           </ul>
         </div>
       </form>
+    </div>
+    <!-- admin -->
+    <div class="container admin__ad hide tb">
+
+      <form action=" " method="get">
+        <table border="1">
+          <tr>
+            <td>ID User</td>
+            <td>User Name</td>
+            <td>Full Name</td>
+            <td>Password</td>
+            <td>Role</td>
+            <td>Delete</i></td>
+            <td>Update</i></td>
+          </tr>
+
+
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><a href="#!" data-id="" class="btn__delete"><i class="fa-solid fa-trash"></i></a></td>
+            <td><a href="#!" class="btn__editad" data-id="" data-username="" data-name="">
+                <i class="fa-solid fa-pen-to-square"></i></a></td>
+          </tr>
+
+        </table>
+        <!-- pag -->
+        <div class="pag">
+          <ul class="pag__items">
+            <li><a href="">1</a> </li>
+            <li><a href="">2</a> </li>
+            <li><a href="">3</a> </li>
+            <li><a href=""><i class="fa-solid fa-chevron-right"></i></a> </li>
+          </ul>
+        </div>
+      </form>
+      <!-- aler2 -->
+
+
     </div>
 
     <!-- partial -->

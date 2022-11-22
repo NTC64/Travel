@@ -420,6 +420,7 @@ td:nth-child(4) {
   width: 10% !important;
 }
 .tb {
+  padding-top: 30px;
   display: flex;
   flex-direction: column;
   width: 70% !important;
@@ -504,7 +505,8 @@ td:nth-child(4) {
 
 .edit__form input,
 .create__form input,
-textarea {
+textarea,
+select {
   width: 80%;
   height: 50px;
   border: 1px solid rgba(0, 0, 0, 0.2);

@@ -25,6 +25,9 @@ $(document).on('click', '.has-dropdown,.i', function() {
 $(document).on('click', '.news', function() {
   if($(".adminnews").hasClass("hide")) {
     $(".admin__user").addClass("hide");
+    $(".createad").addClass("hide");
+    $(".bg").addClass("hide");
+    $(".admin__ad").addClass("hide");
     $(".admin__seller").addClass("hide");
     $(".adminnews").removeClass("hide");
     
@@ -36,9 +39,11 @@ $(document).on('click', '.news', function() {
 $(document).on('click', '.user', function() {
   
   if($(".admin__user").hasClass("hide")) {
-   
+    $(".admin__ad").addClass("hide");
+    $(".bg").addClass("hide");
     $(".admin__seller").addClass("hide");
     $(".adminnews").addClass("hide");
+    $(".createad").addClass("hide");
      $(".admin__user").removeClass("hide");
   }
  else {
@@ -49,8 +54,11 @@ $(document).on('click', '.user', function() {
 });
 $(document).on('click', '.seller', function() {
   if($(".admin__seller").hasClass("hide")) {
+    $(".admin__ad").addClass("hide");
+    $(".bg").addClass("hide");
     $(".admin__user").addClass("hide");
     $(".adminnews").addClass("hide");
+    $(".createad").addClass("hide");
     $(".admin__seller").removeClass("hide");
  }
 else {
@@ -145,30 +153,47 @@ $(document).on('click', '.btn__delete', function() {
     }
   })
 });
-$(document).on('click', '.btncreateuser', function() {
-  if($(".createuser").hasClass("hide")) {
+
+$(document).on('click', '.adcreate', function() {
+  if($(".createad").hasClass("hide")) {
     $(".bg").removeClass("hide");
-    $(".createuser").removeClass("hide");
+    $(".admin__user").addClass("hide");
+    $(".admin__seller").addClass("hide");
+    $(".adminnews").addClass("hide");
+    $(".admin__ad").addClass("hide");
+    $(".createad").removeClass("hide");
  }
 else {
-    $(".createuser").addClass("hide");
+    $(".createad").addClass("hide");
 }
 });
-$(document).on('click', '.btncreatenews', function(){
-  if($(".createnews").hasClass("hide")) {
-    $(".bg").removeClass("hide");
-    $(".createnews").removeClass("hide");
+$(document).on('click', '.admin', function() {
+  if($(".admin__ad").hasClass("hide")) {
+    $(".admin__user").addClass("hide");
+    $(".admin__seller").addClass("hide");
+    $(".bg").addClass("hide");
+    $(".createad").addClass("hide");
+    $(".adminnews").addClass("hide");
+    $(".admin__ad").removeClass("hide");
+    
+    
  }
 else {
-    $(".createnews").addClass("hide");
+    $(".admin__ad").addClass("hide");
 }
 });
-$(document).on('click', '.btncreateseller', function() {
-  if($(".createseller").hasClass("hide")) {
-    $(".bg").removeClass("hide");
-    $(".createseller").removeClass("hide");
+
+ 
+
+$(document).on('change', '.crrole', function() {
+  if($(this).val() == "seller") {
+    $(".crhotelname").removeClass("hide");
+    $(".crhotelname").attr("required", true);
+    $(".crphone").removeClass("hide");
+    $(".crphone").attr("required", true);
  }
 else {
-    $(".createseller").addClass("hide");
+    $(".crhotelname").addClass("hide");
+    $(".crphone").addClass("hide");
 }
 });
