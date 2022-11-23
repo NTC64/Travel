@@ -50,7 +50,11 @@ a:hover {
 .bg--active {
   display: block;
 }
+#carouselExampleControls img {
+  width: 100%;
 
+  object-fit: cover;
+}
 .login {
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.9);
   display: none;

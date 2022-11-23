@@ -13,7 +13,7 @@ $(document).ready(function() {
   }
  });
 $(document).on('click', '.has-dropdown,.i', function() {
-  if($(".sidebar-dropdown").hasClass("hide")) {
+  if($(this).find(".sidebar-dropdown").hasClass("hide")) {
     $(".sidebar-dropdown").addClass("hide");
      $(this).find(".sidebar-dropdown").removeClass("hide");
   }
