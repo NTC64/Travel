@@ -43,7 +43,7 @@
                         <a href="index.php" class="text-reset">Home</a>
                     </p>
                     <p>
-                        <a href="#!" class="text-reset">Tour</a>
+                        <a href="alltour.php" class="text-reset">Tour</a>
                     </p>
                     <p>
                         <a href="#!" class="text-reset">Category</a>

@@ -30,7 +30,7 @@
     <div class="container hotTour my-4">
         <div class="tour__title row mt-5">
             <h2 class="col-10 text-uppercase p-0">Hot Tour</h2>
-            <a class="m-auto text-right text-black-50 hvblack">View all >></a>
+            <a class="m-auto text-right text-black-50 hvblack" href="alltour.php">View all >></a>
         </div>
         <div class="tour__items row">
             <!-- tour card -->

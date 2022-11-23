@@ -7,7 +7,7 @@
                 <li class="nav__item">
                     <a href="index.php" class="text-white">Home</a>
                 </li>
-                <li class="nav__item"><a href="" class="text-white">Tour</a></li>
+                <li class="nav__item"><a href="alltour.php" class="text-white">Tour</a></li>
                 <li class="nav__item">
                     <a href="" class="text-white">Category</a>
                 </li>
