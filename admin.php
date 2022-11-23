@@ -142,12 +142,13 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
       <div class="up__title">
         <h3>Create News</h3>
       </div>
-      <input type="text" class="criduser" name="iduser" required />
-      <input type="text" class="cridcategory" name="idcategory" required />
-      <input type="text" class="crnewsname" name="newsname" required />
+
+      <input type="text" class="cridcategory" name="idcategory" required placeholder="ID Category" />
+      <input type="text" class="crnewsname" name="title" required placeholder="Title" />
       <textarea name="describe" class="crdescribe" cols="30" rows="10" required placeholder="Describe"></textarea>
-      <textarea name="body" class="crbody" cols="30" rows="10" required placeholder="Body"></textarea>
+      <textarea name="content" class="crbody" cols="30" rows="10" required placeholder="content"></textarea>
       <input type="file" class="crimg" name="img" required />
+      <textarea name="describevd" class="crdescribevd" cols="30" rows="10" required placeholder="Describe Video"></textarea>
       <input type="date" class="crdate" name="date" required />
       <input type="submit" value="Create" name="submit" class="btn btn-success smcreate" />
     </form>
@@ -359,6 +360,7 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
             <td>Description</td>
             <td>Body</td>
             <td>Image</td>
+            <td>Description Video</td>
             <td>Date</td>
 
             <td>Delete</i></td>
@@ -374,6 +376,7 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
             <td></td>
             <td class="m-0 p-0"><textarea name="" class="m-0 p-0 fs" id="" cols="100" rows="10">Bodsdsdgsdgssehuifsdoufuoasbfuobasuofbaubfu9asbdufbasuidfbuiasbdfuiabsfuibasuidfbasiufbuidgsdgdsgdsgsdgsdgsdg</textarea> </td>
             <td>Image</td>
+            <td class="m-0 p-0"><textarea name="" class="m-0 p-0 fs" cols="30" rows="10"></textarea></td>
             <td>Date</td>
 
             <td><a href="#!" data-id="" class="btn__delete"><i class="fa-solid fa-trash"></i></a></td>
