@@ -419,6 +419,13 @@ td:nth-child(3) {
 td:nth-child(4) {
   width: 10% !important;
 }
+td:nth-child(5) {
+  width: 10% !important;
+}
+td:nth-child(6) {
+  width: 20% !important;
+}
+
 .tb {
   padding-top: 30px;
   display: flex;
@@ -482,6 +489,7 @@ td:nth-child(4) {
   z-index: 999;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
   animation: edit 0.5s ease-in-out;
+  overflow: scroll;
 }
 @keyframes edit {
   0% {

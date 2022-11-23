@@ -29,6 +29,9 @@ $(document).on('click', '.news', function() {
     $(".bg").addClass("hide");
     $(".admin__ad").addClass("hide");
     $(".admin__seller").addClass("hide");
+    $(".admincategorynews").addClass("hide");
+    $(".admincategorytour").addClass("hide");
+    $(".createctg").addClass("hide");
     $(".adminnews").removeClass("hide");
     
   }
