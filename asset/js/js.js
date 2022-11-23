@@ -46,8 +46,6 @@ $(document).on("click", ".user", function() {
     $(".phone").removeAttr("required");
     $(".hotel_name").removeAttr("required");
 });
-$(document).on("click",".tour__items",function(){
-    window.location.href = "news.php";
-});
-//   admin
+
+
 

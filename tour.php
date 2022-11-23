@@ -27,7 +27,37 @@
     include("header.php");
     ?>
     <!-- main -->
+    <div class="container hotTour my-4">
+        <div class="tour__title row mt-5">
+            <h2 class="col-10 text-uppercase p-0">Tour</h2>
+            <!-- <a class="m-auto text-right text-black-50 hvblack">View all >></a> -->
+        </div>
+        <div class="tour__title row mt-5">
+            <h3 class="col-10 text-uppercase p-0">Tên địa điểm du lịch</h3>
 
+        </div>
+        <div class="tour__items row">
+            <!-- tour card -->
+            <div class="col-8">
+                <img src="./asset/img/ban5.jpg" alt="">
+                <img src="./asset/img/ban2.jpg" alt="">
+                <img src="./asset/img/ban3.jpg" alt="">
+            </div>
+            <div class="col-4">helo</div>
+            <!-- end tour card -->
+            <!-- tour card -->
+            <!-- ..... -->
+            <!-- end tour card -->
+            <!-- chi tiết tour -->
+            <div class="bg"></div>
+            <div class="tourdetail">
+
+            </div>
+
+            <!---->
+
+        </div>
+    </div>
     <!-- Footer -->
     <?php include 'footer.php'; ?>
     <!-- Footer -->
