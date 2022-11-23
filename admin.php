@@ -61,9 +61,9 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
       <li class="has-dropdown">
         <i class="fa-solid fa-location-dot"></i><a href="#">Tour</a>
         <ul class="sidebar-dropdown hide list-unstyled">
-          <li class="categorynews"><a href="#">Category news</a></li>
-          <li class="categorytour"><a href="#">Catogory tours</a></li>
-          <li class="crcategory"><a href="#">Create</a></li>
+          <li class="tourall"><a href="#">All Tours</a></li>
+          <li class="tourmanagement"><a href="#">Tour Management</a></li>
+
         </ul>
       </li>
       <li class="news">

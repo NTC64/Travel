@@ -183,14 +183,36 @@
         ?>
         <!-- End Sign Up Form -->
         <div class="banner">
-            <img src="./asset/img/banner1.jpg" alt="" />
+            <div>
+                <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img class="d-block w-100" src="./asset/img/ban4.jpg" alt="First slide">
+                        </div>
+                        <div class="carousel-item">
+                            <img class="d-block w-100" src="./asset/img/ban5.jpg" alt="Second slide">
+                        </div>
+                        <div class="carousel-item">
+                            <img class="d-block w-100" src="./asset/img/ban6.jpg" alt="Third slide">
+                        </div>
+                    </div>
+                    <!-- <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a> -->
+                </div>
+            </div>
             <div class="overlay"></div>
             <div class="search">
                 <form action="" method="get">
-                    <select name="" id="" class="search__txt">
+                    <select id="" class="search__txt">
                         <option value="">Chọn loại tour</option>
                     </select>
-                    <select name="" id="" class="search__select">
+                    <select id="" class="search__select">
                         <option value="">Địa điểm</option>
                     </select>
                     <input type="submit" value="Search" class="search__btn" />
@@ -209,8 +231,9 @@
                         <div class="card-body">
                             <h5 class="card-title">Tên địa điểm du lịch</h5>
                             <p class="card-text text-black-50">Mô tả</p>
+
                             <p class="card-price text-danger">Giá</p>
-                            <a href="#!" class="btn btn-green" data-id="id">Xem chi tiết</a>
+                            <a href="tour.php" class="btn btn-green" data-id="id">Đặt Tour</a>
                         </div>
                     </div>
                     <!-- end tour card -->
