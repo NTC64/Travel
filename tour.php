@@ -38,10 +38,10 @@
         </div>
         <div class="tour__items row">
             <!-- tour card -->
-            <div class="col-8">
+            <div class="col-8 slide_tour">
                 <img src="./asset/img/ban5.jpg" alt="">
-                <img src="./asset/img/ban2.jpg" alt="">
-                <img src="./asset/img/ban2.jpg" alt="">
+                <img class="hide" src="./asset/img/ban2.jpg" alt="">
+                <img class="hide" src="./asset/img/ban2.jpg" alt="">
                 <span>
 
                 </span>
