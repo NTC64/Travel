@@ -53,8 +53,9 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
       <li class="has-dropdown adcategory">
         <i class="fa-solid fa-bars"></i><a href="#">Category</a>
         <ul class="sidebar-dropdown hide list-unstyled">
-          <li><a href="#">Category news</a></li>
-          <li><a href="#">Catogory tours</a></li>
+          <li class="categorynews"><a href="#">Category news</a></li>
+          <li class="categorytour"><a href="#">Catogory tours</a></li>
+          <li class="crcategory"><a href="#">Create</a></li>
         </ul>
       </li>
       <li class="i">
@@ -97,7 +98,38 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
       <input type="submit" value="Update" name="submit" class="btn btn-success" />
     </form>
   </div>
+  <!-- cr category -->
+  <div class="create createctg hide">
+    <form action="" method="POST" class="create__form">
+      <div class="up__title">
+        <h3>Create category</h3>
+      </div>
+      <select class="crctg" id="" name="role">
+        <option value="categorynews">Category News</option>
+        <option value="categorytour">Category Tour</option>
 
+      </select>
+      <input type="text" class="crid" name="idcategory" placeholder="ID category" required />
+      <input type="text" class="crname" name="category name" placeholder="Category Name" required />
+
+      <input type="submit" value="Create" name="submit" class="btn btn-success" />
+    </form>
+  </div>
+  <!-- edit category -->
+
+  <div class="edit editctg hide">
+    <form action="" method="POST" class="edit__form">
+      <div class="up__title">
+        <h3>Update Category</h3>
+      </div>
+      <input type="text" class="idctg" name="" placeholder="ID category" />
+      <input type="text" class="ctgname" name="" placeholder="Category Name" required />
+
+
+
+      <input type="submit" value="Update" name="submit" class="btn btn-success" />
+    </form>
+  </div>
   <!-- create -->
   <div class="create createnews hide">
     <form action="" method="POST" class="create__form">
@@ -192,10 +224,10 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
         } else {
           echo "  <script> Swal.fire('Error!', 'Sign up failed!', 'error');
           setTimeout(function(){location.href='admin.php'}, 2000); </script> ";
-          }
         }
       }
     }
+  }
   ?>
   <!-- edit -->
 
@@ -230,6 +262,82 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
     </form>
   </div>
   <div class="admin__main">
+    <!-- category -->
+    <div class="container admincategorynews hide tb">
+
+      <form action=" " method="get">
+        <table border="1">
+          <tr>
+
+            <td>ID Category</td>
+            <td>Category news name</td>
+
+            <td>Delete</i></td>
+            <td>Update</i></td>
+          </tr>
+
+
+          <tr>
+            <td></td>
+            <td></td>
+
+            <td><a href="#!" data-id="" class="btn__delete"><i class="fa-solid fa-trash"></i></a></td>
+            <td><a href="#!" class="btn__editcategory" data-id="" data-username="" data-name=""><i class="fa-solid fa-pen-to-square"></i></a></td>
+          </tr>
+
+        </table>
+        <!-- pag -->
+        <div class="pag">
+          <ul class="pag__items">
+            <li><a href="">1</a> </li>
+            <li><a href="">2</a> </li>
+            <li><a href="">3</a> </li>
+            <li><a href=""><i class="fa-solid fa-chevron-right"></i></a> </li>
+          </ul>
+        </div>
+      </form>
+      <!-- aler2 -->
+
+
+    </div>
+    <!-- category tour -->
+    <div class="container admincategorytour hide tb">
+
+      <form action=" " method="get">
+        <table border="1">
+          <tr>
+
+            <td>ID Category</td>
+            <td>Category tour name</td>
+
+            <td>Delete</i></td>
+            <td>Update</i></td>
+          </tr>
+
+
+          <tr>
+            <td></td>
+            <td></td>
+
+            <td><a href="#!" data-id="" class="btn__delete"><i class="fa-solid fa-trash"></i></a></td>
+            <td><a href="#!" class="btn__editcategory" data-id="" data-username="" data-name=""><i class="fa-solid fa-pen-to-square"></i></a></td>
+          </tr>
+
+        </table>
+        <!-- pag -->
+        <div class="pag">
+          <ul class="pag__items">
+            <li><a href="">1</a> </li>
+            <li><a href="">2</a> </li>
+            <li><a href="">3</a> </li>
+            <li><a href=""><i class="fa-solid fa-chevron-right"></i></a> </li>
+          </ul>
+        </div>
+      </form>
+      <!-- aler2 -->
+
+
+    </div>
     <!-- news -->
     <div class="container adminnews hide tb">
       <div class="btn btn-success btncreatenews btncreate"><i class="fa-solid fa-plus"></i>Create</div>
@@ -243,7 +351,7 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
             <td>Body</td>
             <td>Image</td>
             <td>Date</td>
-            <td>Status</td>
+
             <td>Delete</i></td>
             <td>Update</i></td>
           </tr>
@@ -257,10 +365,7 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
             <td>Bodsdsdgsdgsdgsdgdsgdsgsdgsdgsdg</td>
             <td>Image</td>
             <td>Date</td>
-            <td>
-              <!-- Default checked -->
-              bật
-            </td>
+
             <td><a href="#!" data-id="" class="btn__delete"><i class="fa-solid fa-trash"></i></a></td>
             <td><a href="#!" class="btn__editnews" data-id="" data-username="" data-name=""><i class="fa-solid fa-pen-to-square"></i></a></td>
           </tr>

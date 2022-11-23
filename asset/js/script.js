@@ -65,6 +65,49 @@ else {
     $(".admin__seller").addClass("hide");
 }
 });
+$(document).on('click', '.categorynews', function() {
+  if($(".admin__ad").hasClass("hide")) {
+    $(".admin__user").addClass("hide");
+    $(".bg").addClass("hide");
+    $(".admin__seller").addClass("hide");
+    $(".adminnews").addClass("hide");
+    $(".createad").addClass("hide");
+    $(".admincategorytour").addClass("hide");
+    $(".createctg").addClass("hide");
+    $(".admincategorynews").removeClass("hide");
+ }
+else {
+    $(".admincategorynews").addClass("hide");
+}
+});
+$(document).on('click', '.categorytour', function() {
+  if($(".admin__ad").hasClass("hide")) {
+    $(".admin__user").addClass("hide");
+    $(".bg").addClass("hide");
+    $(".admin__seller").addClass("hide");
+    $(".adminnews").addClass("hide");
+    $(".createad").addClass("hide");
+    $(".admincategorynews").addClass("hide");
+    $(".createctg").addClass("hide");
+    $(".admincategorytour").removeClass("hide");
+ }
+else {
+    $(".admincategorytour").addClass("hide");
+}
+});
+$(document).on('click', '.btncreatenews', function() {
+
+  if($(".createad").hasClass("hide")) {
+    
+    $(".bg").removeClass("hide");
+    
+   
+    $(".createnews").removeClass("hide");
+ }
+else {
+    $(".createnews").addClass("hide");
+}
+});
 $(document).on('click','.btn__editnews',function(){
   if($(".editnews").hasClass("hide")) {
     $(".bg").removeClass("hide");
@@ -153,7 +196,21 @@ $(document).on('click', '.btn__delete', function() {
     }
   })
 });
-
+$(document).on('click', '.crcategory', function() {
+  if($(".createad").hasClass("hide")) {
+    $(".bg").removeClass("hide");
+    $(".admin__user").addClass("hide");
+    $(".admin__seller").addClass("hide");
+    $(".adminnews").addClass("hide");
+    $(".admin__ad").addClass("hide");
+    $(".admincategorynews").addClass("hide");
+    $(".admincategorytour").addClass("hide");
+    $(".createctg").removeClass("hide");
+ }
+else {
+    $(".createctg").addClass("hide");
+}
+});
 $(document).on('click', '.adcreate', function() {
   if($(".createad").hasClass("hide")) {
     $(".bg").removeClass("hide");
@@ -161,6 +218,9 @@ $(document).on('click', '.adcreate', function() {
     $(".admin__seller").addClass("hide");
     $(".adminnews").addClass("hide");
     $(".admin__ad").addClass("hide");
+    $(".createctg").addClass("hide");
+    $(".admincategorynews").addClass("hide");
+    $(".admincategorytour").addClass("hide");
     $(".createad").removeClass("hide");
  }
 else {
@@ -174,6 +234,9 @@ $(document).on('click', '.admin', function() {
     $(".bg").addClass("hide");
     $(".createad").addClass("hide");
     $(".adminnews").addClass("hide");
+    $(".admincategorynews").addClass("hide");
+    $(".admincategorytour").addClass("hide");
+    $(".createctg").addClass("hide");
     $(".admin__ad").removeClass("hide");
     
     
@@ -182,7 +245,19 @@ else {
     $(".admin__ad").addClass("hide");
 }
 });
-
+$(document).on('click', '.btn__editcategory', function() {
+  if($(".editctg").hasClass("hide")) {
+    $(".bg").removeClass("hide");
+    $(".editctg").removeClass("hide");
+    $(".id").val($(this).attr("data-id"));
+    $(".categoryname").val($(this).attr("data-categoryname"));
+    $(".describe").val($(this).attr("data-describe"));
+    
+ }
+else {
+    $(".editctg").addClass("hide");
+}
+});
  
 
 $(document).on('change', '.crrole', function() {
