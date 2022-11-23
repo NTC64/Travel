@@ -368,7 +368,7 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
             <td></td>
             <td></td>
             <td></td>
-            <td><textarea name="" id="" cols="30" rows="10">Bodsdsdgsdgssehuifsdoufuoasbfuobasuofbaubfu9asbdufbasuidfbuiasbdfuiabsfuibasuidfbasiufbuidgsdgdsgdsgsdgsdgsdg</textarea> </td>
+            <td class="m-0 p-0"><textarea name="" class="m-0 p-0 fs" id="" cols="100" rows="10">Bodsdsdgsdgssehuifsdoufuoasbfuobasuofbaubfu9asbdufbasuidfbuiasbdfuiabsfuibasuidfbasiufbuidgsdgdsgdsgsdgsdgsdg</textarea> </td>
             <td>Image</td>
             <td>Date</td>
 

@@ -410,6 +410,7 @@ table {
 td:first-child {
   width: 15% !important;
 }
+
 td:nth-child(2) {
   width: 20% !important;
 }
@@ -423,9 +424,11 @@ td:nth-child(5) {
   width: 10% !important;
 }
 td:nth-child(6) {
-  width: 20% !important;
+  width: 30% !important;
 }
-
+.fs {
+  font-size: 10px !important;
+}
 .tb {
   padding-top: 30px;
   display: flex;
