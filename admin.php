@@ -58,9 +58,13 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
           <li class="crcategory"><a href="#">Create</a></li>
         </ul>
       </li>
-      <li class="i">
+      <li class="has-dropdown">
         <i class="fa-solid fa-location-dot"></i><a href="#">Tour</a>
-
+        <ul class="sidebar-dropdown hide list-unstyled">
+          <li class="categorynews"><a href="#">Category news</a></li>
+          <li class="categorytour"><a href="#">Catogory tours</a></li>
+          <li class="crcategory"><a href="#">Create</a></li>
+        </ul>
       </li>
       <li class="news">
         <i class="fa-regular fa-newspaper"></i><a href="#"> News</a>
@@ -274,7 +278,7 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
           <tr>
 
             <td>ID Category</td>
-            <td>Category news name</td>
+            <td>News's Category</td>
 
             <td>Delete</i></td>
             <td>Update</i></td>
@@ -312,7 +316,7 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
           <tr>
 
             <td>ID Category</td>
-            <td>Category tour name</td>
+            <td>Tour's Category</td>
 
             <td>Delete</i></td>
             <td>Update</i></td>
