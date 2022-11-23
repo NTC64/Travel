@@ -41,7 +41,6 @@
             <div class="col-8">
                 <img src="./asset/img/ban5.jpg" alt="">
                 <img src="./asset/img/ban2.jpg" alt="">
-                <img src="./asset/img/ban3.jpg" alt="">
             </div>
             <div class="col-4">helo</div>
             <!-- end tour card -->
@@ -49,7 +48,6 @@
             <!-- ..... -->
             <!-- end tour card -->
             <!-- chi tiết tour -->
-            <div class="bg"></div>
             <div class="tourdetail">
 
             </div>
@@ -59,7 +57,7 @@
         </div>
     </div>
     <!-- Footer -->
-    <?php include 'footer.php'; ?>
+    <?php include('footer.php') ?>
     <!-- Footer -->
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
