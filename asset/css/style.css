@@ -401,6 +401,10 @@ a:hover {
   display: flex;
   justify-content: space-between;
 }
+.video {
+  display: flex;
+  justify-content: center;
+}
 .booking input {
   width: 200px;
   font-size: 18px;

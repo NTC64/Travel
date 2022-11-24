@@ -25,28 +25,31 @@ include 'conn.php';
     <?php
     include 'header.php';
     ?>
-        <!-- main -->
-        <?php
-        //echo news information base on id after click a href in index.php
-        if (isset($_GET['newsID'])) {
-            $id = $_GET['newsID'];
-            $sql = "SELECT *,resources FROM news, uploads WHERE news.newsID = '$id' AND news.uploadID = uploads.uploadID";
-            $result = mysqli_query($conn, $sql);
-            if (mysqli_num_rows($result) > 0) {
-                $row = mysqli_fetch_assoc($result);
-        ?>
-                <div class="container newsmain my-5">
-                    <h3><?php echo $row['title']; ?></h3>
-                    <p class="text-black-50"><?php echo $row['date']; ?></p>
-                    <p><?php echo $row['content'] ?></p>
-                    <video width="500" height="300" controls src="uploads/<?php echo $row['resources'] ?>" type='video/mp4'></video>
-                </div>
-        <?php
-            }
-        }
-        ?>
+    <!-- main -->
+    <?php
+    //echo news information base on id after click a href in index.php
+    if (isset($_GET['newsID'])) {
+        $id = $_GET['newsID'];
+        $sql = "SELECT *,resources FROM news, uploads WHERE news.newsID = '$id' AND news.uploadID = uploads.uploadID";
+        $result = mysqli_query($conn, $sql);
+        if (mysqli_num_rows($result) > 0) {
+            $row = mysqli_fetch_assoc($result);
+    ?>
+            <div class="container newsmain my-5">
+                <h3><?php echo $row['title']; ?></h3>
+                <p class="text-black-50"><?php echo $row['date']; ?></p>
+                <p><?php echo nl2br($row['content']) ?></p>
+                <div class="video">
+                    <video width="80%" height="auto" controls src="uploads/<?php echo $row['resources'] ?>" type='video/mp4'></video>
 
-        <!-- <div class="container newsmain my-5">
+                </div>
+            </div>
+    <?php
+        }
+    }
+    ?>
+
+    <!-- <div class="container newsmain my-5">
                 <h3>tiêu đề bài viết</h3>
                 <p class="text-black-50"> Thời gian đăng</p>
                 <p>Theo Bộ Giao thông vận tải, sau khi bổ sung, hiện nay tổng số các công trình, dự án thuộc Ban Chỉ đạo là 70 dự án, dự án thành phần tại 40 tỉnh, thành phố, gồm 63 dự án đường bộ, 5 dự án đường sắt, 2 dự án cảng hàng không.
@@ -76,8 +79,8 @@ include 'conn.php';
                     hết sức quan trọng, cần siết chặt lại”, Thủ tướng cương quyết.</p>
                 <p class="text-black-50 my-5">Tác giả</p>
             </div> -->
-        <!-- Footer -->
-        <?php include 'footer.php'; ?>
+    <!-- Footer -->
+    <?php include 'footer.php'; ?>
 </body>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
