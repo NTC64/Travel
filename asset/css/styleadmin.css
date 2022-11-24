@@ -527,6 +527,9 @@ select {
   outline: none;
   border-radius: 5px;
 }
+.crbody {
+  height: 200px !important;
+}
 .bg {
   background-color: rgba(0, 0, 0, 0.3);
 
@@ -537,6 +540,58 @@ select {
   width: 100%;
   height: 100%;
   z-index: 2;
+}
+.createnews {
+  width: 800px !important;
+  top: 50%;
+  left: 50%;
+  transform: translate(-33%, -50%);
+  animation: createnews 0.5s ease-in-out !important;
+}
+.left {
+  width: 100%;
+
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
+.right {
+  width: 100%;
+
+  display: flex;
+  align-items: stretch;
+  flex-direction: column;
+}
+.crdescribevd,
+.crdescribe {
+  height: 50px !important;
+}
+.bdnone {
+  border: none !important;
+}
+.text {
+  width: 640px;
+}
+.text select {
+  width: 250px;
+}
+.smnews {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+
+  flex-direction: column;
+}
+@keyframes createnews {
+  0% {
+    opacity: 0;
+    transform: translate(-33%, -100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-33%, -50%);
+  }
 }
 .editnews .img,
 .create .crimg {

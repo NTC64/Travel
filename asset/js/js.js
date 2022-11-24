@@ -47,5 +47,10 @@ $(document).on("click", ".user", function() {
     $(".hotel_name").removeAttr("required");
 });
 
+$(document).ready(function() {
+    $(".date").val(new Date().toISOString().substr(0, 10));
+   
+        
+});
 
 

@@ -88,19 +88,33 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
   <div class="bg hide"></div>
   <!-- edit -->
 
-  <div class="edit editnews hide">
+  <div class="edit editnews createnews hide">
     <form action="" method="POST" class="edit__form">
       <div class="up__title">
         <h3>Update news</h3>
       </div>
-      <input type="text" readonly class="id" name="ID" />
-      <input type="text" readonly class="iduser" name="iduser" />
-      <input type="text" class="idcategory" name="idcategory" required />
-      <input type="text" class="newsname" name="newsname" required />
-      <textarea name="describe" class="describe" cols="30" rows="10" required placeholder="Describe"></textarea>
-      <textarea name="body" class="body" cols="30" rows="10" required placeholder="Body"></textarea>
-      <input type="file" class="img" name="img" required />
-      <input type="date" class="date" name="date" required />
+      <input type="text" class="crnewsname" name="title" required placeholder="Title" />
+      <textarea name="describe" class="crdescribe" cols="30" rows="10" required placeholder="Describe"></textarea>
+      <textarea name="content" class="crbody" cols="30" rows="10" required placeholder="content"></textarea>
+      <input type="file" class="crimg bdnone" name="img" required />
+      <div class="row text">
+
+        <div class="col-6 left m-0 p-0">
+
+          <select name="" id="">
+
+            <option value="">danh mục 1</option>
+            <option value="">danh mục 2</option>
+
+          </select>
+        </div>
+        <div class="col-6 rigth m-0 p-0">
+
+          <input type="datetime-local" class="crdate" name="date" required />
+        </div>
+
+
+      </div>
       <input type="submit" value="Update" name="submit" class="btn btn-success" />
     </form>
   </div>
@@ -136,20 +150,38 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
       <input type="submit" value="Update" name="submit" class="btn btn-success" />
     </form>
   </div>
-  <!-- create -->
+  <!-- create news-->
   <div class="create createnews hide">
     <form action="" method="POST" class="create__form">
       <div class="up__title">
-        <h3>Create News</h3>
+        <h3 class="my-3">Create News</h3>
       </div>
-      <input type="text" class="criduser" name="iduser" required />
-      <input type="text" class="cridcategory" name="idcategory" required />
-      <input type="text" class="crnewsname" name="newsname" required />
+      <input type="text" class="crnewsname" name="title" required placeholder="Title" />
       <textarea name="describe" class="crdescribe" cols="30" rows="10" required placeholder="Describe"></textarea>
-      <textarea name="body" class="crbody" cols="30" rows="10" required placeholder="Body"></textarea>
+      <textarea name="content" class="crbody" cols="30" rows="10" required placeholder="content"></textarea>
       <input type="file" class="crimg" name="img" required />
-      <input type="date" class="crdate" name="date" required />
-      <input type="submit" value="Create" name="submit" class="btn btn-success smcreate" />
+      <div class="row text">
+
+        <div class="col-6 left m-0 p-0">
+
+          <select name="" id="">
+
+            <option value="">danh mục 1</option>
+            <option value="">danh mục 2</option>
+
+          </select>
+        </div>
+        <div class="col-6 rigth m-0 p-0">
+
+          <input type="datetime-local" class="crdate" name="date" required />
+        </div>
+
+
+      </div>
+      <div class="smnews">
+        <input type="submit" value="Create" name="submit" class="btn btn-success smcreate" />
+
+      </div>
     </form>
   </div>
   <!-- edit -->
@@ -359,6 +391,7 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
             <td>Description</td>
             <td>Body</td>
             <td>Image</td>
+
             <td>Date</td>
 
             <td>Delete</i></td>
@@ -373,7 +406,8 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
             <td></td>
             <td></td>
             <td class="m-0 p-0"><textarea name="" class="m-0 p-0 fs" id="" cols="100" rows="10">Bodsdsdgsdgssehuifsdoufuoasbfuobasuofbaubfu9asbdufbasuidfbuiasbdfuiabsfuibasuidfbasiufbuidgsdgdsgdsgsdgsdgsdg</textarea> </td>
-            <td>Image</td>
+
+            <td class="m-0 p-0"><textarea name="" class="m-0 p-0 fs" cols="30" rows="10"></textarea></td>
             <td>Date</td>
 
             <td><a href="#!" data-id="" class="btn__delete"><i class="fa-solid fa-trash"></i></a></td>

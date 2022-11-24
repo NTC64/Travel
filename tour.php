@@ -38,11 +38,26 @@
         </div>
         <div class="tour__items row">
             <!-- tour card -->
-            <div class="col-8">
+            <div class="col-8 slide_tour">
                 <img src="./asset/img/ban5.jpg" alt="">
-                <img src="./asset/img/ban2.jpg" alt="">
+                <img class="hide" src="./asset/img/ban2.jpg" alt="">
+                <img class="hide" src="./asset/img/ban2.jpg" alt="">
+                <span>
+
+                </span>
             </div>
-            <div class="col-4">helo</div>
+            <div class="col-4 booking">
+                <p class="tour-price text-or">Giá <span>Vnđ/Người</span></p>
+                <div class="text_box my-3">
+
+                    <label for="">Số người:</label><input type="number" value="1" min="1" max="10">
+                </div>
+                <div class="text_box my-3">
+                    <label for="">Khởi hành:</label><input type="date" name="" class="date" id="">
+
+                </div>
+                <a href="tour.php" class="btn btn-green mt-4 btn__tour" data-id="id">Đặt Tour</a>
+            </div>
             <!-- end tour card -->
             <!-- tour card -->
             <!-- ..... -->
@@ -62,5 +77,9 @@
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 </body>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="asset/js/js.js"></script>
 
 </html>
