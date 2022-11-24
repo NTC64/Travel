@@ -123,19 +123,40 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
       <div class="up__title">
         <h3>Create category</h3>
       </div>
-      <select class="crctg" id="" name="role">
-        <option value="categorynews">Category News</option>
-        <option value="categorytour">Category Tour</option>
-
+      <select class="crctg" id="" name="category">
+        <option value="category_news">Category News</option>
+        <option value="category_tours">Category Tours</option>
       </select>
-      <input type="text" class="crid" name="idcategory" placeholder="ID category" required />
-      <input type="text" class="crname" name="category name" placeholder="Category Name" required />
-
-      <input type="submit" value="Create" name="submit" class="btn btn-success" />
+      <input type="text" class="crid" name="categoryID" placeholder="ID category" required />
+      <input type="text" class="crname" name="categoryName" placeholder="Category Name" required />
+      <input type="submit" value="Create" name="crtCategory" class="btn btn-success" />
     </form>
   </div>
   <!-- edit category -->
-
+  <?php
+  if (isset($_POST['crtCategory'])) {
+    $category = $_POST['category'];
+    $categoryID = $_POST['categoryID'];
+    $categoryName = $_POST['categoryName'];
+    if ($category == 'category_news') {
+      $sql = "INSERT INTO category_news (categoryID, categoryName) VALUES ('$categoryID', '$categoryName')";
+      $result = mysqli_query($conn, $sql);
+      if ($result) {
+        echo '<script>alert("Create category news success")</script>';
+      } else {
+        echo '<script>alert("Create category news fail")</script>';
+      }
+    } else {
+      $sql = "INSERT INTO category_tours (categoryID, categoryName) VALUES ('$categoryID', '$categoryName')";
+      $result = mysqli_query($conn, $sql);
+      if ($result) {
+        echo '<script>alert("Create category tours success")</script>';
+      } else {
+        echo '<script>alert("Create category tours fail")</script>';
+      }
+    }
+  }
+  ?>
   <div class="edit editctg hide">
     <form action="" method="POST" class="edit__form">
       <div class="up__title">
@@ -143,9 +164,6 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
       </div>
       <input type="text" class="idctg" name="" placeholder="ID category" />
       <input type="text" class="ctgname" name="" placeholder="Category Name" required />
-
-
-
       <input type="submit" value="Update" name="submit" class="btn btn-success" />
     </form>
   </div>
@@ -397,10 +415,8 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
       <form action=" " method="get">
         <table border="1">
           <tr>
-
             <td>ID Category</td>
             <td>Tour's Category</td>
-
             <td>Delete</i></td>
             <td>Update</i></td>
           </tr>
@@ -475,16 +491,16 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
               <td><?php echo $newsID; ?></td>
               <td><?php echo $author; ?></td>
               <td><?php echo $categoryID; ?></td>
-              <td><?php echo mb_substr($title,0,30) ; ?></td>
+              <td><?php echo mb_substr($title, 0, 30); ?></td>
               <td><?php echo $description; ?></td>
-              <td><?php echo mb_substr($content,0,100) . "...."; ?></td>
+              <td><?php echo mb_substr($content, 0, 100) . "...."; ?></td>
               <td><?php echo $resources; ?></td>
               <td><?php echo $date; ?></td>
               <td><a href="#!" data-id="" class="btn__delete"><i class="fa-solid fa-trash"></i></a></td>
               <td><a href="#!" class="btn__editnews" data-id="" data-username="" data-name=""><i class="fa-solid fa-pen-to-square"></i></a></td>
           </tr>
         <?php } ?>
-            <!-- end foreach -->
+        <!-- end foreach -->
 
         </table>
         <!-- pag -->
