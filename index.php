@@ -103,7 +103,7 @@
         function get_news_list()
         {
             global $conn;
-            $sql = "SELECT resources, date, title, description FROM news,resources WHERE news.resourceID = resources.resourceID";
+            $sql = "SELECT newsID, resources, date, title, description FROM news,uploads WHERE news.uploadID = uploads.uploadID";
             $result = mysqli_query($conn, $sql);
             $news_list = array();
             while ($row = mysqli_fetch_array($result)) {
@@ -115,29 +115,23 @@
         <?php
         $news_list = get_news_list();
         foreach ($news_list as $news) {
-
         ?>
-            <div class="card col-4 p-0 m-2">
-                <img class="card-img-top" src="asset/img/tour1.jpg" alt="Card image cap" />
-                <div class="card-body">
-                    <p class="card-date text-black-50"><?php echo $news['date'] ?></p>
-                    <h5 class="card-title"><?php echo $news['title'] ?></h5>
-                    <p class="card-text text-black-50"><?php echo $news['description'] ?></p>
-                    <?php
-                    if (isset($_SESSION['user'])) {
-                    ?>
-                        <a href="news.php?id=<?php echo $news['id'] ?>" class="btn btn-green">Xem chi tiết</a>
-                    <?php
-                    } else {
-                    ?>
-                        <a href="login.php" class="btn btn-green">Xem chi tiết</a>
-                <?php
-                    }
-                }
-                ?>
-
+            <div class="tour__items row">
+                <div class="card col-4 p-0 m-2">
+                    <img class="card-img-top" src="asset/img/tour1.jpg" alt="Card image cap" />
+                    <div class="card-body">
+                        <p class="card-date text-black-50"><?php echo $news['date']; ?></p>
+                        <h5 class="card-title"><?php echo $news['title']; ?></h5>
+                        <p class="card-text text-black-50"><?php echo $news['description']; ?></p>
+                        <p><?php echo $news['newsID']; ?></p>
+                        <!-- create href tag to news.php with news ID -->
+                        <a href="news.php?newsID=<?php echo $news['newsID']; ?>" class="btn btn-green">Xem chi tiết</a>
+                    </div>
                 </div>
             </div>
+        <?php
+        }
+        ?>
     </div>
     <!-- Footer -->
     <?php include 'footer.php'; ?>
@@ -149,6 +143,6 @@
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<script src="asset/js/js.js"></script>
+<script src="/asset/js/js.js"></script>
 
 </html>

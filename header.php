@@ -1,11 +1,11 @@
 <div class="container-fluid p-0 main">
     <div class="header row m-0 p-0 text-white bg-dark">
         <div class="col-1"></div>
-        <div class="header__logo col-2"><a href="../travel">ULSA IT</a></div>
+        <div class="header__logo col-2"><a href="../Travel/">ULSA IT</a></div>
         <div class="header__nav col-5">
             <ul class="nav__items navbar p-0 m-0">
                 <li class="nav__item">
-                    <a href="index.php" class="text-white">Home</a>
+                    <a href="/index.php" class="text-white">Home</a>
                 </li>
                 <li class="nav__item"><a href="alltour.php" class="text-white">Tour</a></li>
                 <li class="nav__item">
@@ -198,4 +198,4 @@
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<script src="/asset/js/js.js"></script>
+<script src="asset/js/js.js"></script>

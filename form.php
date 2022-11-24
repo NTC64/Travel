@@ -1,22 +1,25 @@
 <?php
 include 'conn.php';
 ?>
+<?php 
+$title = "";
+$description = "";
+$content = "";
+$date = "";
+?>
 <form action="" method="post" enctype="multipart/form-data">
-    <input type="text" name="title" placeholder="Title" required>
+    <input type="text" name="title" placeholder="Title" value="<?php if(isset($_POST['title'])){echo $_POST['title'];} ?>" required>
     <br>
-    <input type="text" name="description" placeholder="description" required>
+    <input type="text" name="description" placeholder="description" value="<?php if(isset($_POST['description'])){echo $_POST['description'];} ?>" required>
     <br>
-    <input type="text" name="content" placeholder="Content" required>
+    <input type="text" name="content" placeholder="Content" value="<?php if(isset($_POST['content'])){echo $_POST['content'];} ?>" required>
     <br>
-    Video: <input type="file" name="video" id="video" required>
+    Video: <input type="file" name="video" id="video" value="<?php if(isset($_POST['video'])){echo $_POST['video'];} ?>">
     <br>
-    <input type="date" name="date" placeholder="Date" required>
+    <input type="date" name="date" placeholder="Date" value="<?php if(isset($_POST['date'])){echo $_POST['date'];} ?>" required>
     <br>
     <input type="submit" name="submit" value="Submit">
 </form>
-<?php 
-$title = "";
-?>
 <?php
 if (isset($_POST['submit'])) {
     $target_dir = "uploads/";
@@ -32,7 +35,7 @@ if (isset($_POST['submit'])) {
         $uploadOk = 0;
     }
     //check if file name is existed
-    $sql = "SELECT * FROM resources WHERE resources = '$fileName'";
+    $sql = "SELECT * FROM uploads WHERE resources = '$fileName'";
     $result = mysqli_query($conn, $sql);
     if (mysqli_num_rows($result) > 0) {
         echo "File name is existed, please change file name.";
@@ -71,21 +74,18 @@ if (isset($_POST['submit'])) {
 ?>
 <?php
 //echo all data from news table
-$sql = "SELECT title, description, content, date, resources  FROM `news`, uploads WHERE news.uploadID = uploads.uploadID";
+$sql = "select * from news";
 $result = mysqli_query($conn, $sql);
-if (mysqli_num_rows($result) > 0) {
-    while ($row = mysqli_fetch_assoc($result)) { ?>
-        <div>
-            <h1><?php echo $row['title']; ?></h1>
-            <p><?php echo $row['description']; ?></p>
-            <p><?php echo $row['content']; ?></p>
-            <p><?php echo $row['date']; ?></p>
-            <video width="320" height="240" controls >
-                <source src="resource/<?php echo $row['resources']; ?>" type="video/mp4">
-            </video>
-        </div>
-<?php }
-} else {
-    echo "0 results";
+if(mysqli_num_rows($result) > 0){
+    while($row = mysqli_fetch_assoc($result)){
+        echo $row['title'];
+        echo "-";
+        echo $row['description'];
+        echo "-";
+        echo $row['content'];
+        echo "-";
+        echo $row['date'];
+        echo "<br>";
+    }
 }
 ?>

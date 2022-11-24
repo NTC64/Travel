@@ -68,7 +68,6 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
       </li>
       <li class="news">
         <i class="fa-regular fa-newspaper"></i><a href="#"> News</a>
-
       </li>
       <li class="has-dropdown account"><i class="fa-solid fa-user"></i><a href="#">Account</a>
         <ul class="sidebar-dropdown hide list-unstyled">
@@ -152,38 +151,83 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
   </div>
   <!-- create news-->
   <div class="create createnews hide">
-    <form action="" method="POST" class="create__form">
+    <form action="" method="POST" class="create__form" enctype="multipart/form-data">
       <div class="up__title">
         <h3 class="my-3">Create News</h3>
       </div>
       <input type="text" class="crnewsname" name="title" required placeholder="Title" />
       <textarea name="describe" class="crdescribe" cols="30" rows="10" required placeholder="Describe"></textarea>
-      <textarea name="content" class="crbody" cols="30" rows="10" required placeholder="content"></textarea>
-      <input type="file" class="crimg" name="img" required />
+      <textarea name="content" class="crbody" cols="30" rows="10" required placeholder="Enter content"></textarea>
+      <input type="file" class="crimg" name="video" id="video" required />
       <div class="row text">
 
         <div class="col-6 left m-0 p-0">
-
           <select name="" id="">
-
             <option value="">danh mục 1</option>
             <option value="">danh mục 2</option>
-
           </select>
         </div>
         <div class="col-6 rigth m-0 p-0">
-
-          <input type="datetime-local" class="crdate" name="date" required />
+          <input type="date" class="crdate" name="date" required />
         </div>
-
-
       </div>
       <div class="smnews">
-        <input type="submit" value="Create" name="submit" class="btn btn-success smcreate" />
-
+        <input type="submit" value="Create" name="submitNews" class="btn btn-success smcreate" />
       </div>
     </form>
   </div>
+  <!-- php code to get data from form -->
+  <?php 
+if (isset($_POST['submitNews'])) {
+  $target_dir = "uploads/";
+  $target_file = $target_dir . basename($_FILES["video"]["name"]);
+  $fileName = $_FILES['video']['name'];
+  $fileTmpName = $_FILES['video']['tmp_name'];
+  $fileExt = explode('.', $fileName);
+  $uploadOk = 1;
+  $fileActualExt = strtolower(end($fileExt));
+  // Check videoFileType is valid
+  if ($fileActualExt !== "mp4" && $fileActualExt !== "avi" && $fileActualExt !== "mov" && $fileActualExt !== "wmv" && $fileActualExt !== "flv" && $fileActualExt !== "3gp") {
+      echo "<script>alert('Sorry, only MP4, AVI, MOV, WMV, FLV & 3GP files are allowed.')</script>";
+      $uploadOk = 0;
+  }
+  //check if file name is existed
+  $sql = "SELECT * FROM uploads WHERE resources = '$fileName'";
+  $result = mysqli_query($conn, $sql);
+  if (mysqli_num_rows($result) > 0) {
+      echo "<script>alert('Sorry, file name is existed.')</script>";
+      $uploadOk = 0;
+  }
+  if ($uploadOk == 0) {
+      echo "<script>alert('Sorry, your file was not uploaded.')</script>";
+  } else {
+      move_uploaded_file($fileTmpName, $target_file);
+      $sql = "INSERT INTO `uploads` (`resources`) VALUES ('$fileName')";
+      $result = mysqli_query($conn, $sql);
+      if ($result) {
+          echo "<script>alert('The file " . htmlspecialchars(basename($_FILES["video"]["name"])) . " has been uploaded.')</script>";
+      } else {
+          echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+      }
+      $uploadID = "SELECT uploadID FROM uploads WHERE resources = '$fileName'";
+      $result = mysqli_query($conn, $uploadID);
+      $row = mysqli_fetch_assoc($result);
+      $uploadID = $row['uploadID'];
+      //get data from form
+      $title = $_POST['title'];
+      $description = $_POST['describe'];
+      $content = $_POST['content'];
+      $date = $_POST['date'];
+      $sql = "INSERT INTO `news` (`title`, `description`, `content`, `date`, `uploadID`) VALUES ('$title', '$description', '$content', '$date', '$uploadID')";
+      $result = mysqli_query($conn, $sql);
+      if ($result) {
+        echo "<script>alert('Create news successfully.')</script>";
+      } else {
+          echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+      }
+  }
+}
+  ?>
   <!-- edit -->
 
   <div class="edit edituser hide">
@@ -391,21 +435,17 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
             <td>Description</td>
             <td>Body</td>
             <td>Image</td>
-
             <td>Date</td>
-
             <td>Delete</i></td>
             <td>Update</i></td>
           </tr>
-
-
           <tr>
             <td></td>
             <td></td>
             <td></td>
             <td></td>
             <td></td>
-            <td class="m-0 p-0"><textarea name="" class="m-0 p-0 fs" id="" cols="100" rows="10">Bodsdsdgsdgssehuifsdoufuoasbfuobasuofbaubfu9asbdufbasuidfbuiasbdfuiabsfuibasuidfbasiufbuidgsdgdsgdsgsdgsdgsdg</textarea> </td>
+            <td class="m-0 p-0"><textarea name="" class="m-0 p-0 fs" id="" cols="100" rows="10">content</textarea> </td>
 
             <td class="m-0 p-0"><textarea name="" class="m-0 p-0 fs" cols="30" rows="10"></textarea></td>
             <td>Date</td>
@@ -413,7 +453,7 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
             <td><a href="#!" data-id="" class="btn__delete"><i class="fa-solid fa-trash"></i></a></td>
             <td><a href="#!" class="btn__editnews" data-id="" data-username="" data-name=""><i class="fa-solid fa-pen-to-square"></i></a></td>
           </tr>
-
+        
         </table>
         <!-- pag -->
         <div class="pag">
