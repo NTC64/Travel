@@ -24,7 +24,7 @@
 <body>
     <!-- Login Form -->
     <?php
-    include('header.php');
+    include("header.php");
     ?>
     <!-- main -->
     <div class="container hotTour my-4">
@@ -88,12 +88,22 @@
             <h2 class="col-10 text-uppercase p-0">News</h2>
             <a class="m-auto text-right text-black-50 hvblack">View all >></a>
         </div>
+        <div class="tour__items row">
+            <div class="card col-4 p-0 m-2">
+                <img class="card-img-top" src="asset/img/tour1.jpg" alt="Card image cap" />
+                <div class="card-body">
+                    <p class="card-date text-black-50">Thời gian đăng</p>
+                    <h5 class="card-title">Tên bài viết</h5>
+                    <p class="card-text text-black-50">Mô tả</p>
+                </div>
+            </div>
+        </div>
         <?php
         //get list news from database
         function get_news_list()
         {
             global $conn;
-            $sql = "SELECT newsID, resources, date, title, description FROM news,uploads WHERE news.uploadID = uploads.uploadID";
+            $sql = "SELECT resources, date, title, description FROM news,resources WHERE news.resourceID = resources.resourceID";
             $result = mysqli_query($conn, $sql);
             $news_list = array();
             while ($row = mysqli_fetch_array($result)) {
@@ -102,26 +112,32 @@
             return $news_list;
         }
         ?>
-        <div class="tour__items row">
-            <?php
-            $news_list = get_news_list();
-            foreach ($news_list as $news) {
-            ?>
-                <div class="card col-4 p-0 m-2">
-                    <video src="uploads/<?php echo $news['resources']; ?>"></video>
-                    <div class="card-body">
-                        <p class="card-date text-black-50"><?php echo $news['date']; ?></p>
-                        <h5 class="card-title"><?php echo $news['title']; ?></h5>
-                        <p class="card-text text-black-50"><?php echo $news['description']; ?></p>
-                        <p><?php echo $news['newsID']; ?></p>
-                        <!-- create href tag to news.php with news ID -->
-                        <a href="news.php?newsID=<?php echo $news['newsID']; ?>" class="btn btn-green">Xem chi tiết</a>
-                    </div>
+        <?php
+        $news_list = get_news_list();
+        foreach ($news_list as $news) {
+
+        ?>
+            <div class="card col-4 p-0 m-2">
+                <img class="card-img-top" src="asset/img/tour1.jpg" alt="Card image cap" />
+                <div class="card-body">
+                    <p class="card-date text-black-50"><?php echo $news['date'] ?></p>
+                    <h5 class="card-title"><?php echo $news['title'] ?></h5>
+                    <p class="card-text text-black-50"><?php echo $news['description'] ?></p>
+                    <?php
+                    if (isset($_SESSION['user'])) {
+                    ?>
+                        <a href="news.php?id=<?php echo $news['id'] ?>" class="btn btn-green">Xem chi tiết</a>
+                    <?php
+                    } else {
+                    ?>
+                        <a href="login.php" class="btn btn-green">Xem chi tiết</a>
+                <?php
+                    }
+                }
+                ?>
+
                 </div>
-            <?php
-            }
-            ?>
-        </div>
+            </div>
     </div>
     <!-- Footer -->
     <?php include 'footer.php'; ?>
@@ -133,68 +149,6 @@
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<script src="/asset/js/js.js"></script>
+<script src="asset/js/js.js"></script>
 
 </html>
-<div class="container admin__seller hide tb">
-      <form action=" " method="get">
-        <table border="1">
-          <tr>
-            <td>ID User</td>
-            <td>Full Name</td>
-            <td>User Name</td>
-            <td>Password</td>
-            <td>Hotel Name</td>
-            <td>Phone</td>
-            <td>Delete</td>
-            <td>Edit</td>
-          </tr>
-          <?php
-          //get seller list
-          function get_seller_list()
-          {
-            global $conn;
-            $sql = "SELECT * FROM access where role = 'seller'";
-            $result = mysqli_query($conn, $sql);
-            $seller_list = array();
-            while ($row = mysqli_fetch_array($result)) {
-              $seller_list[] = $row;
-            }
-            return $seller_list;
-          }
-          ?>
-          <?php
-          $seller_list = get_seller_list();
-          foreach ($seller_list as $seller) {
-            $ID = $seller['userID'];
-            $name = $seller['name'];
-            $username = $seller['username'];
-            $password = $seller['password'];
-            $hotel = $seller['hotelName'];
-            $phone = $seller['phone'];
-          ?>
-            <tr>
-              <td><?php echo $seller['userID'] ?></td>
-              <td><?php echo $seller['name'] ?></td>
-              <td><?php echo $seller['username'] ?></td>
-              <td><?php echo $seller['password'] ?></td>
-              <td><?php echo $seller['hotelName'] ?></td>
-              <td><?php echo $seller['phone'] ?></td>
-              <td><a href="#!" data-id="<?php echo $ID; ?>" class="btn__delete"><i class="fa-solid fa-trash"></i></a></td>
-              <td><a href="#!" class="btn__editseller" data-id="<?php echo $seller['userID']; ?>" data-username="<?php echo $seller['username']; ?>" data-name="<?php echo $seller['name']; ?>" data-hotelname="<?php echo $seller['hotelName']; ?>" data-phone="<?php echo $seller['phone']; ?>"><i class="fa-solid fa-pen-to-square"></i></a></td>
-            </tr>
-          <?php
-          }
-          ?>
-        </table>
-        <div class="pag">
-          <ul class="pag__items">
-
-            <li><a href="">1</a> </li>
-            <li><a href="">2</a> </li>
-            <li><a href="">3</a> </li>
-            <li><a href=""> <i class="fa-solid fa-chevron-right"></i></a> </li>
-          </ul>
-        </div>
-      </form>
-    </div>
