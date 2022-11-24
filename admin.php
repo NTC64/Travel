@@ -436,7 +436,7 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
         <table border="1">
           <tr>
             <td>ID News</td>
-            <td>User name</td>
+            <td>Author</td>
             <td>ID Category</td>
             <td>Title</td>
             <td>Description</td>
@@ -451,7 +451,7 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
             function get_news_list()
             {
               global $conn;
-              $sql = "SELECT *,resources FROM news, uploads WHERE news.uploadID = uploads.uploadID";
+              $sql = "SELECT *,resources, name FROM access, news, uploads WHERE news.uploadID = uploads.uploadID and access.userID = news.userID";
               $result = mysqli_query($conn, $sql);
               $news_list = array();
               while ($row = mysqli_fetch_assoc($result)) {
@@ -463,10 +463,8 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
             <?php
             $news_list = get_news_list();
             foreach ($news_list as $news) {
-              //get user ID by session
-              $username = $_SESSION['username'];
-              // $userID = $news['userID'];
               $newsID = $news['newsID'];
+              $author = $news['name'];
               $categoryID = $news['categoryID'];
               $title = $news['title'];
               $description = $news['description'];
@@ -475,11 +473,11 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
               $resources = $news['resources'];
             ?>
               <td><?php echo $newsID; ?></td>
-              <td><?php echo $username; ?></td>
+              <td><?php echo $author; ?></td>
               <td><?php echo $categoryID; ?></td>
-              <td><?php echo substr($title,0,30); ?></td>
+              <td><?php echo mb_substr($title,0,30) ; ?></td>
               <td><?php echo $description; ?></td>
-              <td><?php echo substr($content,0,100); ?></td>
+              <td><?php echo mb_substr($content,0,100) . "...."; ?></td>
               <td><?php echo $resources; ?></td>
               <td><?php echo $date; ?></td>
               <td><a href="#!" data-id="" class="btn__delete"><i class="fa-solid fa-trash"></i></a></td>
