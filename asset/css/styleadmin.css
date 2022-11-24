@@ -402,30 +402,44 @@ td {
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
-  font-size: 12px !important;
+  font-size: 14px !important;
+  padding: 5px !important;
 }
+td:nth-child(1) {
+  width: auto !important;
+}
+td:nth-child(2) {
+  width: auto !important;
+}
+td:nth-child(3) {
+  width: auto !important;
+}
+td:nth-child(4) {
+  width: auto !important;
+}
+td:nth-child(5) {
+  width: auto !important;
+}
+td:nth-child(6) {
+  width: auto !important;
+}
+td:nth-child(7) {
+  width: auto !important;
+}
+td:nth-child(8) {
+  width: auto !important;
+}
+td:nth-child(9) {
+  width: auto !important;
+}
+td:nth-child(10) {
+  width: auto !important;
+}
+
 table {
   table-layout: auto !important;
 }
-td:first-child {
-  width: 15% !important;
-}
 
-td:nth-child(2) {
-  width: 20% !important;
-}
-td:nth-child(3) {
-  width: 10% !important;
-}
-td:nth-child(4) {
-  width: 10% !important;
-}
-td:nth-child(5) {
-  width: 10% !important;
-}
-td:nth-child(6) {
-  width: 30% !important;
-}
 .fs {
   font-size: 10px !important;
 }
