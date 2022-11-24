@@ -275,3 +275,7 @@ else {
     $(".crphone").addClass("hide");
 }
 });
+$(document).ready(function() {
+  $(".crdate").val(new Date().toISOString().substr(0, 10));
+    
+});
