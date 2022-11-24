@@ -250,7 +250,7 @@ if (isset($_POST['submitNews'])) {
       $username = $_POST['username'];
       $name = $_POST['name'];
       $password = $_POST['password'];
-      $sql = "UPDATE access SET username = '$username', name = '$name', password = '$password' WHERE ID = '$id'";
+      $sql = "UPDATE access SET username = '$username', name = '$name', password = '$password' WHERE userID = '$id'";
       $result = mysqli_query($conn, $sql);
       if ($result) {
         echo '<script>alert("Update success")</script>';
@@ -500,20 +500,20 @@ if (isset($_POST['submitNews'])) {
           <?php
           $user_list = get_user_list();
           foreach ($user_list as $user) {
-            $ID = $user['ID'];
+            $ID = $user['userID'];
             $username = $user['username'];
             $name = $user['name'];
             $password = $user['password'];
             $role = 'user';
           ?>
             <tr>
-              <td><?php echo $user['ID'] ?></td>
+              <td><?php echo $user['userID'] ?></td>
               <td><?php echo $user['username'] ?></td>
               <td><?php echo $user['name'] ?></td>
               <td><?php echo $user['password'] ?></td>
               <td><?php echo $user['role'] ?></td>
               <td><a href="#!" data-id="<?php echo $ID; ?>" class="btn__delete"><i class="fa-solid fa-trash"></i></a></td>
-              <td><a href="#!" class="btn__edituser" data-id="<?php echo $user['ID']; ?>" data-username="<?php echo $user['username']; ?>" data-name="<?php echo $user['name']; ?>"><i class="fa-solid fa-pen-to-square"></i></a></td>
+              <td><a href="#!" class="btn__edituser" data-id="<?php echo $user['userID']; ?>" data-username="<?php echo $user['username']; ?>" data-name="<?php echo $user['name']; ?>"><i class="fa-solid fa-pen-to-square"></i></a></td>
             </tr>
           <?php
           }
@@ -566,7 +566,7 @@ if (isset($_POST['submitNews'])) {
           <?php
           $seller_list = get_seller_list();
           foreach ($seller_list as $seller) {
-            $ID = $seller['ID'];
+            $ID = $seller['userID'];
             $name = $seller['name'];
             $username = $seller['username'];
             $password = $seller['password'];
@@ -574,14 +574,14 @@ if (isset($_POST['submitNews'])) {
             $phone = $seller['phone'];
           ?>
             <tr>
-              <td><?php echo $seller['ID'] ?></td>
+              <td><?php echo $seller['userID'] ?></td>
               <td><?php echo $seller['name'] ?></td>
               <td><?php echo $seller['username'] ?></td>
               <td><?php echo $seller['password'] ?></td>
               <td><?php echo $seller['hotelName'] ?></td>
               <td><?php echo $seller['phone'] ?></td>
               <td><a href="#!" data-id="<?php echo $ID; ?>" class="btn__delete"><i class="fa-solid fa-trash"></i></a></td>
-              <td><a href="#!" class="btn__editseller" data-id="<?php echo $seller['ID']; ?>" data-username="<?php echo $seller['username']; ?>" data-name="<?php echo $seller['name']; ?>" data-hotelname="<?php echo $seller['hotelName']; ?>" data-phone="<?php echo $seller['phone']; ?>"><i class="fa-solid fa-pen-to-square"></i></a></td>
+              <td><a href="#!" class="btn__editseller" data-id="<?php echo $seller['userID']; ?>" data-username="<?php echo $seller['username']; ?>" data-name="<?php echo $seller['name']; ?>" data-hotelname="<?php echo $seller['hotelName']; ?>" data-phone="<?php echo $seller['phone']; ?>"><i class="fa-solid fa-pen-to-square"></i></a></td>
             </tr>
           <?php
           }
@@ -629,20 +629,20 @@ if (isset($_POST['submitNews'])) {
           <?php
           $admin_list = get_admin_list();
           foreach ($admin_list as $admin) {
-            $ID = $admin['ID'];
+            $ID = $admin['userID'];
             $username = $admin['username'];
             $name = $admin['name'];
             $password = $admin['password'];
             $role = $admin['role'];
           ?>
             <tr>
-              <td><?php echo $admin['ID'] ?></td>
+              <td><?php echo $admin['userID'] ?></td>
               <td><?php echo $admin['username'] ?></td>
               <td><?php echo $admin['name'] ?></td>
               <td><?php echo $admin['password'] ?></td>
               <td><?php echo $admin['role'] ?></td>
               <td><a href="#!" data-id="<?php echo $ID; ?>" class="btn__delete"><i class="fa-solid fa-trash"></i></a></td>
-              <td><a href="#!" class="btn__editadmin" data-id="<?php echo $admin['ID']; ?>" data-username="<?php echo $admin['username']; ?>" data-name="<?php echo $admin['name']; ?>"><i class="fa-solid fa-pen-to-square"></i></a></td>
+              <td><a href="#!" class="btn__editadmin" data-id="<?php echo $admin['userID']; ?>" data-username="<?php echo $admin['username']; ?>" data-name="<?php echo $admin['name']; ?>"><i class="fa-solid fa-pen-to-square"></i></a></td>
             </tr>
           <?php
           }

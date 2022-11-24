@@ -5,7 +5,7 @@
         <div class="header__nav col-5">
             <ul class="nav__items navbar p-0 m-0">
                 <li class="nav__item">
-                    <a href="/index.php" class="text-white">Home</a>
+                    <a href="index.php" class="text-white">Home</a>
                 </li>
                 <li class="nav__item"><a href="alltour.php" class="text-white">Tour</a></li>
                 <li class="nav__item">

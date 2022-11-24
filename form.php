@@ -74,17 +74,14 @@ if (isset($_POST['submit'])) {
 ?>
 <?php
 //echo all data from news table
-$sql = "select * from news";
+$sql = "select * from uploads";
 $result = mysqli_query($conn, $sql);
 if(mysqli_num_rows($result) > 0){
     while($row = mysqli_fetch_assoc($result)){
-        echo $row['title'];
-        echo "-";
-        echo $row['description'];
-        echo "-";
-        echo $row['content'];
-        echo "-";
-        echo $row['date'];
+        //display video
+        echo "<video width='320' height='240' controls>";
+        echo "<source src='uploads/".$row['resources']."' type='video/mp4'>";
+        echo "</video>";
         echo "<br>";
     }
 }

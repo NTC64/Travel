@@ -88,16 +88,6 @@
             <h2 class="col-10 text-uppercase p-0">News</h2>
             <a class="m-auto text-right text-black-50 hvblack">View all >></a>
         </div>
-        <div class="tour__items row">
-            <div class="card col-4 p-0 m-2">
-                <img class="card-img-top" src="asset/img/tour1.jpg" alt="Card image cap" />
-                <div class="card-body">
-                    <p class="card-date text-black-50">Thời gian đăng</p>
-                    <h5 class="card-title">Tên bài viết</h5>
-                    <p class="card-text text-black-50">Mô tả</p>
-                </div>
-            </div>
-        </div>
         <?php
         //get list news from database
         function get_news_list()
@@ -112,13 +102,13 @@
             return $news_list;
         }
         ?>
-        <?php
-        $news_list = get_news_list();
-        foreach ($news_list as $news) {
-        ?>
-            <div class="tour__items row">
+        <div class="tour__items row">
+            <?php
+            $news_list = get_news_list();
+            foreach ($news_list as $news) {
+            ?>
                 <div class="card col-4 p-0 m-2">
-                    <img class="card-img-top" src="asset/img/tour1.jpg" alt="Card image cap" />
+                    <video src="uploads/<?php echo $news['resources']; ?>"></video>
                     <div class="card-body">
                         <p class="card-date text-black-50"><?php echo $news['date']; ?></p>
                         <h5 class="card-title"><?php echo $news['title']; ?></h5>
@@ -128,10 +118,10 @@
                         <a href="news.php?newsID=<?php echo $news['newsID']; ?>" class="btn btn-green">Xem chi tiết</a>
                     </div>
                 </div>
-            </div>
-        <?php
-        }
-        ?>
+            <?php
+            }
+            ?>
+        </div>
     </div>
     <!-- Footer -->
     <?php include 'footer.php'; ?>
