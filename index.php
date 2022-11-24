@@ -136,3 +136,65 @@
 <script src="/asset/js/js.js"></script>
 
 </html>
+<div class="container admin__seller hide tb">
+      <form action=" " method="get">
+        <table border="1">
+          <tr>
+            <td>ID User</td>
+            <td>Full Name</td>
+            <td>User Name</td>
+            <td>Password</td>
+            <td>Hotel Name</td>
+            <td>Phone</td>
+            <td>Delete</td>
+            <td>Edit</td>
+          </tr>
+          <?php
+          //get seller list
+          function get_seller_list()
+          {
+            global $conn;
+            $sql = "SELECT * FROM access where role = 'seller'";
+            $result = mysqli_query($conn, $sql);
+            $seller_list = array();
+            while ($row = mysqli_fetch_array($result)) {
+              $seller_list[] = $row;
+            }
+            return $seller_list;
+          }
+          ?>
+          <?php
+          $seller_list = get_seller_list();
+          foreach ($seller_list as $seller) {
+            $ID = $seller['userID'];
+            $name = $seller['name'];
+            $username = $seller['username'];
+            $password = $seller['password'];
+            $hotel = $seller['hotelName'];
+            $phone = $seller['phone'];
+          ?>
+            <tr>
+              <td><?php echo $seller['userID'] ?></td>
+              <td><?php echo $seller['name'] ?></td>
+              <td><?php echo $seller['username'] ?></td>
+              <td><?php echo $seller['password'] ?></td>
+              <td><?php echo $seller['hotelName'] ?></td>
+              <td><?php echo $seller['phone'] ?></td>
+              <td><a href="#!" data-id="<?php echo $ID; ?>" class="btn__delete"><i class="fa-solid fa-trash"></i></a></td>
+              <td><a href="#!" class="btn__editseller" data-id="<?php echo $seller['userID']; ?>" data-username="<?php echo $seller['username']; ?>" data-name="<?php echo $seller['name']; ?>" data-hotelname="<?php echo $seller['hotelName']; ?>" data-phone="<?php echo $seller['phone']; ?>"><i class="fa-solid fa-pen-to-square"></i></a></td>
+            </tr>
+          <?php
+          }
+          ?>
+        </table>
+        <div class="pag">
+          <ul class="pag__items">
+
+            <li><a href="">1</a> </li>
+            <li><a href="">2</a> </li>
+            <li><a href="">3</a> </li>
+            <li><a href=""> <i class="fa-solid fa-chevron-right"></i></a> </li>
+          </ul>
+        </div>
+      </form>
+    </div>

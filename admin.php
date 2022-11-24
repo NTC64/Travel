@@ -155,12 +155,18 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
       <div class="up__title">
         <h3 class="my-3">Create News</h3>
       </div>
-      <input type="text" class="crnewsname" name="title" required placeholder="Title" />
-      <textarea name="describe" class="crdescribe" cols="30" rows="10" required placeholder="Describe"></textarea>
-      <textarea name="content" class="crbody" cols="30" rows="10" required placeholder="Enter content"></textarea>
+      <input type="text" class="crnewsname" name="title" required value="<?php if (isset($_POST['title'])) {
+                                                                            echo $_POST['title'];
+                                                                          } ?>" placeholder="Title" />
+      <textarea name="describe" class="crdescribe" cols="30" rows="10" required value="<?php if (isset($_POST['describe'])) {
+                                                                                          echo $_POST['describe'];
+                                                                                        } ?>" placeholder="Describe"></textarea>
+      <textarea name="content" class="crbody" cols="30" rows="10" required value="<?php if (isset($_POST['content'])) {
+                                                                                    echo $_POST['content'];
+                                                                                  } ?>" placeholder="Enter content"></textarea>
       <input type="file" class="crimg" name="video" id="video" required />
       <div class="row text">
-
+        <!-- list danh muc -->
         <div class="col-6 left m-0 p-0">
           <select name="" id="">
             <option value="">danh mục 1</option>
@@ -168,7 +174,9 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
           </select>
         </div>
         <div class="col-6 rigth m-0 p-0">
-          <input type="date" class="crdate" name="date" required />
+          <input type="date" class="crdate" name="date" required value="<?php if (isset($_POST['date'])) {
+                                                                          echo $_POST['date'];
+                                                                        } ?>" />
         </div>
       </div>
       <div class="smnews">
@@ -177,37 +185,37 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
     </form>
   </div>
   <!-- php code to get data from form -->
-  <?php 
-if (isset($_POST['submitNews'])) {
-  $target_dir = "uploads/";
-  $target_file = $target_dir . basename($_FILES["video"]["name"]);
-  $fileName = $_FILES['video']['name'];
-  $fileTmpName = $_FILES['video']['tmp_name'];
-  $fileExt = explode('.', $fileName);
-  $uploadOk = 1;
-  $fileActualExt = strtolower(end($fileExt));
-  // Check videoFileType is valid
-  if ($fileActualExt !== "mp4" && $fileActualExt !== "avi" && $fileActualExt !== "mov" && $fileActualExt !== "wmv" && $fileActualExt !== "flv" && $fileActualExt !== "3gp") {
+  <?php
+  if (isset($_POST['submitNews'])) {
+    $target_dir = "uploads/";
+    $target_file = $target_dir . basename($_FILES["video"]["name"]);
+    $fileName = $_FILES['video']['name'];
+    $fileTmpName = $_FILES['video']['tmp_name'];
+    $fileExt = explode('.', $fileName);
+    $uploadOk = 1;
+    $fileActualExt = strtolower(end($fileExt));
+    // Check videoFileType is valid
+    if ($fileActualExt !== "mp4" && $fileActualExt !== "avi" && $fileActualExt !== "mov" && $fileActualExt !== "wmv" && $fileActualExt !== "flv" && $fileActualExt !== "3gp") {
       echo "<script>alert('Sorry, only MP4, AVI, MOV, WMV, FLV & 3GP files are allowed.')</script>";
       $uploadOk = 0;
-  }
-  //check if file name is existed
-  $sql = "SELECT * FROM uploads WHERE resources = '$fileName'";
-  $result = mysqli_query($conn, $sql);
-  if (mysqli_num_rows($result) > 0) {
+    }
+    //check if file name is existed
+    $sql = "SELECT * FROM uploads WHERE resources = '$fileName'";
+    $result = mysqli_query($conn, $sql);
+    if (mysqli_num_rows($result) > 0) {
       echo "<script>alert('Sorry, file name is existed.')</script>";
       $uploadOk = 0;
-  }
-  if ($uploadOk == 0) {
+    }
+    if ($uploadOk == 0) {
       echo "<script>alert('Sorry, your file was not uploaded.')</script>";
-  } else {
+    } else {
       move_uploaded_file($fileTmpName, $target_file);
       $sql = "INSERT INTO `uploads` (`resources`) VALUES ('$fileName')";
       $result = mysqli_query($conn, $sql);
       if ($result) {
-          echo "<script>alert('The file " . htmlspecialchars(basename($_FILES["video"]["name"])) . " has been uploaded.')</script>";
+        echo "<script>alert('The file " . htmlspecialchars(basename($_FILES["video"]["name"])) . " has been uploaded.')</script>";
       } else {
-          echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
       }
       $uploadID = "SELECT uploadID FROM uploads WHERE resources = '$fileName'";
       $result = mysqli_query($conn, $uploadID);
@@ -223,10 +231,10 @@ if (isset($_POST['submitNews'])) {
       if ($result) {
         echo "<script>alert('Create news successfully.')</script>";
       } else {
-          echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
       }
+    }
   }
-}
   ?>
   <!-- edit -->
 
@@ -330,7 +338,6 @@ if (isset($_POST['submitNews'])) {
     </form>
   </div>
   <!-- edit -->
-
   <div class="edit editad hide">
     <form action="" method="POST" class="edit__form">
       <div class="up__title">
@@ -429,31 +436,58 @@ if (isset($_POST['submitNews'])) {
         <table border="1">
           <tr>
             <td>ID News</td>
-            <td>ID User</td>
+            <td>User name</td>
             <td>ID Category</td>
             <td>Title</td>
             <td>Description</td>
-            <td>Body</td>
-            <td>Image</td>
+            <td>Content</td>
+            <td>Video</td>
             <td>Date</td>
             <td>Delete</i></td>
             <td>Update</i></td>
           </tr>
           <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td class="m-0 p-0"><textarea name="" class="m-0 p-0 fs" id="" cols="100" rows="10">content</textarea> </td>
-
-            <td class="m-0 p-0"><textarea name="" class="m-0 p-0 fs" cols="30" rows="10"></textarea></td>
-            <td>Date</td>
-
-            <td><a href="#!" data-id="" class="btn__delete"><i class="fa-solid fa-trash"></i></a></td>
-            <td><a href="#!" class="btn__editnews" data-id="" data-username="" data-name=""><i class="fa-solid fa-pen-to-square"></i></a></td>
+            <?php
+            function get_news_list()
+            {
+              global $conn;
+              $sql = "SELECT *,resources FROM news, uploads WHERE news.uploadID = uploads.uploadID";
+              $result = mysqli_query($conn, $sql);
+              $news_list = array();
+              while ($row = mysqli_fetch_assoc($result)) {
+                $news_list[] = $row;
+              }
+              return $news_list;
+            }
+            ?>
+            <?php
+            $news_list = get_news_list();
+            foreach ($news_list as $news) {
+              //get user ID by session
+              $username = $_SESSION['username'];
+              // $userID = $news['userID'];
+              $newsID = $news['newsID'];
+              $categoryID = $news['categoryID'];
+              $title = $news['title'];
+              $description = $news['description'];
+              $content = $news['content'];
+              $date = $news['date'];
+              $resources = $news['resources'];
+            ?>
+              <td><?php echo $newsID; ?></td>
+              <td><?php echo $username; ?></td>
+              <td><?php echo $categoryID; ?></td>
+              <td><?php echo substr($title,0,30); ?></td>
+              <td><?php echo $description; ?></td>
+              <td><?php echo substr($content,0,100); ?></td>
+              <td><?php echo $resources; ?></td>
+              <td><?php echo $date; ?></td>
+              <td><a href="#!" data-id="" class="btn__delete"><i class="fa-solid fa-trash"></i></a></td>
+              <td><a href="#!" class="btn__editnews" data-id="" data-username="" data-name=""><i class="fa-solid fa-pen-to-square"></i></a></td>
           </tr>
-        
+        <?php } ?>
+            <!-- end foreach -->
+
         </table>
         <!-- pag -->
         <div class="pag">
@@ -535,8 +569,6 @@ if (isset($_POST['submitNews'])) {
     </div>
 
     <div class="container admin__seller hide tb">
-
-
       <form action=" " method="get">
         <table border="1">
           <tr>

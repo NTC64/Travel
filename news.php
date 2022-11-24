@@ -38,7 +38,7 @@ include 'conn.php';
                 <div class="container newsmain my-5">
                     <h3><?php echo $row['title']; ?></h3>
                     <p class="text-black-50"><?php echo $row['date']; ?></p>
-                    <p><?php echo $row['content'] ?></p>
+                    <p><?php echo nl2br($row['content']) ?></p>
                     <video width="500" height="300" controls src="uploads/<?php echo $row['resources'] ?>" type='video/mp4'></video>
                 </div>
         <?php
