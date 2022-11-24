@@ -86,7 +86,7 @@
     <div class="container my-4">
         <div class="row mt-5">
             <h2 class="col-10 text-uppercase p-0">News</h2>
-            <a class="m-auto text-right text-black-50 hvblack">View all >></a>
+            <a class="m-auto text-right text-black-50 hvblack" href="allnews.php">View all >></a>
         </div>
         <?php
         //get list news from database
@@ -130,6 +130,6 @@
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<script src="asset/js/js.js"></script>
+<script src="/asset/js/js.js"></script>
 
 </html>
