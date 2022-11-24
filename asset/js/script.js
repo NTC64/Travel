@@ -29,6 +29,7 @@ $(document).on('click', '.news', function() {
     $(".bg").addClass("hide");
     $(".admin__ad").addClass("hide");
     $(".admin__seller").addClass("hide");
+    $(".createnews").addClass("hide");
     $(".admincategorynews").addClass("hide");
     $(".admincategorytour").addClass("hide");
     $(".createctg").addClass("hide");
@@ -47,6 +48,7 @@ $(document).on('click', '.user', function() {
     $(".admin__seller").addClass("hide");
     $(".adminnews").addClass("hide");
     $(".createad").addClass("hide");
+    $(".createnews").addClass("hide");
      $(".admin__user").removeClass("hide");
   }
  else {
@@ -62,6 +64,7 @@ $(document).on('click', '.seller', function() {
     $(".admin__user").addClass("hide");
     $(".adminnews").addClass("hide");
     $(".createad").addClass("hide");
+    $(".createnews").addClass("hide");
     $(".admin__seller").removeClass("hide");
  }
 else {
@@ -75,6 +78,7 @@ $(document).on('click', '.categorynews', function() {
     $(".admin__seller").addClass("hide");
     $(".adminnews").addClass("hide");
     $(".createad").addClass("hide");
+    $(".createnews").addClass("hide");
     $(".admincategorytour").addClass("hide");
     $(".createctg").addClass("hide");
     $(".admincategorynews").removeClass("hide");
@@ -92,6 +96,7 @@ $(document).on('click', '.categorytour', function() {
     $(".createad").addClass("hide");
     $(".admincategorynews").addClass("hide");
     $(".createctg").addClass("hide");
+    $(".createnews").addClass("hide");
     $(".admincategorytour").removeClass("hide");
  }
 else {
@@ -207,6 +212,7 @@ $(document).on('click', '.crcategory', function() {
     $(".adminnews").addClass("hide");
     $(".admin__ad").addClass("hide");
     $(".admincategorynews").addClass("hide");
+    $(".createnews").addClass("hide");
     $(".admincategorytour").addClass("hide");
     $(".createctg").removeClass("hide");
  }
@@ -223,6 +229,7 @@ $(document).on('click', '.adcreate', function() {
     $(".admin__ad").addClass("hide");
     $(".createctg").addClass("hide");
     $(".admincategorynews").addClass("hide");
+    $(".createnews").addClass("hide");
     $(".admincategorytour").addClass("hide");
     $(".createad").removeClass("hide");
  }
@@ -240,6 +247,7 @@ $(document).on('click', '.admin', function() {
     $(".admincategorynews").addClass("hide");
     $(".admincategorytour").addClass("hide");
     $(".createctg").addClass("hide");
+    $(".createnews").addClass("hide");
     $(".admin__ad").removeClass("hide");
     
     

@@ -13,11 +13,14 @@
                 </li>
                 <li class="nav__item"><a href="" class="text-white">News</a></li>
                 <li class="nav__item"><a href="" class="text-white">Contact</a></li>
+
             </ul>
         </div>
         <?php
         if (isset($_SESSION['check']) && $_SESSION['check'] == true) {
-            echo "<div class='col-2'></div><div class='m-0 p-0'>" . $_SESSION['username'] . "</div>"; ?>
+            echo "<div class='col-1'></div><div class='m-0 p-0'><p>Xin chào USER" . $_SESSION['username'] . "</p></div>";
+            echo "<div class='cart'><a href='logout.php'><i class='fa-solid fa-plane'></i></a></div>";
+        ?>
             <a href="logout.php" class="logout">Logout</a>
         <?php } else { ?>
             <div class="col-2"></div>

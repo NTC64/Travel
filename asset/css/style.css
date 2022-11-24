@@ -401,6 +401,10 @@ a:hover {
   display: flex;
   justify-content: space-between;
 }
+.video {
+  display: flex;
+  justify-content: center;
+}
 .booking input {
   width: 200px;
   font-size: 18px;
@@ -411,4 +415,22 @@ a:hover {
 }
 .text-or {
   color: #ffc600;
+}
+.cart {
+  width: 60px;
+  height: 60px;
+  background-color: #8dc700;
+  border-radius: 100%;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 999999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cart i {
+  font-size: 24px;
+  color: #fff;
+  transform: rotate(-45deg);
 }
