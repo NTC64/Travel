@@ -35,7 +35,7 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
       <div class="ms-2">
         <h5 class="fs-6 mb-0">
           <a class="text-decoration-none" href="#">
-            <?php echo $_SESSION['username']; ?>
+            <?php echo $_SESSION['name']; ?>
           </a>
         </h5>
         <p class="mt-1 mb-0 adrole" data-role="<?php echo $_SESSION['role']; ?>"><?php echo $_SESSION['role']; ?></p>
@@ -143,16 +143,20 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
       $result = mysqli_query($conn, $sql);
       if ($result) {
         echo '<script>alert("Create category news success")</script>';
+        echo '<script>window.location.href="admin.php"</script>';
       } else {
         echo '<script>alert("Create category news fail")</script>';
+        echo '<script>window.location.href="admin.php"</script>';
       }
     } else {
       $sql = "INSERT INTO category_tours (categoryID, categoryName) VALUES ('$categoryID', '$categoryName')";
       $result = mysqli_query($conn, $sql);
       if ($result) {
         echo '<script>alert("Create category tours success")</script>';
+        echo '<script>window.location.href="admin.php"</script>';
       } else {
         echo '<script>alert("Create category tours fail")</script>';
+        echo '<script>window.location.href="admin.php"</script>';
       }
     }
   }
@@ -216,6 +220,7 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
     if ($fileActualExt !== "mp4" && $fileActualExt !== "avi" && $fileActualExt !== "mov" && $fileActualExt !== "wmv" && $fileActualExt !== "flv" && $fileActualExt !== "3gp") {
       echo "<script>alert('Sorry, only MP4, AVI, MOV, WMV, FLV & 3GP files are allowed.')</script>";
       $uploadOk = 0;
+      echo "<script>setTimeout('window.location.href = 'admin.php', 1500)</script>";
     }
     //check if file name is existed
     $sql = "SELECT * FROM uploads WHERE resources = '$fileName'";
@@ -223,9 +228,11 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
     if (mysqli_num_rows($result) > 0) {
       echo "<script>alert('Sorry, file name is existed.')</script>";
       $uploadOk = 0;
+      echo "<script>setTimeout('window.location.href = 'admin.php', 1500)</script>";
     }
     if ($uploadOk == 0) {
       echo "<script>alert('Sorry, your file was not uploaded.')</script>";
+      echo "<script>setTimeout('window.location.href = 'admin.php', 1500)</script>";
     } else {
       move_uploaded_file($fileTmpName, $target_file);
       $sql = "INSERT INTO `uploads` (`resources`) VALUES ('$fileName')";
@@ -241,10 +248,11 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
       $uploadID = $row['uploadID'];
       //get data from form
       $title = $_POST['title'];
+      $userID = $_SESSION['userID'];
       $description = $_POST['describe'];
       $content = $_POST['content'];
       $date = $_POST['date'];
-      $sql = "INSERT INTO `news` (`title`, `description`, `content`, `date`, `uploadID`) VALUES ('$title', '$description', '$content', '$date', '$uploadID')";
+      $sql = "INSERT INTO `news` (`userID`,`title`, `description`, `content`, `date`, `uploadID`) VALUES ('$userID','$title', '$description', '$content', '$date', '$uploadID')";
       $result = mysqli_query($conn, $sql);
       if ($result) {
         echo "<script>alert('Create news successfully.')</script>";
@@ -377,21 +385,30 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
       <form action=" " method="get">
         <table border="1">
           <tr>
-
             <td>ID Category</td>
             <td>News's Category</td>
-
             <td>Delete</i></td>
             <td>Update</i></td>
           </tr>
-
-
           <tr>
-            <td></td>
-            <td></td>
-
-            <td><a href="#!" data-id="" class="btn__delete"><i class="fa-solid fa-trash"></i></a></td>
+            <?php
+            //list all news category
+            $sql = "SELECT * FROM category_news";
+            $result = mysqli_query($conn, $sql);
+            if (mysqli_num_rows($result) > 0) {
+              while ($row = mysqli_fetch_assoc($result)) {
+            ?>
+          <tr>
+            <td><?php echo $row['categoryID'] ?></td>
+            <td><?php echo $row['categoryName'] ?></td>
+            <td><a href="delete_category.php?categoryID=<?php echo $row['categoryID'] ?>" data-id="" class=""><i class="fa-solid fa-trash"></i></a></td>
             <td><a href="#!" class="btn__editcategory" data-id="" data-username="" data-name=""><i class="fa-solid fa-pen-to-square"></i></a></td>
+        <?php
+              }
+            }
+        ?>
+        <!-- <td><a href="#!" data-id="" class="btn__delete"><i class="fa-solid fa-trash"></i></a></td>
+        <td><a href="#!" class="btn__editcategory" data-id="" data-username="" data-name=""><i class="fa-solid fa-pen-to-square"></i></a></td> -->
           </tr>
 
         </table>
@@ -420,12 +437,9 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
             <td>Delete</i></td>
             <td>Update</i></td>
           </tr>
-
-
           <tr>
             <td></td>
             <td></td>
-
             <td><a href="#!" data-id="" class="btn__delete"><i class="fa-solid fa-trash"></i></a></td>
             <td><a href="#!" class="btn__editcategory" data-id="" data-username="" data-name=""><i class="fa-solid fa-pen-to-square"></i></a></td>
           </tr>
@@ -492,8 +506,6 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
             <td>Delete</i></td>
             <td>Update</i></td>
           </tr>
-
-
           <tr>
             <td></td>
             <td></td>
@@ -514,8 +526,6 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
         </div>
       </form>
       <!-- aler2 -->
-
-
     </div>
     <!-- news -->
     <div class="container adminnews hide tb">
@@ -586,8 +596,6 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
         </div>
       </form>
       <!-- aler2 -->
-
-
     </div>
     <!-- user -->
     <div class="container admin__user hide tb">

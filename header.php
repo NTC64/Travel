@@ -60,8 +60,9 @@
             if (mysqli_num_rows($result) > 0) {
                 $row = mysqli_fetch_assoc($result);
                 if ($row['role'] == 'seller' || $row['role'] == 'admin' || $row['role'] == 'superadmin') {
-                    $_SESSION['username'] = $username;
+                    $_SESSION['name'] = $row['name'];
                     $_SESSION['role'] = $row['role'];
+                    $_SESSION['userID'] = $row['userID'];
                     header("Location: admin.php");
                 } else {
                     $_SESSION['check'] = true;

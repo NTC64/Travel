@@ -1,3 +1,4 @@
+<?php include 'conn.php' ?>
 <div class="create createnews hide">
     <form action="" method="POST" class="create__form" enctype="multipart/form-data">
         <div class="up__title">
@@ -84,3 +85,61 @@ if (isset($_POST['submitNews'])) {
 }
 ?>
 <!-- edit -->
+<div class="container adminnews hide tb">
+      <div class="btn btn-success btncreatenews btncreate"><i class="fa-solid fa-plus"></i>Create</div>
+      <form action=" " method="get">
+        <table border="1">
+          <tr>
+            <td>ID News</td>
+            <td>Author</td>
+            <td>ID Category</td>
+            <td>Title</td>
+            <td>Description</td>
+            <td>Content</td>
+            <td>Video</td>
+            <td>Date</td>
+            <td>Delete</i></td>
+            <td>Update</i></td>
+          </tr>
+          <tr>
+            <?php
+            function get_news_list()
+            {
+              global $conn;
+              $sql = "SELECT *,resources, name FROM access, stuff, uploads WHERE stuff.uploadID = uploads.uploadID and access.userID = stuff.userID";
+              $result = mysqli_query($conn, $sql);
+              $news_list = array();
+              while ($row = mysqli_fetch_assoc($result)) {
+                $news_list[] = $row;
+              }
+              return $news_list;
+            }
+            ?>
+            <?php
+            $news_list = get_news_list();
+            foreach ($news_list as $news) {
+              $newsID = $news['newsID'];
+              $author = $news['name'];
+              $categoryID = $news['categoryID'];
+              $title = $news['title'];
+              $description = $news['description'];
+              $content = $news['content'];
+              $date = $news['date'];
+              $resources = $news['resources'];
+            ?>
+              <td><?php echo $newsID; ?></td>
+              <td><?php echo $author; ?></td>
+              <td><?php echo $categoryID; ?></td>
+              <td><?php echo mb_substr($title, 0, 30); ?></td>
+              <td><?php echo $description; ?></td>
+              <td><?php echo mb_substr($content, 0, 100) . "...."; ?></td>
+              <td><?php echo $resources; ?></td>
+              <td><?php echo $date; ?></td>
+              <td><a href="#!" data-id="" class="btn__delete"><i class="fa-solid fa-trash"></i></a></td>
+              <td><a href="#!" class="btn__editnews" data-id="" data-username="" data-name=""><i class="fa-solid fa-pen-to-square"></i></a></td>
+          </tr>
+        <?php } ?>
+        </table>
+      </form>
+      <!-- aler2 -->
+    </div>
