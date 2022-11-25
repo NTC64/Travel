@@ -445,6 +445,78 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
 
 
     </div>
+    <!-- all tours -->
+    <div class="container adminalltour hide tb">
+
+      <form action=" " method="get">
+        <table border="1">
+          <tr>
+            <td>ID Category</td>
+            <td>Tour's Category</td>
+            <td>Delete</i></td>
+            <td>Update</i></td>
+          </tr>
+
+
+          <tr>
+            <td></td>
+            <td></td>
+
+            <td><a href="#!" data-id="" class="btn__delete"><i class="fa-solid fa-trash"></i></a></td>
+            <td><a href="#!" class="btn__editcategory" data-id="" data-username="" data-name=""><i class="fa-solid fa-pen-to-square"></i></a></td>
+          </tr>
+
+        </table>
+        <!-- pag -->
+        <div class="pag">
+          <ul class="pag__items">
+            <li><a href="">1</a> </li>
+            <li><a href="">2</a> </li>
+            <li><a href="">3</a> </li>
+            <li><a href=""><i class="fa-solid fa-chevron-right"></i></a> </li>
+          </ul>
+        </div>
+      </form>
+      <!-- aler2 -->
+
+
+    </div>
+    <!-- manager tours -->
+    <div class="container adminmntour hide tb">
+
+      <form action=" " method="get">
+        <table border="1">
+          <tr>
+            <td>ID Category</td>
+            <td>Tour's Category</td>
+            <td>Delete</i></td>
+            <td>Update</i></td>
+          </tr>
+
+
+          <tr>
+            <td></td>
+            <td></td>
+
+            <td><a href="#!" data-id="" class="btn__delete"><i class="fa-solid fa-trash"></i></a></td>
+            <td><a href="#!" class="btn__editcategory" data-id="" data-username="" data-name=""><i class="fa-solid fa-pen-to-square"></i></a></td>
+          </tr>
+
+        </table>
+        <!-- pag -->
+        <div class="pag">
+          <ul class="pag__items">
+            <li><a href="">1</a> </li>
+            <li><a href="">2</a> </li>
+            <li><a href="">3</a> </li>
+            <li><a href=""><i class="fa-solid fa-chevron-right"></i></a> </li>
+          </ul>
+        </div>
+      </form>
+      <!-- aler2 -->
+
+
+    </div>
     <!-- news -->
     <div class="container adminnews hide tb">
       <div class="btn btn-success btncreatenews btncreate"><i class="fa-solid fa-plus"></i>Create</div>
