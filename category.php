@@ -29,34 +29,36 @@
     <!-- main -->
     <div class="container hotTour my-4">
         <div class="tour__title row mt-5">
-            <h2 class="col-10 text-uppercase p-0">All Tour</h2>
+            <h2 class="col-10 text-uppercase p-0">Category</h2>
             <!-- <a class="m-auto text-right text-black-50 hvblack">View all >></a> -->
         </div>
-        <div class="tour__items row">
-            <!-- tour card -->
-            <div class="card col-4 p-0 m-2">
-                <img class="card-img-top" src="asset/img/tour1.jpg" alt="Card image cap" />
-                <div class="card-body">
-                    <h5 class="card-title">Tên địa điểm du lịch</h5>
-                    <p class="card-text text-black-50">Mô tả</p>
-
-                    <p class="card-price text-danger">Giá</p>
-                    <a href="tour.php" class="btn btn-green" data-id="id">Đặt Tour</a>
-                </div>
-            </div>
-            <!-- end tour card -->
-            <!-- tour card -->
-            <!-- ..... -->
-            <!-- end tour card -->
-            <!-- chi tiết tour -->
-
-            <div class="tourdetail">
+        <nav>
+            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                <a class="nav-item nav-link active black" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Các danh mục bài viết</a>
+                <a class="nav-item nav-link black" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Các danh mục tour</a>
 
             </div>
+        </nav>
+        <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                <a href="" class="black">bala</a>
+                <br>
 
-            <!---->
+
+            </div>
+            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                <a href="" class="black">bala</a>
+                <br>
+            </div>
 
         </div>
+
+        <div class="tourdetail">
+
+        </div>
+
+        <!---->
+
     </div>
 
 

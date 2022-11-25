@@ -29,21 +29,40 @@
     <!-- main -->
     <div class="container hotTour my-4">
         <div class="tour__title row mt-5">
-            <h2 class="col-10 text-uppercase p-0">All Tour</h2>
+            <h2 class="col-10 text-uppercase p-0">All News</h2>
             <!-- <a class="m-auto text-right text-black-50 hvblack">View all >></a> -->
         </div>
+        <!-- tour card -->
+        <?php
+        //get list news from database
+        function get_news_list()
+        {
+            global $conn;
+            $sql = "SELECT newsID, resources, date, title, description FROM news,uploads WHERE news.uploadID = uploads.uploadID";
+            $result = mysqli_query($conn, $sql);
+            $news_list = array();
+            while ($row = mysqli_fetch_array($result)) {
+                $news_list[] = $row;
+            }
+            return $news_list;
+        }
+        ?>
         <div class="tour__items row">
-            <!-- tour card -->
-            <div class="card col-4 p-0 m-2">
-                <img class="card-img-top" src="asset/img/tour1.jpg" alt="Card image cap" />
-                <div class="card-body">
-                    <h5 class="card-title">Tên địa điểm du lịch</h5>
-                    <p class="card-text text-black-50">Mô tả</p>
-
-                    <p class="card-price text-danger">Giá</p>
-                    <a href="tour.php" class="btn btn-green" data-id="id">Đặt Tour</a>
+            <?php
+            $news_list = get_news_list();
+            foreach ($news_list as $news) {
+            ?>
+                <div class="card col-4 p-0 m-2">
+                    <video src="uploads/<?php echo $news['resources']; ?>"></video>
+                    <div class="card-body">
+                        <p class="card-date text-black-50"><?php echo $news['date']; ?></p>
+                        <h5 class="card-title"><?php echo $news['title']; ?></h5>
+                        <a href="news.php?newsID=<?php echo $news['newsID']; ?>" class="btn btn-green">Xem chi tiết</a>
+                    </div>
                 </div>
-            </div>
+            <?php
+            }
+            ?>
             <!-- end tour card -->
             <!-- tour card -->
             <!-- ..... -->
@@ -58,7 +77,7 @@
 
         </div>
     </div>
-
+    </div>
 
 
     <!-- Footer -->
