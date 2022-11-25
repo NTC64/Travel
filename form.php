@@ -1,27 +1,39 @@
+<div class="create createnews hide">
+    <form action="" method="POST" class="create__form" enctype="multipart/form-data">
+        <div class="up__title">
+            <h3 class="my-3">Create News</h3>
+        </div>
+        <input type="text" class="crnewsname" name="title" required value="<?php if (isset($_POST['title'])) {
+                                                                                echo $_POST['title'];
+                                                                            } ?>" placeholder="Title" />
+        <textarea name="describe" class="crdescribe" cols="30" rows="10" required value="<?php if (isset($_POST['describe'])) {
+                                                                                                echo $_POST['describe'];
+                                                                                            } ?>" placeholder="Describe"></textarea>
+        <textarea name="content" class="crbody" cols="30" rows="10" required value="<?php if (isset($_POST['content'])) {
+                                                                                        echo $_POST['content'];
+                                                                                    } ?>" placeholder="Enter content"></textarea>
+        <div class="row text">
+            <!-- list danh muc -->
+            <div class="col-6 left m-0 p-0">
+                <select name="" id="">
+                    <option value="">danh mục 1</option>
+                    <option value="">danh mục 2</option>
+                </select>
+            </div>
+            <div class="col-6 rigth m-0 p-0">
+                <input type="date" class="crdate" name="date" required value="<?php if (isset($_POST['date'])) {
+                                                                                    echo $_POST['date'];
+                                                                                } ?>" />
+            </div>
+        </div>
+        <div class="smnews">
+            <input type="submit" value="Create" name="submitNews" class="btn btn-success smcreate" />
+        </div>
+    </form>
+</div>
+<!-- php code to get data from form -->
 <?php
-include 'conn.php';
-?>
-<?php 
-$title = "";
-$description = "";
-$content = "";
-$date = "";
-?>
-<form action="" method="post" enctype="multipart/form-data">
-    <input type="text" name="title" placeholder="Title" value="<?php if(isset($_POST['title'])){echo $_POST['title'];} ?>" required>
-    <br>
-    <input type="text" name="description" placeholder="description" value="<?php if(isset($_POST['description'])){echo $_POST['description'];} ?>" required>
-    <br>
-    <input type="text" name="content" placeholder="Content" value="<?php if(isset($_POST['content'])){echo $_POST['content'];} ?>" required>
-    <br>
-    Video: <input type="file" name="video" id="video" value="<?php if(isset($_POST['video'])){echo $_POST['video'];} ?>">
-    <br>
-    <input type="date" name="date" placeholder="Date" value="<?php if(isset($_POST['date'])){echo $_POST['date'];} ?>" required>
-    <br>
-    <input type="submit" name="submit" value="Submit">
-</form>
-<?php
-if (isset($_POST['submit'])) {
+if (isset($_POST['submitNews'])) {
     $target_dir = "uploads/";
     $target_file = $target_dir . basename($_FILES["video"]["name"]);
     $fileName = $_FILES['video']['name'];
@@ -31,58 +43,44 @@ if (isset($_POST['submit'])) {
     $fileActualExt = strtolower(end($fileExt));
     // Check videoFileType is valid
     if ($fileActualExt !== "mp4" && $fileActualExt !== "avi" && $fileActualExt !== "mov" && $fileActualExt !== "wmv" && $fileActualExt !== "flv" && $fileActualExt !== "3gp") {
-        echo "Sorry, only MP4, AVI, MOV, WMV, FLV & 3GP files are allowed.";
+        echo "<script>alert('Sorry, only MP4, AVI, MOV, WMV, FLV & 3GP files are allowed.')</script>";
         $uploadOk = 0;
     }
     //check if file name is existed
     $sql = "SELECT * FROM uploads WHERE resources = '$fileName'";
     $result = mysqli_query($conn, $sql);
     if (mysqli_num_rows($result) > 0) {
-        echo "File name is existed, please change file name.";
+        echo "<script>alert('Sorry, file name is existed.')</script>";
         $uploadOk = 0;
     }
     if ($uploadOk == 0) {
-        echo "<br>";
-        echo "There was an error uploading your file, please try again.";
+        echo "<script>alert('Sorry, your file was not uploaded.')</script>";
     } else {
         move_uploaded_file($fileTmpName, $target_file);
         $sql = "INSERT INTO `uploads` (`resources`) VALUES ('$fileName')";
         $result = mysqli_query($conn, $sql);
         if ($result) {
-            echo "Upload video successfully.";
+            echo "<script>alert('The file " . htmlspecialchars(basename($_FILES["video"]["name"])) . " has been uploaded.')</script>";
         } else {
             echo "Error: " . $sql . "<br>" . mysqli_error($conn);
         }
-        $resourceID = "SELECT resourceID FROM uploads WHERE resources = '$fileName'";
-        $result = mysqli_query($conn, $resourceID);
+        $uploadID = "SELECT uploadID FROM uploads WHERE resources = '$fileName'";
+        $result = mysqli_query($conn, $uploadID);
         $row = mysqli_fetch_assoc($result);
-        $resourceID = $row['resourceID'];
+        $uploadID = $row['uploadID'];
         //get data from form
         $title = $_POST['title'];
-        $description = $_POST['description'];
+        $description = $_POST['describe'];
         $content = $_POST['content'];
         $date = $_POST['date'];
-        $sql = "INSERT INTO `news` (`title`, `description`, `content`, `date`, `resourceID`) VALUES ('$title', '$description', '$content', '$date', '$resourceID')";
+        $sql = "INSERT INTO `news` (`title`, `description`, `content`, `date`, `uploadID`) VALUES ('$title', '$description', '$content', '$date', '$uploadID')";
         $result = mysqli_query($conn, $sql);
         if ($result) {
-            echo "Insert data successfully.";
+            echo "<script>alert('Create news successfully.')</script>";
         } else {
             echo "Error: " . $sql . "<br>" . mysqli_error($conn);
         }
     }
 }
 ?>
-<?php
-//echo all data from news table
-$sql = "select * from uploads";
-$result = mysqli_query($conn, $sql);
-if(mysqli_num_rows($result) > 0){
-    while($row = mysqli_fetch_assoc($result)){
-        //display video
-        echo "<video width='320' height='240' controls>";
-        echo "<source src='uploads/".$row['resources']."' type='video/mp4'>";
-        echo "</video>";
-        echo "<br>";
-    }
-}
-?>
+<!-- edit -->
