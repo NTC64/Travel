@@ -331,9 +331,9 @@ $(document).on('click', '.btn__editcategory', function() {
   if($(".editctg").hasClass("hide")) {
     $(".bg").removeClass("hide");
     $(".editctg").removeClass("hide");
-    $(".id").val($(this).attr("data-id"));
-    $(".categoryname").val($(this).attr("data-categoryname"));
-    $(".describe").val($(this).attr("data-describe"));
+    $(".idctg").val($(this).attr("data-id"));
+    $(".ctgname").val($(this).attr("data-name"));
+  
     
  }
 else {
