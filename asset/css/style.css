@@ -393,6 +393,42 @@ a:hover {
   flex-direction: column;
   font-size: 24px;
 }
+.left {
+  width: 100%;
+
+  display: flex;
+
+  align-items: center;
+  flex-direction: column;
+}
+.fm {
+  width: 50%;
+}
+.form input,
+.form textarea,
+.form select {
+  width: 100%;
+  height: 50px;
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  margin-bottom: 10px;
+  padding: 0 10px;
+}
+.form textarea {
+  height: 170px !important;
+}
+.btnbook {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.right {
+  width: 100%;
+  display: flex;
+
+  align-items: center;
+  flex-direction: column;
+}
 .black {
   color: #000 !important;
 }
