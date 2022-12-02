@@ -396,7 +396,7 @@ body {
 table,
 tr,
 td {
-  border: 1px solid #000 !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
   width: 100% !important;
   -webkit-line-clamp: 1; /* số dòng hiển thị */
   -webkit-box-orient: vertical;
@@ -404,6 +404,7 @@ td {
   text-overflow: ellipsis;
   font-size: 14px !important;
   padding: 5px !important;
+  color: #fff !important;
 }
 td:nth-child(1) {
   width: auto !important;
@@ -447,15 +448,15 @@ table {
   padding-top: 30px;
   display: flex;
   flex-direction: column;
-  width: 70% !important;
+  width: 95% !important;
   height: 600px;
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-35%, -50%);
+  transform: translate(-50%, -50%);
   color: #111827;
-  background-color: #fff;
-  border: 1px solid #000;
+
+  border: 1px solid transparent;
   border-radius: 10px;
 }
 .tb td {
@@ -465,7 +466,9 @@ table {
 }
 
 .admin__main {
-  width: 100%;
+  width: calc(100% - 250px) !important;
+  margin-left: 250px !important;
+
   height: 100vh;
   background-color: #313348;
   display: flex;

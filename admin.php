@@ -390,25 +390,25 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
             <td>Delete</i></td>
             <td>Update</i></td>
           </tr>
+          <?php
+          //list all news category
+          $sql = "SELECT * FROM category_news";
+          $result = mysqli_query($conn, $sql);
+          if (mysqli_num_rows($result) > 0) {
+            while ($row = mysqli_fetch_assoc($result)) {
+          ?>
+              <tr>
+                <td><?php echo $row['categoryID'] ?></td>
+                <td><?php echo $row['categoryName'] ?></td>
+                <td><a href="delete_category.php?categoryID=<?php echo $row['categoryID'] ?>" data-id="" class=""><i class="fa-solid fa-trash"></i></a></td>
+                <td><a href="#!" class="btn__editcategory" data-id="<?php echo $row['categoryID'] ?>" data-username="" data-name="<?php echo $row['categoryName'] ?>"><i class="fa-solid fa-pen-to-square"></i></a></td>
             <?php
-            //list all news category
-            $sql = "SELECT * FROM category_news";
-            $result = mysqli_query($conn, $sql);
-            if (mysqli_num_rows($result) > 0) {
-              while ($row = mysqli_fetch_assoc($result)) {
-            ?>
-          <tr>
-            <td><?php echo $row['categoryID'] ?></td>
-            <td><?php echo $row['categoryName'] ?></td>
-            <td><a href="delete_category.php?categoryID=<?php echo $row['categoryID'] ?>" data-id="" class=""><i class="fa-solid fa-trash"></i></a></td>
-            <td><a href="#!" class="btn__editcategory" data-id="<?php echo $row['categoryID'] ?>" data-username="" data-name="<?php echo $row['categoryName'] ?>"><i class="fa-solid fa-pen-to-square"></i></a></td>
-        <?php
-              }
             }
-        ?>
-        <!-- <td><a href="#!" data-id="" class="btn__delete"><i class="fa-solid fa-trash"></i></a></td>
+          }
+            ?>
+            <!-- <td><a href="#!" data-id="" class="btn__delete"><i class="fa-solid fa-trash"></i></a></td>
         <td><a href="#!" class="btn__editcategory" data-id="" data-username="" data-name=""><i class="fa-solid fa-pen-to-square"></i></a></td> -->
-          </tr>
+              </tr>
 
         </table>
         <!-- pag -->
@@ -437,22 +437,22 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
             <td>Update</i></td>
           </tr>
           <?php
-            //list all news category
-            $sql = "SELECT * FROM category_tours";
-            $result = mysqli_query($conn, $sql);
-            if (mysqli_num_rows($result) > 0) {
-              while ($row = mysqli_fetch_assoc($result)) {
-            ?>
-          <tr>
-            <td><?php echo $row['categoryID'] ?></td>
-            <td><?php echo $row['categoryName'] ?></td>
-            <td><a href="delete_category.php?categoryID=<?php echo $row['categoryID'] ?>" data-id="" class=""><i class="fa-solid fa-trash"></i></a></td>
-            <td><a href="#!" class="btn__editcategory" data-id="" data-username="" data-name=""><i class="fa-solid fa-pen-to-square"></i></a></td>
-        <?php
-              }
+          //list all news category
+          $sql = "SELECT * FROM category_tours";
+          $result = mysqli_query($conn, $sql);
+          if (mysqli_num_rows($result) > 0) {
+            while ($row = mysqli_fetch_assoc($result)) {
+          ?>
+              <tr>
+                <td><?php echo $row['categoryID'] ?></td>
+                <td><?php echo $row['categoryName'] ?></td>
+                <td><a href="delete_category.php?categoryID=<?php echo $row['categoryID'] ?>" data-id="" class=""><i class="fa-solid fa-trash"></i></a></td>
+                <td><a href="#!" class="btn__editcategory" data-id="" data-username="" data-name=""><i class="fa-solid fa-pen-to-square"></i></a></td>
+            <?php
             }
-        ?>
-          </tr>
+          }
+            ?>
+              </tr>
         </table>
         <!-- pag -->
         <div class="pag">
