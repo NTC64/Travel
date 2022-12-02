@@ -52,5 +52,8 @@ $(document).ready(function() {
    
         
 });
+$(document).on('click','.category__left',function() {
+    $(location).attr('href', 'http://localhost/travel/category.php?category='+$(this).attr('data-category'));
+});
 
 
