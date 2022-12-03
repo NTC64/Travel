@@ -43,7 +43,7 @@ $(document).on('click', '.news', function() {
   }
 });
 $(document).on('click', '.tourmanagement', function() {
-  if($(".adminalltour").hasClass("hide")) {
+  if($(".adminmntour").hasClass("hide")) {
     $(".admin__user").addClass("hide");
     $(".createad").addClass("hide");
     $(".bg").addClass("hide");
@@ -55,7 +55,6 @@ $(document).on('click', '.tourmanagement', function() {
     $(".adminalltour").addClass("hide");
     $(".createctg").addClass("hide");
     $(".adminnews").addClass("hide");
-    
     $(".adminmntour").removeClass("hide");
     
   }
