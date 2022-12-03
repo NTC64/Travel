@@ -66,13 +66,13 @@
             </div>
             <div class="category__items row">
                 <div class="col-2"></div>
-                <div class="card col-4 p-0 mx-3 text-center category__left">
+                <div class="card col-4 p-0 mx-3 text-center category__left" data-category='news'>
                     <img class="card-img-top" src="asset/img/news2.jpg" alt="Card image cap" />
                     <div class="card-body">
                         <p class="card-text w500 text-uppercase">Các danh mục bài viết</p>
                     </div>
                 </div>
-                <div class="card col-4 p-0 mx-3 text-center category__right">
+                <div class="card col-4 p-0 mx-3 text-center category__right" data-category='tour'>
                     <img class="card-img-top" src="asset/img/news2.jpg" alt="Card image cap" />
                     <div class="card-body">
                         <p class="card-text w500 text-uppercase">Các danh mục tour</p>

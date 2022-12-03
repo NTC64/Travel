@@ -396,7 +396,7 @@ body {
 table,
 tr,
 td {
-  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  border: 1px solid rgba(0, 0, 0, 0.3) !important;
   width: 100% !important;
   -webkit-line-clamp: 1; /* số dòng hiển thị */
   -webkit-box-orient: vertical;
@@ -404,7 +404,8 @@ td {
   text-overflow: ellipsis;
   font-size: 14px !important;
   padding: 5px !important;
-  color: #fff !important;
+  color: #000 !important;
+  padding: 10px 5px !important;
 }
 td:nth-child(1) {
   width: auto !important;
@@ -436,6 +437,12 @@ td:nth-child(9) {
 td:nth-child(10) {
   width: auto !important;
 }
+td:nth-child(11) {
+  width: auto !important;
+}
+td:nth-child(12) {
+  width: auto !important;
+}
 
 table {
   table-layout: auto !important;
@@ -448,13 +455,13 @@ table {
   padding-top: 30px;
   display: flex;
   flex-direction: column;
-  width: 95% !important;
+  width: 100% !important;
   height: 600px;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: #111827;
+  color: #000 !important;
 
   border: 1px solid transparent;
   border-radius: 10px;
@@ -470,7 +477,7 @@ table {
   margin-left: 250px !important;
 
   height: 100vh;
-  background-color: #313348;
+  background-color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
