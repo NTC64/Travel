@@ -438,9 +438,13 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
         </form>
     </div>
     <div class="admin__main">
+        <div class="til">
+            <h4 class="muc">Dashboard</h4>
+        </div>
         <!-- category -->
+
         <div class="container admincategorynews hide tb">
-            <div class="til">Category</div>
+
             <form action=" " method="get">
                 <table border="1">
                     <tr>
