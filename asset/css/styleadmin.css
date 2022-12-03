@@ -396,7 +396,7 @@ body {
 table,
 tr,
 td {
-  border: 1px solid rgba(0, 0, 0, 0.3) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
   width: 100% !important;
   -webkit-line-clamp: 1; /* số dòng hiển thị */
   -webkit-box-orient: vertical;
@@ -404,7 +404,7 @@ td {
   text-overflow: ellipsis;
   font-size: 14px !important;
   padding: 5px !important;
-  color: #000 !important;
+  color: #fff !important;
   padding: 10px 5px !important;
 }
 td:nth-child(1) {
@@ -461,7 +461,7 @@ table {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: #000 !important;
+  color: #fff !important;
 
   border: 1px solid transparent;
   border-radius: 10px;
@@ -477,7 +477,7 @@ table {
   margin-left: 250px !important;
 
   height: 100vh;
-  background-color: #fff;
+  background-color: #3c3f58;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -624,4 +624,6 @@ select {
 }
 .adminnews {
   overflow: scroll;
+}
+.til {
 }

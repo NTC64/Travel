@@ -52,9 +52,10 @@ $(document).on('click', '.tourmanagement', function() {
     $(".createnews").addClass("hide");
     $(".admincategorynews").addClass("hide");
     $(".admincategorytour").addClass("hide");
+    $(".adminalltour").addClass("hide");
     $(".createctg").addClass("hide");
     $(".adminnews").addClass("hide");
-    $(".adminalltour").addClass("hide");
+    
     $(".adminmntour").removeClass("hide");
     
   }
@@ -92,7 +93,6 @@ $(document).on('click', '.tourall', function() {
       $(".createad").addClass("hide");
       $(".createnews").addClass("hide");
     $(".adminmntour").addClass("hide");
-
       $(".admincategorytour").addClass("hide");
       $(".createctg").addClass("hide");
       $(".admincategorynews").addClass("hide");
