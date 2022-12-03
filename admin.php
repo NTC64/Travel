@@ -93,24 +93,39 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
       <div class="up__title">
         <h3>Update news</h3>
       </div>
-      <input type="text" class="crnewsname" name="title" required placeholder="Title" />
-      <textarea name="describe" class="crdescribe" cols="30" rows="10" required placeholder="Describe"></textarea>
-      <textarea name="content" class="crbody" cols="30" rows="10" required placeholder="content"></textarea>
-      <input type="file" class="crimg bdnone" name="img" required />
+      <input type="text" class="upnewstitle" name="title" required placeholder="Title" />
+      <textarea name="describe" class="upnewsdescription" cols="30" rows="10" required placeholder="Describe"></textarea>
+      <textarea name="content" class="upnewscontent" cols="30" rows="10" required placeholder="content"></textarea>
+
       <div class="row text">
 
         <div class="col-6 left m-0 p-0">
 
-          <select name="" id="">
+          <?php
+          //echo category_news inside select tag
+          $sql = "SELECT * FROM category_news";
+          $result = mysqli_query($conn, $sql);
+          if (mysqli_num_rows($result) > 0) {
+          ?>
+            <select name="category" id="upnewscategory">
+              <?php
+              while ($row = mysqli_fetch_assoc(
+                $result
+              )) {
+              ?>
 
-            <option value="">danh mục 1</option>
-            <option value="">danh mục 2</option>
-
-          </select>
+                <option value="<?php echo $row['categoryID'] ?>"><?php echo $row['categoryName'] ?></option>
+              <?php
+              }
+              ?>
+            </select>
+          <?php
+          }
+          ?>
         </div>
         <div class="col-6 rigth m-0 p-0">
 
-          <input type="datetime-local" class="crdate" name="date" required />
+          <input type="date" class="upnewsdate" name="date" required />
         </div>
 
 
@@ -125,6 +140,7 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
         <h3>Create category</h3>
       </div>
       <select class="crctg" id="" name="category">
+        <option value="">Select Category</option>
         <option value="category_news">Category News</option>
         <option value="category_tours">Category Tours</option>
       </select>
@@ -198,6 +214,7 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
           if (mysqli_num_rows($result) > 0) {
           ?>
             <select name="category" id="category">
+
               <?php
               while ($row = mysqli_fetch_assoc(
                 $result
@@ -628,7 +645,7 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
               <td><?php echo $resources; ?></td>
               <td><?php echo $date; ?></td>
               <td><a href="#!" data-id="" class="btn__delete"><i class="fa-solid fa-trash"></i></a></td>
-              <td><a href="#!" class="btn__editnews" data-id="" data-username="" data-name=""><i class="fa-solid fa-pen-to-square"></i></a></td>
+              <td><a href="#!" class="btn__editnews" data-title="<?php echo $title ?>" data-description="<?php echo $description; ?>" data-content="<?php echo $content; ?>" data-resources="<?php echo $resources; ?>" data-date="<?php echo $date; ?>" data-categoryid="<?php echo $categoryID; ?>"><i class="fa-solid fa-pen-to-square"></i></a></td>
           </tr>
         <?php } ?>
         <!-- end foreach -->
