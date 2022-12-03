@@ -137,7 +137,6 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
             <input type="submit" value="Create" name="crtCategory" class="btn btn-success" />
         </form>
     </div>
-    <!-- edit category -->
     <?php
   if (isset($_POST['crtCategory'])) {
     $category = $_POST['category'];
@@ -166,16 +165,32 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
     }
   }
   ?>
+    <!-- edit category -->
     <div class="edit editctg hide">
         <form action="" method="POST" class="edit__form">
             <div class="up__title">
                 <h3>Update Category</h3>
             </div>
-            <input type="text" class="idctg" name="" placeholder="ID category" />
-            <input type="text" class="ctgname" name="" placeholder="Category Name" required />
-            <input type="submit" value="Update" name="submit" class="btn btn-success" />
+            <input type="text" class="idctg" name="categoryID" placeholder="ID category" readonly />
+            <input type="text" class="ctgname" name="categoryName" placeholder="Category Name" required />
+            <input type="submit" value="Update" name="updNewsCategory" class="btn btn-success" />
         </form>
     </div>
+    <?php
+  if (isset($_POST['updNewsCategory'])) {
+    $categoryID = $_POST['categoryID'];
+    $categoryName = $_POST['categoryName'];
+    $sql = "UPDATE category_news SET categoryName = '$categoryName' WHERE categoryID = '$categoryID'";
+    $result = mysqli_query($conn, $sql);
+    if ($result) {
+      echo '<script>alert("Update category news success")</script>';
+      echo '<script>setTimeout(function(){window.location.href="admin.php"}, 1000)</script>';
+    } else {
+      echo '<script>alert("Update category news fail")</script>';
+      echo '<script>setTimeout(function(){window.location.href="admin.php"}, 1000)</script>';
+    }
+  }
+  ?>
     <!-- create news-->
     <div class="create createnews hide">
         <form action="" method="POST" class="create__form" enctype="multipart/form-data">
