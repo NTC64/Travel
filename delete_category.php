@@ -1,5 +1,7 @@
-<?php 
+<?php
 include 'conn.php';
+?>
+<?php
 $category_tours_ID = $_GET['categoryID'];
 $sql = "delete from category_news where categoryID = '$category_tours_ID'";
 $result = mysqli_query($conn, $sql);
@@ -8,3 +10,4 @@ if ($result) {
 } else {
     echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 }
+?>
