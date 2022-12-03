@@ -43,7 +43,7 @@ $(document).on('click', '.news', function() {
   }
 });
 $(document).on('click', '.tourmanagement', function() {
-  if($(".adminalltour").hasClass("hide")) {
+  if($(".adminmntour").hasClass("hide")) {
     $(".admin__user").addClass("hide");
     $(".createad").addClass("hide");
     $(".bg").addClass("hide");
@@ -52,9 +52,9 @@ $(document).on('click', '.tourmanagement', function() {
     $(".createnews").addClass("hide");
     $(".admincategorynews").addClass("hide");
     $(".admincategorytour").addClass("hide");
+    $(".adminalltour").addClass("hide");
     $(".createctg").addClass("hide");
     $(".adminnews").addClass("hide");
-    $(".adminalltour").addClass("hide");
     $(".adminmntour").removeClass("hide");
     
   }
@@ -92,7 +92,6 @@ $(document).on('click', '.tourall', function() {
       $(".createad").addClass("hide");
       $(".createnews").addClass("hide");
     $(".adminmntour").addClass("hide");
-
       $(".admincategorytour").addClass("hide");
       $(".createctg").addClass("hide");
       $(".admincategorynews").addClass("hide");
