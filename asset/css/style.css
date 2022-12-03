@@ -156,7 +156,7 @@ a:hover {
 .hide {
   display: none;
 }
-.btntt{
+.btntt {
   background: #8dc700;
   border: 0;
   padding: 12px;
@@ -232,6 +232,17 @@ a:hover {
   font-size: 16px;
   z-index: 9999999;
   display: none !important;
+}
+.btnnews {
+  background: #8dc700;
+
+  width: 50%;
+  margin: 0 0 20px 20px !important;
+}
+.tour__items video {
+  width: 100%;
+  height: 230px;
+  object-fit: cover;
 }
 .tourdetail--active {
   display: block !important;
