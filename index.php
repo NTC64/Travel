@@ -93,7 +93,7 @@
         function get_news_list()
         {
             global $conn;
-            $sql = "SELECT newsID, resources, date, title, description FROM news,uploads WHERE news.uploadID = uploads.uploadID";
+            $sql = "SELECT newsID, resources, date, title, description FROM news,uploads WHERE news.uploadID = uploads.uploadID limit 3";
             $result = mysqli_query($conn, $sql);
             $news_list = array();
             while ($row = mysqli_fetch_array($result)) {
@@ -107,14 +107,14 @@
             $news_list = get_news_list();
             foreach ($news_list as $news) {
             ?>
-                <div class="card col-4 p-0 m-2">
-                    <video src="uploads/<?php echo $news['resources']; ?>"></video>
-                    <div class="card-body">
-                        <p class="card-date text-black-50"><?php echo $news['date']; ?></p>
-                        <h5 class="card-title"><?php echo $news['title']; ?></h5>
-                    </div>
-                    <a href="news.php?newsID=<?php echo $news['newsID']; ?>" class="btn btn-green">Xem chi tiết</a>
+            <div class="card col-4 p-0 m-2">
+                <video src="uploads/<?php echo $news['resources']; ?>"></video>
+                <div class="card-body">
+                    <p class="card-date text-black-50"><?php echo $news['date']; ?></p>
+                    <h5 class="card-title"><?php echo $news['title']; ?></h5>
                 </div>
+                <a href="news.php?newsID=<?php echo $news['newsID']; ?>" class="btn btn-green">Xem chi tiết</a>
+            </div>
             <?php
             }
             ?>

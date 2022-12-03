@@ -161,7 +161,7 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
     $categoryID = $_POST['categoryID'];
     $categoryName = $_POST['categoryName'];
     if ($category == 'category_news') {
-      $sql = "INSERT INTO category_news (categoryID, categoryName) VALUES ('$categoryID', '$categoryName')";
+      $sql = "INSERT INTO category_news (categoryNews, categoryName) VALUES ('$categoryID', '$categoryName')";
       $result = mysqli_query($conn, $sql);
       if ($result) {
         echo '<script>alert("Create category news success")</script>';
@@ -171,7 +171,7 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
         echo '<script>window.location.href="admin.php"</script>';
       }
     } else {
-      $sql = "INSERT INTO category_tours (categoryID, categoryName) VALUES ('$categoryID', '$categoryName')";
+      $sql = "INSERT INTO category_tours (categoryTours, categoryName) VALUES ('$categoryID', '$categoryName')";
       $result = mysqli_query($conn, $sql);
       if ($result) {
         echo '<script>alert("Create category tours success")</script>';

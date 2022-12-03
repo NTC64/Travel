@@ -19,7 +19,7 @@ if (isset($_GET['categoryNews'])) {
     $sql = "delete from category_news where categoryNews = '$category_news_ID'";
     $result = mysqli_query($conn, $sql);
     if ($result) {
-        header("location: admin.php");
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
     } else {
         echo "Error: " . $sql . "<br>" . mysqli_error($conn);
     }
