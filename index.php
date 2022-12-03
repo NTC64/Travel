@@ -112,13 +112,14 @@
                     <div class="card-body">
                         <p class="card-date text-black-50"><?php echo $news['date']; ?></p>
                         <h5 class="card-title"><?php echo $news['title']; ?></h5>
-                        <a href="news.php?newsID=<?php echo $news['newsID']; ?>" class="btn btn-green">Xem chi tiết</a>
                     </div>
+                    <a href="news.php?newsID=<?php echo $news['newsID']; ?>" class="btn btn-green">Xem chi tiết</a>
                 </div>
             <?php
             }
             ?>
         </div>
+
     </div>
     <!-- Footer -->
     <?php include 'footer.php'; ?>

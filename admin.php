@@ -38,7 +38,8 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
             <?php echo $_SESSION['name']; ?>
           </a>
         </h5>
-        <p class="mt-1 mb-0 adrole" data-role="<?php echo $_SESSION['role']; ?>"><?php echo $_SESSION['role']; ?></p>
+        <p class="mt-1 mb-0 adrole" data-role="<?php echo $_SESSION['role']; ?>">
+          <?php echo $_SESSION['role']; ?></p>
       </div>
     </div>
 
@@ -190,10 +191,27 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
       <div class="row text">
         <!-- list danh muc -->
         <div class="col-6 left m-0 p-0">
-          <select name="" id="">
-            <option value="">danh mục 1</option>
-            <option value="">danh mục 2</option>
-          </select>
+          <?php
+          //echo category_news inside select tag
+          $sql = "SELECT * FROM category_news";
+          $result = mysqli_query($conn, $sql);
+          if (mysqli_num_rows($result) > 0) {
+          ?>
+            <select name="category" id="category">
+              <?php
+              while ($row = mysqli_fetch_assoc(
+                $result
+              )) {
+              ?>
+                <option value="<?php echo $row['categoryID'] ?>"><?php echo $row['categoryName'] ?></option>
+              <?php
+              }
+              ?>
+            </select>
+          <?php
+          }
+          ?>
+
         </div>
         <div class="col-6 rigth m-0 p-0">
           <input type="date" class="crdate" name="date" required value="<?php if (isset($_POST['date'])) {
@@ -251,8 +269,9 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
       $userID = $_SESSION['userID'];
       $description = $_POST['describe'];
       $content = $_POST['content'];
+      $categoryID = $_POST['category'];
       $date = $_POST['date'];
-      $sql = "INSERT INTO `news` (`userID`,`title`, `description`, `content`, `date`, `uploadID`) VALUES ('$userID','$title', '$description', '$content', '$date', '$uploadID')";
+      $sql = "INSERT INTO `news` (`userID`,`title`, `description`, `content`,`categoryID`,`date`, `uploadID`) VALUES ('$userID','$title', '$description', '$content','$categoryID', '$date', '$uploadID')";
       $result = mysqli_query($conn, $sql);
       if ($result) {
         echo "<script>alert('Create news successfully.')</script>";
@@ -481,8 +500,8 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
             <td>Price</td>
             <td>Image</td>
             <td>Address</td>
-            <td>Time</td>
-            <td>Start Time</td>
+            <td>Nights</td>
+            <td>Time Depart</td>
             <td>Content</td>
             <td>Delete</i></td>
             <td>Update</i></td>
@@ -671,7 +690,8 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
               <td><?php echo $user['password'] ?></td>
               <td><?php echo $user['role'] ?></td>
               <td><a href="#!" data-id="<?php echo $ID; ?>" class="btn__delete"><i class="fa-solid fa-trash"></i></a></td>
-              <td><a href="#!" class="btn__edituser" data-id="<?php echo $user['userID']; ?>" data-username="<?php echo $user['username']; ?>" data-name="<?php echo $user['name']; ?>"><i class="fa-solid fa-pen-to-square"></i></a></td>
+              <td><a href="#!" class="btn__edituser" data-id="<?php echo $user['userID']; ?>" data-username="<?php echo $user['username']; ?>" data-name="<?php echo $user['name']; ?>"><i class="fa-solid fa-pen-to-square"></i></a>
+              </td>
             </tr>
           <?php
           }
@@ -798,7 +818,8 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
               <td><?php echo $admin['password'] ?></td>
               <td><?php echo $admin['role'] ?></td>
               <td><a href="#!" data-id="<?php echo $ID; ?>" class="btn__delete"><i class="fa-solid fa-trash"></i></a></td>
-              <td><a href="#!" class="btn__editadmin" data-id="<?php echo $admin['userID']; ?>" data-username="<?php echo $admin['username']; ?>" data-name="<?php echo $admin['name']; ?>"><i class="fa-solid fa-pen-to-square"></i></a></td>
+              <td><a href="#!" class="btn__editadmin" data-id="<?php echo $admin['userID']; ?>" data-username="<?php echo $admin['username']; ?>" data-name="<?php echo $admin['name']; ?>"><i class="fa-solid fa-pen-to-square"></i></a>
+              </td>
             </tr>
           <?php
           }
@@ -822,9 +843,12 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
     <!-- partial -->
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
     <script src="./asset/js/script.js"></script>
 </body>
 

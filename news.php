@@ -30,7 +30,7 @@ include 'conn.php';
     //echo news information base on id after click a href in index.php
     if (isset($_GET['newsID'])) {
         $id = $_GET['newsID'];
-        $sql = "SELECT *,resources FROM news, uploads WHERE news.newsID = '$id' AND news.uploadID = uploads.uploadID";
+        $sql = "SELECT *,resources,name FROM access,news, uploads WHERE news.newsID = '$id' AND news.uploadID = uploads.uploadID and access.userID = news.userID";
         $result = mysqli_query($conn, $sql);
         if (mysqli_num_rows($result) > 0) {
             $row = mysqli_fetch_assoc($result);
@@ -40,9 +40,10 @@ include 'conn.php';
                 <p class="text-black-50"><?php echo $row['date']; ?></p>
                 <p><?php echo nl2br($row['content']) ?></p>
                 <div class="video">
-                    <video width="80%" height="auto" controls src="uploads/<?php echo $row['resources'] ?>" type='video/mp4'></video>
-
+                    <video width="80%" height="auto" controls src="uploads/<?php echo $row['resources'] ?>"></video>
                 </div>
+                <br>
+                <h5 class="text-black-50">Author: <?php echo $row['name'] ?></h5>
             </div>
     <?php
         }
