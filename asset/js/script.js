@@ -333,9 +333,14 @@ $(document).on('click', '.btn__editcategory', function() {
   if($(".editctg").hasClass("hide")) {
     $(".bg").removeClass("hide");
     $(".editctg").removeClass("hide");
+    if($('.admincategorynews').hasClass('hide') == false){
     $(".idctg").val($(this).attr("data-id"));
     $(".ctgname").val($(this).attr("data-name"));
-  
+    }
+    else if($('.admincategorytour').hasClass('hide') == false){
+    $(".idctg").val($(this).attr("data-id"));
+    $(".ctgname").val($(this).attr("data-name"));
+    }
     
  }
 else {

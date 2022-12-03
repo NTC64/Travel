@@ -498,7 +498,7 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
                 <td><?php echo $row['categoryID'] ?></td>
                 <td><?php echo $row['categoryName'] ?></td>
                 <td><a href="delete_category.php?categoryID=<?php echo $row['categoryID'] ?>" data-id="" class=""><i class="fa-solid fa-trash"></i></a></td>
-                <td><a href="#!" class="btn__editcategory" data-id="" data-username="" data-name=""><i class="fa-solid fa-pen-to-square"></i></a></td>
+                <td><a href="#!" class="btn__editcategory" data-id="<?php echo $row['categoryID'] ?>" data-username="" data-name="<?php echo $row['categoryName'] ?>"><i class="fa-solid fa-pen-to-square"></i></a></td>
             <?php
             }
           }
