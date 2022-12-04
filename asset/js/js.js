@@ -91,9 +91,10 @@ $(document).on('click','.btnbook',function() {
     }   
 
 });
-$(document).ready(function() {
-    var price=parseFloat( $('.pricetour').html());
-    $(".price").val(price);
+$(document).on('click','.btn__tour',function() {
+    $(location).attr('href', 'http://localhost/travel/tourdetail.php?id='+$(this).attr('data-id'));
+
+
 });
 
 

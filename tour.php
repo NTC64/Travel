@@ -133,6 +133,7 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
                     <label for="">Khởi hành:</label><input type="date" name="" class="date" id="">
 
                 </div>
+                <p class="text-white f14">" Sao chép mã giảm giá (MGGVIP) để được khuyến mãi 20% "</p>
                 <a href="booking.php" class="btn btn-green mt-4 btn__tour" data-id="id">Đặt Tour</a>
             </div>
             <!-- end tour card -->

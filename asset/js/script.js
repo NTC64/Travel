@@ -36,11 +36,13 @@ $(document).on('click', '.news', function() {
     $(".createctg").addClass("hide");
     $(".adminalltour").addClass("hide");
     $(".adminmntour").addClass("hide");
+    $(".dashboard").addClass("hide");
     $(".adminnews").removeClass("hide");
     
   }
   else {
   $(".adminnews").addClass("hide");
+  $(".dashboard").removeClass("hide");
   }
 });
 $(document).on('click', '.tourmanagement', function() {
@@ -56,12 +58,36 @@ $(document).on('click', '.tourmanagement', function() {
     $(".admincategorytour").addClass("hide");
     $(".adminalltour").addClass("hide");
     $(".createctg").addClass("hide");
+    $(".dashboard").addClass("hide");
     $(".adminnews").addClass("hide");
     $(".adminmntour").removeClass("hide");
     
   }
   else {
   $(".adminmntour").addClass("hide");
+  $(".dashboard").removeClass("hide");
+  }
+});
+$(document).on('click', '.dash', function() {
+  if($(".dashboard").hasClass("hide")) {
+  
+    $(".muc").html("Dashboard");
+    $(".createad").addClass("hide");
+    $(".bg").addClass("hide");
+    $(".admin__ad").addClass("hide");
+    $(".admin__seller").addClass("hide");
+    $(".createnews").addClass("hide");
+    $(".admincategorynews").addClass("hide");
+    $(".admincategorytour").addClass("hide");
+    $(".adminalltour").addClass("hide");
+    $(".createctg").addClass("hide");
+    $(".adminnews").addClass("hide");
+    $(".dashboard").removeClass("hide");
+    $(".adminmntour").addClass("hide");
+    
+  }
+  else {
+     $(".dashboard").removeClass("hide");
   }
 });
 $(document).on('click', '.user', function() {
@@ -73,6 +99,7 @@ $(document).on('click', '.user', function() {
     $(".admin__seller").addClass("hide");
     $(".adminnews").addClass("hide");
     $(".createad").addClass("hide");
+    $(".dashboard").addClass("hide");
     $(".createnews").addClass("hide");
     $(".adminalltour").addClass("hide");
     $(".adminmntour").addClass("hide");
@@ -82,6 +109,8 @@ $(document).on('click', '.user', function() {
  else {
   
      $(".admin__user").addClass("hide");
+  $(".dashboard").removeClass("hide");
+
  }
 
 });
@@ -94,6 +123,7 @@ $(document).on('click', '.tourall', function() {
       $(".admin__seller").addClass("hide");
       $(".adminnews").addClass("hide");
       $(".createad").addClass("hide");
+      $(".dashboard").addClass("hide");
       $(".createnews").addClass("hide");
     $(".adminmntour").addClass("hide");
       $(".admincategorytour").addClass("hide");
@@ -105,6 +135,8 @@ $(document).on('click', '.tourall', function() {
   else {
     
       $(".adminalltour").addClass("hide");
+  $(".dashboard").removeClass("hide");
+
   }
   
 });
@@ -115,6 +147,7 @@ $(document).on('click', '.seller', function() {
     $(".bg").addClass("hide");
     $(".admin__user").addClass("hide");
     $(".adminnews").addClass("hide");
+    $(".dashboard").addClass("hide");
     $(".createad").addClass("hide");
     $(".adminmntour").addClass("hide");
 
@@ -125,6 +158,8 @@ $(document).on('click', '.seller', function() {
  }
 else {
     $(".admin__seller").addClass("hide");
+  $(".dashboard").removeClass("hide");
+
 }
 });
 $(document).on('click', '.categorynews', function() {
@@ -136,6 +171,7 @@ $(document).on('click', '.categorynews', function() {
     $(".adminnews").addClass("hide");
     $(".createad").addClass("hide");
     $(".adminmntour").addClass("hide");
+    $(".dashboard").addClass("hide");
     $(".admin__ad").addClass("hide");
     $(".createnews").addClass("hide");
     $(".admincategorytour").addClass("hide");
@@ -146,6 +182,8 @@ $(document).on('click', '.categorynews', function() {
  }
 else {
     $(".admincategorynews").addClass("hide");
+  $(".dashboard").removeClass("hide");
+
 }
 });
 $(document).on('click', '.categorytour', function() {
@@ -160,7 +198,7 @@ $(document).on('click', '.categorytour', function() {
     $(".createad").addClass("hide");
     $(".adminmntour").addClass("hide");
     $(".admin__ad").addClass("hide");
-
+    $(".dashboard").addClass("hide");
     $(".admincategorynews").addClass("hide");
     $(".createctg").addClass("hide");
     $(".createnews").addClass("hide");
@@ -170,6 +208,8 @@ $(document).on('click', '.categorytour', function() {
  }
 else {
     $(".admincategorytour").addClass("hide");
+  $(".dashboard").removeClass("hide");
+
 }
 });
 $(document).on('click', '.btncreatenews', function() {
@@ -183,6 +223,8 @@ $(document).on('click', '.btncreatenews', function() {
  }
 else {
     $(".createnews").addClass("hide");
+  $(".dashboard").removeClass("hide");
+
 }
 });
 $(document).on('click','.btn__editnews',function(){
@@ -199,6 +241,8 @@ $(document).on('click','.btn__editnews',function(){
  }
 else {
     $(".editnews").addClass("hide");
+
+
 }
 });
 $(document).on('click', '.btn__edituser', function() {
@@ -212,6 +256,7 @@ $(document).on('click', '.btn__edituser', function() {
  }
 else {
     $(".edituser").addClass("hide");
+
 }
 });
 $(document).on('click', '.btn__editseller', function(){
@@ -226,6 +271,8 @@ $(document).on('click', '.btn__editseller', function(){
  }
 else {
     $(".editseller").addClass("hide");
+  
+
 }
 });
 $(document).on('click', '.bg', function() {
@@ -233,6 +280,7 @@ $(document).on('click', '.bg', function() {
     $(".bg").addClass("hide");
     $(".edit").addClass("hide");
     $(".create").addClass("hide");
+
 
 });
 $(document).on('click', '.btn__delete', function() {
@@ -287,7 +335,7 @@ $(document).on('click', '.crcategory', function() {
     $(".admincategorynews").addClass("hide");
     $(".createnews").addClass("hide");
     $(".adminmntour").addClass("hide");
-
+    $(".dashboard").addClass("hide");
     $(".adminalltour").addClass("hide");
 
     $(".admincategorytour").addClass("hide");
@@ -295,6 +343,8 @@ $(document).on('click', '.crcategory', function() {
  }
 else {
     $(".createctg").addClass("hide");
+  $(".dashboard").removeClass("hide");
+
 }
 });
 $(document).on('click', '.adcreate', function() {
@@ -307,7 +357,7 @@ $(document).on('click', '.adcreate', function() {
     $(".admin__ad").addClass("hide");
     $(".createctg").addClass("hide");
     $(".adminmntour").addClass("hide");
-
+    $(".dashboard").addClass("hide");
     $(".admincategorynews").addClass("hide");
     $(".createnews").addClass("hide");
     $(".adminalltour").addClass("hide");
@@ -317,6 +367,8 @@ $(document).on('click', '.adcreate', function() {
  }
 else {
     $(".createad").addClass("hide");
+  $(".dashboard").removeClass("hide");
+
 }
 });
 $(document).on('click', '.admin', function() {
@@ -327,7 +379,7 @@ $(document).on('click', '.admin', function() {
     $(".createad").addClass("hide");
     $(".adminnews").addClass("hide");
     $(".adminmntour").addClass("hide");
-
+    $(".dashboard").addClass("hide");
     $(".admincategorynews").addClass("hide");
     $(".admincategorytour").addClass("hide");
     $(".createctg").addClass("hide");
@@ -340,6 +392,8 @@ $(document).on('click', '.admin', function() {
  }
 else {
     $(".admin__ad").addClass("hide");
+  $(".dashboard").removeClass("hide");
+
 }
 });
 $(document).on('click', '.btn__editcategory', function() {
