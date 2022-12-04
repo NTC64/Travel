@@ -42,27 +42,27 @@
                         <input type="text" placeholder="Họ và tên">
                         <input type="text" placeholder="Số điện thoại">
                         <input type="text" placeholder="Địa chỉ">
-                        <input type="text" placeholder="Tên tour">
-                        <input type="text" placeholder="Giá">
-                        <input type="text" placeholder="Số lượng người">
+                        <input type="text" placeholder="Tên tour" readonly>
+                        <input type="text" placeholder="Giá" class="price" readonly>
+                        <input type="number" placeholder="Số lượng người" class="quantity" value="1" min="1" max="50">
                     </div>
                     <div class="col-6 right">
 
-                        <input type="text" placeholder="Ngày khởi hành">
-                        <input type="text" placeholder="Ngày kết thúc">
+                        <input type="text" placeholder="Ngày khởi hành" readonly>
+                        <input type="text" placeholder="Ngày kết thúc" readonly>
                         <textarea name="" id="" cols="30" rows="10" placeholder="Ghi chú"></textarea>
-                        <select name="" id="">
+                        <select name="" id="pay">
                             <option value="">Chọn phương thức thanh toán</option>
-                            <option value="">Thanh toán trực tiếp</option>
-                            <option value="">Thanh toán ví điện tử</option>
+                            <option value="atm">Thanh toán trực tiếp</option>
+                            <option value="momo">Thanh toán ví điện tử</option>
                         </select>
                     </div>
                 </div>
                 <div class="row">
-                    <h3 class="col-12">Tổng tiền:</h3>
+                    <h3 class="col-12">Tổng tiền: <span class="total"></span> VND</h3>
                 </div>
                 <div class="row btnbook">
-                    <input type="submit" class="btn btn-success" value="Đặt tour">
+                    <div class="btn btn-success btnbook">Đặt tour</div>
                 </div>
 
             </form>

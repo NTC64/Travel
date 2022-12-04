@@ -2,6 +2,14 @@ $(".header__login").on("click", function() {
   $(".signin").toggleClass("login--active");
   $(".bg").toggleClass("bg--active");
 });
+$(".search__btn").on("click", function() {
+    Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'the system is under maintenance, please come back in the future!!',
+        
+      })
+});
 $(".btn__tourdetail").on("click", function() {
     $(".tourdetail").toggleClass("tourdetail--active");
     $(".bg").toggleClass("bg--active");
@@ -52,6 +60,17 @@ $(document).ready(function() {
    
         
 });
+$(document).ready(function() {
+    var price=parseFloat( $('.price').val());
+    var quantity=parseFloat( $('.quantity').val());
+    var total=price*quantity;
+    $(".total").html(total);
+    $(".quantity").on("change", function() {
+    var price=parseFloat( $('.price').val());
+    var quantity=parseFloat( $('.quantity').val());
+    var total=price*quantity;
+    $(".total").html(total);});
+});
 $(document).on('click','.category__left',function() {
     $(location).attr('href', 'http://localhost/travel/category.php?category='+$(this).attr('data-category'));
     sessionStorage.setItem('category', $(this).attr('data-category'));
@@ -62,7 +81,20 @@ $(document).on('click','.category__right',function() {
     sessionStorage.setItem('category', $(this).attr('data-category'));
 
 });
+$(document).on('click','.btnbook',function() {
+    if($("#pay").val() == "momo"){
+    $(location).attr('href', 'http://localhost/travel/PayMoMo/init_payment.php');
+    }
+    else{
+        alert("Chưa có phương thức thanh toán này");
+        // $(location).attr('href', 'http://localhost/travel/PayMoMo/init_payment.php');
+    }   
 
+});
+$(document).ready(function() {
+    var price=parseFloat( $('.pricetour').html());
+    $(".price").val(price);
+});
 
 
 
