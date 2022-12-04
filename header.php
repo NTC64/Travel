@@ -194,7 +194,7 @@
                 <select id="" class="search__select">
                     <option value="">Địa điểm</option>
                 </select>
-                <input type="submit" value="Search" class="search__btn" />
+                <input type="button" value="Search" class="search__btn" />
             </form>
         </div>
     </div>
