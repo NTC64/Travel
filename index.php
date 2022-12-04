@@ -115,12 +115,11 @@
                     </div>
                     <a href="news.php?newsID=<?php echo $news['newsID']; ?>" class="btn btn-green btnnews">Xem chi tiết</a>
                 </div>
-                <a href="news.php?newsID=<?php echo $news['newsID']; ?>" class="btn btn-green">Xem chi tiết</a>
-        </div>
-    <?php
+
+            <?php
             }
-    ?>
-    </div>
+            ?>
+        </div>
 
     </div>
     <!-- Footer -->
