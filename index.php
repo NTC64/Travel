@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Title</title>
+    <title>ULSA IT</title>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -33,17 +33,36 @@
             <a class="m-auto text-right text-black-50 hvblack" href="alltour.php">View all >></a>
         </div>
         <div class="tour__items row">
+            <?php
+            function get_tour_list($conn)
+            {
+                $sql = "SELECT * FROM tours";
+                $result = mysqli_query($conn, $sql);
+                $tour_list = array();
+                if (mysqli_num_rows($result) > 0) {
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        $tour_list[] = $row;
+                    }
+                }
+                return $tour_list;
+            }
+            ?>
+            <?php
+            $tour_list = get_tour_list($conn);
+            foreach ($tour_list as $tour) {
+            ?>
             <!-- tour card -->
             <div class="card col-4 p-0 m-2">
-                <img class="card-img-top" src="asset/img/tour1.jpg" alt="Card image cap" />
+                <img class="card-img-top" src="uploads/images/<?php echo $tour['tourImage']; ?>" alt="Card image cap" />
                 <div class="card-body">
-                    <h5 class="card-title">Tên địa điểm du lịch</h5>
-                    <p class="card-text text-black-50">Mô tả</p>
-
-                    <p class="card-price text-danger">Giá</p>
-                    <a href="tour.php" class="btn btn-green" data-id="id">Đặt Tour</a>
+                    <h5 class="card-title"><?php echo $tour['tourName']; ?></h5>
+                    <p class="card-text text-black-50"><?php echo $tour['tourDescription']; ?></p>
+                    <p class="card-price text-danger">Giá: <?php echo $tour['tourPrice']; ?></p>
+                    <a href="tour.php?tourID=<?php echo $tour['tourID'] ?>" class="btn btn-green" data-id="id">Đặt
+                        Tour</a>
                 </div>
             </div>
+            <?php } ?>'
             <!-- end tour card -->
             <!-- tour card -->
             <!-- ..... -->
@@ -107,14 +126,14 @@
             $news_list = get_news_list();
             foreach ($news_list as $news) {
             ?>
-                <div class="card col-4 p-0 m-2">
-                    <video src="uploads/<?php echo $news['resources']; ?>"></video>
-                    <div class="card-body">
-                        <p class="card-date text-black-50"><?php echo $news['date']; ?></p>
-                        <h5 class="card-title"><?php echo $news['title']; ?></h5>
-                    </div>
-                    <a href="news.php?newsID=<?php echo $news['newsID']; ?>" class="btn btn-green btnnews">Xem chi tiết</a>
+            <div class="card col-4 p-0 m-2">
+                <video src="uploads/video/<?php echo $news['resources']; ?>"></video>
+                <div class="card-body">
+                    <p class="card-date text-black-50"><?php echo $news['date']; ?></p>
+                    <h5 class="card-title"><?php echo $news['title']; ?></h5>
                 </div>
+                <a href="news.php?newsID=<?php echo $news['newsID']; ?>" class="btn btn-green btnnews">Xem chi tiết</a>
+            </div>
 
             <?php
             }

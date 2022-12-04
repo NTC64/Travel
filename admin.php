@@ -1,8 +1,8 @@
 <?php
 if (!isset($_SERVER['HTTP_REFERER'])) {
-  // redirect them to your desired location
-  header('location:index.php');
-  exit;
+    // redirect them to your desired location
+    header('location:index.php');
+    exit;
 }
 ?>
 <html lang="en">
@@ -23,8 +23,8 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
 
     <?php session_start() ?>
     <?php
-  include 'conn.php';
-  ?>
+    include 'conn.php';
+    ?>
 </head>
 
 <body>
@@ -108,26 +108,26 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
                 <div class="col-6 left m-0 p-0">
 
                     <?php
-          //echo category_news inside select tag
-          $sql = "SELECT * FROM category_news";
-          $result = mysqli_query($conn, $sql);
-          if (mysqli_num_rows($result) > 0) {
-          ?>
+                    //echo category_news inside select tag
+                    $sql = "SELECT * FROM category_news";
+                    $result = mysqli_query($conn, $sql);
+                    if (mysqli_num_rows($result) > 0) {
+                    ?>
                     <select name="category" id="upnewscategory">
                         <?php
-              while ($row = mysqli_fetch_assoc(
-                $result
-              )) {
-              ?>
+                            while ($row = mysqli_fetch_assoc(
+                                $result
+                            )) {
+                            ?>
 
                         <option value="<?php echo $row['categoryID'] ?>"><?php echo $row['categoryName'] ?></option>
                         <?php
-              }
-              ?>
+                            }
+                            ?>
                     </select>
                     <?php
-          }
-          ?>
+                    }
+                    ?>
                 </div>
                 <div class="col-6 rigth m-0 p-0">
 
@@ -156,33 +156,33 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
         </form>
     </div>
     <?php
-  if (isset($_POST['crtCategory'])) {
-    $category = $_POST['category'];
-    $categoryID = $_POST['categoryID'];
-    $categoryName = $_POST['categoryName'];
-    if ($category == 'category_news') {
-      $sql = "INSERT INTO category_news (categoryNews, categoryName) VALUES ('$categoryID', '$categoryName')";
-      $result = mysqli_query($conn, $sql);
-      if ($result) {
-        echo '<script>alert("Create category news success")</script>';
-        echo '<script>window.location.href="admin.php"</script>';
-      } else {
-        echo '<script>alert("Create category news fail")</script>';
-        echo '<script>window.location.href="admin.php"</script>';
-      }
-    } else {
-      $sql = "INSERT INTO category_tours (categoryTours, categoryName) VALUES ('$categoryID', '$categoryName')";
-      $result = mysqli_query($conn, $sql);
-      if ($result) {
-        echo '<script>alert("Create category tours success")</script>';
-        echo '<script>window.location.href="admin.php"</script>';
-      } else {
-        echo '<script>alert("Create category tours fail")</script>';
-        echo '<script>window.location.href="admin.php"</script>';
-      }
+    if (isset($_POST['crtCategory'])) {
+        $category = $_POST['category'];
+        $categoryID = $_POST['categoryID'];
+        $categoryName = $_POST['categoryName'];
+        if ($category == 'category_news') {
+            $sql = "INSERT INTO category_news (categoryNews, categoryName) VALUES ('$categoryID', '$categoryName')";
+            $result = mysqli_query($conn, $sql);
+            if ($result) {
+                echo '<script>alert("Create category news success")</script>';
+                echo '<script>window.location.href="admin.php"</script>';
+            } else {
+                echo '<script>alert("Create category news fail")</script>';
+                echo '<script>window.location.href="admin.php"</script>';
+            }
+        } else {
+            $sql = "INSERT INTO category_tours (categoryTours, categoryName) VALUES ('$categoryID', '$categoryName')";
+            $result = mysqli_query($conn, $sql);
+            if ($result) {
+                echo '<script>alert("Create category tours success")</script>';
+                echo '<script>window.location.href="admin.php"</script>';
+            } else {
+                echo '<script>alert("Create category tours fail")</script>';
+                echo '<script>window.location.href="admin.php"</script>';
+            }
+        }
     }
-  }
-  ?>
+    ?>
     <!-- edit category -->
     <div class="edit editctg hide">
         <form action="" method="POST" class="edit__form">
@@ -195,20 +195,32 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
         </form>
     </div>
     <?php
-  if (isset($_POST['updNewsCategory'])) {
-    $categoryID = $_POST['categoryID'];
-    $categoryName = $_POST['categoryName'];
-    $sql = "UPDATE category_news SET categoryName = '$categoryName' WHERE categoryID = '$categoryID'";
-    $result = mysqli_query($conn, $sql);
-    if ($result) {
-      echo '<script>alert("Update category news success")</script>';
-      echo '<script>setTimeout(function(){window.location.href="admin.php"}, 1000)</script>';
-    } else {
-      echo '<script>alert("Update category news fail")</script>';
-      echo '<script>setTimeout(function(){window.location.href="admin.php"}, 1000)</script>';
+    if (isset($_POST['updNewsCategory'])) {
+        $categoryID = $_POST['categoryID'];
+        $categoryName = $_POST['categoryName'];
+        if (substr($categoryID, 0, 1) == 'N') {
+            $sql = "UPDATE category_news SET categoryName = '$categoryName' WHERE categoryNews = '$categoryID'";
+            $result = mysqli_query($conn, $sql);
+            if ($result) {
+                echo '<script>alert("Update category news success")</script>';
+                echo  '<script> setTimeout(function(){window.location.href="admin.php"}, 1000)</script>';
+            } else {
+                echo '<script>alert("Update category news fail")</script>';
+                echo  '<script> setTimeout(function(){window.location.href="admin.php"}, 1000)</script>';
+            }
+        } else {
+            $sql = "UPDATE category_tours SET categoryName = '$categoryName' WHERE categoryTours = '$categoryID'";
+            $result = mysqli_query($conn, $sql);
+            if ($result) {
+                echo '<script>alert("Update category tours success")</script>';
+                echo  '<script> setTimeout(function(){window.location.href="admin.php"}, 1000)</script>';
+            } else {
+                echo '<script>alert("Update category tours fail")</script>';
+                echo  '<script> setTimeout(function(){window.location.href="admin.php"}, 1000)</script>';
+            }
+        }
     }
-  }
-  ?>
+    ?>
     <!-- create news-->
     <div class="create createnews hide">
         <form action="" method="POST" class="create__form" enctype="multipart/form-data">
@@ -216,47 +228,47 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
                 <h3 class="my-3">Create News</h3>
             </div>
             <input type="text" class="crnewsname" name="title" required value="<?php if (isset($_POST['title'])) {
-                                                                            echo $_POST['title'];
-                                                                          } ?>" placeholder="Title" />
+                                                                                    echo $_POST['title'];
+                                                                                } ?>" placeholder="Title" />
             <textarea name="describe" class="crdescribe" cols="30" rows="10" required value="<?php if (isset($_POST['describe'])) {
-                                                                                          echo $_POST['describe'];
-                                                                                        } ?>"
+                                                                                                    echo $_POST['describe'];
+                                                                                                } ?>"
                 placeholder="Describe"></textarea>
             <textarea name="content" class="crbody" cols="30" rows="10" required value="<?php if (isset($_POST['content'])) {
-                                                                                    echo $_POST['content'];
-                                                                                  } ?>"
+                                                                                            echo $_POST['content'];
+                                                                                        } ?>"
                 placeholder="Enter content"></textarea>
             <input type="file" class="crimg" name="video" id="video" required />
             <div class="row text">
                 <!-- list danh muc -->
                 <div class="col-6 left m-0 p-0">
                     <?php
-          //echo category_news inside select tag
-          $sql = "SELECT * FROM category_news";
-          $result = mysqli_query($conn, $sql);
-          if (mysqli_num_rows($result) > 0) {
-          ?>
+                    //echo category_news inside select tag
+                    $sql = "SELECT * FROM category_news";
+                    $result = mysqli_query($conn, $sql);
+                    if (mysqli_num_rows($result) > 0) {
+                    ?>
                     <select name="category" id="category">
 
                         <?php
-              while ($row = mysqli_fetch_assoc(
-                $result
-              )) {
-              ?>
+                            while ($row = mysqli_fetch_assoc(
+                                $result
+                            )) {
+                            ?>
                         <option value="<?php echo $row['categoryID'] ?>"><?php echo $row['categoryName'] ?></option>
                         <?php
-              }
-              ?>
+                            }
+                            ?>
                     </select>
                     <?php
-          }
-          ?>
+                    }
+                    ?>
 
                 </div>
                 <div class="col-6 rigth m-0 p-0">
                     <input type="date" class="crdate" name="date" required value="<?php if (isset($_POST['date'])) {
-                                                                          echo $_POST['date'];
-                                                                        } ?>" />
+                                                                                        echo $_POST['date'];
+                                                                                    } ?>" />
                 </div>
             </div>
             <div class="smnews">
@@ -266,61 +278,61 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
     </div>
     <!-- php code to get data from form -->
     <?php
-  if (isset($_POST['submitNews'])) {
-    $target_dir = "uploads/";
-    $target_file = $target_dir . basename($_FILES["video"]["name"]);
-    $fileName = $_FILES['video']['name'];
-    $fileTmpName = $_FILES['video']['tmp_name'];
-    $fileExt = explode('.', $fileName);
-    $uploadOk = 1;
-    $fileActualExt = strtolower(end($fileExt));
-    // Check videoFileType is valid
-    if ($fileActualExt !== "mp4" && $fileActualExt !== "avi" && $fileActualExt !== "mov" && $fileActualExt !== "wmv" && $fileActualExt !== "flv" && $fileActualExt !== "3gp") {
-      echo "<script>alert('Sorry, only MP4, AVI, MOV, WMV, FLV & 3GP files are allowed.')</script>";
-      $uploadOk = 0;
-      echo "<script>setTimeout('window.location.href = 'admin.php', 1500)</script>";
+    if (isset($_POST['submitNews'])) {
+        $target_dir = "uploads/video/";
+        $target_file = $target_dir . basename($_FILES["video"]["name"]);
+        $fileName = $_FILES['video']['name'];
+        $fileTmpName = $_FILES['video']['tmp_name'];
+        $fileExt = explode('.', $fileName);
+        $uploadOk = 1;
+        $fileActualExt = strtolower(end($fileExt));
+        // Check videoFileType is valid
+        if ($fileActualExt !== "mp4" && $fileActualExt !== "avi" && $fileActualExt !== "mov" && $fileActualExt !== "wmv" && $fileActualExt !== "flv" && $fileActualExt !== "3gp") {
+            echo "<script>alert('Sorry, only MP4, AVI, MOV, WMV, FLV & 3GP files are allowed.')</script>";
+            $uploadOk = 0;
+            echo "<script>setTimeout('window.location.href = 'admin.php', 1500)</script>";
+        }
+        //check if file name is existed
+        $sql = "SELECT * FROM uploads WHERE resources = '$fileName'";
+        $result = mysqli_query($conn, $sql);
+        if (mysqli_num_rows($result) > 0) {
+            echo "<script>alert('Sorry, file name is existed.')</script>";
+            $uploadOk = 0;
+            echo "<script>setTimeout('window.location.href = 'admin.php', 1500)</script>";
+        }
+        if ($uploadOk == 0) {
+            echo "<script>alert('Sorry, your file was not uploaded.')</script>";
+            echo "<script>setTimeout('window.location.href = 'admin.php', 1500)</script>";
+        } else {
+            move_uploaded_file($fileTmpName, $target_file);
+            $sql = "INSERT INTO `uploads` (`resources`) VALUES ('$fileName')";
+            $result = mysqli_query($conn, $sql);
+            if ($result) {
+                echo "<script>alert('The file " . htmlspecialchars(basename($_FILES["video"]["name"])) . " has been uploaded.')</script>";
+            } else {
+                echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+            }
+            $uploadID = "SELECT uploadID FROM uploads WHERE resources = '$fileName'";
+            $result = mysqli_query($conn, $uploadID);
+            $row = mysqli_fetch_assoc($result);
+            $uploadID = $row['uploadID'];
+            //get data from form
+            $title = $_POST['title'];
+            $userID = $_SESSION['userID'];
+            $description = $_POST['describe'];
+            $content = $_POST['content'];
+            $categoryID = $_POST['category'];
+            $date = $_POST['date'];
+            $sql = "INSERT INTO `news` (`userID`,`title`, `description`, `content`,`categoryID`,`date`, `uploadID`) VALUES ('$userID','$title', '$description', '$content','$categoryID', '$date', '$uploadID')";
+            $result = mysqli_query($conn, $sql);
+            if ($result) {
+                echo "<script>alert('Create news successfully.')</script>";
+            } else {
+                echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+            }
+        }
     }
-    //check if file name is existed
-    $sql = "SELECT * FROM uploads WHERE resources = '$fileName'";
-    $result = mysqli_query($conn, $sql);
-    if (mysqli_num_rows($result) > 0) {
-      echo "<script>alert('Sorry, file name is existed.')</script>";
-      $uploadOk = 0;
-      echo "<script>setTimeout('window.location.href = 'admin.php', 1500)</script>";
-    }
-    if ($uploadOk == 0) {
-      echo "<script>alert('Sorry, your file was not uploaded.')</script>";
-      echo "<script>setTimeout('window.location.href = 'admin.php', 1500)</script>";
-    } else {
-      move_uploaded_file($fileTmpName, $target_file);
-      $sql = "INSERT INTO `uploads` (`resources`) VALUES ('$fileName')";
-      $result = mysqli_query($conn, $sql);
-      if ($result) {
-        echo "<script>alert('The file " . htmlspecialchars(basename($_FILES["video"]["name"])) . " has been uploaded.')</script>";
-      } else {
-        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-      }
-      $uploadID = "SELECT uploadID FROM uploads WHERE resources = '$fileName'";
-      $result = mysqli_query($conn, $uploadID);
-      $row = mysqli_fetch_assoc($result);
-      $uploadID = $row['uploadID'];
-      //get data from form
-      $title = $_POST['title'];
-      $userID = $_SESSION['userID'];
-      $description = $_POST['describe'];
-      $content = $_POST['content'];
-      $categoryID = $_POST['category'];
-      $date = $_POST['date'];
-      $sql = "INSERT INTO `news` (`userID`,`title`, `description`, `content`,`categoryID`,`date`, `uploadID`) VALUES ('$userID','$title', '$description', '$content','$categoryID', '$date', '$uploadID')";
-      $result = mysqli_query($conn, $sql);
-      if ($result) {
-        echo "<script>alert('Create news successfully.')</script>";
-      } else {
-        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-      }
-    }
-  }
-  ?>
+    ?>
     <!-- edit -->
 
     <div class="edit edituser hide">
@@ -337,23 +349,23 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
         </form>
     </div>
     <?php
-  if (isset($_POST['submit'])) {
-    if ($_POST['submit'] == 'Update') {
-      $id = $_POST['ID'];
-      $username = $_POST['username'];
-      $name = $_POST['name'];
-      $password = $_POST['password'];
-      $sql = "UPDATE access SET username = '$username', name = '$name', password = '$password' WHERE userID = '$id'";
-      $result = mysqli_query($conn, $sql);
-      if ($result) {
-        echo '<script>alert("Update success")</script>';
-        //header('location: admin.php');
-      } else {
-        echo '<script>alert("Update fail")</script>';
-      }
+    if (isset($_POST['submit'])) {
+        if ($_POST['submit'] == 'Update') {
+            $id = $_POST['ID'];
+            $username = $_POST['username'];
+            $name = $_POST['name'];
+            $password = $_POST['password'];
+            $sql = "UPDATE access SET username = '$username', name = '$name', password = '$password' WHERE userID = '$id'";
+            $result = mysqli_query($conn, $sql);
+            if ($result) {
+                echo '<script>alert("Update success")</script>';
+                //header('location: admin.php');
+            } else {
+                echo '<script>alert("Update fail")</script>';
+            }
+        }
     }
-  }
-  ?>
+    ?>
 
     <!-- create -->
 
@@ -377,35 +389,35 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
         </form>
     </div>
     <?php
-  $hotelName = "";
-  $phone = "";
-  if (isset($_POST['submit'])) {
-    if ($_POST['submit'] == 'Create') {
-      $role = $_POST['role'];
-      $username = $_POST['username'];
-      $name = $_POST['name'];
-      $hotelName = $_POST['hotelName'];
-      $phone = $_POST['phone'];
-      $password = $_POST['password'];
-      $sql = "select * from access where username = '$username'";
-      $result = mysqli_query($conn, $sql);
-      if (mysqli_num_rows($result) > 0) {
-        echo " <script> Swal.fire('Error!', 'Username already exists!', 'error');setTimeout(function(){window.location.href='admin.php'}, 2000);</script>";
-      } else {
-        $sql = "INSERT INTO access (role, username, name, hotelName, phone, password) VALUES ('$role', '$username', '$name', '$hotelName', '$phone', '$password')";
-        $result = mysqli_query($conn, $sql);
-        if ($result) {
-          echo "<script> Swal.fire('Success!', 'Sign up successfully!', 'success');
+    $hotelName = "";
+    $phone = "";
+    if (isset($_POST['submit'])) {
+        if ($_POST['submit'] == 'Create') {
+            $role = $_POST['role'];
+            $username = $_POST['username'];
+            $name = $_POST['name'];
+            $hotelName = $_POST['hotelName'];
+            $phone = $_POST['phone'];
+            $password = $_POST['password'];
+            $sql = "select * from access where username = '$username'";
+            $result = mysqli_query($conn, $sql);
+            if (mysqli_num_rows($result) > 0) {
+                echo " <script> Swal.fire('Error!', 'Username already exists!', 'error');setTimeout(function(){window.location.href='admin.php'}, 2000);</script>";
+            } else {
+                $sql = "INSERT INTO access (role, username, name, hotelName, phone, password) VALUES ('$role', '$username', '$name', '$hotelName', '$phone', '$password')";
+                $result = mysqli_query($conn, $sql);
+                if ($result) {
+                    echo "<script> Swal.fire('Success!', 'Sign up successfully!', 'success');
                 setTimeout(function(){location.href='admin.php'}, 2000); </script>";
-          //header('location: admin.php');
-        } else {
-          echo "  <script> Swal.fire('Error!', 'Sign up failed!', 'error');
+                    //header('location: admin.php');
+                } else {
+                    echo "  <script> Swal.fire('Error!', 'Sign up failed!', 'error');
           setTimeout(function(){location.href='admin.php'}, 2000); </script> ";
+                }
+            }
         }
-      }
     }
-  }
-  ?>
+    ?>
     <!-- edit -->
 
     <div class="edit editseller hide">
@@ -454,12 +466,12 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
                         <td>Update</i></td>
                     </tr>
                     <?php
-          //list all news category
-          $sql = "SELECT * FROM category_news";
-          $result = mysqli_query($conn, $sql);
-          if (mysqli_num_rows($result) > 0) {
-            while ($row = mysqli_fetch_assoc($result)) {
-          ?>
+                    //list all news category
+                    $sql = "SELECT * FROM category_news";
+                    $result = mysqli_query($conn, $sql);
+                    if (mysqli_num_rows($result) > 0) {
+                        while ($row = mysqli_fetch_assoc($result)) {
+                    ?>
                     <tr>
                         <td><?php echo $row['categoryNews'] ?></td>
                         <td><?php echo $row['categoryName'] ?></td>
@@ -469,9 +481,9 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
                                 data-username="" data-name="<?php echo $row['categoryName'] ?>"><i
                                     class="fa-solid fa-pen-to-square"></i></a></td>
                         <?php
-            }
-          }
-            ?>
+                        }
+                    }
+                        ?>
                         <!-- <td><a href="#!" data-id="" class="btn__delete"><i class="fa-solid fa-trash"></i></a></td>
         <td><a href="#!" class="btn__editcategory" data-id="" data-username="" data-name=""><i class="fa-solid fa-pen-to-square"></i></a></td> -->
                     </tr>
@@ -501,12 +513,12 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
                         <td>Update</i></td>
                     </tr>
                     <?php
-          //list all news category
-          $sql = "SELECT * FROM category_tours";
-          $result = mysqli_query($conn, $sql);
-          if (mysqli_num_rows($result) > 0) {
-            while ($row = mysqli_fetch_assoc($result)) {
-          ?>
+                    //list all news category
+                    $sql = "SELECT * FROM category_tours";
+                    $result = mysqli_query($conn, $sql);
+                    if (mysqli_num_rows($result) > 0) {
+                        while ($row = mysqli_fetch_assoc($result)) {
+                    ?>
                     <tr>
                         <td><?php echo $row['categoryTours'] ?></td>
                         <td><?php echo $row['categoryName'] ?></td>
@@ -516,9 +528,9 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
                                 data-username="" data-name="<?php echo $row['categoryName'] ?>"><i
                                     class="fa-solid fa-pen-to-square"></i></a></td>
                         <?php
-            }
-          }
-            ?>
+                        }
+                    }
+                        ?>
                     </tr>
                 </table>
                 <!-- pag -->
@@ -547,31 +559,52 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
                         <td>Name</td>
                         <td>Price</td>
                         <td>Image</td>
-                        <td>Address</td>
-                        <td>Nights</td>
-                        <td>Time Depart</td>
-                        <td>Content</td>
+                        <td>Location</td>
+                        <td>Time (Days)</td>
+                        <td>Date</td>
+                        <td>Description</td>
                         <td>Delete</i></td>
                         <td>Update</i></td>
                     </tr>
 
-
+                    <?php
+                    //list all news category
+                    function get_tour_list()
+                    {
+                        global $conn;
+                        $sql = "SELECT * FROM tours";
+                        $result = mysqli_query($conn, $sql);
+                        $tour_list = array();
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            $tour_list[] = $row;
+                        }
+                        return $tour_list;
+                    } ?>
+                    <?php
+                    $tour_list = get_tour_list();
+                    foreach ($tour_list as $tour) {
+                    ?>
                     <tr>
-
-                        <td>ID Tour</td>
-                        <td>ID category</td>
-                        <td>ID Seller</td>
-                        <td>Name</td>
-                        <td>Price</td>
-                        <td>Image</td>
-                        <td>Address</td>
-                        <td>Time</td>
-                        <td>Start Time</td>
-                        <td>Content</td>
-                        <td><a href="#!" data-id="" class="btn__delete"><i class="fa-solid fa-trash"></i></a></td>
-                        <td><a href="#!" class="btn__editcategory" data-id="" data-username="" data-name=""><i
-                                    class="fa-solid fa-pen-to-square"></i></a></td>
+                        <td><?php echo $tour['tourID'] ?></td>
+                        <td><?php echo $tour['categoryTours'] ?></td>
+                        <td><?php echo $tour['sellerID'] ?></td>
+                        <td><?php echo $tour['tourName'] ?></td>
+                        <td><?php echo $tour['tourPrice'] ?></td>
+                        <td><?php echo $tour['tourImage'] ?></td>
+                        <td><?php echo $tour['tourLocation'] ?></td>
+                        <td><?php echo $tour['tourTime'] ?></td>
+                        <td><?php echo $tour['tourDate'] ?></td>
+                        <td><?php echo $tour['tourDescription'] ?></td>
+                        <td><a href="delete.php?tourID=<?php echo $tour['tourID'] ?>" data-id="" class=""><i
+                                    class="fa-solid fa-trash"></i></a></td>
+                        <td><a href="#!" class="btn__edittour" data-id="<?php echo $tour['tourID'] ?>" data-username=""
+                                data-name="<?php echo $tour['tourName'] ?>"><i
+                                    class="fa-solid fa-pen-to-square"></i></a>
+                        </td>
                     </tr>
+                    <?php
+                    }
+                    ?>
 
                 </table>
                 <!-- pag -->
@@ -645,30 +678,30 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
                     </tr>
                     <tr>
                         <?php
-            function get_news_list()
-            {
-              global $conn;
-              $sql = "SELECT *,resources, name FROM access, news, uploads WHERE news.uploadID = uploads.uploadID and access.userID = news.userID";
-              $result = mysqli_query($conn, $sql);
-              $news_list = array();
-              while ($row = mysqli_fetch_assoc($result)) {
-                $news_list[] = $row;
-              }
-              return $news_list;
-            }
-            ?>
+                        function get_news_list()
+                        {
+                            global $conn;
+                            $sql = "SELECT *,resources, name FROM access, news, uploads WHERE news.uploadID = uploads.uploadID and access.userID = news.userID";
+                            $result = mysqli_query($conn, $sql);
+                            $news_list = array();
+                            while ($row = mysqli_fetch_assoc($result)) {
+                                $news_list[] = $row;
+                            }
+                            return $news_list;
+                        }
+                        ?>
                         <?php
-            $news_list = get_news_list();
-            foreach ($news_list as $news) {
-              $newsID = $news['newsID'];
-              $author = $news['name'];
-              $categoryID = $news['categoryID'];
-              $title = $news['title'];
-              $description = $news['description'];
-              $content = $news['content'];
-              $date = $news['date'];
-              $resources = $news['resources'];
-            ?>
+                        $news_list = get_news_list();
+                        foreach ($news_list as $news) {
+                            $newsID = $news['newsID'];
+                            $author = $news['name'];
+                            $categoryID = $news['categoryID'];
+                            $title = $news['title'];
+                            $description = $news['description'];
+                            $content = $news['content'];
+                            $date = $news['date'];
+                            $resources = $news['resources'];
+                        ?>
                         <td><?php echo $newsID; ?></td>
                         <td><?php echo $author; ?></td>
                         <td><?php echo $categoryID; ?></td>
@@ -682,7 +715,8 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
                                 data-description="<?php echo $description; ?>" data-content="<?php echo $content; ?>"
                                 data-resources="<?php echo $resources; ?>" data-date="<?php echo $date; ?>"
                                 data-categoryid="<?php echo $categoryID; ?>"><i
-                                    class="fa-solid fa-pen-to-square"></i></a></td>
+                                    class="fa-solid fa-pen-to-square"></i></a>
+                        </td>
                     </tr>
                     <?php } ?>
                     <!-- end foreach -->
@@ -715,28 +749,28 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
                         <td>Update</i></td>
                     </tr>
                     <?php
-          //list all user
-          function get_user_list()
-          {
-            global $conn;
-            $sql = "SELECT * FROM access where role = 'user'";
-            $result = mysqli_query($conn, $sql);
-            $user_list = array();
-            while ($row = mysqli_fetch_array($result)) {
-              $user_list[] = $row;
-            }
-            return $user_list;
-          }
-          ?>
+                    //list all user
+                    function get_user_list()
+                    {
+                        global $conn;
+                        $sql = "SELECT * FROM access where role = 'user'";
+                        $result = mysqli_query($conn, $sql);
+                        $user_list = array();
+                        while ($row = mysqli_fetch_array($result)) {
+                            $user_list[] = $row;
+                        }
+                        return $user_list;
+                    }
+                    ?>
                     <?php
-          $user_list = get_user_list();
-          foreach ($user_list as $user) {
-            $ID = $user['userID'];
-            $username = $user['username'];
-            $name = $user['name'];
-            $password = $user['password'];
-            $role = 'user';
-          ?>
+                    $user_list = get_user_list();
+                    foreach ($user_list as $user) {
+                        $ID = $user['userID'];
+                        $username = $user['username'];
+                        $name = $user['name'];
+                        $password = $user['password'];
+                        $role = 'user';
+                    ?>
                     <tr>
                         <td><?php echo $user['userID'] ?></td>
                         <td><?php echo $user['username'] ?></td>
@@ -751,8 +785,8 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
                         </td>
                     </tr>
                     <?php
-          }
-          ?>
+                    }
+                    ?>
                 </table>
                 <!-- pag -->
                 <div class="pag">
@@ -783,29 +817,29 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
                         <td>Edit</td>
                     </tr>
                     <?php
-          //get seller list
-          function get_seller_list()
-          {
-            global $conn;
-            $sql = "SELECT * FROM access where role = 'seller'";
-            $result = mysqli_query($conn, $sql);
-            $seller_list = array();
-            while ($row = mysqli_fetch_array($result)) {
-              $seller_list[] = $row;
-            }
-            return $seller_list;
-          }
-          ?>
+                    //get seller list
+                    function get_seller_list()
+                    {
+                        global $conn;
+                        $sql = "SELECT * FROM access where role = 'seller'";
+                        $result = mysqli_query($conn, $sql);
+                        $seller_list = array();
+                        while ($row = mysqli_fetch_array($result)) {
+                            $seller_list[] = $row;
+                        }
+                        return $seller_list;
+                    }
+                    ?>
                     <?php
-          $seller_list = get_seller_list();
-          foreach ($seller_list as $seller) {
-            $ID = $seller['userID'];
-            $name = $seller['name'];
-            $username = $seller['username'];
-            $password = $seller['password'];
-            $hotel = $seller['hotelName'];
-            $phone = $seller['phone'];
-          ?>
+                    $seller_list = get_seller_list();
+                    foreach ($seller_list as $seller) {
+                        $ID = $seller['userID'];
+                        $name = $seller['name'];
+                        $username = $seller['username'];
+                        $password = $seller['password'];
+                        $hotel = $seller['hotelName'];
+                        $phone = $seller['phone'];
+                    ?>
                     <tr>
                         <td><?php echo $seller['userID'] ?></td>
                         <td><?php echo $seller['name'] ?></td>
@@ -823,8 +857,8 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
                                     class="fa-solid fa-pen-to-square"></i></a></td>
                     </tr>
                     <?php
-          }
-          ?>
+                    }
+                    ?>
                 </table>
                 <div class="pag">
                     <ul class="pag__items">
@@ -852,28 +886,28 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
                         <td>Update</i></td>
                     </tr>
                     <?php
-          //get admin list
-          function get_admin_list()
-          {
-            global $conn;
-            $sql = "SELECT * FROM access where role = 'admin' or role = 'superadmin'";
-            $result = mysqli_query($conn, $sql);
-            $admin_list = array();
-            while ($row = mysqli_fetch_array($result)) {
-              $admin_list[] = $row;
-            }
-            return $admin_list;
-          }
-          ?>
+                    //get admin list
+                    function get_admin_list()
+                    {
+                        global $conn;
+                        $sql = "SELECT * FROM access where role = 'admin' or role = 'superadmin'";
+                        $result = mysqli_query($conn, $sql);
+                        $admin_list = array();
+                        while ($row = mysqli_fetch_array($result)) {
+                            $admin_list[] = $row;
+                        }
+                        return $admin_list;
+                    }
+                    ?>
                     <?php
-          $admin_list = get_admin_list();
-          foreach ($admin_list as $admin) {
-            $ID = $admin['userID'];
-            $username = $admin['username'];
-            $name = $admin['name'];
-            $password = $admin['password'];
-            $role = $admin['role'];
-          ?>
+                    $admin_list = get_admin_list();
+                    foreach ($admin_list as $admin) {
+                        $ID = $admin['userID'];
+                        $username = $admin['username'];
+                        $name = $admin['name'];
+                        $password = $admin['password'];
+                        $role = $admin['role'];
+                    ?>
                     <tr>
                         <td><?php echo $admin['userID'] ?></td>
                         <td><?php echo $admin['username'] ?></td>
@@ -888,8 +922,8 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
                         </td>
                     </tr>
                     <?php
-          }
-          ?>
+                    }
+                    ?>
                 </table>
                 <!-- pag -->
                 <div class="pag">

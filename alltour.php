@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Title</title>
+    <title>Tất cả tour</title>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -29,21 +29,39 @@
     <!-- main -->
     <div class="container hotTour my-4">
         <div class="tour__title row mt-5">
-            <h2 class="col-10 text-uppercase p-0">All Tour</h2>
-            <!-- <a class="m-auto text-right text-black-50 hvblack">View all >></a> -->
+            <h2 class="col-10 text-uppercase p-0">All Tours</h2>
         </div>
+        <!-- tour card -->
+        <?php
+        //list all tours
+        function get_tour_list()
+        {
+            global $conn;
+            $sql = "SELECT * FROM tours";
+            $result = mysqli_query($conn, $sql);
+            $tour_list = array();
+            while ($row = mysqli_fetch_assoc($result)) {
+                $tour_list[] = $row;
+            }
+            return $tour_list;
+        } ?>
         <div class="tour__items row">
             <!-- tour card -->
+            <?php
+            $tour_list = get_tour_list();
+            foreach ($tour_list as $tour) {
+            ?>
             <div class="card col-4 p-0 m-2">
-                <img class="card-img-top" src="asset/img/tour1.jpg" alt="Card image cap" />
+                <img class="card-img-top" src="uploads/images/<?php echo $tour['tourImage']; ?>" alt="Card image cap" />
                 <div class="card-body">
-                    <h5 class="card-title">Tên địa điểm du lịch</h5>
-                    <p class="card-text text-black-50">Mô tả</p>
-
-                    <p class="card-price text-danger">Giá</p>
-                    <a href="tour.php" class="btn btn-green" data-id="id">Đặt Tour</a>
+                    <h5 class="card-title"><?php echo $tour['tourName'] ?></h5>
+                    <p class="card-text text-black-50"><?php echo $tour['tourDescription'] ?></p>
+                    <p class="card-price text-danger">Giá: <?php echo $tour['tourPrice'] ?></p>
+                    <a href="tour.php?tourID=<?php echo $tour['tourID'] ?>" class="btn btn-green" data-id="id">Đặt
+                        Tour</a>
                 </div>
             </div>
+            <?php } ?>
             <!-- end tour card -->
             <!-- tour card -->
             <!-- ..... -->
@@ -58,7 +76,7 @@
 
         </div>
     </div>
-
+    </div>
 
 
     <!-- Footer -->

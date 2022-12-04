@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Title</title>
+    <title>Tất cả bài viết</title>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -53,7 +53,7 @@
             foreach ($news_list as $news) {
             ?>
             <div class="card col-4 p-0 m-2">
-                <video src="uploads/<?php echo $news['resources']; ?>"></video>
+                <video src="uploads/video/<?php echo $news['resources']; ?>"></video>
                 <div class="card-body">
                     <p class="card-date text-black-50"><?php echo $news['date']; ?></p>
                     <h5 class="card-title"><?php echo $news['title']; ?></h5>

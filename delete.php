@@ -37,3 +37,15 @@ if (isset($_GET['categoryTours'])) {
     }
 }
 ?>
+<?php
+if (isset($_GET['tourID'])) {
+    $tourID = $_GET['tourID'];
+    $sql = "delete from tours where tourID = $tourID";
+    $result = mysqli_query($conn, $sql);
+    if ($result) {
+        header("location: admin.php");
+    } else {
+        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+    }
+}
+?>
