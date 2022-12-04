@@ -44,7 +44,7 @@
                 <img class="hide" src="./asset/img/ban2.jpg" alt="">
                 <div class="row my-3 text-black-50">
                     <div class="col-4">địa điểm:</div>
-                    <div class="col-4">Phương tiện:</div>
+
                     <div class="col-4">thời gian:</div>
                 </div>
                 <div class="row text-black-50">
@@ -97,7 +97,7 @@
 
             </div>
             <div class="col-4 booking">
-                <p class="tour-price text-or">Giá <span>Vnđ/Người</span></p>
+                <p class="tour-price text-or">Giá: <span class="pricetour">10000</span> <span>Vnđ/Người</span></p>
                 <div class="text_box my-3">
 
                     <label for="">Số người:</label><input type="number" value="1" min="1" max="10">

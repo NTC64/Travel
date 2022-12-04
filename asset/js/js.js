@@ -91,6 +91,10 @@ $(document).on('click','.btnbook',function() {
     }   
 
 });
+$(document).ready(function() {
+    var price=parseFloat( $('.pricetour').html());
+    $(".price").val(price);
+});
 
 
 

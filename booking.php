@@ -43,7 +43,7 @@
                         <input type="text" placeholder="Số điện thoại">
                         <input type="text" placeholder="Địa chỉ">
                         <input type="text" placeholder="Tên tour" readonly>
-                        <input type="text" placeholder="Giá" class="price" value="10" readonly>
+                        <input type="text" placeholder="Giá" class="price" readonly>
                         <input type="number" placeholder="Số lượng người" class="quantity" value="1" min="1" max="50">
                     </div>
                     <div class="col-6 right">
