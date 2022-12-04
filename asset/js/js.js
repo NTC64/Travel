@@ -7,7 +7,7 @@ $(".search__btn").on("click", function() {
         icon: 'error',
         title: 'Oops...',
         text: 'the system is under maintenance, please come back in the future!!',
-        
+
       })
 });
 $(".btn__tourdetail").on("click", function() {
@@ -72,18 +72,18 @@ $(document).ready(function() {
     $(".total").html(total);});
 });
 $(document).on('click','.category__left',function() {
-    $(location).attr('href', 'http://localhost/travel/category.php?category='+$(this).attr('data-category'));
+    $(location).attr('href', 'category.php?category='+$(this).attr('data-category'));
     sessionStorage.setItem('category', $(this).attr('data-category'));
 
 });
 $(document).on('click','.category__right',function() {
-    $(location).attr('href', 'http://localhost/travel/category.php?category='+$(this).attr('data-category'));
+    $(location).attr('href', 'category.php?category='+$(this).attr('data-category'));
     sessionStorage.setItem('category', $(this).attr('data-category'));
 
 });
 $(document).on('click','.btnbook',function() {
     if($("#pay").val() == "momo"){
-    $(location).attr('href', 'http://localhost/travel/PayMoMo/init_payment.php');
+    $(location).attr('href', 'PayMoMo/init_payment.php');
     }
     else{
         alert("Chưa có phương thức thanh toán này");
