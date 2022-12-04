@@ -51,29 +51,28 @@
             $tour_list = get_tour_list($conn);
             foreach ($tour_list as $tour) {
             ?>
-            <!-- tour card -->
-            <div class="card col-4 p-0 m-2">
-                <img class="card-img-top" src="uploads/images/<?php echo $tour['tourImage']; ?>" alt="Card image cap" />
-                <div class="card-body">
-                    <h5 class="card-title"><?php echo $tour['tourName']; ?></h5>
-                    <p class="card-text text-black-50"><?php echo $tour['tourDescription']; ?></p>
-                    <p class="card-price text-danger">Giá: <?php echo $tour['tourPrice']; ?></p>
-                    <a href="tour.php?tourID=<?php echo $tour['tourID'] ?>" class="btn btn-green" data-id="id">Đặt
-                        Tour</a>
+                <!-- tour card -->
+                <div class="card col-4 p-0 m-2">
+                    <img class="card-img-top" src="uploads/images/<?php echo $tour['tourImage']; ?>" alt="Card image cap" />
+                    <div class="card-body">
+                        <h5 class="card-title"><?php echo $tour['tourName']; ?></h5>
+                        <p class="card-text text-black-50"><?php echo $tour['tourDescription']; ?></p>
+                        <p class="card-price text-danger">Giá: <?php echo $tour['tourPrice']; ?></p>
+                    </div>
+                    <a href="tour.php?tourID=<?php echo $tour['tourID'] ?>" class="btn btn-green btnnews" data-id="id">Đặt Tour</a>
                 </div>
-            </div>
-            <?php } ?>'
-            <!-- end tour card -->
-            <!-- tour card -->
-            <!-- ..... -->
-            <!-- end tour card -->
-            <!-- chi tiết tour -->
+                <?php } ?>'
+                <!-- end tour card -->
+                <!-- tour card -->
+                <!-- ..... -->
+                <!-- end tour card -->
+                <!-- chi tiết tour -->
 
-            <div class="tourdetail">
+                <div class="tourdetail">
 
-            </div>
+                </div>
 
-            <!---->
+                <!---->
 
         </div>
     </div>
@@ -126,14 +125,14 @@
             $news_list = get_news_list();
             foreach ($news_list as $news) {
             ?>
-            <div class="card col-4 p-0 m-2">
-                <video src="uploads/video/<?php echo $news['resources']; ?>"></video>
-                <div class="card-body">
-                    <p class="card-date text-black-50"><?php echo $news['date']; ?></p>
-                    <h5 class="card-title"><?php echo $news['title']; ?></h5>
+                <div class="card col-4 p-0 m-2">
+                    <video src="uploads/video/<?php echo $news['resources']; ?>"></video>
+                    <div class="card-body">
+                        <p class="card-date text-black-50"><?php echo $news['date']; ?></p>
+                        <h5 class="card-title"><?php echo $news['title']; ?></h5>
+                    </div>
+                    <a href="news.php?newsID=<?php echo $news['newsID']; ?>" class="btn btn-green btnnews">Xem chi tiết</a>
                 </div>
-                <a href="news.php?newsID=<?php echo $news['newsID']; ?>" class="btn btn-green btnnews">Xem chi tiết</a>
-            </div>
 
             <?php
             }
