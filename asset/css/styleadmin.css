@@ -626,11 +626,51 @@ select {
 .adminnews {
   overflow: scroll;
 }
+.bl {
+  background-color: #252636;
+  width: 300px;
+
+  height: 150px;
+  margin: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 10px;
+  color: #fff;
+  font-size: 24px;
+  font-weight: 600;
+  box-shadow: 0 0.5rem 0.5rem rgba(255, 255, 255, 0.15) !important;
+}
+.blue {
+  background-color: #3c3f58;
+}
+.yellow {
+  background-color: #f7b500;
+}
+.red {
+  background-color: #f50000;
+}
+.green {
+  background-color: #00c853;
+}
+.orange {
+  background-color: #ff9800;
+}
+.purple {
+  background-color: #9c27b0;
+}
+.pink {
+  background-color: #e91e63;
+}
+.brown {
+  background-color: #795548;
+}
 .til {
   font-size: 20px;
   font-weight: 600;
   width: 100%;
-
+  z-index: 999;
   height: 70px;
   background-color: var(--sidebar-bg-color);
   color: #fff;
