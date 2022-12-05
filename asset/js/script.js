@@ -227,6 +227,7 @@ else {
 });
 $(document).on('click', '.btncreatenews', function() {
 
+
   if($(".createad").hasClass("hide")) {
     
     $(".bg").removeClass("hide");
@@ -236,6 +237,23 @@ $(document).on('click', '.btncreatenews', function() {
  }
 else {
     $(".createnews").addClass("hide");
+  $(".dashboard").removeClass("hide");
+
+}
+});
+$(document).on('click', '.btncreatetour', function() {
+  
+
+  if($(".createtour").hasClass("hide")) {
+    
+    $(".bg").removeClass("hide");
+    
+   
+    $(".createtour").removeClass("hide");
+ }
+else {
+    $(".createtour").addClass("hide");
+    
   $(".dashboard").removeClass("hide");
 
 }
@@ -401,6 +419,7 @@ else {
 });
 $(document).on('click', '.admin', function() {
   if($(".admin__ad").hasClass("hide")) {
+    $(".muc").html("Admin");
     $(".admin__user").addClass("hide");
     $(".admin__seller").addClass("hide");
     $(".bg").addClass("hide");
@@ -412,7 +431,7 @@ $(document).on('click', '.admin', function() {
     $(".admincategorytour").addClass("hide");
     $(".createctg").addClass("hide");
     $(".adminalltour").addClass("hide");
-
+    
     $(".createnews").addClass("hide");
     $(".admin__ad").removeClass("hide");
     

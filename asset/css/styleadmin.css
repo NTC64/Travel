@@ -566,7 +566,8 @@ select {
   height: 100%;
   z-index: 2;
 }
-.createnews {
+.createnews,
+.createtour {
   width: 800px !important;
   top: 50%;
   left: 50%;

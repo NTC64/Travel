@@ -220,6 +220,44 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
         }
     }
     ?>
+    <!-- create tour-->
+    <div class="create createtour hide">
+        <form action="" method="POST" class="create__form" enctype="multipart/form-data">
+            <div class="up__title">
+                <h3 class="my-3">Create Tour</h3>
+            </div>
+            <select name="" id="">
+                <option value="">Select Category</option>
+                <option value="">...</option>
+            </select>
+            <select name="" id="">
+                <option value="">Select seller</option>
+                <option value="">...</option>
+
+            </select>
+            <input type="text" class="crnewsname" name="" required value="" placeholder="name" />
+            <textarea name="describe" class="craddress" cols="30" rows="10" required value="" placeholder="Address"></textarea>
+            <textarea name="content" class="crbody" cols="30" rows="10" required value="" placeholder="Enter content"></textarea>
+            <input type="file" class="crimg" name="video" id="video" required />
+            <div class="row text">
+                <!-- list danh muc -->
+                <div class="col-4 left m-0 p-0">
+                    <input type="text" class="crprice" name="price" required value="" placeholder="Price" />
+
+
+                </div>
+                <div class="col-4 rigth m-0 p-0">
+                    <input type="text" class="crtime" name="time" required value="" placeholder="Time(day)" />
+                </div>
+                <div class="col-4 rigth m-0 p-0">
+                    <input type="date" class="crdate" name="date" required value="" />
+                </div>
+            </div>
+            <div class="smnews">
+                <input type="submit" value="Create" name="submitNews" class="btn btn-success smcreate" />
+            </div>
+        </form>
+    </div>
     <!-- create news-->
     <div class="create createnews hide">
         <form action="" method="POST" class="create__form" enctype="multipart/form-data">
@@ -620,13 +658,13 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
         </div>
         <!-- all tours -->
         <div class="container adminalltour hide tb">
-            <div class="btn btn-success btncreatenews btncreate"><i class="fa-solid fa-plus"></i>Create</div>
+            <div class="btn btn-success btncreatetour btncreate"><i class="fa-solid fa-plus"></i>Create</div>
             <form action=" " method="get">
                 <table border="1">
                     <tr>
                         <td>ID Tour</td>
                         <td>ID category</td>
-                        <td>ID Seller</td>
+                        <td>Name Seller</td>
                         <td>Name</td>
                         <td>Price</td>
                         <td>Image</td>
