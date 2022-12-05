@@ -84,7 +84,8 @@
                 </p>
                 <div class="text_box my-3">
 
-                    <label for="">Số người:</label><input type="number" value="1" min="1" max="50" class="sluong">
+                    <label for="">Số người:</label><input type="number" name="" value="1" min="1" max="50"
+                        class="sluong">
                 </div>
                 <div class="text_box my-3">
                     <label for="">Khởi hành:</label><input type="date" name="" class="" id="" readonly
@@ -92,7 +93,7 @@
 
                 </div>
                 <p class="text-white f14">" Sao chép mã giảm giá (ULSAIT) để được khuyến mãi 20% "</p>
-                <div class="btn btn-green mt-4 btn__tour">Đặt Tour</div>
+                <div class="btn btn-green mt-4 btn__tour" data-id="<?php echo $row['tourID'] ?>">Đặt Tour</div>
                 <!-- <a href="booking.php"></a> -->
             </div>
             <!-- end tour card -->
