@@ -65,15 +65,9 @@
             <!-- end tour card -->
             <!-- tour card -->
             <!-- ..... -->
-            <!-- end tour card -->
-            <!-- chi tiết tour -->
-
             <div class="tourdetail">
 
             </div>
-
-            <!---->
-
         </div>
     </div>
     </div>
