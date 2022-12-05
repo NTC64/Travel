@@ -35,40 +35,32 @@
         <div class="tour__title  mt-5">
             <h3 class="row text-suppercase p-0">Thông tin Tour</h3>
             <div class="row">
+                <table>
+                    <tr>
+                        <th>Tên Tour</th>
+                        <th>Ngày khởi hành</th>
+                        <th>Ngày kết thúc</th>
+                        <th>Giá</th>
 
+                        <th>Số lượng</th>
+                        <th>Tổng tiền</th>
+                        <th>Trạng thái</th>
+
+                    </tr>
+
+                    <tr>
+                        <td>Tên Tour</td>
+                        <td>Ngày khởi hành</td>
+                        <td>Ngày kết tdúc</td>
+                        <td>Giá</td>
+
+                        <td>Số lượng</td>
+                        <td>Tổng tiền</td>
+                        <td>Trạng tdái</td>
+                    </tr>
+                </table>
             </div>
-            <form action="tour.php" method="post" class="fm">
-                <div class="row form my-3">
 
-                    <div class="col-6 left">
-
-                        <input type="text" placeholder="Họ và tên">
-                        <input type="text" placeholder="Số điện thoại">
-                        <input type="text" placeholder="Địa chỉ">
-                        <input type="text" placeholder="Tên tour" readonly>
-                        <input type="text" placeholder="Giá" class="price" readonly>
-                        <input type="number" placeholder="Số lượng người" class="quantity" value="1" min="1" max="50">
-                    </div>
-                    <div class="col-6 right">
-
-                        <input type="text" placeholder="Ngày khởi hành" readonly>
-                        <input type="text" placeholder="Ngày kết thúc" readonly>
-                        <textarea name="" id="" cols="30" rows="10" placeholder="Ghi chú"></textarea>
-                        <select name="" id="pay">
-                            <option value="">Chọn phương thức thanh toán</option>
-                            <option value="atm">Thanh toán trực tiếp</option>
-                            <option value="momo">Thanh toán ví điện tử</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="row">
-                    <h3 class="col-12">Tổng tiền: <span class="total"></span> VND</h3>
-                </div>
-                <div class="row btnbook">
-                    <div class="btn btn-success btnbook">Đặt tour</div>
-                </div>
-
-            </form>
 
         </div>
         <!-- tour card -->
