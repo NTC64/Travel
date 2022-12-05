@@ -759,7 +759,7 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
                 <table border="1">
                     <tr>
                         <td>ID Tour</td>
-                        <td>ID category</td>
+                        <td>ID Category</td>
                         <td>Name Seller</td>
                         <td>Name</td>
                         <td>Price</td>
@@ -776,8 +776,12 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
                     //list all news category
                     function get_tour_list()
                     {
+                        if ($_SESSION['role'] == 'seller') {
+                            $sql = "SELECT * FROM tours WHERE sellerID = '" . $_SESSION['userID'] . "'";
+                        } else {
+                            $sql = "SELECT * FROM tours";
+                        }
                         global $conn;
-                        $sql = "SELECT * FROM tours";
                         $result = mysqli_query($conn, $sql);
                         $tour_list = array();
                         while ($row = mysqli_fetch_assoc($result)) {

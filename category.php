@@ -34,31 +34,61 @@
         </div>
         <nav>
             <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                <a class="nav-item nav-link active black" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Các danh mục bài viết</a>
-                <a class="nav-item nav-link black" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Các danh mục tour</a>
+                <a class="nav-item nav-link active black" id="nav-home-tab" data-toggle="tab" href="#nav-home"
+                    role="tab" aria-controls="nav-home" aria-selected="true">Các danh mục bài viết</a>
+                <a class="nav-item nav-link black" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab"
+                    aria-controls="nav-profile" aria-selected="false">Các danh mục tour</a>
 
             </div>
         </nav>
-        <div class="tab-content" id="nav-tabContent">
-            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                <ol class="">
-                    <li class="ullist">
-                        <h4 class="black mt-3">bala</h4>
-                    </li>
-                </ol>
+        <div class="row">
+            <div class="tab-content col-6" id="nav-tabContent">
+                <div class="tab-pane fade show active row" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                    <ol class="clo-6">
+                        <?php
+                        $sql = "SELECT * FROM category_news";
+                        $result = mysqli_query($conn, $sql);
+                        if (mysqli_num_rows($result) > 0) {
+                            while ($row = mysqli_fetch_assoc($result)) {
+                        ?>
 
+                        <li class="ullist">
+                            <h5 class="black mt-3"><?php echo $row['categoryName'] ?></h5>
+                        </li>
+                        <?php
+                            }
+                        }
+                        ?>
+                    </ol>
+
+
+
+                </div>
+                <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                    <ol>
+                        <?php
+                        $sql = "SELECT * FROM category_tours";
+                        $result = mysqli_query($conn, $sql);
+                        if (mysqli_num_rows($result) > 0) {
+                            while ($row = mysqli_fetch_assoc($result)) {
+                        ?>
+                        <li class="ullist">
+                            <h5 class="black mt-3"><?php echo $row['categoryName'] ?></h5>
+                        </li>
+                        <?php
+                            }
+                        }
+                        ?>
+                    </ol>
+                </div>
 
             </div>
-            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                <ol>
-                    <li class="ullist">
-                        <h4 class="black mt-3">bala</h4>
-                    </li>
-                </ol>
+            <div class="col-5">
+                <iframe src="https://giphy.com/embed/3o6nV8OYdUhiuKja1i" width="480" height="270" frameBorder="0"
+                    class="giphy-embed" allowFullScreen></iframe>
+                <p><a href="https://giphy.com/gifs/voegol-flying-airplane-3o6nV8OYdUhiuKja1i">via GIPHY</a></p>
             </div>
-
         </div>
-
         <div class="tourdetail">
 
         </div>

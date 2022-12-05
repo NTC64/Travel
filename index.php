@@ -122,7 +122,7 @@
         function get_news_list()
         {
             global $conn;
-            $sql = "SELECT newsID, resources, date, title, description FROM news,uploads WHERE news.uploadID = uploads.uploadID limit 3";
+            $sql = "SELECT newsID, resources, date, title, description FROM news,uploads WHERE news.uploadID = uploads.uploadID limit 6";
             $result = mysqli_query($conn, $sql);
             $news_list = array();
             while ($row = mysqli_fetch_array($result)) {
