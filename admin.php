@@ -14,8 +14,7 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.6/css/line.css" />
     <link rel="stylesheet" href="./asset/css/styleadmin.css" />
     <link rel="stylesheet" href="./asset/font/fontawesome-free-6.1.2-web/css/all.min.css" />
@@ -32,9 +31,7 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
     <aside class="sidebar position-fixed top-0 left-0 overflow-auto h-100 float-left" id="show-side-navigation1">
         <i class="uil-bars close-aside d-md-none d-lg-none" data-close="show-side-navigation1"></i>
         <div class="sidebar-header d-flex justify-content-center align-items-center px-3 py-4">
-            <img class="rounded-pill img-fluid" width="65"
-                src="https://uniim1.shutterfly.com/ng/services/mediarender/THISLIFE/021036514417/media/23148907008/medium/1501685726/enhance"
-                alt="" />
+            <img class="rounded-pill img-fluid" width="65" src="https://uniim1.shutterfly.com/ng/services/mediarender/THISLIFE/021036514417/media/23148907008/medium/1501685726/enhance" alt="" />
             <div class="ms-2">
                 <h5 class="fs-6 mb-0">
                     <a class="text-decoration-none" href="#">
@@ -47,8 +44,7 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
         </div>
 
         <div class="search position-relative text-center px-4 py-3 mt-2">
-            <input type="text" class="form-control w-100 border-0 bg-transparent text-white"
-                placeholder="Search here" />
+            <input type="text" class="form-control w-100 border-0 bg-transparent text-white" placeholder="Search here" />
             <i class="fa fa-search position-absolute d-block fs-6"></i>
         </div>
 
@@ -103,10 +99,8 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
                 <h3>Update news</h3>
             </div>
             <input type="text" class="upnewstitle" name="title" required placeholder="Title" />
-            <textarea name="describe" class="upnewsdescription" cols="30" rows="10" required
-                placeholder="Describe"></textarea>
-            <textarea name="content" class="upnewscontent" cols="30" rows="10" required
-                placeholder="content"></textarea>
+            <textarea name="describe" class="upnewsdescription" cols="30" rows="10" required placeholder="Describe"></textarea>
+            <textarea name="content" class="upnewscontent" cols="30" rows="10" required placeholder="content"></textarea>
 
             <div class="row text">
 
@@ -118,18 +112,18 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
                     $result = mysqli_query($conn, $sql);
                     if (mysqli_num_rows($result) > 0) {
                     ?>
-                    <select name="category" id="upnewscategory">
-                        <?php
+                        <select name="category" id="upnewscategory">
+                            <?php
                             while ($row = mysqli_fetch_assoc(
                                 $result
                             )) {
                             ?>
 
-                        <option value="<?php echo $row['categoryID'] ?>"><?php echo $row['categoryName'] ?></option>
-                        <?php
+                                <option value="<?php echo $row['categoryID'] ?>"><?php echo $row['categoryName'] ?></option>
+                            <?php
                             }
                             ?>
-                    </select>
+                        </select>
                     <?php
                     }
                     ?>
@@ -237,15 +231,15 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
             $result = mysqli_query($conn, $sql);
             if (mysqli_num_rows($result) > 0) {
             ?>
-            <select name="categoryID" id="">
-                <?php
+                <select name="categoryID" id="">
+                    <?php
                     while ($row = mysqli_fetch_assoc($result)) {
                     ?>
-                <option value="<?php echo $row['categoryTours'] ?>"><?php echo $row['categoryName'] ?></option>
-                <?php
+                        <option value="<?php echo $row['categoryTours'] ?>"><?php echo $row['categoryName'] ?></option>
+                    <?php
                     }
                     ?>
-            </select>
+                </select>
             <?php
             }
             ?>
@@ -255,23 +249,21 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
             if (mysqli_num_rows($result) > 0) {
             ?>
 
-            <select name="sellerID" class="slseller" id="">
-                <?php
+                <select name="sellerID" class="slseller" id="">
+                    <?php
                     while ($row = mysqli_fetch_assoc($result)) {
                     ?>
-                <option value="<?php echo $row['userID'] ?>"><?php echo $row['name'] ?></option>
-                <?php
+                        <option value="<?php echo $row['userID'] ?>"><?php echo $row['name'] ?></option>
+                    <?php
                     }
                     ?>
-            </select>
+                </select>
             <?php
             }
             ?>
             <input type="text" class="crnewsname" name="tourName" required value="" placeholder="Tour name" />
-            <textarea name="tourLocation" class="craddress" cols="30" rows="10" required value=""
-                placeholder="Location"></textarea>
-            <textarea name="tourDescription" class="crbody" cols="30" rows="10" required value=""
-                placeholder="Enter Tour Description"></textarea>
+            <textarea name="tourLocation" class="craddress" cols="30" rows="10" required value="" placeholder="Location"></textarea>
+            <textarea name="tourDescription" class="crbody" cols="30" rows="10" required value="" placeholder="Enter Tour Description"></textarea>
             <input type="file" class="crimg" name="tourImage" id="video" required />
             <div class="row text">
                 <!-- list danh muc -->
@@ -359,12 +351,10 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
                                                                                 } ?>" placeholder="Title" />
             <textarea name="describe" class="crdescribe" cols="30" rows="10" required value="<?php if (isset($_POST['describe'])) {
                                                                                                     echo $_POST['describe'];
-                                                                                                } ?>"
-                placeholder="Describe"></textarea>
+                                                                                                } ?>" placeholder="Describe"></textarea>
             <textarea name="content" class="crbody" cols="30" rows="10" required value="<?php if (isset($_POST['content'])) {
                                                                                             echo $_POST['content'];
-                                                                                        } ?>"
-                placeholder="Enter content"></textarea>
+                                                                                        } ?>" placeholder="Enter content"></textarea>
             <input type="file" class="crimg" name="video" id="video" required />
             <div class="row text">
                 <!-- list danh muc -->
@@ -375,16 +365,16 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
                     $result = mysqli_query($conn, $sql);
                     if (mysqli_num_rows($result) > 0) {
                     ?>
-                    <select name="category" id="category">
+                        <select name="category" id="category">
 
-                        <?php
+                            <?php
                             while ($row = mysqli_fetch_assoc($result)) {
                             ?>
-                        <option value="<?php echo $row['categoryNews'] ?>"><?php echo $row['categoryName'] ?></option>
-                        <?php
+                                <option value="<?php echo $row['categoryNews'] ?>"><?php echo $row['categoryName'] ?></option>
+                            <?php
                             }
                             ?>
-                    </select>
+                        </select>
                     <?php
                     }
                     ?>
@@ -579,6 +569,13 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
         </div>
         <div class="dashboard">
             <div class="row">
+                <div class=""></div><a href="https://sandbox.vnpayment.vn/merchantv2/" target="_blank" class="col-4 bank">
+                    <div>
+                        Tran's History
+                    </div>
+                </a>
+            </div>
+            <div class="row">
 
                 <div class="col-3 bl row green user">
                     <i class="fa-solid fa-users col-2"></i>
@@ -677,21 +674,18 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
                     if (mysqli_num_rows($result) > 0) {
                         while ($row = mysqli_fetch_assoc($result)) {
                     ?>
-                    <tr>
-                        <td><?php echo $row['categoryNews'] ?></td>
-                        <td><?php echo $row['categoryName'] ?></td>
-                        <td><a href="delete.php?categoryNews=<?php echo $row['categoryNews'] ?>" data-id="" class=""><i
-                                    class="fa-solid fa-trash"></i></a></td>
-                        <td><a href="#!" class="btn__editcategory" data-id="<?php echo $row['categoryNews'] ?>"
-                                data-username="" data-name="<?php echo $row['categoryName'] ?>"><i
-                                    class="fa-solid fa-pen-to-square"></i></a></td>
+                            <tr>
+                                <td><?php echo $row['categoryNews'] ?></td>
+                                <td><?php echo $row['categoryName'] ?></td>
+                                <td><a href="delete.php?categoryNews=<?php echo $row['categoryNews'] ?>" data-id="" class=""><i class="fa-solid fa-trash"></i></a></td>
+                                <td><a href="#!" class="btn__editcategory" data-id="<?php echo $row['categoryNews'] ?>" data-username="" data-name="<?php echo $row['categoryName'] ?>"><i class="fa-solid fa-pen-to-square"></i></a></td>
                         <?php
                         }
                     }
                         ?>
                         <!-- <td><a href="#!" data-id="" class="btn__delete"><i class="fa-solid fa-trash"></i></a></td>
         <td><a href="#!" class="btn__editcategory" data-id="" data-username="" data-name=""><i class="fa-solid fa-pen-to-square"></i></a></td> -->
-                    </tr>
+                            </tr>
 
                 </table>
                 <!-- pag -->
@@ -724,19 +718,16 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
                     if (mysqli_num_rows($result) > 0) {
                         while ($row = mysqli_fetch_assoc($result)) {
                     ?>
-                    <tr>
-                        <td><?php echo $row['categoryTours'] ?></td>
-                        <td><?php echo $row['categoryName'] ?></td>
-                        <td><a href="delete.php?categoryTours=<?php echo $row['categoryTours'] ?>" data-id=""
-                                class=""><i class="fa-solid fa-trash"></i></a></td>
-                        <td><a href="#!" class="btn__editcategory" data-id="<?php echo $row['categoryTours'] ?>"
-                                data-username="" data-name="<?php echo $row['categoryName'] ?>"><i
-                                    class="fa-solid fa-pen-to-square"></i></a></td>
+                            <tr>
+                                <td><?php echo $row['categoryTours'] ?></td>
+                                <td><?php echo $row['categoryName'] ?></td>
+                                <td><a href="delete.php?categoryTours=<?php echo $row['categoryTours'] ?>" data-id="" class=""><i class="fa-solid fa-trash"></i></a></td>
+                                <td><a href="#!" class="btn__editcategory" data-id="<?php echo $row['categoryTours'] ?>" data-username="" data-name="<?php echo $row['categoryName'] ?>"><i class="fa-solid fa-pen-to-square"></i></a></td>
                         <?php
                         }
                     }
                         ?>
-                    </tr>
+                            </tr>
                 </table>
                 <!-- pag -->
                 <div class="pag">
@@ -793,24 +784,21 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
                     $tour_list = get_tour_list();
                     foreach ($tour_list as $tour) {
                     ?>
-                    <tr>
-                        <td><?php echo mb_substr($tour['tourID'], 0, 10) ?></td>
-                        <td><?php echo $tour['categoryTours'] ?></td>
-                        <td><?php echo $tour['sellerID'] ?></td>
-                        <td><?php echo $tour['tourName'] ?></td>
-                        <td><?php echo $tour['tourPrice'] ?></td>
-                        <td><?php echo mb_substr($tour['tourImage'], 0, 10) ?></td>
-                        <td><?php echo $tour['tourLocation'] ?></td>
-                        <td><?php echo $tour['tourTime'] ?></td>
-                        <td><?php echo $tour['tourDate'] ?></td>
-                        <td><?php echo mb_substr($tour['tourDescription'], 0, 20) ?></td>
-                        <td><a href="delete.php?tourID=<?php echo $tour['tourID'] ?>" data-id="" class=""><i
-                                    class="fa-solid fa-trash"></i></a></td>
-                        <td><a href="#!" class="btn__edittour" data-id="<?php echo $tour['tourID'] ?>" data-username=""
-                                data-name="<?php echo $tour['tourName'] ?>"><i
-                                    class="fa-solid fa-pen-to-square"></i></a>
-                        </td>
-                    </tr>
+                        <tr>
+                            <td><?php echo mb_substr($tour['tourID'], 0, 10) ?></td>
+                            <td><?php echo $tour['categoryTours'] ?></td>
+                            <td><?php echo $tour['sellerID'] ?></td>
+                            <td><?php echo $tour['tourName'] ?></td>
+                            <td><?php echo $tour['tourPrice'] ?></td>
+                            <td><?php echo mb_substr($tour['tourImage'], 0, 10) ?></td>
+                            <td><?php echo $tour['tourLocation'] ?></td>
+                            <td><?php echo $tour['tourTime'] ?></td>
+                            <td><?php echo $tour['tourDate'] ?></td>
+                            <td><?php echo mb_substr($tour['tourDescription'], 0, 20) ?></td>
+                            <td><a href="delete.php?tourID=<?php echo $tour['tourID'] ?>" data-id="" class=""><i class="fa-solid fa-trash"></i></a></td>
+                            <td><a href="#!" class="btn__edittour" data-id="<?php echo $tour['tourID'] ?>" data-username="" data-name="<?php echo $tour['tourName'] ?>"><i class="fa-solid fa-pen-to-square"></i></a>
+                            </td>
+                        </tr>
                     <?php
                     }
                     ?>
@@ -861,8 +849,7 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
                         <td>Note</td>
                         <td>Status</td>
                         <td><a href="#!" data-id="" class="btn__delete"><i class="fa-solid fa-trash"></i></a></td>
-                        <td><a href="#!" class="btn__editcategory" data-id="" data-username="" data-name=""><i
-                                    class="fa-solid fa-pen-to-square"></i></a></td>
+                        <td><a href="#!" class="btn__editcategory" data-id="" data-username="" data-name=""><i class="fa-solid fa-pen-to-square"></i></a></td>
                     </tr>
 
                 </table>
@@ -921,24 +908,20 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
                             $date = $news['date'];
                             $resources = $news['resources'];
                         ?>
-                        <td><?php echo $newsID; ?></td>
-                        <td><?php echo $author; ?></td>
-                        <td><?php echo $categoryID; ?></td>
-                        <td><?php echo mb_substr($title, 0, 30); ?></td>
-                        <td><?php echo $description; ?></td>
-                        <td><?php echo mb_substr($content, 0, 100) . "...."; ?></td>
-                        <td><?php echo $resources; ?></td>
-                        <td><?php echo $date; ?></td>
-                        <td><a href="#!" data-id="" class="btn__delete"><i class="fa-solid fa-trash"></i></a></td>
-                        <td><a href="#!" class="btn__editnews" data-title="<?php echo $title ?>"
-                                data-description="<?php echo $description; ?>" data-content="<?php echo $content; ?>"
-                                data-resources="<?php echo $resources; ?>" data-date="<?php echo $date; ?>"
-                                data-categoryid="<?php echo $categoryID; ?>"><i
-                                    class="fa-solid fa-pen-to-square"></i></a>
-                        </td>
+                            <td><?php echo $newsID; ?></td>
+                            <td><?php echo $author; ?></td>
+                            <td><?php echo $categoryID; ?></td>
+                            <td><?php echo mb_substr($title, 0, 30); ?></td>
+                            <td><?php echo $description; ?></td>
+                            <td><?php echo mb_substr($content, 0, 100) . "...."; ?></td>
+                            <td><?php echo $resources; ?></td>
+                            <td><?php echo $date; ?></td>
+                            <td><a href="#!" data-id="" class="btn__delete"><i class="fa-solid fa-trash"></i></a></td>
+                            <td><a href="#!" class="btn__editnews" data-title="<?php echo $title ?>" data-description="<?php echo $description; ?>" data-content="<?php echo $content; ?>" data-resources="<?php echo $resources; ?>" data-date="<?php echo $date; ?>" data-categoryid="<?php echo $categoryID; ?>"><i class="fa-solid fa-pen-to-square"></i></a>
+                            </td>
                     </tr>
-                    <?php } ?>
-                    <!-- end foreach -->
+                <?php } ?>
+                <!-- end foreach -->
 
                 </table>
                 <!-- pag -->
@@ -990,19 +973,16 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
                         $password = $user['password'];
                         $role = 'user';
                     ?>
-                    <tr>
-                        <td><?php echo $user['userID'] ?></td>
-                        <td><?php echo $user['username'] ?></td>
-                        <td><?php echo $user['name'] ?></td>
-                        <td><?php echo $user['password'] ?></td>
-                        <td><?php echo $user['role'] ?></td>
-                        <td><a href="#!" data-id="<?php echo $ID; ?>" class="btn__delete"><i
-                                    class="fa-solid fa-trash"></i></a></td>
-                        <td><a href="#!" class="btn__edituser" data-id="<?php echo $user['userID']; ?>"
-                                data-username="<?php echo $user['username']; ?>"
-                                data-name="<?php echo $user['name']; ?>"><i class="fa-solid fa-pen-to-square"></i></a>
-                        </td>
-                    </tr>
+                        <tr>
+                            <td><?php echo $user['userID'] ?></td>
+                            <td><?php echo $user['username'] ?></td>
+                            <td><?php echo $user['name'] ?></td>
+                            <td><?php echo $user['password'] ?></td>
+                            <td><?php echo $user['role'] ?></td>
+                            <td><a href="#!" data-id="<?php echo $ID; ?>" class="btn__delete"><i class="fa-solid fa-trash"></i></a></td>
+                            <td><a href="#!" class="btn__edituser" data-id="<?php echo $user['userID']; ?>" data-username="<?php echo $user['username']; ?>" data-name="<?php echo $user['name']; ?>"><i class="fa-solid fa-pen-to-square"></i></a>
+                            </td>
+                        </tr>
                     <?php
                     }
                     ?>
@@ -1059,22 +1039,16 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
                         $hotel = $seller['hotelName'];
                         $phone = $seller['phone'];
                     ?>
-                    <tr>
-                        <td><?php echo $seller['userID'] ?></td>
-                        <td><?php echo $seller['name'] ?></td>
-                        <td><?php echo $seller['username'] ?></td>
-                        <td><?php echo $seller['password'] ?></td>
-                        <td><?php echo $seller['hotelName'] ?></td>
-                        <td><?php echo $seller['phone'] ?></td>
-                        <td><a href="#!" data-id="<?php echo $ID; ?>" class="btn__delete"><i
-                                    class="fa-solid fa-trash"></i></a></td>
-                        <td><a href="#!" class="btn__editseller" data-id="<?php echo $seller['userID']; ?>"
-                                data-username="<?php echo $seller['username']; ?>"
-                                data-name="<?php echo $seller['name']; ?>"
-                                data-hotelname="<?php echo $seller['hotelName']; ?>"
-                                data-phone="<?php echo $seller['phone']; ?>"><i
-                                    class="fa-solid fa-pen-to-square"></i></a></td>
-                    </tr>
+                        <tr>
+                            <td><?php echo $seller['userID'] ?></td>
+                            <td><?php echo $seller['name'] ?></td>
+                            <td><?php echo $seller['username'] ?></td>
+                            <td><?php echo $seller['password'] ?></td>
+                            <td><?php echo $seller['hotelName'] ?></td>
+                            <td><?php echo $seller['phone'] ?></td>
+                            <td><a href="#!" data-id="<?php echo $ID; ?>" class="btn__delete"><i class="fa-solid fa-trash"></i></a></td>
+                            <td><a href="#!" class="btn__editseller" data-id="<?php echo $seller['userID']; ?>" data-username="<?php echo $seller['username']; ?>" data-name="<?php echo $seller['name']; ?>" data-hotelname="<?php echo $seller['hotelName']; ?>" data-phone="<?php echo $seller['phone']; ?>"><i class="fa-solid fa-pen-to-square"></i></a></td>
+                        </tr>
                     <?php
                     }
                     ?>
@@ -1127,19 +1101,16 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
                         $password = $admin['password'];
                         $role = $admin['role'];
                     ?>
-                    <tr>
-                        <td><?php echo $admin['userID'] ?></td>
-                        <td><?php echo $admin['username'] ?></td>
-                        <td><?php echo $admin['name'] ?></td>
-                        <td><?php echo $admin['password'] ?></td>
-                        <td><?php echo $admin['role'] ?></td>
-                        <td><a href="#!" data-id="<?php echo $ID; ?>" class="btn__delete"><i
-                                    class="fa-solid fa-trash"></i></a></td>
-                        <td><a href="#!" class="btn__editadmin" data-id="<?php echo $admin['userID']; ?>"
-                                data-username="<?php echo $admin['username']; ?>"
-                                data-name="<?php echo $admin['name']; ?>"><i class="fa-solid fa-pen-to-square"></i></a>
-                        </td>
-                    </tr>
+                        <tr>
+                            <td><?php echo $admin['userID'] ?></td>
+                            <td><?php echo $admin['username'] ?></td>
+                            <td><?php echo $admin['name'] ?></td>
+                            <td><?php echo $admin['password'] ?></td>
+                            <td><?php echo $admin['role'] ?></td>
+                            <td><a href="#!" data-id="<?php echo $ID; ?>" class="btn__delete"><i class="fa-solid fa-trash"></i></a></td>
+                            <td><a href="#!" class="btn__editadmin" data-id="<?php echo $admin['userID']; ?>" data-username="<?php echo $admin['username']; ?>" data-name="<?php echo $admin['name']; ?>"><i class="fa-solid fa-pen-to-square"></i></a>
+                            </td>
+                        </tr>
                     <?php
                     }
                     ?>
@@ -1162,14 +1133,11 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
         <!-- partial -->
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
         </script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
         </script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
         </script>
         <script src="./asset/js/script.js"></script>
 </body>
