@@ -49,3 +49,15 @@ if (isset($_GET['tourID'])) {
     }
 }
 ?>
+<?php
+if (isset($_GET['cartID'])) {
+    $cartID = $_GET['cartID'];
+    $sql = "delete from cart where cartID = $cartID";
+    $result = mysqli_query($conn, $sql);
+    if ($result) {
+        header("location: admin.php");
+    } else {
+        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+    }
+}
+?>

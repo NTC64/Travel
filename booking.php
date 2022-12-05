@@ -35,6 +35,16 @@ include("header.php");
 <body>
     <!-- Login Form -->
     <?php
+    if (isset($_GET['tourID'])) {
+        $id = $_GET['tourID'];
+        $sql = "SELECT * FROM tours WHERE tours.tourID = '$id'";
+        $result = mysqli_query($conn, $sql);
+        if (mysqli_num_rows($result) > 0) {
+            $row = mysqli_fetch_assoc($result);
+        }
+    }
+    ?>
+    <?php
     //return tourID with GET method
     function getTourID()
     {
@@ -54,22 +64,25 @@ include("header.php");
             <h3 class="col-10 text-uppercase p-0">Thông tin khách hàng</h3>
             <form action="payment.php" method="post" class="fm">
                 <div class="row form my-3">
-
                     <div class="col-6 left">
-                        <input type="hidden" class="idtour">
+                        <input type="hidden" name="tourID" class="idtour">
                         <input type="text" name="fullName" placeholder="Họ và tên">
                         <input type="text" name="phone" placeholder="Số điện thoại">
                         <input type="text" name="address" placeholder="Địa chỉ">
-                        <input type="text" name="" placeholder="Tên tour" readonly value="<?php echo $row["tourName"] ?>">
-                        <input type="text" name="" placeholder="Giá" class="price" readonly value="<?php echo $row["tourPrice"] ?>">
-                        <input type="number" placeholder="Số lượng người" class="quantity" name="people" value="<?php echo $_GET["quantity"] ?>" min="1" max="50">
+                        <input type="text" name="" placeholder="Tên tour" readonly
+                            value="<?php echo $row["tourName"] ?>">
+                        <input type="text" name="" placeholder="Giá" class="price" readonly
+                            value="<?php echo $row["tourPrice"] ?>">
+                        <input type="number" placeholder="Số lượng người" class="quantity" name="people"
+                            value="<?php echo $_GET["quantity"] ?>" min="1" max="50">
                         <input type="text" placeholder="Mã giảm giá" class="discount" require>
                         <div class="btn btn-success btnad">Áp dụng</div>
                     </div>
                     <div class="col-6 right">
                         <input type="date" name="startDate" readonly value="<?php echo $row["tourDate"] ?>">
                         Đến
-                        <input type="date" name="endDate" readonly value="<?php echo date('Y-m-j', strtotime('+' . $row["tourTime"] . ' day', strtotime($row['tourDate']))) ?>">
+                        <input type="date" name="endDate" readonly
+                            value="<?php echo date('Y-m-j', strtotime('+' . $row["tourTime"] . ' day', strtotime($row['tourDate']))) ?>">
                         <textarea name="note" id="" cols="30" rows="10" placeholder="Ghi chú"></textarea>
                         <select name="cartPayment" id="pay">
                             <option value="">Chọn phương thức thanh toán</option>
@@ -85,7 +98,7 @@ include("header.php");
                 </div>
                 <div class="row btnbook">
                     <!-- <div class="btn btn-success btnbook">Đặt tour</div> -->
-                    <input type="submit" value="Đặt tour" name="doanxem" class="btn btn-success btnbook">
+                    <input type="submit" value="Đặt tour" name="redirect" class="btn btn-success btnbook">
                 </div>
             </form>
         </div>

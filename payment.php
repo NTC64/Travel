@@ -15,10 +15,10 @@ require_once('config_vnpay.php');
 
 
 <?php
-if (isset($_POST['doanxem'])) {
+if (isset($_POST['redirect'])) {
     $order_code = rand(100000, 999999);
     $userID = $_SESSION['userID'];
-    $tourID = getTourID();
+    $tourID = $_POST['tourID'];
     $fullName = $_POST['fullName'];
     $phone = $_POST['phone'];
     $address = $_POST['address'];
@@ -30,14 +30,14 @@ if (isset($_POST['doanxem'])) {
     $cartPayment = $_POST['cartPayment'];
     $cartStatus = "Đang chờ xác nhận";
     if ($cartPayment == "CASH") {
-        // $sql = "INSERT INTO cart ('order_code',`userID`, `tourID`, `fullName`, `phone`, `address`, `cartPrice`, `people`, `startDate`, `endDate`, `note`, `cart_payment`, `cartStatus`) VALUES ('$order_code','$userID', '$tourID', '$fullName', '$phone', '$address', '$cartPrice', '$people', '$startDate', '$endDate', '$note', '$cartPayment', '$cartStatus')";
-        // $result = mysqli_query($conn, $sql);
-        // if ($result) {
-        //     echo "<script>alert('Đặt tour thành công!')</script>";
-        //     // echo "<script>window.location.href='index.php'</script>";
-        // } else {
-        //     echo "<script>alert('Đặt tour thất bại!')</script>";
-        // }
+        $sql = "INSERT INTO cart ('order_code',`userID`, `tourID`, `fullName`, `phone`, `address`, `cartPrice`, `people`, `startDate`, `endDate`, `note`, `cart_payment`, `cartStatus`) VALUES ('$order_code','$userID', '$tourID', '$fullName', '$phone', '$address', '$cartPrice', '$people', '$startDate', '$endDate', '$note', '$cartPayment', '$cartStatus')";
+        $result = mysqli_query($conn, $sql);
+        if ($result) {
+            echo "<script>alert('Đặt tour thành công!')</script>";
+            echo "<script>alert('Chúng tôi sẽ liên hệ với bạn sớm.')</script>";
+        } else {
+            echo "<script>alert('Đặt tour thất bại!')</script>";
+        }
     } else if ($cartPayment == "VNPAY") {
         $vnp_TxnRef = $order_code; //Mã đơn hàng. Trong thực tế Merchant cần insert đơn hàng vào DB và gửi mã này sang VNPAY
         $vnp_OrderInfo = 'Thanh toán đơn hàng ' . $vnp_TxnRef . ' tại website của ULSA IT ';
@@ -96,6 +96,9 @@ if (isset($_POST['doanxem'])) {
             'code' => '00', 'message' => 'success', 'data' => $vnp_Url
         );
         if (isset($_POST['redirect'])) {
+            $_SESSION['order_code'] = $order_code;
+            $sql = "INSERT INTO cart (`order_code`, `userID`, `tourID`, `fullName`, `phone`, `address`, `cartPrice`, `people`, `startDate`, `endDate`, `note`, `cart_payment`, `cartStatus`) VALUES ('$order_code','$userID', '$tourID', '$fullName', '$phone', '$address', '$cartPrice', '$people', '$startDate', '$endDate', '$note', '$cartPayment', '$cartStatus')";
+            $result = mysqli_query($conn, $sql);
             header('Location: ' . $vnp_Url);
             die();
         } else {

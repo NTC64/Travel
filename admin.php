@@ -836,11 +836,12 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
             <form action=" " method="get">
                 <table border="1">
                     <tr>
+                        <td>ID Cart</td>
                         <td>ID Tour</td>
                         <td>ID Seller</td>
-                        <td>Name user</td>
+                        <td>User's Name</td>
                         <td>Number phone</td>
-                        <td>Address user</td>
+                        <td>Address</td>
                         <td>Date</td>
                         <td>Price</td>
                         <td>Quantity</td>
@@ -849,22 +850,46 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
                         <td>Delete</i></td>
                         <td>Update</i></td>
                     </tr>
+                    <?php
+                    function get_cart_list()
+                    {
+                        if ($_SESSION['role'] == 'seller') {
+                            $sql = "SELECT * FROM cart WHERE sellerID = '" . $_SESSION['userID'] . "'";
+                        } else {
+                            $sql = "SELECT * FROM cart";
+                        }
+                        global $conn;
+                        $result = mysqli_query($conn, $sql);
+                        $cart_list = array();
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            $cart_list[] = $row;
+                        }
+                        return $cart_list;
+                    } ?>
+                    <?php
+                    $cart_list = get_cart_list();
+                    foreach ($cart_list as $cart) {
+                    ?>
                     <tr>
-                        <td>ID Tour</td>
-                        <td>ID Seller</td>
-                        <td>Name user</td>
-                        <td>Number phone</td>
-                        <td>Address user</td>
-                        <td>Date</td>
-                        <td>Price</td>
-                        <td>Quantity</td>
-                        <td>Note</td>
-                        <td>Status</td>
-                        <td><a href="#!" data-id="" class="btn__delete"><i class="fa-solid fa-trash"></i></a></td>
+                        <td><?php echo $cart['cartID'] ?></td>
+                        <td><?php echo $cart['tourID'] ?></td>
+                        <td><?php echo $cart['userID'] ?></td>
+                        <td><?php echo $cart['fullName'] ?></td>
+                        <td><?php echo $cart['phone'] ?></td>
+                        <td><?php echo $cart['address'] ?></td>
+                        <td><?php echo $cart['startDate'] ?></td>
+                        <td><?php echo $cart['cartPrice'] ?></td>
+                        <td><?php echo $cart['people'] ?></td>
+                        <td><?php echo $cart['note'] ?></td>
+                        <td><?php echo $cart['cartStatus'] ?></td>
+                        <td><a href="delete.php?cartID=<?php echo $cart['cartID'] ?>" data-id="" class="btn__delete"><i
+                                    class="fa-solid fa-trash"></i></a></td>
                         <td><a href="#!" class="btn__editcategory" data-id="" data-username="" data-name=""><i
                                     class="fa-solid fa-pen-to-square"></i></a></td>
                     </tr>
-
+                    <?php
+                    }
+                    ?>
                 </table>
                 <!-- pag -->
                 <div class="pag">
