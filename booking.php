@@ -74,6 +74,7 @@
                 </div>
                 <div class="row">
                     <h3 class="col-12">Tổng tiền: <span class="total"></span> <span class="totaldc"></span> VND</h3>
+                    <input type="hidden" class="tong" name="">
                 </div>
                 <div class="row btnbook">
                     <div class="btn btn-success btnbook">Đặt tour</div>
