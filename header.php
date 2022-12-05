@@ -19,7 +19,7 @@
         <?php
         if (isset($_SESSION['check']) && $_SESSION['check'] == true) {
             echo "<div class='col-1'></div><div class='m-0 p-0'><p>Xin chào USER" . $_SESSION['username'] . "</p></div>";
-            echo "<div class='cart'><a href='cart.php'><i class='fa-solid fa-plane'></i></a><div class='cart_nb'><p>0</p></div></div>";
+            echo "<div class='cart'><a href='cart.php'><i class='fa-solid fa-plane'></i></a></div>";
         ?>
             <a href="logout.php" class="logout">Logout</a>
         <?php } else { ?>
@@ -69,6 +69,7 @@
                     $_SESSION['check'] = true;
                     $_SESSION['username'] = $username;
                     $_SESSION['role'] = $row['role'];
+                    $_SESSION['userID'] = $row['userID'];
                     // header("Location: index.php");
                     header('Location: ' . $_SERVER['REQUEST_URI']);
                 }
