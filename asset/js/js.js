@@ -59,6 +59,7 @@ $(document).ready(function () {
   var quantity = parseFloat($(".quantity").val());
   var total = price * quantity;
   $(".total").html(total);
+  $(".tong").val($(".total").html());
   $(".btnad").click(function () {
     if ($(".discount").val() === "ULSAIT") {
       var price = parseFloat($(".price").val());
@@ -67,6 +68,7 @@ $(document).ready(function () {
       total = total - total * 0.2;
       $(".totaldc").html(total);
       $(".total").addClass("gach");
+      $(".tong").val($(".totaldc").html());
     } else {
       Swal.fire({
         icon: "error",
@@ -75,6 +77,7 @@ $(document).ready(function () {
       });
       $(".totaldc").html("");
       $(".total").removeClass("gach");
+      $(".tong").val($(".total").html());
     }
   });
 
@@ -83,6 +86,7 @@ $(document).ready(function () {
     var quantity = parseFloat($(".quantity").val());
     var total = price * quantity;
     $(".total").html(total);
+    $(".tong").val($(".total").html());
     if ($(".discount").val() === "ULSAIT") {
       var price = parseFloat($(".price").val());
       var quantity = parseFloat($(".quantity").val());
@@ -90,9 +94,16 @@ $(document).ready(function () {
       total = total - total * 0.2;
       $(".totaldc").html(total);
       $(".total").addClass("gach");
+      $(".tong").val($(".totaldc").html());
+    }
+    else{
+        $(".totaldc").html("");
+        $(".total").removeClass("gach");
+        $(".tong").val($(".total").html());
     }
   });
 });
+
 $(document).on("click", ".btn__tour", function () {
   if ($(".header__signup").html() == "Sign Up") {
     Swal.fire({
