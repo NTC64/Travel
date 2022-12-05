@@ -34,7 +34,7 @@
         </div>
         <div class="tour__title row mt-5">
             <h3 class="col-10 text-uppercase p-0">Thông tin khách hàng</h3>
-            <form action="" method="post" class="fm">
+            <form action="tour.php" method="post" class="fm">
                 <div class="row form my-3">
 
                     <div class="col-6 left">

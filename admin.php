@@ -471,12 +471,12 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
                         ?>
                     </div>
                 </div>
-                <div class="col-3 bl row orange seller">
-                    <i class="fa-brands fa-sellsy col-2"></i>
-                    <div class="col-7">Sellers</div>
+                <div class="col-3 bl row purple tourall">
+                    <i class="fa-solid fa-location-dot col-2"></i>
+                    <div class="col-7">Tours</div>
                     <div class="num col-3">
                         <?php
-                        $sql = "SELECT * FROM access WHERE role = 'seller'";
+                        $sql = "SELECT * FROM tours";
                         $result = mysqli_query($conn, $sql);
                         $num = mysqli_num_rows($result);
                         echo $num;
@@ -497,18 +497,19 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
                 </div>
             </div>
             <div class="row">
-                <div class="col-3 bl row purple tourall">
-                    <i class="fa-solid fa-location-dot col-2"></i>
-                    <div class="col-7">Tours</div>
+                <div class="col-3 bl row orange seller">
+                    <i class="fa-brands fa-sellsy col-2"></i>
+                    <div class="col-7">Sellers</div>
                     <div class="num col-3">
                         <?php
-                        $sql = "SELECT * FROM tours";
+                        $sql = "SELECT * FROM access WHERE role = 'seller'";
                         $result = mysqli_query($conn, $sql);
                         $num = mysqli_num_rows($result);
                         echo $num;
                         ?>
                     </div>
                 </div>
+
                 <div class="col-3 bl row pink tourmanagement">
                     <i class="fa-solid fa-plane col-2"></i>
                     <div class="col-7"> Booked Tours</div>
@@ -711,8 +712,13 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
                     <tr>
                         <td>ID Tour</td>
                         <td>ID Seller</td>
-                        <td>Name</td>
+                        <td>Name user</td>
+                        <td>Number phone</td>
+                        <td>Address user</td>
+                        <td>Date</td>
                         <td>Price</td>
+                        <td>Quantity</td>
+                        <td>Note</td>
                         <td>Status</td>
                         <td>Delete</i></td>
                         <td>Update</i></td>
@@ -720,8 +726,13 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
                     <tr>
                         <td>ID Tour</td>
                         <td>ID Seller</td>
-                        <td>Name</td>
+                        <td>Name user</td>
+                        <td>Number phone</td>
+                        <td>Address user</td>
+                        <td>Date</td>
                         <td>Price</td>
+                        <td>Quantity</td>
+                        <td>Note</td>
                         <td>Status</td>
                         <td><a href="#!" data-id="" class="btn__delete"><i class="fa-solid fa-trash"></i></a></td>
                         <td><a href="#!" class="btn__editcategory" data-id="" data-username="" data-name=""><i
