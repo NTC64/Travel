@@ -59,44 +59,39 @@ $(document).ready(function () {
   var quantity = parseFloat($(".quantity").val());
   var total = price * quantity;
   $(".total").html(total);
-    $(".btnad").click(function () {
-      
-    if($(".discount").val() ==='ULSAIT'){
-        var price = parseFloat($(".price").val());
-  var quantity = parseFloat($(".quantity").val());
-  var total = price * quantity;
-    total = total - (total * 0.2);
-    $(".totaldc").html(total);
-    $(".total").addClass("gach");
-}
-    else{
-        Swal.fire({
-    icon: "error",
-    title: "Oops...",
-    text: "The discount code is incorrect!!",
-
-    });
-    $(".totaldc").html("");
-    $(".total").removeClass("gach");
+  $(".btnad").click(function () {
+    if ($(".discount").val() === "ULSAIT") {
+      var price = parseFloat($(".price").val());
+      var quantity = parseFloat($(".quantity").val());
+      var total = price * quantity;
+      total = total - total * 0.2;
+      $(".totaldc").html(total);
+      $(".total").addClass("gach");
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "The voucher is incorrect!!",
+      });
+      $(".totaldc").html("");
+      $(".total").removeClass("gach");
     }
-    });
+  });
 
   $(".quantity").on("change", function () {
     var price = parseFloat($(".price").val());
     var quantity = parseFloat($(".quantity").val());
     var total = price * quantity;
     $(".total").html(total);
-    if($(".discount").val() ==='ULSAIT'){
-        var price = parseFloat($(".price").val());
-    var quantity = parseFloat($(".quantity").val());
-    var total = price * quantity;
-        total = total - (total * 0.2);
-        $(".totaldc").html(total);
-        $(".total").addClass("gach");
+    if ($(".discount").val() === "ULSAIT") {
+      var price = parseFloat($(".price").val());
+      var quantity = parseFloat($(".quantity").val());
+      var total = price * quantity;
+      total = total - total * 0.2;
+      $(".totaldc").html(total);
+      $(".total").addClass("gach");
     }
-
-  
- });
+  });
 });
 $(document).on("click", ".btn__tour", function () {
   if ($(".header__signup").html() == "Sign Up") {
@@ -121,7 +116,11 @@ $(document).on("click", ".btn__tour", function () {
       }
     });
   } else {
-    window.location.href = "booking.php?quantity=" + $(".sluong").val()+"&tourID="+$(this).attr("data-id");
+    window.location.href =
+      "booking.php?quantity=" +
+      $(".sluong").val() +
+      "&tourID=" +
+      $(this).attr("data-id");
   }
 });
 $(document).on("click", ".category__left", function () {
@@ -143,11 +142,10 @@ $(document).on("click", ".btnbook", function () {
     $(location).attr("href", "vnpay_php/index.php");
   } else {
     Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: "The feature is under maintenance. Please come back in the future!!",
-        });
-    
+      icon: "error",
+      title: "Oops...",
+      text: "The feature is under maintenance. Please come back in the future!!",
+    });
 
     // $(location).attr('href', 'http://localhost/travel/PayMoMo/init_payment.php');
   }
