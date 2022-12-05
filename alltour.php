@@ -55,11 +55,11 @@
                 <img class="card-img-top" src="uploads/images/<?php echo $tour['tourImage']; ?>" alt="Card image cap" />
                 <div class="card-body">
                     <h5 class="card-title"><?php echo $tour['tourName'] ?></h5>
-                    <p class="card-text text-black-50"><?php echo $tour['tourDescription'] ?></p>
+                    <p class="card-text text-black-50"><?php echo mb_substr($tour['tourDescription'], 0, 60)  ?></p>
                     <p class="card-price text-danger">Giá: <?php echo $tour['tourPrice'] ?></p>
-                    <a href="tour.php?tourID=<?php echo $tour['tourID'] ?>" class="btn btn-green" data-id="id">Đặt
-                        Tour</a>
                 </div>
+                <a href="tour.php?tourID=<?php echo $tour['tourID'] ?>" class="btn btn-green btnnews" data-id="id">Đặt
+                    Tour</a>
             </div>
             <?php } ?>
             <!-- end tour card -->

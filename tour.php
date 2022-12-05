@@ -66,7 +66,7 @@
                     <div class="col-4">Thời gian: <?php echo $row['tourTime'] ?> ngày</div>
                 </div>
                 <div class="row text-black-50">
-                    <div class="col-6">Thời Gian khởi hành: <?php echo $row['tourDate'] ?></div>
+                    <div class="col-6">Thời gian khởi hành: <?php echo $row['tourDate'] ?></div>
                 </div>
                 <div class="row my-3">
                     <div class="col-12"><?php echo nl2br($row['tourDescription']) ?><br>
@@ -79,13 +79,16 @@
 
             </div>
             <div class="col-4 booking">
-                <p class="tour-price text-or">Giá: <span class="pricetour">10000</span> <span>Vnđ/Người</span></p>
+                <p class="tour-price text-or">Giá: <span class="pricetour"><?php echo $row['tourPrice'] ?></span>
+                    <span>VNĐ/Người</span>
+                </p>
                 <div class="text_box my-3">
 
                     <label for="">Số người:</label><input type="number" value="1" min="1" max="50" class="sluong">
                 </div>
                 <div class="text_box my-3">
-                    <label for="">Khởi hành:</label><input type="date" name="" class="date" id="">
+                    <label for="">Khởi hành:</label><input type="date" name="" class="" id="" readonly
+                        value="<?php echo $row['tourDate'] ?>">
 
                 </div>
                 <p class="text-white f14">" Sao chép mã giảm giá (MGGVIP) để được khuyến mãi 20% "</p>

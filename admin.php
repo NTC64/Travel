@@ -232,21 +232,47 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
             <div class="up__title">
                 <h3 class="my-3">Create Tour</h3>
             </div>
-            <select name="" id="">
-                <option value="">Select Category</option>
-                <option value="">...</option>
+            <?php
+            $sql = "SELECT * FROM category_tours";
+            $result = mysqli_query($conn, $sql);
+            if (mysqli_num_rows($result) > 0) {
+            ?>
+            <select name="categoryID" id="">
+                <?php
+                    while ($row = mysqli_fetch_assoc($result)) {
+                    ?>
+                <option value="<?php echo $row['categoryTours'] ?>"><?php echo $row['categoryName'] ?></option>
+                <?php
+                    }
+                    ?>
             </select>
-            <select name="" class="slseller" id="">
-                <option value="">Select seller</option>
-                <option value="">...</option>
+            <?php
+            }
+            ?>
+            <?php
+            $sql = "SELECT * FROM access where role = 'seller'";
+            $result = mysqli_query($conn, $sql);
+            if (mysqli_num_rows($result) > 0) {
+            ?>
 
+            <select name="sellerID" class="slseller" id="">
+                <?php
+                    while ($row = mysqli_fetch_assoc($result)) {
+                    ?>
+                <option value="<?php echo $row['userID'] ?>"><?php echo $row['name'] ?></option>
+                <?php
+                    }
+                    ?>
             </select>
-            <input type="text" class="crnewsname" name="" required value="" placeholder="name" />
-            <textarea name="describe" class="craddress" cols="30" rows="10" required value=""
-                placeholder="Address"></textarea>
-            <textarea name="content" class="crbody" cols="30" rows="10" required value=""
-                placeholder="Enter content"></textarea>
-            <input type="file" class="crimg" name="video" id="video" required />
+            <?php
+            }
+            ?>
+            <input type="text" class="crnewsname" name="tourName" required value="" placeholder="Tour name" />
+            <textarea name="tourLocation" class="craddress" cols="30" rows="10" required value=""
+                placeholder="Location"></textarea>
+            <textarea name="tourDescription" class="crbody" cols="30" rows="10" required value=""
+                placeholder="Enter Tour Description"></textarea>
+            <input type="file" class="crimg" name="tourImage" id="video" required />
             <div class="row text">
                 <!-- list danh muc -->
                 <div class="col-4 left m-0 p-0">
@@ -255,17 +281,73 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
 
                 </div>
                 <div class="col-4 rigth m-0 p-0">
-                    <input type="text" class="crtime" name="time" required value="" placeholder="Time(day)" />
+                    <input type="text" class="crtime" name="tourTime" required value="" placeholder="Time(day)" />
                 </div>
                 <div class="col-4 rigth m-0 p-0">
-                    <input type="date" class="crdate" name="date" required value="" />
+                    <input type="date" class="crdate" name="tourDate" required value="" />
                 </div>
             </div>
             <div class="smnews">
-                <input type="submit" value="Create" name="submitNews" class="btn btn-success smcreate" />
+                <input type="submit" value="Create" name="submitTour" class="btn btn-success smcreate" />
             </div>
         </form>
     </div>
+    <?php
+    if (isset($_POST['submitTour'])) {
+        $categoryID = $_POST['categoryID'];
+        $sellerID = $_POST['sellerID'];
+        // echo '<script>alert("' . $categoryID . '")</script>';
+        // echo '<script>alert("' . $sellerID . '")</script>';
+        $tourName = $_POST['tourName'];
+        $tourLocation = $_POST['tourLocation'];
+        $tourDescription = $_POST['tourDescription'];
+        $tourTime = $_POST['tourTime'];
+        $tourDate = $_POST['tourDate'];
+        $price = $_POST['price'];
+        $tourImage = $_FILES['tourImage']['name'];
+        //upload image
+        $target_dir = "uploads/images/";
+        $target_file = $target_dir . basename($_FILES["tourImage"]["name"]);
+        $uploadOk = 1;
+        $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+        // Check if file already exists
+        if (file_exists($target_file)) {
+            echo '<script>alert("Sorry, file already exists.")</script>';
+            $uploadOk = 0;
+        }
+        // Check file size
+        if ($_FILES["tourImage"]["size"] > 5000000) {
+            echo '<script>alert("Sorry, your file is too large.")</script>';
+            $uploadOk = 0;
+        }
+
+        // Allow certain file formats
+        if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"  && $imageFileType != "gif") {
+            echo '<script>alert("Sorry, only JPG, JPEG, PNG & GIF files are allowed.")</script>';
+            $uploadOk = 0;
+        }
+        // Check if $uploadOk is set to 0 by an error
+        if ($uploadOk == 0) {
+            echo '<script>alert("Sorry, your file was not uploaded.")</script>';
+            echo '<script> setTimeout(function(){window.location.href="admin.php"}, 1000)</script>';
+            // if everything is ok, try to upload file
+        } else {
+            if (move_uploaded_file($_FILES["tourImage"]["tmp_name"], $target_file)) {
+                echo '<script>alert("The file ' . htmlspecialchars(basename($_FILES["tourImage"]["name"])) . ' has been uploaded.")</script>';
+                //insert data
+                $sql = "INSERT INTO tours (categoryTours, sellerID, tourName, tourPrice, tourDescription, tourImage, tourLocation, tourDate, tourTime) VALUES ('$categoryID', '$sellerID', '$tourName', '$price', '$tourDescription', '$tourImage', '$tourLocation', '$tourDate', '$tourTime')";
+                $result = mysqli_query($conn, $sql);
+                if ($result) {
+                    echo '<script>alert("Data inserted successfully")</script>';
+                    echo '<script> setTimeout(function(){window.location.href="admin.php"}, 1000)</script>';
+                }
+            } else {
+                echo "Sorry, there was an error uploading your file.";
+            }
+        }
+    }
+    ?>
+
     <!-- create news-->
     <div class="create createnews hide">
         <form action="" method="POST" class="create__form" enctype="multipart/form-data">
