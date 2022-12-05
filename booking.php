@@ -61,8 +61,8 @@
                     <div class="col-6 right">
 
                         <input type="date" readonly value="<?php echo $row["tourDate"] ?>">
-                        -
-                        <input type="date" readonly value="">
+                        Đến
+                        <input type="date" readonly value="<?php echo date('Y-m-j', strtotime('+' . $row["tourTime"] . ' day', strtotime($row['tourDate']))) ?>">
                         <textarea name="" id="" cols="30" rows="10" placeholder="Ghi chú"></textarea>
                         <select name="" id="pay">
                             <option value="">Chọn phương thức thanh toán</option>
