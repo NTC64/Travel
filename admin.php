@@ -335,7 +335,9 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
             if (move_uploaded_file($_FILES["tourImage"]["tmp_name"], $target_file)) {
                 echo '<script>alert("The file ' . htmlspecialchars(basename($_FILES["tourImage"]["name"])) . ' has been uploaded.")</script>';
                 //insert data
-                $sql = "INSERT INTO tours (categoryTours, sellerID, tourName, tourPrice, tourDescription, tourImage, tourLocation, tourDate, tourTime) VALUES ('$categoryID', '$sellerID', '$tourName', '$price', '$tourDescription', '$tourImage', '$tourLocation', '$tourDate', '$tourTime')";
+                $sql = "INSERT INTO tours (categoryTours, sellerID, tourName, tourPrice, tourDescription, tourImage, tourLocation, tourDate, tourTime) 
+                VALUES ('$categoryID', '$sellerID', '$tourName', '$price', '$tourDescription',
+                 '$tourImage', '$tourLocation', '$tourDate', '$tourTime')";
                 $result = mysqli_query($conn, $sql);
                 if ($result) {
                     echo '<script>alert("Data inserted successfully")</script>';
@@ -578,6 +580,14 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
             <h4 class="muc">Dashboard</h4>
         </div>
         <div class="dashboard">
+            <div class="row">
+                <div class=""></div><a href="https://sandbox.vnpayment.vn/merchantv2/" target="_blank"
+                    class="col-4 bank">
+                    <div>
+                        Tran's History
+                    </div>
+                </a>
+            </div>
             <div class="row">
 
                 <div class="col-3 bl row green user">

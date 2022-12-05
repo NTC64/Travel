@@ -255,6 +255,17 @@ a:hover {
   border-radius: 2px;
   width: 50% !important;
 }
+table {
+  width: 100%;
+  margin-top: 30px;
+  border-collapse: collapse;
+}
+th,
+td {
+  border-bottom: 1px solid #ddd;
+  width: auto !important;
+  padding: 15px;
+}
 .gach {
   text-decoration: line-through !important;
   color: rgba(0, 0, 0, 0.5) !important;

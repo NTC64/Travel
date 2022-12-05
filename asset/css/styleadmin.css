@@ -610,7 +610,27 @@ select {
   font-weight: 600;
   box-shadow: 0 0.5rem 0.5rem rgba(255, 255, 255, 0.15) !important;
 }
-.blue {
+.bank {
+  background-color: #787ed3;
+  width: 200px;
+
+  height: 50px;
+  margin: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 10px;
+  color: #fff;
+  font-size: 24px;
+  font-weight: 600;
+  box-shadow: 0 0.5rem 0.5rem rgba(255, 255, 255, 0.15) !important;
+}
+.bank {
+  color: #fff !important;
+  text-decoration: none !important;
+}
+.bank .blue {
   background-color: #3c3f58;
 }
 .yellow {
