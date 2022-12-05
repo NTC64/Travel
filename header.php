@@ -12,7 +12,7 @@
                     <a href="category.php" class="text-white">Category</a>
                 </li>
                 <li class="nav__item"><a href="allnews.php" class="text-white">News</a></li>
-                <li class="nav__item"><a href="" class="text-white">Contact</a></li>
+                <li class="nav__item"><a href="#fot" class="text-white">Contact</a></li>
 
             </ul>
         </div>

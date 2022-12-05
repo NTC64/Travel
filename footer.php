@@ -1,4 +1,4 @@
-<footer class="text-center text-lg-start bg-dark text-muted mt-5">
+<footer class="text-center text-lg-start bg-dark text-muted mt-5" id="fot">
     <!-- Section: Social media -->
     <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
         <!-- Left -->
