@@ -56,24 +56,20 @@ include("header.php");
                 <div class="row form my-3">
 
                     <div class="col-6 left">
-
+                        <input type="hidden" class="idtour">
                         <input type="text" name="fullName" placeholder="Họ và tên">
                         <input type="text" name="phone" placeholder="Số điện thoại">
                         <input type="text" name="address" placeholder="Địa chỉ">
-                        <input type="text" name="" placeholder="Tên tour" readonly
-                            value="<?php echo $row["tourName"] ?>">
-                        <input type="text" name="" placeholder="Giá" class="price" readonly
-                            value="<?php echo $row["tourPrice"] ?>">
-                        <input type="number" placeholder="Số lượng người" class="quantity" name="people"
-                            value="<?php echo $_GET["quantity"] ?>" min="1" max="50">
+                        <input type="text" name="" placeholder="Tên tour" readonly value="<?php echo $row["tourName"] ?>">
+                        <input type="text" name="" placeholder="Giá" class="price" readonly value="<?php echo $row["tourPrice"] ?>">
+                        <input type="number" placeholder="Số lượng người" class="quantity" name="people" value="<?php echo $_GET["quantity"] ?>" min="1" max="50">
                         <input type="text" placeholder="Mã giảm giá" class="discount" require>
                         <div class="btn btn-success btnad">Áp dụng</div>
                     </div>
                     <div class="col-6 right">
                         <input type="date" name="startDate" readonly value="<?php echo $row["tourDate"] ?>">
                         Đến
-                        <input type="date" name="endDate" readonly
-                            value="<?php echo date('Y-m-j', strtotime('+' . $row["tourTime"] . ' day', strtotime($row['tourDate']))) ?>">
+                        <input type="date" name="endDate" readonly value="<?php echo date('Y-m-j', strtotime('+' . $row["tourTime"] . ' day', strtotime($row['tourDate']))) ?>">
                         <textarea name="note" id="" cols="30" rows="10" placeholder="Ghi chú"></textarea>
                         <select name="cartPayment" id="pay">
                             <option value="">Chọn phương thức thanh toán</option>

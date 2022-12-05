@@ -162,6 +162,13 @@ $(document).ready(function () {
 
     
 });
+$(document).ready(function () {
+    var url = window.location.href;
+    var url = url.split("&");
+    var url = url[1].split("=");
+    var url = url[1];
+    $(".idtour").val(url);
+});
 // $(document).on("click", ".btnbook", function () {
 //   if ($("#pay").val() == "VNPAY") {
 //     $(location).attr("href", "./vnpay_php/index.php");
