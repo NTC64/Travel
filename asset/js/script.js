@@ -18,6 +18,7 @@ $(document).ready(function() {
     $(".account").addClass("hide");
     $(".adcategory").addClass("hide");
     $(".news").addClass("hide");
+    $(".createtour .slseller").addClass("hide");
     $(".user").addClass("hide");
     $(".seller").addClass("hide");
     $(".categorynews").addClass("hide");

@@ -230,7 +230,7 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
                 <option value="">Select Category</option>
                 <option value="">...</option>
             </select>
-            <select name="" id="">
+            <select name="" class="slseller" id="">
                 <option value="">Select seller</option>
                 <option value="">...</option>
 

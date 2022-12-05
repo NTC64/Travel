@@ -51,35 +51,35 @@
             $tour_list = get_tour_list($conn);
             foreach ($tour_list as $tour) {
             ?>
-            <!-- tour card -->
-            <div class="card col-4 p-0 m-2">
-                <img class="card-img-top" src="uploads/images/<?php echo $tour['tourImage']; ?>" alt="Card image cap" />
-                <div class="card-body">
-                    <h5 class="card-title"><?php echo $tour['tourName']; ?></h5>
+                <!-- tour card -->
+                <div class="card col-4 p-0 m-2">
+                    <img class="card-img-top" src="uploads/images/<?php echo $tour['tourImage']; ?>" alt="Card image cap" />
+                    <div class="card-body">
+                        <h5 class="card-title"><?php echo $tour['tourName']; ?></h5>
 
-                    <p class="card-text text-black-70"><?php
+                        <p class="card-text text-black-70"><?php
                                                             //echo first line of description
                                                             $firstline = explode("\n", $tour['tourDescription']);
                                                             echo $firstline[0];
                                                             // echo  mb_substr($tour['tourDescription'], 0, 40); 
                                                             ?></p>
-                    <p class="card-price text-danger">Giá: <?php echo $tour['tourPrice']; ?></p>
+                        <p class="card-price text-danger">Giá: <?php echo $tour['tourPrice']; ?></p>
+                    </div>
+                    <a href="tour.php?tourID=<?php echo $tour['tourID'] ?>" class="btn btn-green btnnews" data-id="id">Đặt
+                        Tour</a>
                 </div>
-                <a href="tour.php?tourID=<?php echo $tour['tourID'] ?>" class="btn btn-green btnnews" data-id="id">Đặt
-                    Tour</a>
-            </div>
-            <?php } ?>'
-            <!-- end tour card -->
-            <!-- tour card -->
-            <!-- ..... -->
-            <!-- end tour card -->
-            <!-- chi tiết tour -->
+                <?php } ?>'
+                <!-- end tour card -->
+                <!-- tour card -->
+                <!-- ..... -->
+                <!-- end tour card -->
+                <!-- chi tiết tour -->
 
-            <div class="tourdetail">
+                <div class="tourdetail">
 
-            </div>
+                </div>
 
-            <!---->
+                <!---->
 
         </div>
     </div>
@@ -92,13 +92,13 @@
             <div class="category__items row">
                 <div class="col-2"></div>
                 <div class="card col-4 p-0 mx-3 text-center category__left" data-category='news'>
-                    <img class="card-img-top" src="asset/img/news2.jpg" alt="Card image cap" />
+                    <img class="card-img-top" src="https://th.bing.com/th/id/OIP.Eh5VUNnnLJ_eh701C5kgjwHaE8?pid=ImgDet&rs=1" alt="Card image cap" />
                     <div class="card-body">
                         <p class="card-text w500 text-uppercase">Các danh mục bài viết</p>
                     </div>
                 </div>
                 <div class="card col-4 p-0 mx-3 text-center category__right" data-category='tour'>
-                    <img class="card-img-top" src="asset/img/news2.jpg" alt="Card image cap" />
+                    <img class="card-img-top" src="https://th.bing.com/th/id/R.9d88e3210f675be1f3f86975378aa494?rik=MV80xP7ruw5FcQ&riu=http%3a%2f%2fwww.servistur.ru%2fupload%2f6050183_xlarge.jpg&ehk=xTIkcHaDgYtR02IB1FTaEFyOPF7HC5YaRntxv2Gojlk%3d&risl=&pid=ImgRaw&r=0" alt="Card image cap" />
                     <div class="card-body">
                         <p class="card-text w500 text-uppercase">Các danh mục tour</p>
                     </div>
@@ -132,14 +132,14 @@
             $news_list = get_news_list();
             foreach ($news_list as $news) {
             ?>
-            <div class="card col-4 p-0 m-2">
-                <video src="uploads/video/<?php echo $news['resources']; ?>"></video>
-                <div class="card-body">
-                    <p class="card-date text-black-50"><?php echo $news['date']; ?></p>
-                    <h5 class="card-title"><?php echo mb_substr($news['title'], 0, 40);  ?></h5>
+                <div class="card col-4 p-0 m-2">
+                    <video src="uploads/video/<?php echo $news['resources']; ?>"></video>
+                    <div class="card-body">
+                        <p class="card-date text-black-50"><?php echo $news['date']; ?></p>
+                        <h5 class="card-title"><?php echo mb_substr($news['title'], 0, 40);  ?></h5>
+                    </div>
+                    <a href="news.php?newsID=<?php echo $news['newsID']; ?>" class="btn btn-green btnnews">Xem chi tiết</a>
                 </div>
-                <a href="news.php?newsID=<?php echo $news['newsID']; ?>" class="btn btn-green btnnews">Xem chi tiết</a>
-            </div>
 
             <?php
             }
