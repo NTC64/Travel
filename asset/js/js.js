@@ -71,6 +71,39 @@ $(document).ready(function() {
     var total=price*quantity;
     $(".total").html(total);});
 });
+$(document).on('click','.btn__tour',function() {
+    if($('.header__signup').html()=='Sign Up'){
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Bạn phải đăng nhập để tiếp tục !!',
+            confirmButtonText: 'Đăng nhập',
+            showDenyButton: true,
+            denyButtonText: 'Đăng ký',
+            showCancelButton: true,
+            cancelButtonText: 'Hủy bỏ',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $(".signin").toggleClass("login--active");
+                    $(".bg").toggleClass("bg--active");
+                    
+                }
+                else if(result.isDenied){
+                    $(".signup").toggleClass("login--active");
+                    $(".bg").toggleClass("bg--active");
+                }
+                else{
+                    return;
+
+                }
+            })
+            }
+            else{
+                window.location.href = "booking.php?quantity="+$(".sluong").val();
+            }
+            
+        
+});
 $(document).on('click','.category__left',function() {
     $(location).attr('href', 'category.php?category='+$(this).attr('data-category'));
     sessionStorage.setItem('category', $(this).attr('data-category'));
@@ -91,11 +124,7 @@ $(document).on('click','.btnbook',function() {
     }   
 
 });
-$(document).on('click','.btn__tour',function() {
-    $(location).attr('href', 'http://localhost/travel/tourdetail.php?id='+$(this).attr('data-id'));
 
-
-});
 
 
 

@@ -134,7 +134,7 @@
 
                 </div>
                 <p class="text-white f14">" Sao chép mã giảm giá (MGGVIP) để được khuyến mãi 20% "</p>
-                <a href="booking.php" class="btn btn-green mt-4 btn__tour" data-id="id">Đặt Tour</a>
+                <div class="btn btn-green mt-4 btn__tour">Đặt Tour</div>
             </div>
             <!-- end tour card -->
             <!-- tour card -->
