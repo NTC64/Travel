@@ -694,8 +694,13 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
                     <tr>
                         <td>ID Tour</td>
                         <td>ID Seller</td>
-                        <td>Name</td>
+                        <td>Name user</td>
+                        <td>Number phone</td>
+                        <td>Address user</td>
+                        <td>Date</td>
                         <td>Price</td>
+                        <td>Quantity</td>
+                        <td>Note</td>
                         <td>Status</td>
                         <td>Delete</i></td>
                         <td>Update</i></td>
@@ -703,8 +708,13 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
                     <tr>
                         <td>ID Tour</td>
                         <td>ID Seller</td>
-                        <td>Name</td>
+                        <td>Name user</td>
+                        <td>Number phone</td>
+                        <td>Address user</td>
+                        <td>Date</td>
                         <td>Price</td>
+                        <td>Quantity</td>
+                        <td>Note</td>
                         <td>Status</td>
                         <td><a href="#!" data-id="" class="btn__delete"><i class="fa-solid fa-trash"></i></a></td>
                         <td><a href="#!" class="btn__editcategory" data-id="" data-username="" data-name=""><i class="fa-solid fa-pen-to-square"></i></a></td>
