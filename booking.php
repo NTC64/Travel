@@ -49,22 +49,25 @@
 
                     <div class="col-6 left">
 
-                        <input type="text" placeholder="Họ và tên">
-                        <input type="text" placeholder="Số điện thoại">
-                        <input type="text" placeholder="Địa chỉ">
-                        <input type="text" placeholder="Tên tour" readonly value="<?php echo $row["tourName"] ?>">
-                        <input type="text" placeholder="Giá" class="price" readonly value="<?php echo $row["tourPrice"] ?>">
-                        <input type="number" placeholder="Số lượng người" class="quantity" value="<?php echo $_GET["quantity"] ?>" min="1" max="50">
+                        <input type="text" name="fullName" placeholder="Họ và tên">
+                        <input type="text" name="phone" placeholder="Số điện thoại">
+                        <input type="text" name="address" placeholder="Địa chỉ">
+                        <input type="text" name="" placeholder="Tên tour" readonly
+                            value="<?php echo $row["tourName"] ?>">
+                        <input type="text" name="cartPrice" placeholder="Giá" class="price" readonly
+                            value="<?php echo $row["tourPrice"] ?>">
+                        <input type="number" placeholder="Số lượng người" class="quantity" name="people"
+                            value="<?php echo $_GET["quantity"] ?>" min="1" max="50">
                         <input type="text" placeholder="Mã giảm giá" class="discount" require>
                         <div class="btn btn-success btnad">Áp dụng</div>
                     </div>
                     <div class="col-6 right">
-
-                        <input type="date" readonly value="<?php echo $row["tourDate"] ?>">
+                        <input type="date" name="startDate" readonly value="<?php echo $row["tourDate"] ?>">
                         Đến
-                        <input type="date" readonly value="<?php echo date('Y-m-j', strtotime('+' . $row["tourTime"] . ' day', strtotime($row['tourDate']))) ?>">
-                        <textarea name="" id="" cols="30" rows="10" placeholder="Ghi chú"></textarea>
-                        <select name="" id="pay">
+                        <input type="date" name="endDate" readonly
+                            value="<?php echo date('Y-m-j', strtotime('+' . $row["tourTime"] . ' day', strtotime($row['tourDate']))) ?>">
+                        <textarea name="note" id="" cols="30" rows="10" placeholder="Ghi chú"></textarea>
+                        <select name="cartPayment" id="pay">
                             <option value="">Chọn phương thức thanh toán</option>
                             <option value="atm">Thanh toán trực tiếp</option>
                             <option value="momo">Thanh toán ví điện tử</option>
@@ -77,17 +80,46 @@
                     <input type="hidden" class="tong" name="">
                 </div>
                 <div class="row btnbook">
-                    <div class="btn btn-success btnbook">Đặt tour</div>
+                    <!-- <div class="btn btn-success btnbook">Đặt tour</div> -->
+                    <input type="button" value="Đặt tour" name="doanxem" class="btn btn-success btnbook">
                 </div>
-
             </form>
-
         </div>
         <!-- tour card -->
-
         <!-- end tour card -->
-        <!-- tour card -->
-        <!-- ..... -->
+        <?php
+        //return tourID with GET method
+        function getTourID()
+        {
+            if (isset($_GET['tourID'])) {
+                $id = $_GET['tourID'];
+                return $id;
+            }
+        }
+        //return quantity with GET method
+        function getQuantity()
+        {
+            if (isset($_GET['quantity'])) {
+                $quantity = $_GET['quantity'];
+                return $quantity;
+            }
+        }
+        ?>
+        <?php
+        if (isset($_POST['doanxem'])) {
+            $userID = $_SESSION['userID'];
+            $fullName = $_POST['fullName'];
+            $phone = $_POST['phone'];
+            $address = $_POST['address'];
+            $tourID = getTourID();
+            $quantity = getQuantity();
+            $cartPrice = $_POST['cartPrice'];
+            $cartPayment = $_POST['cartPayment'];
+            $startDate = $_POST['startDate'];
+            $endDate = $_POST['endDate'];
+            $note = $_POST['note'];
+        }
+        ?>
         <!-- end tour card -->
         <!-- chi tiết tour -->
         <div class="tourdetail">
