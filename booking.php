@@ -19,13 +19,7 @@
     include 'conn.php';
     ?>
 </head>
-<?php
-if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
-    echo '<script> alert("Bạn đã đăng nhập");</script>';
-} else {
-    echo '<script> alert("Bạn chưa đăng nhập");</script>';
-}
-?>
+
 
 <body>
     <!-- Login Form -->
@@ -101,3 +95,10 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 <script src="/asset/js/js.js"></script>
 
 </html>
+<?php
+if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+    echo '<script> alert("Bạn đã đăng nhập");</script>';
+} else {
+    echo '<script> alert("Bạn chưa đăng nhập");</script>';
+}
+?>
