@@ -71,8 +71,6 @@ $(document).ready(function() {
     var total=price*quantity;
     $(".total").html(total);});
 });
-
-
 $(document).on('click','.category__left',function() {
     $(location).attr('href', 'category.php?category='+$(this).attr('data-category'));
     sessionStorage.setItem('category', $(this).attr('data-category'));

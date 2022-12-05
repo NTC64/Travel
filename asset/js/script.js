@@ -1,15 +1,28 @@
 $(document).ready(function() {
   if($(".adrole").data("role") === "admin") {
    $(".account").addClass("hide");
+   $(".user").addClass("hide");
+    $(".seller").addClass("hide");
+    $('.bl').removeClass('col-3');
+    $('.bl').addClass('col-5');
   
   }
   else if($(".adrole").data("role") === "superadmin") {
    $(".account").removeClass("hide");
+    $(".user").removeClass("hide");
+    $(".seller").removeClass("hide");
+
+
   }
   else{
     $(".account").addClass("hide");
     $(".adcategory").addClass("hide");
     $(".news").addClass("hide");
+    $(".user").addClass("hide");
+    $(".seller").addClass("hide");
+    $(".categorynews").addClass("hide");
+    $('.bl').removeClass('col-3');
+    $('.bl').addClass('col-8');
   }
  });
 $(document).on('click', '.has-dropdown,.i', function() {
