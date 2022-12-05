@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Thanh toán</title>
+    <title>Cart</title>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -29,11 +29,14 @@
     <!-- main -->
     <div class="container hotTour my-4">
         <div class="tour__title row mt-5">
-            <h2 class="col-12 text-uppercase p-0">Book Tour</h2>
+            <h2 class="col-12 text-uppercase p-0">Booked Tour</h2>
             <!-- <a class="m-auto text-right text-black-50 hvblack">View all >></a> -->
         </div>
-        <div class="tour__title row mt-5">
-            <h3 class="col-10 text-uppercase p-0">Thông tin khách hàng</h3>
+        <div class="tour__title  mt-5">
+            <h3 class="row text-suppercase p-0">Thông tin Tour</h3>
+            <div class="row">
+
+            </div>
             <form action="tour.php" method="post" class="fm">
                 <div class="row form my-3">
 
@@ -82,7 +85,7 @@
         <!---->
 
     </div>
-    </div>
+
     <!-- Footer -->
     <?php include('footer.php') ?>
     <!-- Footer -->

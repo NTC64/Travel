@@ -288,6 +288,21 @@ else {
 
 }
 });
+$(document).on('click', '.btn__editadmin', function() {
+  if($(".editad").hasClass("hide")) {
+    $(".bg").removeClass("hide");
+    $(".editad").removeClass("hide");
+    $(".id").val($(this).attr("data-id"));
+    $(".username").val($(this).attr("data-username"));
+    $(".name").val($(this).attr("data-name"));
+    $(".phone").val($(this).attr("data-phone"));
+ }
+else {
+    $(".editad").addClass("hide");
+
+}
+
+});
 $(document).on('click', '.bg', function() {
   
     $(".bg").addClass("hide");

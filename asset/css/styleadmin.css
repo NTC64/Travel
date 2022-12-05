@@ -514,7 +514,7 @@ table {
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 999;
+  z-index: 9999;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
   animation: edit 0.5s ease-in-out;
   overflow: scroll;

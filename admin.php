@@ -440,8 +440,7 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
             <input type="text" readonly class="id" name="ID" />
             <input type="text" class="username" name="username" required />
             <input type="text" class="name" name="name" required />
-            <input type="text" class="hotel_name" name="hotelName" required />
-            <input type="text" class="phone" name="phone" required />
+
             <input type="text" class="password" name="password" placeholder="New password" required />
             <input type="submit" value="Update" name="submit" class="btn btn-success" />
         </form>
@@ -621,7 +620,7 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
         </div>
         <!-- all tours -->
         <div class="container adminalltour hide tb">
-
+            <div class="btn btn-success btncreatenews btncreate"><i class="fa-solid fa-plus"></i>Create</div>
             <form action=" " method="get">
                 <table border="1">
                     <tr>
