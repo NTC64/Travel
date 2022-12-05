@@ -26,6 +26,16 @@
     <?php
     include("header.php");
     ?>
+    <?php
+    if (isset($_GET['tourID'])) {
+        $id = $_GET['tourID'];
+        $sql = "SELECT * FROM tours WHERE tours.tourID = '$id'";
+        $result = mysqli_query($conn, $sql);
+        if (mysqli_num_rows($result) > 0) {
+            $row = mysqli_fetch_assoc($result);
+        }
+    }
+    ?>
     <!-- main -->
     <div class="container hotTour my-4">
         <div class="tour__title row mt-5">
@@ -42,14 +52,17 @@
                         <input type="text" placeholder="Họ và tên">
                         <input type="text" placeholder="Số điện thoại">
                         <input type="text" placeholder="Địa chỉ">
-                        <input type="text" placeholder="Tên tour" readonly>
-                        <input type="text" placeholder="Giá" class="price" readonly>
-                        <input type="number" placeholder="Số lượng người" class="quantity" value="1" min="1" max="50">
+                        <input type="text" placeholder="Tên tour" readonly value="<?php echo $row["tourName"] ?>">
+                        <input type="text" placeholder="Giá" class="price" readonly value="<?php echo $row["tourPrice"] ?>">
+                        <input type="number" placeholder="Số lượng người" class="quantity" value="<?php echo $_GET["quantity"] ?>" min="1" max="50">
+                        <input type="text" placeholder="Mã giảm giá" class="discount" require>
+                        <div class="btn btn-success btnad">Áp dụng</div>
                     </div>
                     <div class="col-6 right">
 
-                        <input type="text" placeholder="Ngày khởi hành" readonly>
-                        <input type="text" placeholder="Ngày kết thúc" readonly>
+                        <input type="date" readonly value="<?php echo $row["tourDate"] ?>">
+                        -
+                        <input type="date" readonly value="">
                         <textarea name="" id="" cols="30" rows="10" placeholder="Ghi chú"></textarea>
                         <select name="" id="pay">
                             <option value="">Chọn phương thức thanh toán</option>
@@ -57,9 +70,10 @@
                             <option value="momo">Thanh toán ví điện tử</option>
                         </select>
                     </div>
+
                 </div>
                 <div class="row">
-                    <h3 class="col-12">Tổng tiền: <span class="total"></span> VND</h3>
+                    <h3 class="col-12">Tổng tiền: <span class="total"></span> <span class="totaldc"></span> VND</h3>
                 </div>
                 <div class="row btnbook">
                     <div class="btn btn-success btnbook">Đặt tour</div>
