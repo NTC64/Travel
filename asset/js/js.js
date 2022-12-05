@@ -108,7 +108,7 @@ $(document).on("click", ".category__right", function () {
 });
 $(document).on("click", ".btnbook", function () {
   if ($("#pay").val() == "momo") {
-    $(location).attr("href", "PayMoMo/init_payment.php");
+    $(location).attr("href", "vnpay_php/index.php");
   } else {
     alert("Chưa có phương thức thanh toán này");
     // $(location).attr('href', 'http://localhost/travel/PayMoMo/init_payment.php');

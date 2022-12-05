@@ -91,9 +91,9 @@
                         value="<?php echo $row['tourDate'] ?>">
 
                 </div>
-                <p class="text-white f14">" Sao chép mã giảm giá (MGGVIP) để được khuyến mãi 20% "</p>
-                <!-- <div class="btn btn-green mt-4 btn__tour">Đặt Tour</div> -->
-                <a href="booking.php"></a>
+                <p class="text-white f14">" Sao chép mã giảm giá (ULSAIT) để được khuyến mãi 20% "</p>
+                <div class="btn btn-green mt-4 btn__tour">Đặt Tour</div>
+                <!-- <a href="booking.php"></a> -->
             </div>
             <!-- end tour card -->
             <!-- tour card -->
@@ -101,7 +101,6 @@
             <!-- end tour card -->
             <!-- chi tiết tour -->
             <div class="tourdetail">
-
             </div>
 
             <!---->
