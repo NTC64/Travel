@@ -51,72 +51,27 @@
             <!-- <a class="m-auto text-right text-black-50 hvblack">View all >></a> -->
         </div>
         <div class="tour__title row mt-5">
-            <h3 class="col-10 text-uppercase p-0">Tên địa điểm du lịch</h3>
-
+            <h3 class="col-10 text-uppercase p-0"><?php echo $row['tourName'] ?> </h3>
         </div>
         <div class="tour__items row">
             <!-- tour card -->
+
             <div class="col-8 slide_tour">
-                <img src="./asset/img/ban5.jpg" alt="">
+                <img src="uploads/images/<?php echo $row['tourImage']; ?>" alt="">
                 <img class="hide" src="./asset/img/ban2.jpg" alt="">
                 <img class="hide" src="./asset/img/ban2.jpg" alt="">
                 <div class="row my-3 text-black-50">
-                    <div class="col-4">địa điểm:</div>
+                    <div class="col-6">Địa điểm: <?php echo $row['tourLocation'] ?> </div>
 
-                    <div class="col-4">thời gian:</div>
+                    <div class="col-4">Thời gian: <?php echo $row['tourTime'] ?> ngày</div>
                 </div>
                 <div class="row text-black-50">
-                    <div class="col-4">Thời Gian khởi hành:</div>
-
+                    <div class="col-6">Thời Gian khởi hành: <?php echo $row['tourDate'] ?></div>
                 </div>
                 <div class="row my-3">
-                    <div class="col-12">TOUR CÓ GÌ HẤP DẪN? <br>
+                    <div class="col-12"><?php echo nl2br($row['tourDescription']) ?><br>
 
-                        Tận mắt ngắm nhìn phong cảnh hùng vĩ miền sơn cước: đèo Thung Khe, thác Dải Yếm
-                        Khám phá những giá trị lịch sử vẻ vang, hào hùng một thời dân tộc tại Điện Biên.
-                        Check - in giữa khung cảnh núi non trùng điệp, hùng vĩ và nên thơ: cầu Kính Tình Yêu, đồi chè
-                        Trái Tim, Ô Quy Hồ, Swing Sapa...
-                        Chinh phục một trong "tứ mã đỉnh đèo" của Việt Nam: Đèo Pha Đin.
-                        Trải nghiệm ẩm thực địa phương độc đáo.
-                        Điểm hấp dẫn
-                        – Tàu hoạt động theo mô hình du lịch – nhà hàng mỗi ngày trên sông Sài Gòn tại khu du lịch Tân
-                        Cảng - A100 Ung Văn Khiêm, Phường 25, Bình Thạnh, Thành phố Hồ Chí Minh
-
-                        – Du khách đi du thuyền có thể thưởng thức các món ăn ngon theo sở thích riêng của mình trong
-                        khung cảnh lãng mạn.
-
-                        – Mỗi tầng là mỗi phong cách nhạc khác nhau. Bên cạnh đó tầng 1 và tầng 2 : Phục vụ các món ăn
-                        Việt – Hoa đa dạng phong phú nhạc sống, ảo thuật, múa Hawai. Tầng 3 : Nhà hàng Âu – quầy bar với
-                        các loại thức uống cocktail, chương trình nhạc Flamenco, hòa tấu violon, guitar, ảo thuật, thổi
-                        sáo.
-                        1. Điều kiện giá vé:
-
-                        – Nhóm dưới 4 khách phụ thu phí lên tàu là 40.000 Vnđ/ khách.
-
-                        – Giá vé áp dụng trên một khách đối với nhóm khách tối thiểu là 02 người trở lên cho một thực
-                        đơn tự chọn trước (tàu Saigon), áp dụng với thực đơn từ Menu 01 đến menu 06.
-
-                        – Nhóm của Qúy Khách sẽ ngồi bàn ăn riêng biệt, không ngồi chung bàn ăn với nhóm khách khác.
-
-                        – Đơn giá áp dụng cho tất cả các ngày kể ngày cả cuối tuần, ngày lễ.
-
-                        – Vé đã mua không được hoàn đổi trong mọi trường hợp, trừ những trường hợp bất khả kháng như:
-                        thiên tai, hỏa hoạn hoặc tàu không thể hoạt động do điều kiện khách quan.
-
-                        2. Gía vé bao gồm:
-
-                        – Vé tham quan tàu du lịch nhà hàng tàu Sài Gòn trên Sông Sài Gòn.
-
-                        – Ăn uống: Bao gồm bữa ăn tối theo thực đơn (đính kèm trong chương trình bên dưới) + Trà đá miễn
-                        phí.
-
-                        – Chương trình ca múa nhạc, ảo thuật, múa Hawai phục vụ khách.
-
-                        – HDV suốt hành trình
-
-                        – Bảo hiểm 10.000.000 Vnd/ Vụ
-
-                        3. Gía vé không bao gồm:</div>
+                    </div>
 
                 </div>
 
