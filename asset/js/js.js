@@ -139,14 +139,29 @@ $(document).on("click", ".category__left", function () {
     "href",
     "category.php?category=" + $(this).attr("data-category")
   );
-  sessionStorage.setItem("category", $(this).attr("data-category"));
+  
+
 });
+
 $(document).on("click", ".category__right", function () {
   $(location).attr(
     "href",
     "category.php?category=" + $(this).attr("data-category")
   );
-  sessionStorage.setItem("category", $(this).attr("data-category"));
+  
+});
+$(document).ready(function () {
+    var url = window.location.href;
+    var url = url.split("?");
+    var url = url[1].split("=");
+    var url = url[1];
+    
+  if(url == "tour"){
+   $("#nav-profile-tab").trigger("click");
+
+  }
+
+    
 });
 $(document).on("click", ".btnbook", function () {
   if ($("#pay").val() == "momo") {
