@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Title</title>
+    <title>Thanh toán</title>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -19,7 +19,13 @@
     include 'conn.php';
     ?>
 </head>
-
+<?php
+if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+    echo '<script> alert("Bạn đã đăng nhập");</script>';
+} else {
+    echo '<script> alert("Bạn chưa đăng nhập");</script>';
+}
+?>
 
 <body>
     <!-- Login Form -->

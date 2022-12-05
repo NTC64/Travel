@@ -21,13 +21,13 @@
             echo "<div class='col-1'></div><div class='m-0 p-0'><p>Xin chào USER" . $_SESSION['username'] . "</p></div>";
             echo "<div class='cart'><a href='logout.php'><i class='fa-solid fa-plane'></i></a><div class='cart_nb'><p>0</p></div></div>";
         ?>
-            <a href="logout.php" class="logout">Logout</a>
+        <a href="logout.php" class="logout">Logout</a>
         <?php } else { ?>
-            <div class="col-2"></div>
-            <div class="col-2 m-0 p-0">
-                <a href="#" class="header__login">Login</a>
-                <a href="#" class="header__signup">Sign Up</a>
-            </div>
+        <div class="col-2"></div>
+        <div class="col-2 m-0 p-0">
+            <a href="#" class="header__login">Login</a>
+            <a href="#" class="header__signup">Sign Up</a>
+        </div>
         <?php
         }
         ?>
@@ -44,7 +44,8 @@
                 <input type="password" placeholder="Password" required name="password" class="password" />
             </p>
             <div class="row">
-                <input type="checkbox" name="hide_password" class="hide col-2 ml-2" /><label for="" class="col-9 show__pass">Show password</label>
+                <input type="checkbox" name="hide_password" class="hide col-2 ml-2" /><label for=""
+                    class="col-9 show__pass">Show password</label>
             </div>
             <p><input type="submit" value="Log in" name="btn" /></p>
         </form>
@@ -65,10 +66,12 @@
                     $_SESSION['userID'] = $row['userID'];
                     header("Location: admin.php");
                 } else {
+                    $_SESSION['loggedin'] = true;
                     $_SESSION['check'] = true;
                     $_SESSION['username'] = $username;
                     $_SESSION['role'] = $row['role'];
-                    header("Location: index.php");
+                    // header("Location: index.php");
+                    header('Location: ' . $_SERVER['REQUEST_URI']);
                 }
             } else {
                 echo
@@ -105,7 +108,8 @@
             </p>
 
             <div class="row">
-                <input type="checkbox" name="hide_password" class="hide col-2 ml-2" /><label for="" class="col-9 show__pass">Show password</label>
+                <input type="checkbox" name="hide_password" class="hide col-2 ml-2" /><label for=""
+                    class="col-9 show__pass">Show password</label>
             </div>
             <div class="row seller">
                 <p class="m-auto add_input">Seller registration</p>
