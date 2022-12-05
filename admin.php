@@ -235,6 +235,7 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
                 <option value="">...</option>
 
             </select>
+            <input type="text" class="cridseller hide" name="" readonly value="" placeholder="Id seller" />
             <input type="text" class="crnewsname" name="" required value="" placeholder="name" />
             <textarea name="describe" class="craddress" cols="30" rows="10" required value="" placeholder="Address"></textarea>
             <textarea name="content" class="crbody" cols="30" rows="10" required value="" placeholder="Enter content"></textarea>
