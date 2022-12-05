@@ -34,14 +34,13 @@ include("header.php");
 
 <body>
     <!-- Login Form -->
-
     <?php
-    if (isset($_GET['tourID'])) {
-        $id = $_GET['tourID'];
-        $sql = "SELECT * FROM tours WHERE tours.tourID = '$id'";
-        $result = mysqli_query($conn, $sql);
-        if (mysqli_num_rows($result) > 0) {
-            $row = mysqli_fetch_assoc($result);
+    //return tourID with GET method
+    function getTourID()
+    {
+        if (isset($_GET['tourID'])) {
+            $id = $_GET['tourID'];
+            return $id;
         }
     }
     ?>
@@ -53,7 +52,7 @@ include("header.php");
         </div>
         <div class="tour__title row mt-5">
             <h3 class="col-10 text-uppercase p-0">Thông tin khách hàng</h3>
-            <form action="" method="post" class="fm">
+            <form action="payment.php" method="post" class="fm">
                 <div class="row form my-3">
 
                     <div class="col-6 left">
@@ -96,79 +95,98 @@ include("header.php");
         </div>
         <!-- tour card -->
         <!-- end tour card -->
-        <?php
-        //return tourID with GET method
-        function getTourID()
-        {
-            if (isset($_GET['tourID'])) {
-                $id = $_GET['tourID'];
-                return $id;
-            }
-        }
-        //return quantity with GET method
-        function getQuantity()
-        {
-            if (isset($_GET['quantity'])) {
-                $quantity = $_GET['quantity'];
-                return $quantity;
-            }
-        }
-        ?>
-        <?php
-        require_once('vnpay_php/config.php');
-        ?>
-        <?php
-        if (isset($_POST['doanxem'])) {
-            $userID = $_SESSION['userID'];
-            $tourID = getTourID();
-            $fullName = $_POST['fullName'];
-            $phone = $_POST['phone'];
-            $address = $_POST['address'];
-            $cartPrice = $_POST['cartPrice'];
-            $people = $_POST['people'];
-            $startDate = $_POST['startDate'];
-            $endDate = $_POST['endDate'];
-            $note = $_POST['note'];
-            $cartPayment = $_POST['cartPayment'];
-            $cartStatus = "Đang chờ xác nhận";
-            $check = 0;
-            if ($cartPayment != "VNPAY") {
-                echo '<script>Swal.fire({
-                    icon: "error",
-                    title: "Oops...",
-                    text: "The feature is under maintenance. Please come back in the future!!",
-                  });</script>';
-            } else {
-                echo '<script> window.location.href="./vnpay_php/"</script>';
-            }
 
-            // //validate phone number
-            // if (!preg_match("/^[0-9]{10}$/", $phone)) {
-            //     echo '<script>Swal.fire({
-            //         icon: "error",
-            //         title: "Oops...",
-            //         text: "Phone number is invalid!!",
-            //       });</script>';
-            // }
-            // //validate address
-            // if (!preg_match("/^[a-zA-Z0-9\s,.'-]{3,}$/", $address)) {
-            //     echo '<script>Swal.fire({
-            //         icon: "error",
-            //         title: "Oops...",
-            //         text: "Address is invalid!!",
-            //       });</script>';
-            // }
 
-            // $sql = "INSERT INTO cart (`userID`, `tourID`, `fullName`, `phone`, `address`, `cartPrice`, `people`, `startDate`, `endDate`, `note`, `cart_payment`, `cartStatus`) VALUES ('$userID', '$tourID', '$fullName', '$phone', '$address', '$cartPrice', '$people', '$startDate', '$endDate', '$note', '$cartPayment', '$cartStatus')";
-            // $result = mysqli_query($conn, $sql);
-            // if ($result) {
-            //     echo "<script>alert('Đặt tour thành công!')</script>";
-            //     // echo "<script>window.location.href='index.php'</script>";
-            // } else {
-            //     echo "<script>alert('Đặt tour thất bại!')</script>";
-            // }
+        <?php
+        // if (isset($_POST['doanxem'])) {
+        //     $order_code = rand(100000, 999999);
+        //     $userID = $_SESSION['userID'];
+        //     $tourID = getTourID();
+        //     $fullName = $_POST['fullName'];
+        //     $phone = $_POST['phone'];
+        //     $address = $_POST['address'];
+        //     $cartPrice = $_POST['cartPrice'];
+        //     $people = $_POST['people'];
+        //     $startDate = $_POST['startDate'];
+        //     $endDate = $_POST['endDate'];
+        //     $note = $_POST['note'];
+        //     $cartPayment = $_POST['cartPayment'];
+        //     $cartStatus = "Đang chờ xác nhận";
+        //     if ($cartPayment == "CASH") {
+        // $sql = "INSERT INTO cart ('order_code',`userID`, `tourID`, `fullName`, `phone`, `address`, `cartPrice`, `people`, `startDate`, `endDate`, `note`, `cart_payment`, `cartStatus`) VALUES ('$order_code','$userID', '$tourID', '$fullName', '$phone', '$address', '$cartPrice', '$people', '$startDate', '$endDate', '$note', '$cartPayment', '$cartStatus')";
+        // $result = mysqli_query($conn, $sql);
+        // if ($result) {
+        //     echo "<script>alert('Đặt tour thành công!')</script>";
+        //     // echo "<script>window.location.href='index.php'</script>";
+        // } else {
+        //     echo "<script>alert('Đặt tour thất bại!')</script>";
+        // }
+        // } else if ($cartPayment == "VNPAY") {
+        //     $vnp_TxnRef = $order_code; //Mã đơn hàng. Trong thực tế Merchant cần insert đơn hàng vào DB và gửi mã này sang VNPAY
+        //     $vnp_OrderInfo = 'Thanh toán đơn hàng ' . $vnp_TxnRef . ' tại website của ULSA IT ';
+        //     $vnp_OrderType = '170000';
+        //     $vnp_Amount = $cartPrice * 100;
+        //     $vnp_Locale = 'vn';
+        //     $vnp_BankCode = 'NCB';
+        //     $vnp_IpAddr = $_SERVER['REMOTE_ADDR'];
+        //     //Add Params of 2.0.1 Version
+        //     $vnp_ExpireDate = $expire;
 
-        }
+        //     $inputData = array(
+        //         "vnp_Version" => "2.1.0",
+        //         "vnp_TmnCode" => $vnp_TmnCode,
+        //         "vnp_Amount" => $vnp_Amount,
+        //         "vnp_Command" => "pay",
+        //         "vnp_CreateDate" => date('YmdHis'),
+        //         "vnp_CurrCode" => "VND",
+        //         "vnp_IpAddr" => $vnp_IpAddr,
+        //         "vnp_Locale" => $vnp_Locale,
+        //         "vnp_OrderInfo" => $vnp_OrderInfo,
+        //         "vnp_OrderType" => $vnp_OrderType,
+        //         "vnp_ReturnUrl" => $vnp_Returnurl,
+        //         "vnp_TxnRef" => $vnp_TxnRef,
+        //         "vnp_ExpireDate" => $vnp_ExpireDate
+        //     );
+
+        //     if (isset($vnp_BankCode) && $vnp_BankCode != "") {
+        //         $inputData['vnp_BankCode'] = $vnp_BankCode;
+        //     }
+        // if (isset($vnp_Bill_State) && $vnp_Bill_State != "") {
+        //     $inputData['vnp_Bill_State'] = $vnp_Bill_State;
+        // }
+
+        //var_dump($inputData);
+        //         ksort($inputData);
+        //         $query = "";
+        //         $i = 0;
+        //         $hashdata = "";
+        //         foreach ($inputData as $key => $value) {
+        //             if ($i == 1) {
+        //                 $hashdata .= '&' . urlencode($key) . "=" . urlencode($value);
+        //             } else {
+        //                 $hashdata .= urlencode($key) . "=" . urlencode($value);
+        //                 $i = 1;
+        //             }
+        //             $query .= urlencode($key) . "=" . urlencode($value) . '&';
+        //         }
+
+        //         $vnp_Url = $vnp_Url . "?" . $query;
+        //         if (isset($vnp_HashSecret)) {
+        //             $vnpSecureHash =   hash_hmac('sha512', $hashdata, $vnp_HashSecret); //  
+        //             $vnp_Url .= 'vnp_SecureHash=' . $vnpSecureHash;
+        //         }
+        //         $returnData = array(
+        //             'code' => '00', 'message' => 'success', 'data' => $vnp_Url
+        //         );
+        //         if (isset($_POST['redirect'])) {
+        //             header('Location: ' . $vnp_Url);
+        //             die();
+        //         } else {
+        //             echo json_encode($returnData);
+        //         }
+        //         echo '<script> window.location.href="https://sandbox.vnpayment.vn/paymentv2/vpcpay.html"</script>';
+        //     }
+        // }
         ?>
         <!-- end tour card -->
         <!-- chi tiết tour -->
