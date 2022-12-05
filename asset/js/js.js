@@ -95,11 +95,10 @@ $(document).ready(function () {
       $(".totaldc").html(total);
       $(".total").addClass("gach");
       $(".tong").val($(".totaldc").html());
-    }
-    else{
-        $(".totaldc").html("");
-        $(".total").removeClass("gach");
-        $(".tong").val($(".total").html());
+    } else {
+      $(".totaldc").html("");
+      $(".total").removeClass("gach");
+      $(".tong").val($(".total").html());
     }
   });
 });
@@ -148,16 +147,8 @@ $(document).on("click", ".category__right", function () {
   );
   sessionStorage.setItem("category", $(this).attr("data-category"));
 });
-$(document).on("click", ".btnbook", function () {
-  if ($("#pay").val() == "momo") {
-    $(location).attr("href", "vnpay_php/index.php");
-  } else {
-    Swal.fire({
-      icon: "error",
-      title: "Oops...",
-      text: "The feature is under maintenance. Please come back in the future!!",
-    });
-
-    // $(location).attr('href', 'http://localhost/travel/PayMoMo/init_payment.php');
-  }
-});
+// $(document).on("click", ".btnbook", function () {
+//   if ($("#pay").val() == "VNPAY") {
+//     $(location).attr("href", "./vnpay_php/index.php");
+//   }
+// });
