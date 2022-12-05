@@ -255,6 +255,9 @@ a:hover {
   border-radius: 2px;
   width: 50% !important;
 }
+.ullist {
+  list-style: inherit !important;
+}
 .tour__items video {
   width: 100%;
   height: 230px;

@@ -41,12 +41,20 @@
         </nav>
         <div class="tab-content" id="nav-tabContent">
             <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                <a href="" class="black">bala</a>
-                <br>
+                <ol class="">
+                    <li class="ullist">
+                        <h4 class="black mt-3">bala</h4>
+                    </li>
+                </ol>
+
+
             </div>
             <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                <a href="" class="black">bala</a>
-                <br>
+                <ol>
+                    <li class="ullist">
+                        <h4 class="black mt-3">bala</h4>
+                    </li>
+                </ol>
             </div>
 
         </div>
