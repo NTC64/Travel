@@ -49,6 +49,8 @@ require_once('../config_vnpay.php');
         $order_code = $_SESSION['order_code'];
         $ResponseCode = $_GET['vnp_ResponseCode'];
         if ($ResponseCode == 24) {
+            $sql = "UPDATE cart SET cartStatus = 'Giao dịch bị hủy' WHERE order_code = '$order_code'";
+            $result = mysqli_query($conn, $sql);
     ?>
     <script>
     swal.fire({
@@ -56,11 +58,12 @@ require_once('../config_vnpay.php');
         text: "Khách hàng hủy giao dịch",
         icon: "error",
         confirmButtonText: "OK"
-    }).then((result) => {
-        if (result.isConfirmed) {
-            window.location.href = "../index.php";
-        }
     })
+    // .then((result) => {
+    //     if (result.isConfirmed) {
+    //         window.location.href = "../index.php";
+    //     }
+    // })
     </script>
     <?php
         } else if ($ResponseCode == 00) {
@@ -71,13 +74,14 @@ require_once('../config_vnpay.php');
         $result = mysqli_query($conn, $sql);
         if ($ResponseCode == 00) {
             if ($result) {
+                $sql1 = "UPDATE `cart` SET `cartStatus` = 'Đã thanh toán qua VNPAY' WHERE `order_code` = '$order_code'";
+                $result = mysqli_query($conn, $sql1);
                 echo '<script> Swal.fire({
                     icon: "success",
                     title: "Đặt tour thành công",
                     showConfirmButton: false,
                     timer: 1500
                 })</script>';
-                $sql = "UPDATE `cart` SET `cartStatus` = 'Đã thanh toán qua VNPAY' WHERE cart.order_code = vnpay.code_cart";
             } else {
                 echo "<script>Swal.fire({
                     icon: 'error',
