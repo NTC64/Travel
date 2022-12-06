@@ -12,6 +12,7 @@ require_once('../config_vnpay.php');
     <meta charset="UTF-8">
     <title>Thank you</title>
     <link rel="stylesheet" href="./style.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
 </head>
 
@@ -39,32 +40,52 @@ require_once('../config_vnpay.php');
     if (isset($_GET['vnp_Amount'])) {
         $vnp_Amount = $_GET['vnp_Amount'];
         $vnp_BankCode = $_GET['vnp_BankCode'];
-        $vnp_BankTranNo = $_GET['vnp_BankTranNo'];
+        $vnp_BankTranNo = "";
         $vnp_OrderInfo = $_GET['vnp_OrderInfo'];
         $vnp_PayDate = $_GET['vnp_PayDate'];
         $vnp_TmnCode = $_GET['vnp_TmnCode'];
         $vnp_TransactionNo = $_GET['vnp_TransactionNo'];
         $vnp_CardType = $_GET['vnp_CardType'];
         $order_code = $_SESSION['order_code'];
-        // $vnp_ResponseCode = $_GET['vnp_ResponseCode'];
-        // $vnp_SecureHash = $_GET['vnp_SecureHash'];
-        //insert data to database
-        $sql = "INSERT INTO `vnpay`(`price`, `code_cart`, `bankcode`, `banktranno`, `cardtype`, `orderinfor`, `paydate`, `tmncode`, `transaction_no`) values ('$vnp_Amount','$order_code','$vnp_BankCode','$vnp_BankTranNo','$vnp_CardType','$vnp_OrderInfo','$vnp_PayDate','$vnp_TmnCode','$vnp_TransactionNo')";
+        $ResponseCode = $_GET['vnp_ResponseCode'];
+        if ($ResponseCode == 24) {
+    ?>
+    <script>
+    swal.fire({
+        title: "Thanh toán thất bại",
+        text: "Khách hàng hủy giao dịch",
+        icon: "error",
+        confirmButtonText: "OK"
+    }).then((result) => {
+        if (result.isConfirmed) {
+            window.location.href = "../index.php";
+        }
+    })
+    </script>
+    <?php
+        } else if ($ResponseCode == 00) {
+            $vnp_BankTranNo = $_GET['vnp_BankTranNo'];
+            //insert data to database
+        }
+        $sql = "INSERT INTO `vnpay`(`price`, `code_cart`, `bankcode`, `banktranno`, `cardtype`, `orderinfor`, `paydate`, `tmncode`, `transaction_no`,`ResponseCode`) VALUES ('$vnp_Amount','$order_code','$vnp_BankCode','$vnp_BankTranNo','$vnp_CardType','$vnp_OrderInfo','$vnp_PayDate','$vnp_TmnCode','$vnp_TransactionNo','$ResponseCode')";
         $result = mysqli_query($conn, $sql);
-        if ($result) {
-            echo '<script> Swal.fire({
-                icon: "success",
-                title: "Đặt tour thành công",
-                showConfirmButton: false,
-                timer: 1500
-            })</script>';
-        } else {
-            echo "<script>Swal.fire({
-                icon: 'error',
-                title: 'Đặt tour thất bại',
-                showConfirmButton: false,
-                timer: 1500
-              })</script>";
+        if ($ResponseCode == 00) {
+            if ($result) {
+                echo '<script> Swal.fire({
+                    icon: "success",
+                    title: "Đặt tour thành công",
+                    showConfirmButton: false,
+                    timer: 1500
+                })</script>';
+                $sql = "UPDATE `cart` SET `cartStatus` = 'Đã thanh toán qua VNPAY' WHERE cart.order_code = vnpay.code_cart";
+            } else {
+                echo "<script>Swal.fire({
+                    icon: 'error',
+                    title: 'Đặt tour thất bại',
+                    showConfirmButton: false,
+                    timer: 1500
+                  })</script>";
+            }
         }
     }
     ?>

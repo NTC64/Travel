@@ -85,9 +85,8 @@ include("header.php");
                             value="<?php echo date('Y-m-j', strtotime('+' . $row["tourTime"] . ' day', strtotime($row['tourDate']))) ?>">
                         <textarea name="note" id="" cols="30" rows="10" placeholder="Ghi chú"></textarea>
                         <select name="cartPayment" id="pay">
-                            <option value="">Chọn phương thức thanh toán</option>
                             <option value="CASH">Thanh toán trực tiếp</option>
-                            <option name="" value="VNPAY">Thanh toán ví điện tử</option>
+                            <option name="" value="VNPAY">Thanh toán qua ví VNPAY</option>
                         </select>
                     </div>
 
@@ -104,7 +103,6 @@ include("header.php");
         </div>
         <!-- tour card -->
         <!-- end tour card -->
-
 
         <?php
         // if (isset($_POST['doanxem'])) {

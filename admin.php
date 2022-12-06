@@ -20,6 +20,16 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
     <link rel="stylesheet" href="./asset/css/styleadmin.css" />
     <link rel="stylesheet" href="./asset/font/fontawesome-free-6.1.2-web/css/all.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+    <script src="./asset/js/script.js"></script>
 
     <?php session_start() ?>
     <?php
@@ -582,8 +592,8 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
         <div class="dashboard">
             <div class="row">
                 <div class=""></div><a href="https://sandbox.vnpayment.vn/merchantv2/" target="_blank"
-                    class="col-4 bank">
-                    <div>
+                    class="col-4 bank user">
+                    <div class="tran">
                         Tran's History
                     </div>
                 </a>
@@ -647,7 +657,7 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
                     <div class="col-7"> Booked Tours</div>
                     <div class="num col-3">
                         <?php
-                        $sql = "SELECT * FROM tours";
+                        $sql = "SELECT * FROM cart";
                         $result = mysqli_query($conn, $sql);
                         $num = mysqli_num_rows($result);
                         echo $num;
@@ -849,6 +859,7 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
                         <td>ID Cart</td>
                         <td>ID Tour</td>
                         <td>ID Seller</td>
+                        <td>ID Customer</td>
                         <td>User's Name</td>
                         <td>Number phone</td>
                         <td>Address</td>
@@ -864,9 +875,9 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
                     function get_cart_list()
                     {
                         if ($_SESSION['role'] == 'seller') {
-                            $sql = "SELECT * FROM cart WHERE sellerID = '" . $_SESSION['userID'] . "'";
+                            $sql = "SELECT * FROM cart,tours WHERE cart.tourID = tours.tourID and  tours.sellerID = '" . $_SESSION['userID'] . "'";
                         } else {
-                            $sql = "SELECT * FROM cart";
+                            $sql = "SELECT *,sellerID FROM cart,tours WHERE cart.tourID = tours.tourID";
                         }
                         global $conn;
                         $result = mysqli_query($conn, $sql);
@@ -883,6 +894,7 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
                     <tr>
                         <td><?php echo $cart['cartID'] ?></td>
                         <td><?php echo $cart['tourID'] ?></td>
+                        <td><?php echo $cart['sellerID'] ?></td>
                         <td><?php echo $cart['userID'] ?></td>
                         <td><?php echo $cart['fullName'] ?></td>
                         <td><?php echo $cart['phone'] ?></td>
@@ -1197,16 +1209,7 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
         <!-- partial -->
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
-        </script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
-        </script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-        </script>
-        <script src="./asset/js/script.js"></script>
+
 </body>
 
 </html>

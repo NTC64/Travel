@@ -13,6 +13,12 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
 require_once('config_vnpay.php');
 ?>
 
+<head>
+    <meta charset="UTF-8">
+    <title>Thanh Toán</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+</head>
 
 <?php
 if (isset($_POST['redirect'])) {
@@ -30,14 +36,24 @@ if (isset($_POST['redirect'])) {
     $cartPayment = $_POST['cartPayment'];
     $cartStatus = "Đang chờ xác nhận";
     if ($cartPayment == "CASH") {
-        $sql = "INSERT INTO cart ('order_code',`userID`, `tourID`, `fullName`, `phone`, `address`, `cartPrice`, `people`, `startDate`, `endDate`, `note`, `cart_payment`, `cartStatus`) VALUES ('$order_code','$userID', '$tourID', '$fullName', '$phone', '$address', '$cartPrice', '$people', '$startDate', '$endDate', '$note', '$cartPayment', '$cartStatus')";
+        $sql = "INSERT INTO cart (`order_code`, `userID`, `tourID`, `fullName`, `phone`, `address`, `cartPrice`, `people`, `startDate`, `endDate`, `note`, `cart_payment`, `cartStatus`) VALUES ('$order_code','$userID', '$tourID', '$fullName', '$phone', '$address', '$cartPrice', '$people', '$startDate', '$endDate', '$note', '$cartPayment', '$cartStatus')";
         $result = mysqli_query($conn, $sql);
         if ($result) {
-            echo "<script>alert('Đặt tour thành công!')</script>";
-            echo "<script>alert('Chúng tôi sẽ liên hệ với bạn sớm.')</script>";
+            echo '<script> swal.fire ({
+                title: "Đặt tour thành công",
+                text: "Vui lòng chờ xác nhận từ nhân viên",
+                icon: "success",
+                confirmButtonText: "OK"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = "../index.php";
+                    }
+                }) </script>';
         } else {
             echo "<script>alert('Đặt tour thất bại!')</script>";
         }
+        $sql = "UPDATE `cart` SET `cartStatus` = 'Sẽ thanh toán tiền mặt' WHERE cart.order_code = '$order_code'";
+        $result = mysqli_query($conn, $sql);
     } else if ($cartPayment == "VNPAY") {
         $vnp_TxnRef = $order_code; //Mã đơn hàng. Trong thực tế Merchant cần insert đơn hàng vào DB và gửi mã này sang VNPAY
         $vnp_OrderInfo = 'Thanh toán đơn hàng ' . $vnp_TxnRef . ' tại website của ULSA IT ';
